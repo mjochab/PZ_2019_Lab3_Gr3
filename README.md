@@ -9,9 +9,9 @@
         - [Użytkownik](#użytkownik)
         - [Admin](#admin)      
 2. [Diagramy UML](#diagramy-uml) 
-		- [Diagram klas](#diagram-klas)
-		- [Diagram przypadków użycia](#diagram-przypadków-użycia)
-		- [Diagram aktywności](#diagram-aktywności)		
+	- [Diagram klas](#diagram-klas)
+	- [Diagram przypadków użycia](#diagram-przypadków-użycia)
+	- [Diagram aktywności](#diagram-aktywności)		
 3. [Licencja](#licencja)
 
 # Opis projektu
