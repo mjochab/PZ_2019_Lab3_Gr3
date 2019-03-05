@@ -51,8 +51,7 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 <br />![1](diagrams/d2.png) <br/>
 #### Diagram aktywności
 <br />![1](diagrams/d3.png) <br/>
-#### Diagram sekwencji
-<br />![1](diagrams/diagramSekwencji.png) <br/>
+
 
 ### Technologie
 1. JavaFX
