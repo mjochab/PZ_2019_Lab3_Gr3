@@ -12,7 +12,9 @@
 	- [Diagram klas](#diagram-klas)
 	- [Diagram przypadków użycia](#diagram-przypadków-użycia)
 	- [Diagram aktywności](#diagram-aktywności)		
-3. [Licencja](#licencja)
+3. [Technologie](#technologie)
+4. [Autorzy](#autorzy)
+5. [Licencja](#licencja)
 
 # Opis projektu
 Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy gość uruchamiający naszą aplikację uzyskuje możliwość wyceny przesyłki bez rejestracji. Może przeglądać ranking kurierów, opinie na temat firm kurierskich oraz ranking ich popularności. Jeżeli gość zdecyduje się na skorzystanie z naszych usług najpierw musi zarejestrować się w naszym serwisie. Po rejestracji użytkownik może przejść do procesu zamówienia przesyłki. Składa się on z podania informacji o przesyłce, wyboru interesującego nas kuriera, podania danych nadawcy i odbiorcy oraz zatwierdzenia zamówienia. Zostanie wygenerowany dla niego raport pdf potwierdzający złożenie zamówienia. Dodatkowo po każdym złożonym zamówieniu klient otrzymuje punkty premium, które może wykorzystać w sklepie premium, w celu odebrania nagrody. Użytkownik może przeglądać wszystkie złożone przez niego zamówienia, oraz ocenić każde zamówienie w formie wystawienia opinii dla wybranej przez niego firmy kurierskiej. Jeżeli przesyłka nie została jeszcze wysłana ma możliwość anulowania zamówienia. Po zalogowaniu na konto admina możemy zarządzać serwisem zamawiania paczek m.in. zmieniać status zamówień, dodawać nowych kurierów do bazy, dodawać prezenty oraz modyfikować bazę danych. 
@@ -49,7 +51,18 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 <br />![1](diagrams/d2.png) <br/>
 #### Diagram aktywności
 <br />![1](diagrams/d3.png) <br/>
-	
+
+### Technologie
+1. JavaFX
+2. Gradle
+3. MySql
+
+### Autorzy
+- Paweł Fiołek
+- Patryk Brzuchacz
+- Alan Biały
+- Klaudia Cyran
+- Krzysztof Duda
 ### Licencja
 Aplikacją jest objęta licencją MIT.
 
