@@ -1,0 +1,4 @@
+
+ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(³‘σµ8Ωάφ–-
+Usquid:S1068"2Remove this unused "mainController" private field.(µΎυκύÿÿÿÿ8Λψ–-
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ύµ¥8…Εϊψ–-

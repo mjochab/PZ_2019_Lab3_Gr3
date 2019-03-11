@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="346.0" prefWidth="434.0" spacing="10.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="main.java.serwisPaczek.Controller.LoginController">
+    <children>
+        <Label text="Username"/>
+        <TextField prefHeight="25.0" prefWidth="264.0">
+            <VBox.margin>
+                <Insets left="111.0" right="111.0"/>
+            </VBox.margin>
+        </TextField>
+        <Label text="Hasło"/>
+        <TextField>
+            <VBox.margin>
+                <Insets left="111.0" right="111.0"/>
+            </VBox.margin>
+        </TextField>
+        <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="600.0">
+            <children>
+                <Label text="Nie masz konta?"/>
+                <Label text="Zarejestruj się" textFill="#3c10cd"/>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="12.0" top="22.0"/>
+            </VBox.margin>
+        </HBox>
+        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" text="Zaloguj się"/>
+    </children>
+    <opaqueInsets>
+        <Insets top="250.0"/>
+    </opaqueInsets>
+</VBox>
