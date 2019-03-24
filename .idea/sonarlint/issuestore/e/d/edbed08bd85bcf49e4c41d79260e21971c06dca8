@@ -1,3 +1,5 @@
 
-]squid:S1118":Add a private constructor to hide the implicit public one.(¨®¹Üÿÿÿÿÿ8Éã°ö–-
-ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¸ï™Ë8ï‹®ö–-
+]squid:S1118":Add a private constructor to hide the implicit public one.(¨®¹Üÿÿÿÿÿ8­®ìþš-
+ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¸ï™Ë8ï¹«þš-
+|squid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "loader".(©ÏÕÆ8Þ‘Ëþš-
+esquid:UselessImportCheck"5Remove this unused import 'java.util.ResourceBundle'.(ýÆ£¯øÿÿÿÿ8òóÊþš-
