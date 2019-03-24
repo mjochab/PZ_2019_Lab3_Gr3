@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane" maxHeight="500" maxWidth="500" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="main.java.serwisPaczek.Controller.MainController">
+
+    <top>
+
+
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="Opcje">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#openLogin" text="Logowanie"/>
+                        <MenuItem mnemonicParsing="false" onAction="#openRegister" text="Rejestracja"/>
+                        <MenuItem mnemonicParsing="false" onAction="#logout" text="Wylogowanie"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edycja">
+                    <items>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#setCaspian" text="Caspian">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="styleGroup"/>
+                            </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#setModena" text="Modena"
+                                       toggleGroup="$styleGroup"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" onAction="#openAbout" text="O aplikacji"/>
+                <Menu mnemonicParsing="false" onAction="#closeApplication" text="Zamknij"/>
+                <Menu mnemonicParsing="false" onAction="#OpenHomePage" text="Strona główna"/>
+            </menus>
+        </MenuBar>
+
+    </top>
+    <center>
+        <fx:include fx:id="topMenuButtons" source="Order.fxml"/>
+
+    </center>
+</BorderPane>
