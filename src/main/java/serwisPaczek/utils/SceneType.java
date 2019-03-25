@@ -28,5 +28,4 @@ public enum SceneType {
     String getFxmlPath() {
         return this.fxmlPath;
     }
-
 }
