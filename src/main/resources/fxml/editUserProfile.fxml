@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.EditUserProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.EditUserProfileController">
    <top>
       <ImageView fitHeight="242.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
@@ -70,7 +70,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="ToEditUserProfileButton" layoutX="290.0" layoutY="298.0" mnemonicParsing="false" onAction="#ToEditUserProfile" prefHeight="47.0" prefWidth="189.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+            <Button layoutX="290.0" layoutY="298.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="189.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

@@ -13,7 +13,7 @@
    <left>
       <AnchorPane prefHeight="348.0" prefWidth="434.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="BackToMenuFromLogin" layoutX="50.0" layoutY="174.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: blue;" text="Zaloguj się" textFill="WHITE" wrapText="true">
+            <Button fx:id="UserMenuButton" layoutX="50.0" layoutY="174.0" mnemonicParsing="false" onAction="#UserMenu" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: blue;" text="Zaloguj się" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>

@@ -13,7 +13,11 @@ public enum SceneType {
     PRICE_LIST("priceList"),
     REGISTER("register"),
     WORKER_PANEL("workerPanel"),
-    ORDER_LIST("orderList");
+    ORDER_LIST("orderList"),
+    ADD_COURIER("addCourier"),
+    EDIT_USER("editUserProfile"),
+    USER_MENU("mainUser"),
+    MENU("main");
 
     private String fxmlPath;
 

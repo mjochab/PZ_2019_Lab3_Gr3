@@ -18,6 +18,8 @@ public class LoginController {
         sceneManager.show(SceneType.REGISTER);
     }
 
+    public void UserMenu(ActionEvent event){ sceneManager.show(SceneType.USER_MENU);}
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
