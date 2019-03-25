@@ -11,7 +11,9 @@ public enum SceneType {
     LOGIN("login"),
     ORDER("order"),
     PRICE_LIST("priceList"),
-    REGISTER("register");
+    REGISTER("register"),
+    WORKER_PANEL("workerPanel"),
+    ORDER_LIST("orderList");
 
     private String fxmlPath;
 
