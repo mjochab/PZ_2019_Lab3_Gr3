@@ -1,6 +1,4 @@
 
-ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¸ï™Ë8ÄÊ£†›-
-Àsquid:S1598"¡This file "DialogsUtils.java" should be located in "main\java\serwisPaczek\utils" directory, not in "C:\repo1\PZ_2019_Lab3_Gr3\src\main\java\serwispaczek\utils".(¸ï™Ë8ÄÊ£†›-
-|squid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(¿­¹ô8ÄÊ£†›-
-]squid:S1118
-":Add a private constructor to hide the implicit public one.(º¾ùòüÿÿÿÿ8ÄÊ£†›-
+[squid:S1118":Add a private constructor to hide the implicit public one.(º¾ùòüÿÿÿÿ8ÄÊ£†›-
+zsquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(¿­¹ô8ÄÊ£†›-
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¸ï™Ë8ÄÊ£†›-
