@@ -12,8 +12,8 @@ public enum SceneType {
     ORDER("order"),
     PRICE_LIST("priceList"),
     REGISTER("register"),
-    WORKER_PANEL("workerPanel"),
-    ORDER_LIST("orderList");
+    EDIT_USER("editUserProfile"),
+    USER_MENU("mainUser");
 
     private String fxmlPath;
 
@@ -24,5 +24,4 @@ public enum SceneType {
     String getFxmlPath() {
         return this.fxmlPath;
     }
-
 }
