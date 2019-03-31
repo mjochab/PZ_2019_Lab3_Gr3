@@ -1,6 +1,0 @@
-
-rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÅÝÌúÿÿÿÿ8¿ˆ»‡›-
-Jsquid:S1172",Remove this unused method parameter "event".(â£ð½8ÌÅÄ‡›-
-msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â£ð½8ÌÅÄ‡›-
-Usquid:S1172"2Remove this unused method parameter "actionEvent".(ßÅÝÌúÿÿÿÿ8¿ˆ»‡›-
-ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(È«¥®8æðÝ‰›-

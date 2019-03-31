@@ -1,5 +1,0 @@
-
-ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¸ï™Ë8ÄÊ£†›-
-]squid:S1118
-":Add a private constructor to hide the implicit public one.(º¾ùòüÿÿÿÿ8ÄÊ£†›-
-|squid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(¿­¹ô8ÄÊ£†›-
