@@ -15,9 +15,9 @@ public class GiftOrder {
     @JoinColumn(name = "gift_id")
     private Gift gift;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 //    @ManyToOne
 //    @JoinColumn(name = "recipient_id")

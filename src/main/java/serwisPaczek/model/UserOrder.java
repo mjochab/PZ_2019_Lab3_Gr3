@@ -11,10 +11,16 @@ public class UserOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double price;
+    private float price;
     private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "courier_id")
+    private Courier courier;
+
+    private Status status;
 }

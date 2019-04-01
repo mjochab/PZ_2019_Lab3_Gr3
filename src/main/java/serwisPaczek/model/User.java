@@ -25,6 +25,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserOrder> orders = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<GiftOrder> giftOrders = new ArrayList<>();
+
     //    @ManyToOne
 //    @JoinColumn(name = "address_id")
 //    private Address address;

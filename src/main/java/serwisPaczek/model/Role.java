@@ -11,6 +11,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JoinColumn(name = "role_name")
     private String roleName;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)

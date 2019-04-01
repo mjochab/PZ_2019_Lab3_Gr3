@@ -14,4 +14,8 @@ public class PackPricing {
     private float up_to_15;
     private float up_to_20;
     private float up_to_30;
+
+    @OneToOne
+    @JoinColumn(name = "courier_id")
+    private Courier courier;
 }
