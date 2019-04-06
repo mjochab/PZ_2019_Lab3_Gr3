@@ -55,7 +55,6 @@ public class MainService {
 
             User user = new User("Patryk" + i,"Brzuchacz" + i,role,adress);
             userList.add(user);
-
         }
 
         roleRepository.saveAll(roleList);
