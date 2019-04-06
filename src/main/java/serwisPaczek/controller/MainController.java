@@ -4,16 +4,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.model.Courier;
+import serwisPaczek.model.Role;
+import serwisPaczek.model.User;
+import serwisPaczek.repository.RoleRepository;
+import serwisPaczek.repository.UserRepository;
+import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
 public class MainController {
 
     private SceneManager sceneManager;
+    @Autowired
+    private MainService mainService;
 
     public MainController() {
+    }
+
+    public void FillTheBaseWithExampleData(){
+        mainService.fillDatabase();
     }
 
     @FXML

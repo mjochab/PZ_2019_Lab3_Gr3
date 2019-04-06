@@ -1,9 +1,12 @@
 package serwisPaczek.model;
 
+import lombok.AllArgsConstructor;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @Entity
 public class Role {
 
@@ -18,4 +21,7 @@ public class Role {
     private List<User> users = new ArrayList<>();
 
 
+    public Role(String roleName){
+        this.roleName=roleName;
+    }
 }
