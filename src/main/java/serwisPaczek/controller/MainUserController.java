@@ -44,15 +44,16 @@ public class MainUserController {
     }
 
     @FXML
-    void OpenEditUserProfile(ActionEvent event){
+    void OpenEditUserProfile(ActionEvent event) {
         sceneManager.show(SceneType.EDIT_USER);
     }
 
     @FXML
-    void logout(ActionEvent event){
+    void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
 
     }
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;

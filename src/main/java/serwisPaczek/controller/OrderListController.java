@@ -19,7 +19,6 @@ public class OrderListController {
     }
 
 
-
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import serwisPaczek.model.Gift;
 
 @Repository
-public interface GiftRepository extends JpaRepository<Gift,Long> {
+public interface GiftRepository extends JpaRepository<Gift, Long> {
 }
