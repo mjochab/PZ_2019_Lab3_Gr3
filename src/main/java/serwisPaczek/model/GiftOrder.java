@@ -19,9 +19,14 @@ public class GiftOrder {
     @JoinColumn(name = "user_id")
     private User user;
 
-//    @ManyToOne
-//    @JoinColumn(name = "recipient_id")
-//    private Recipient recipient;
+    @ManyToOne
+    @JoinColumn(name = "recipient_id")
+    private RecipientAdress recipientAdress;
 
-
+    public GiftOrder(Date date, Gift gift, User user, RecipientAdress recipientAdress) {
+        this.date = date;
+        this.gift = gift;
+        this.user = user;
+        this.recipientAdress = recipientAdress;
+    }
 }

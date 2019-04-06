@@ -18,7 +18,10 @@ public class Gift {
 
 
     @OneToMany(mappedBy = "gift", cascade = CascadeType.ALL)
-    private List<GiftOrder> giftOrders = new ArrayList<>();
+    private List<GiftOrder> giftOrder = new ArrayList<>();
 
-
+    public Gift(String name, int premiumPoints) {
+        this.name = name;
+        this.premiumPoints = premiumPoints;
+    }
 }

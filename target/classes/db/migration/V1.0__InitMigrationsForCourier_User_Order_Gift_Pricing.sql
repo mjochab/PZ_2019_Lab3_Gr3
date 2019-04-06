@@ -63,26 +63,3 @@ user_id bigint,
 courier_id bigint,
 status varchar(40),
 Primary Key(id));
-
-CREATE TABLE adress (
-  id bigint NOT NULl AUTO_INCREMENT,
-  name varchar(30),
-  surname varchar(30),
-  city varchar(30),
-  street varchar(30),
-  houseNumber int(11),
-  zipCode int(11),
-  telephoneNumber int(11),
-  email varchar(30),
-  PRIMARY KEY(id));
-
-
-CREATE TABLE recipient_adress (
-  id bigint NOT NULl AUTO_INCREMENT,
-  adress_id int(11),
-  PRIMARY KEY(id));
-
-CREATE TABLE sender_adress (
-  id bigint NOT NULl AUTO_INCREMENT,
-  adress_id int(11),
-  PRIMARY KEY(id));

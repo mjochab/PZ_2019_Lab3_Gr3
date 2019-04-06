@@ -18,9 +18,4 @@ alter table user_order
 add foreign key(user_id) references user(id),
 add foreign key(courier_id) references courier(id);
 
-alter table sender_adress
-add foreign key(adress_id) references adress(id);
-
-alter table recipient_adress
-add foreign key(adress_id) references adress(id);
 

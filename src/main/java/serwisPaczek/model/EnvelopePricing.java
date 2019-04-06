@@ -12,4 +12,9 @@ public class EnvelopePricing {
     @OneToOne
     @JoinColumn(name = "courier_id")
     private Courier courier;
+
+    public EnvelopePricing(float up_to_1, Courier courier) {
+        this.up_to_1 = up_to_1;
+        this.courier = courier;
+    }
 }
