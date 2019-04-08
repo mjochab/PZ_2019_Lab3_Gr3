@@ -14,8 +14,11 @@ public class Adress {
     private String surname;
     private String city;
     private String street;
+    @JoinColumn(name = "house_number")
     private int houseNumber;
+    @JoinColumn(name = "zip_code")
     private String zipCode;
+    @JoinColumn(name = "telephone_number")
     private Long telephoneNumber;
     private String email;
 
