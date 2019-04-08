@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.RegisterController">
     <top>
-        <ImageView fitHeight="252.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+        <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
                 <Image url="@../images/BigBanner_Delivery.png" />
             </image>
@@ -27,37 +27,38 @@
     <left>
         <AnchorPane prefHeight="348.0" prefWidth="434.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="50.0" layoutY="202.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: blue;" text="Zarejestruj się" textFill="WHITE" wrapText="true">
+                <Button layoutX="36.0" layoutY="197.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="34.0" prefWidth="313.0" style="-fx-background-color: blue;" text="Zarejestruj się" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="14.0" layoutY="282.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="52.0" prefWidth="183.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="BackToMenuButton" layoutX="36.0" layoutY="282.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="52.0" prefWidth="183.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="74.0" layoutY="26.0" prefHeight="30.0" prefWidth="240.0" text="Formularz rejestracji">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
                 <TextField layoutX="36.0" layoutY="71.0" prefHeight="29.0" prefWidth="313.0" promptText="Nazwa użytkownika">
                     <font>
                         <Font size="13.0" />
                     </font></TextField>
-                <TextField layoutX="36.0" layoutY="113.0" prefHeight="29.0" prefWidth="313.0" promptText="Hasło">
+                <TextField layoutX="36.0" layoutY="112.0" prefHeight="29.0" prefWidth="313.0" promptText="Hasło">
                     <font>
                         <Font size="13.0" />
                     </font>
                 </TextField>
-                <TextField layoutX="38.0" layoutY="160.0" prefHeight="29.0" prefWidth="313.0" promptText="Powtórz hasło">
+                <TextField layoutX="36.0" layoutY="154.0" prefHeight="29.0" prefWidth="313.0" promptText="Powtórz hasło">
                     <font>
                         <Font size="13.0" />
                     </font>
                 </TextField>
-                <Label layoutX="157.0" layoutY="244.0" prefHeight="30.0" prefWidth="96.0" text="Masz już konto?" textFill="#010007" />
-                <Label layoutX="253.0" layoutY="244.0" onMouseClicked="#openLoginPanel" prefHeight="30.0" prefWidth="96.0" text="Zaloguj się" textFill="#290af2" />
+                <Label layoutX="196.0" layoutY="229.0" prefHeight="30.0" prefWidth="96.0" text="Masz już konto?" textFill="#010007" />
+                <Label layoutX="288.0" layoutY="229.0" prefHeight="30.0" prefWidth="63.0" text="Zaloguj się." textFill="#290af2" />
+            <Button fx:id="GoToLogin" layoutX="286.0" layoutY="234.0" mnemonicParsing="false" onAction="#openLoginPanel" opacity="0.03" prefHeight="30.0" prefWidth="63.0" text="Button" />
+            <Label layoutX="38.0" layoutY="23.0" prefHeight="38.0" prefWidth="309.0" style="-fx-background-color: sandybrown; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Formularz rejestracji" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </left>

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.ChooseCourierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.ChooseCourierController">
     <top>
-        <ImageView fitHeight="194.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+        <ImageView fitHeight="194.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
                 <Image url="@../images/BigBanner_Delivery.png" />
             </image>
@@ -63,7 +63,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="352.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="48.0" prefWidth="691.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textFill="WHITE">
+            <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="356.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="691.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

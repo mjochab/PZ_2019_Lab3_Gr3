@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.MainWorkerController">
+<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.MainWorkerController">
     <children>
         <StackPane layoutX="1.0">
             <children>
                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                     <top>
-                        <ImageView fitHeight="252.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                        <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
                             <image>
                                 <Image url="@../images/BigBanner_Delivery.png" />
                             </image>
@@ -35,6 +35,11 @@
                                     </font>
                                 </Button>
                         <Button fx:id="OpenWorkerPanelButton1" layoutX="408.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenWorkerPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Zarządzaj sklepem premium" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutButton" layoutX="29.0" layoutY="284.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>

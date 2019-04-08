@@ -50,7 +50,6 @@ public class SceneManager {
         } catch (IOException e) {
             return null;
         }
-
     }
 
     @Autowired

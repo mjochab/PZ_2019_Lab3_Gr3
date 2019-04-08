@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.OrderController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.OrderController">
    <top>
-      <ImageView fitHeight="196.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="196.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../images/BigBanner_Delivery.png" />
          </image>
@@ -26,9 +26,9 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="67.0" layoutY="14.0" prefHeight="44.0" prefWidth="410.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Wybierz rodzaj paczki" textFill="WHITE">
+            <Label layoutX="67.0" layoutY="14.0" prefHeight="44.0" prefWidth="410.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Wybierz rodzaj paczki" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="17.0" />
                </font>
             </Label>
             <TextField layoutX="67.0" layoutY="264.0" prefHeight="29.0" prefWidth="189.0" promptText="Długość">
@@ -72,9 +72,9 @@
                   </ImageView>
                </graphic>
             </RadioButton>
-            <Label layoutX="68.0" layoutY="120.0" prefHeight="44.0" prefWidth="408.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Podaj wymiary paczki" textFill="WHITE">
+            <Label layoutX="68.0" layoutY="120.0" prefHeight="44.0" prefWidth="408.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Podaj wymiary paczki" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="17.0" />
                </font>
             </Label>
             <TextField layoutX="272.0" layoutY="264.0" prefHeight="29.0" prefWidth="203.0" promptText="Szerokość">

@@ -16,4 +16,12 @@ public class PalletPricing {
     @OneToOne
     @JoinColumn(name = "courier_id")
     private Courier courier;
+
+    public PalletPricing(float up_to_300, float up_to_500, float up_to_800, float up_to_1000, Courier courier) {
+        this.up_to_300 = up_to_300;
+        this.up_to_500 = up_to_500;
+        this.up_to_800 = up_to_800;
+        this.up_to_1000 = up_to_1000;
+        this.courier = courier;
+    }
 }

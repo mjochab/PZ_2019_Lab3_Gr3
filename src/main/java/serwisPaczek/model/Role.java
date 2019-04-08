@@ -21,7 +21,7 @@ public class Role {
     private List<User> users = new ArrayList<>();
 
 
-    public Role(String roleName){
-        this.roleName=roleName;
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
 }

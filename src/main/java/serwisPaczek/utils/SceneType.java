@@ -1,6 +1,5 @@
 package serwisPaczek.utils;
 
-
 public enum SceneType {
     MAIN("main"),
     ABOUT("about"),
@@ -17,6 +16,8 @@ public enum SceneType {
     ADD_COURIER("addCourier"),
     EDIT_USER("editUserProfile"),
     USER_MENU("mainUser"),
+    ADMIN_MENU("mainAdmin"),
+    WORKER_MENU("mainWorker"),
     MENU("main");
 
     private String fxmlPath;
