@@ -24,12 +24,12 @@
                     <left>
                         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
                             <children>
-                                <Button layoutX="47.0" layoutY="33.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="285.0" style="-fx-background-color: dimgrey;" text="Witaj Adminie" textFill="WHITE" wrapText="true">
+                                <Button layoutX="45.0" layoutY="33.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="285.0" style="-fx-background-color: dimgrey;" text="Witaj Adminie" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="17.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="OpenPriceListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Lista użytkowników" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="OpenUserListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Lista użytkowników" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -39,7 +39,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="redirectToAboutButton" layoutX="453.0" layoutY="165.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="redirectToAboutButton" layoutX="453.0" layoutY="165.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -49,9 +49,14 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                        <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="47.0" layoutY="174.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="120.0" prefWidth="285.0" style="-fx-background-color: Blue;" text="Wypełnij baze przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="45.0" layoutY="96.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="284.0" style="-fx-background-color: Blue;" text="Wypełnij baze przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutButton" layoutX="45.0" layoutY="242.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
                            </font>
                         </Button>
                             </children>

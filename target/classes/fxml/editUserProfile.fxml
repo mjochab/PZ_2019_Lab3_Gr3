@@ -25,7 +25,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="BackToUserProfile" layoutX="61.0" layoutY="299.0" mnemonicParsing="false" onAction="#BackToUserProfile" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+            <Button fx:id="GoToUserProfileAccepted" layoutX="61.0" layoutY="299.0" mnemonicParsing="false" onAction="#BackToUserProfile" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

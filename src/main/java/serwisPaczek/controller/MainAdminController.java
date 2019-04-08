@@ -25,6 +25,11 @@ public class MainAdminController {
         sceneManager.show(SceneType.ADD_COURIER);
     }
 
+    @FXML
+    void logout(ActionEvent event) {
+        sceneManager.show(SceneType.MAIN);
+    }
+
     //    public void FillTheBaseWithExampleData(){
     //        Role role = new Role(1L,"ROLE_ADMIN");
     //        User user = new User(1L,"Patryk","Brzuchacz",role);
