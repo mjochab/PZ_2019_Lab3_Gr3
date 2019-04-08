@@ -1,30 +1,41 @@
-package main.java.serwisPaczek;
+package serwisPaczek;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import serwisPaczek.utils.SceneManager;
 
-import java.util.Locale;
-
+@SpringBootApplication
 public class Main extends Application {
+
+    private ConfigurableApplicationContext springContext;
+
+    @Autowired
+    private SceneManager sceneManager;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Locale.setDefault(new Locale("pl"));
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/MainPage.fxml"));
-
-        BorderPane borderPane = loader.load();
-
-
-        Scene scene = new Scene(borderPane);
-        primaryStage.setTitle("Serwis paczek");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public void init() throws Exception {
+        springContext = SpringApplication.run(Main.class);
+        springContext.getAutowireCapableBeanFactory().autowireBean(this);
     }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        sceneManager.init(primaryStage);
+        primaryStage.setTitle("Serwis Paczek");
+        primaryStage.setResizable(false);
+    }
+
+    @Override
+    public void stop() {
+        springContext.stop();
+    }
+
 }

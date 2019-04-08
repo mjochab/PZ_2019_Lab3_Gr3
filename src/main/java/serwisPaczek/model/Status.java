@@ -1,0 +1,5 @@
+package serwisPaczek.model;
+
+public enum Status {
+    WYSLANO_ZGLOSZENIE, WYSLANIE_KURIERA, ODEBRANIE_PACZKI, DOSTARCZENIE_PACZKI
+}
