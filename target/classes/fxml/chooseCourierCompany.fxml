@@ -63,7 +63,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="352.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="48.0" prefWidth="691.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textFill="WHITE">
+            <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="356.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="691.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

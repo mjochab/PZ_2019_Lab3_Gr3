@@ -18,24 +18,24 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="BackToMenuButton" layoutX="14.0" layoutY="282.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="52.0" prefWidth="185.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="BackToMenuButton" layoutX="36.0" layoutY="280.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="52.0" prefWidth="183.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField layoutX="36.0" layoutY="98.0" prefHeight="29.0" prefWidth="313.0" promptText="Nazwa użytkownika">
+            <TextField layoutX="38.0" layoutY="98.0" prefHeight="29.0" prefWidth="308.0" promptText="Nazwa użytkownika">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <TextField layoutX="36.0" layoutY="136.0" prefHeight="29.0" prefWidth="313.0" promptText="Hasło">
+            <TextField layoutX="38.0" layoutY="136.0" prefHeight="29.0" prefWidth="308.0" promptText="Hasło">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <Label layoutX="146.0" layoutY="208.0" prefHeight="30.0" prefWidth="96.0" text="Nie masz konta?" textFill="#010007" />
-            <Label fx:id="GoToRegister" layoutX="242.0" layoutY="208.0" prefHeight="30.0" prefWidth="96.0" text="Zarejestruj się" textFill="#290af2" />
-            <Button layoutX="241.0" layoutY="213.0" mnemonicParsing="false" onAction="#OpenRegisterPanel" opacity="0.0" prefHeight="20.0" prefWidth="78.0" text="Button" />
+            <Label layoutX="174.0" layoutY="207.0" prefHeight="30.0" prefWidth="96.0" text="Nie masz konta?" textFill="#010007" />
+            <Label fx:id="GoToRegister" layoutX="267.0" layoutY="212.0" prefHeight="21.0" prefWidth="80.0" text="Zarejestruj się." textFill="#290af2" />
+            <Button fx:id="GoToRegister" layoutX="267.0" layoutY="211.0" mnemonicParsing="false" onAction="#OpenRegisterPanel" opacity="0.0" prefHeight="21.0" prefWidth="80.0" text="Button" />
             <Button fx:id="AdminButton" layoutX="411.0" layoutY="100.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="25.0" prefWidth="117.0" text="Admin Panel Test" />
             <Button fx:id="WorkerButton" layoutX="411.0" layoutY="138.0" mnemonicParsing="false" onAction="#OpenWorker" prefHeight="25.0" prefWidth="117.0" text="Worker Panel Test" />
             <Label layoutX="37.0" layoutY="45.0" prefHeight="38.0" prefWidth="309.0" style="-fx-background-color: sandybrown; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Formularz logowania" textFill="WHITE">

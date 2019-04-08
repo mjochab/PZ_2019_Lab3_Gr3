@@ -29,7 +29,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="BackToMenuButton" layoutX="39.0" layoutY="298.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;" text="Powrót na strone główną" textFill="WHITE">
+            <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="298.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;" text="Powrót na strone główną" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

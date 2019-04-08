@@ -14,6 +14,10 @@ public class EditUserProfileController {
         sceneManager.show(SceneType.MAIN);
     }
 
+    public void BackToUserProfile(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MENU);
+    }
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;

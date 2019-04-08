@@ -37,11 +37,6 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="85.0" layoutY="29.0" prefHeight="30.0" prefWidth="240.0" text="Formularz rejestracji">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
                 <TextField layoutX="36.0" layoutY="71.0" prefHeight="29.0" prefWidth="313.0" promptText="Nazwa użytkownika">
                     <font>
                         <Font size="13.0" />
@@ -56,9 +51,14 @@
                         <Font size="13.0" />
                     </font>
                 </TextField>
-                <Label layoutX="145.0" layoutY="237.0" prefHeight="30.0" prefWidth="96.0" text="Masz już konto?" textFill="#010007" />
-                <Label layoutX="239.0" layoutY="237.0" prefHeight="30.0" prefWidth="71.0" text="Zaloguj się." textFill="#290af2" />
-            <Button layoutX="236.0" layoutY="239.0" mnemonicParsing="false" onAction="#openLoginPanel" opacity="0.0" prefHeight="27.0" prefWidth="72.0" text="Button" />
+                <Label layoutX="196.0" layoutY="229.0" prefHeight="30.0" prefWidth="96.0" text="Masz już konto?" textFill="#010007" />
+                <Label layoutX="288.0" layoutY="229.0" prefHeight="30.0" prefWidth="63.0" text="Zaloguj się." textFill="#290af2" />
+            <Button fx:id="GoToLogin" layoutX="286.0" layoutY="234.0" mnemonicParsing="false" onAction="#openLoginPanel" opacity="0.03" prefHeight="30.0" prefWidth="63.0" text="Button" />
+            <Label layoutX="38.0" layoutY="23.0" prefHeight="38.0" prefWidth="309.0" style="-fx-background-color: sandybrown; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Formularz rejestracji" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </left>

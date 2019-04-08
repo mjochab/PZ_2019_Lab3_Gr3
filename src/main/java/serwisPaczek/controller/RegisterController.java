@@ -15,7 +15,7 @@ public class RegisterController {
     }
 
     public void openLoginPanel(ActionEvent event) {
-        sceneManager.show(SceneType.REGISTER);
+        sceneManager.show(SceneType.LOGIN);
     }
 
     @Autowired
