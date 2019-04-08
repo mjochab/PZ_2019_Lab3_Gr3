@@ -29,6 +29,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         sceneManager.init(primaryStage);
+        primaryStage.setTitle("Serwis Paczek");
+        primaryStage.setResizable(false);
     }
 
     @Override

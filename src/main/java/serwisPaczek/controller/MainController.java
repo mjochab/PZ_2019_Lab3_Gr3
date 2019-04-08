@@ -29,7 +29,6 @@ public class MainController {
         alert.setTitle("Komunikat");
         alert.setHeaderText(null);
         alert.show();
-
     }
 
     @FXML
@@ -61,7 +60,6 @@ public class MainController {
     void OpenCourierRanking(ActionEvent event) {
         sceneManager.show(SceneType.COURIER_RANKING);
     }
-
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

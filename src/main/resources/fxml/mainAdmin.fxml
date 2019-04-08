@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.MainAdminController">
+<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.MainAdminController">
     <children>
         <StackPane layoutX="1.0">
             <children>
                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                     <top>
-                        <ImageView fitHeight="252.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                        <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
                             <image>
                                 <Image url="@../images/BigBanner_Delivery.png" />
                             </image>
@@ -24,7 +24,7 @@
                     <left>
                         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
                             <children>
-                                <Button layoutX="47.0" layoutY="33.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="285.0" style="-fx-background-color: Blue;" text="Witaj Adminie" textFill="WHITE" wrapText="true">
+                                <Button layoutX="47.0" layoutY="33.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="285.0" style="-fx-background-color: dimgrey;" text="Witaj Adminie" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="17.0" />
                                     </font>

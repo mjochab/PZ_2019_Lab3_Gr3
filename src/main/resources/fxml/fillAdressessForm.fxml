@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.FillAdressessController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.FillAdressessController">
     <top>
-        <ImageView fitHeight="196.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+        <ImageView fitHeight="196.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
                 <Image url="@../images/BigBanner_Delivery.png" />
             </image>
@@ -26,9 +26,9 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="28.0" layoutY="14.0" prefHeight="44.0" prefWidth="344.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Dane odbiorcy:" textFill="WHITE">
+                <Label layoutX="28.0" layoutY="14.0" prefHeight="44.0" prefWidth="344.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Dane nadawcy" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font size="17.0" />
                     </font>
                 </Label>
                 <TextField layoutX="28.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0" promptText="Nr telefonu">
@@ -76,9 +76,9 @@
                   <Font size="13.0" />
                </font>
             </TextField>
-            <Label layoutX="418.0" layoutY="14.0" prefHeight="44.0" prefWidth="344.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Dane odbiorcy:" textFill="WHITE">
+            <Label layoutX="418.0" layoutY="14.0" prefHeight="44.0" prefWidth="344.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Dane odbiorcy" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="17.0" />
                </font>
             </Label>
             <TextField layoutX="418.0" layoutY="85.0" prefHeight="29.0" prefWidth="166.0" promptText="Imię">

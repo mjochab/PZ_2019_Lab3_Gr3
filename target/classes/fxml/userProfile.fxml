@@ -10,7 +10,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.UserProfileController">
    <top>
-      <ImageView fitHeight="242.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../images/BigBanner_Delivery.png" />
          </image>
@@ -19,7 +19,7 @@
    <center>
       <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Twoje dane:" textFill="WHITE" wrapText="true">
+            <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Twoje dane" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="17.0" />
                </font>

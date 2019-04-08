@@ -12,7 +12,6 @@ public class MainUserController {
 
     private SceneManager sceneManager;
 
-
     @FXML
     public void openAbout(ActionEvent event) {
         sceneManager.show(SceneType.ABOUT);

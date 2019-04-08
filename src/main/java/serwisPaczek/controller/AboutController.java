@@ -9,13 +9,11 @@ import serwisPaczek.utils.SceneType;
 @Controller
 public class AboutController {
 
-
     private SceneManager sceneManager;
 
     public void BackToMenu(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
-
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

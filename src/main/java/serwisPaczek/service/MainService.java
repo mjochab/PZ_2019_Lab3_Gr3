@@ -55,7 +55,6 @@ public class MainService {
         List<GiftOrder> giftOrderList = new ArrayList<>();
         List<UserOrder> orderList = new ArrayList<>();
 
-
         for (int i = 1; i < 10; i++) {
             Role role = new Role("ROLE_" + i);
             roleList.add(role);
@@ -76,13 +75,13 @@ public class MainService {
             EnvelopePricing envelopePricing = new EnvelopePricing(1 + i, courier);
             envelopePricingList.add(envelopePricing);
 
-            PackPricing packPricing = new PackPricing(1+i, 2+i, 3+i, 4+i, 5+i, 6+i, 7+i, courier);
+            PackPricing packPricing = new PackPricing(1 + i, 2 + i, 3 + i, 4 + i, 5 + i, 6 + i, 7 + i, courier);
             packPricingList.add(packPricing);
 
-            PalletPricing palletPricing = new PalletPricing(100+i, 200+i, 300+i, 400+i, courier);
+            PalletPricing palletPricing = new PalletPricing(100 + i, 200 + i, 300 + i, 400 + i, courier);
             palletPricingList.add(palletPricing);
 
-            Gift gift = new Gift("Prezent nr " + i, 100+i);
+            Gift gift = new Gift("Prezent nr " + i, 100 + i);
             giftList.add(gift);
 
             RecipientAdress recipientAdress = new RecipientAdress(adress);
@@ -97,9 +96,9 @@ public class MainService {
             giftOrderList.add(giftOrder);
 
 
-            UserOrder userOrder = new UserOrder(123+i,date,user, courier, WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
+            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
             orderList.add(userOrder);
-                    }
+        }
 
         roleRepository.saveAll(roleList);
         adressRepository.saveAll(adressList);

@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.LoginController">
    <left>
-      <AnchorPane prefHeight="348.0" prefWidth="434.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="348.0" prefWidth="557.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="UserMenuButton" layoutX="50.0" layoutY="174.0" mnemonicParsing="false" onAction="#UserMenu" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: blue;" text="Zaloguj się" textFill="WHITE" wrapText="true">
+            <Button fx:id="UserMenuButton" layoutX="37.0" layoutY="175.0" mnemonicParsing="false" onAction="#UserMenu" prefHeight="34.0" prefWidth="308.0" style="-fx-background-color: blue;" text="Zaloguj się" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
@@ -23,23 +23,26 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="74.0" layoutY="26.0" prefHeight="30.0" prefWidth="240.0" text="Formularz logowania">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <TextField layoutX="36.0" layoutY="71.0" prefHeight="29.0" prefWidth="313.0" promptText="Nazwa użytkownika">
+            <TextField layoutX="36.0" layoutY="98.0" prefHeight="29.0" prefWidth="313.0" promptText="Nazwa użytkownika">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <TextField layoutX="36.0" layoutY="113.0" prefHeight="29.0" prefWidth="313.0" promptText="Hasło">
+            <TextField layoutX="36.0" layoutY="136.0" prefHeight="29.0" prefWidth="313.0" promptText="Hasło">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
             <Label layoutX="146.0" layoutY="208.0" prefHeight="30.0" prefWidth="96.0" text="Nie masz konta?" textFill="#010007" />
-            <Label layoutX="242.0" layoutY="208.0" onMouseClicked="#OpenRegisterPanel" prefHeight="30.0" prefWidth="96.0" text="Zarejestruj się" textFill="#290af2" />
+            <Label fx:id="GoToRegister" layoutX="242.0" layoutY="208.0" prefHeight="30.0" prefWidth="96.0" text="Zarejestruj się" textFill="#290af2" />
+            <Button layoutX="241.0" layoutY="213.0" mnemonicParsing="false" onAction="#OpenRegisterPanel" opacity="0.0" prefHeight="20.0" prefWidth="78.0" text="Button" />
+            <Button fx:id="AdminButton" layoutX="411.0" layoutY="100.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="25.0" prefWidth="117.0" text="Admin Panel Test" />
+            <Button fx:id="WorkerButton" layoutX="411.0" layoutY="138.0" mnemonicParsing="false" onAction="#OpenWorker" prefHeight="25.0" prefWidth="117.0" text="Worker Panel Test" />
+            <Label layoutX="37.0" layoutY="45.0" prefHeight="38.0" prefWidth="309.0" style="-fx-background-color: sandybrown; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Formularz logowania" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </left>
@@ -51,7 +54,7 @@
       </ImageView>
    </right>
    <top>
-      <ImageView fitHeight="252.0" fitWidth="803.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../images/BigBanner_Delivery.png" />
          </image>
