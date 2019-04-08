@@ -50,7 +50,6 @@ public class MainUserController {
     @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
-
     }
 
     @Autowired

@@ -24,12 +24,12 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="BackToMenuButton" layoutX="24.0" layoutY="339.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+            <Button fx:id="BackToAdminMenu" layoutX="24.0" layoutY="339.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="ToEditUserProfileButton" layoutX="211.0" layoutY="339.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+            <Button fx:id="BackToAdminMenuCancel" layoutX="211.0" layoutY="339.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

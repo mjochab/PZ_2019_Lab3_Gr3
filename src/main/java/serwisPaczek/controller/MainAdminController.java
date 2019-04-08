@@ -2,6 +2,9 @@ package serwisPaczek.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.service.MainService;
@@ -27,11 +30,20 @@ public class MainAdminController {
 
     public void FillTheBaseWithExampleData() {
         mainService.fillDatabase();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Dane zostały poprawnie dodane do bazy", ButtonType.OK);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.setTitle("Komunikat");
+        alert.setHeaderText(null);
+        alert.show();
     }
 
     @FXML
     public void openAbout(ActionEvent event) {
         sceneManager.show(SceneType.ABOUT);
+    }
+    @FXML
+    void logout(ActionEvent event) {
+        sceneManager.show(SceneType.MAIN);
     }
 
     @Autowired

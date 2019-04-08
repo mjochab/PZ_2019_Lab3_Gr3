@@ -22,14 +22,6 @@ public class MainController {
     public MainController() {
     }
 
-    public void FillTheBaseWithExampleData() {
-        mainService.fillDatabase();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Dane zostały poprawnie dodane do bazy", ButtonType.OK);
-        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-        alert.setTitle("Komunikat");
-        alert.setHeaderText(null);
-        alert.show();
-    }
 
     @FXML
     public void openAbout(ActionEvent event) {
