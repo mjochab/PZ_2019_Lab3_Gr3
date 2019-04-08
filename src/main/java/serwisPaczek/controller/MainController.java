@@ -61,8 +61,6 @@ public class MainController {
         sceneManager.show(SceneType.COURIER_RANKING);
     }
 
-
-
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;

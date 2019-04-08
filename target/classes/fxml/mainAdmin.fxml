@@ -49,7 +49,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                        <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="45.0" layoutY="96.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="284.0" style="-fx-background-color: Blue;" text="Wypełnij baze przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="45.0" layoutY="96.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="120.0" prefWidth="284.0" style="-fx-background-color: Blue;" text="Wypełnij baze przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="17.0" />
                            </font>

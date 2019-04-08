@@ -1,6 +1,7 @@
 package serwisPaczek.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.utils.SceneManager;
@@ -11,6 +12,7 @@ public class AboutController {
 
     private SceneManager sceneManager;
 
+    @FXML
     public void BackToMenu(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
