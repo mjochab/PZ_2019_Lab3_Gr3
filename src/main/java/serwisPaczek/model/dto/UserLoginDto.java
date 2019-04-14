@@ -10,7 +10,7 @@ public class UserLoginDto {
         return loggedUser;
     }
 
-    public static void setLoggedUser(User loggedUser) {
-        loggedUser = loggedUser;
+    public static void setLoggedUser(User user) {
+       loggedUser = user;
     }
 }
