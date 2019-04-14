@@ -41,11 +41,11 @@ public class UserService {
 
             UserLoginDto.setLoggedUser(user);
 
-            if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ROLE_USER"))
+            if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("USER_ROLE"))
                 sceneManager.show(SceneType.USER_MENU);
-            else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ROLE_WORKER"))
+            else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("WORKER_ROLE"))
                 sceneManager.show(SceneType.WORKER_MENU);
-            else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ROLE_WORKER"))
+            else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
                 sceneManager.show(SceneType.ADMIN_MENU);
             else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Podałeś zły username lub hasło", ButtonType.OK);
@@ -95,7 +95,7 @@ public class UserService {
             else{
 
                     User user = new User(username,encryption.encode(password),roleRepository.findByRoleName(
-                            "ROLE_USER"));
+                            "USER_ROLE"));
                     userRepository.save(user);
                     sceneManager.show(SceneType.LOGIN);
                 }
