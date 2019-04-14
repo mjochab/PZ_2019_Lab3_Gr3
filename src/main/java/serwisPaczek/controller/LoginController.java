@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.service.UserService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
@@ -11,6 +12,9 @@ import serwisPaczek.utils.SceneType;
 public class LoginController {
     private SceneManager sceneManager;
 
+    @Autowired
+    private UserService userService;
+    
     @FXML
     public void BackToMenu(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
@@ -22,7 +26,7 @@ public class LoginController {
     }
 
     @FXML
-    public void UserMenu(ActionEvent event) {
+    public void login(ActionEvent event) {
         sceneManager.show(SceneType.USER_MENU);
     }
 

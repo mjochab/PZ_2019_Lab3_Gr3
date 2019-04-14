@@ -34,7 +34,7 @@
                </font>
             </TextField>
             <Label layoutX="174.0" layoutY="207.0" prefHeight="30.0" prefWidth="96.0" text="Nie masz konta?" textFill="#010007" />
-            <Label fx:id="GoToRegister" layoutX="267.0" layoutY="212.0" prefHeight="21.0" prefWidth="80.0" text="Zarejestruj się." textFill="#290af2" />
+            <Label  layoutX="267.0" layoutY="212.0" prefHeight="21.0" prefWidth="80.0" text="Zarejestruj się." textFill="#290af2" />
             <Button fx:id="GoToRegister" layoutX="267.0" layoutY="211.0" mnemonicParsing="false" onAction="#OpenRegisterPanel" opacity="0.0" prefHeight="21.0" prefWidth="80.0" text="Button" />
             <Button fx:id="AdminButton" layoutX="411.0" layoutY="100.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="25.0" prefWidth="117.0" text="Admin Panel Test" />
             <Button fx:id="WorkerButton" layoutX="411.0" layoutY="138.0" mnemonicParsing="false" onAction="#OpenWorker" prefHeight="25.0" prefWidth="117.0" text="Worker Panel Test" />

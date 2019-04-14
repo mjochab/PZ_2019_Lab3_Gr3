@@ -6,7 +6,7 @@ PRIMARY KEY(id));
 create table `user` (
 id bigint NOT NULl AUTO_INCREMENT,
 username varchar(30),
-password varchar(25),
+password varchar(250),
 role_id bigint,
 adress_id bigint,
 Primary Key(id));

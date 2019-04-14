@@ -42,6 +42,11 @@ public class User {
         this.role = role;
         this.adress = adress;
     }
+    public User(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
     //    @ManyToOne
 //    @JoinColumn(name = "address_id")
 //    private Address address;
