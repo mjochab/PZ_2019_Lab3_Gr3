@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class OrderListController {
+public class AddOpinionController {
     private SceneManager sceneManager;
 
     @FXML
@@ -17,13 +17,8 @@ public class OrderListController {
     }
 
     @FXML
-    public void OpenFinalize(ActionEvent event) {
-        sceneManager.show(SceneType.FINALIZE);
-    }
-
-    @FXML
-    public void AddOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.ADD_OPINION);
+    public void MyOpinions(ActionEvent event) {
+        sceneManager.show(SceneType.MY_OPINIONS);
     }
 
     @Autowired

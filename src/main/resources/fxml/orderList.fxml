@@ -35,6 +35,11 @@
                   <Font size="15.0" />
                </font>
             </Button>
+            <Button fx:id="AddOpinionButton" layoutX="335.0" layoutY="273.0" mnemonicParsing="false" onAction="#AddOpinion" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: rgb(120,1,1);" text="Wystaw opinie" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>
