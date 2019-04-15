@@ -7,4 +7,5 @@ import serwisPaczek.model.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+    Role findByRoleName(String role_user);
 }

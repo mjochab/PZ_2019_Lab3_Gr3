@@ -29,7 +29,7 @@
                                         <Font size="17.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="OpenUserListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Lista użytkowników" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="OpenUserListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" onAction="#openUsersList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Lista użytkowników" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
