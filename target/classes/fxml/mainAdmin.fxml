@@ -49,16 +49,16 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                        <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="45.0" layoutY="96.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="120.0" prefWidth="284.0" style="-fx-background-color: Blue;" text="Wypełnij baze przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="logoutButton" layoutX="45.0" layoutY="242.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Button>
+                                <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="45.0" layoutY="96.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="120.0" prefWidth="284.0" style="-fx-background-color: Blue;" text="Wypełnij baze przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                    <font>
+                                        <Font size="17.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="logoutButton" layoutX="45.0" layoutY="242.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
                             </children>
                         </AnchorPane>
                     </left>

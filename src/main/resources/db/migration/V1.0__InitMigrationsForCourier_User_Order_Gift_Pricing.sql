@@ -6,8 +6,9 @@ PRIMARY KEY(id));
 create table `user` (
 id bigint NOT NULl AUTO_INCREMENT,
 username varchar(30),
-password varchar(25),
+password varchar(250),
 role_id bigint,
+adress_id bigint,
 Primary Key(id));
 
 create table courier (
@@ -56,10 +57,37 @@ up_to_1000 float,
 Primary Key(id));
 
 create table user_order(
-id bigint NOT NULl AUTO_INCREMENT,
+id bigint NOT NULL AUTO_INCREMENT,
 price float,
 date DATETIME,
 user_id bigint,
 courier_id bigint,
 status varchar(40),
+sender_adress_id bigint,
+recipient_adress_id bigint,
 Primary Key(id));
+
+create table adress (
+id bigint NOT NULL AUTO_INCREMENT,
+name varchar(50),
+surname varchar(50),
+city varchar(50),
+street varchar(50),
+house_number int,
+zip_code varchar(25),
+telephone_number bigint,
+email varchar(50),
+PRIMARY KEY(id)
+);
+
+create table recipient_adress(
+id bigint NOT NULL AUTO_INCREMENT,
+adress_id bigint,
+PRIMARY KEY(id)
+);
+
+create table sender_adress(
+id bigint NOT NULL AUTO_INCREMENT,
+adress_id bigint,
+PRIMARY KEY(id)
+);

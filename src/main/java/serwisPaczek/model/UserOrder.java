@@ -2,9 +2,7 @@ package serwisPaczek.model;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class UserOrder {
@@ -24,11 +22,11 @@ public class UserOrder {
     private Status status;
 
     @ManyToOne
-    @JoinColumn(name = "SenderAdress_id")
+    @JoinColumn(name = "sender_adress_id")
     private SenderAdress senderAdress;
 
     @ManyToOne
-    @JoinColumn(name = "RecipientAdress_id")
+    @JoinColumn(name = "recipient_adress_id")
     private RecipientAdress recipientAdress;
 
     public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, serwisPaczek.model.RecipientAdress recipientAdress) {

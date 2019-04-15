@@ -16,6 +16,11 @@ public class AddCourierController {
         sceneManager.show(SceneType.ADMIN_MENU);
     }
 
+    @FXML
+    public void BackToMenu(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_MENU);
+    }
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
