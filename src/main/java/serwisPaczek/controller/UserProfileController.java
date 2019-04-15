@@ -19,6 +19,11 @@ public class UserProfileController {
         sceneManager.show(SceneType.USER_MENU);
     }
 
+    @FXML
+    public void GoToMyOpinion(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MENU);
+    }
+
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

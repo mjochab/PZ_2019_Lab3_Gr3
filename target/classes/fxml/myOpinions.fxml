@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.OrderListController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.MyOpinionsController">
    <top>
       <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
@@ -19,7 +19,7 @@
    <center>
       <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Twoje zamówienia" textFill="WHITE" wrapText="true">
+            <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Wystawione oceny" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="17.0" />
                </font>
@@ -30,16 +30,6 @@
                </font>
             </Button>
             <ListView layoutX="61.0" layoutY="68.0" prefHeight="193.0" prefWidth="680.0" />
-            <Button fx:id="DetailsButton" layoutX="611.0" layoutY="273.0" mnemonicParsing="false" onAction="#OpenFinalize" prefHeight="46.0" prefWidth="130.0" style="-fx-background-color: blue;" text="Sczegóły" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="AddOpinionButton" layoutX="335.0" layoutY="273.0" mnemonicParsing="false" onAction="#AddOpinion" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: rgb(120,1,1);" text="Wystaw opinie" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
    </center>

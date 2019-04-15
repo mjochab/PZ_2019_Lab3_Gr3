@@ -16,6 +16,11 @@ public class PriceListController {
         sceneManager.show(SceneType.MAIN);
     }
 
+    @FXML
+    public void CourierOpinion(ActionEvent event) {
+        sceneManager.show(SceneType.COURIER_OPINIONS);
+    }
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
