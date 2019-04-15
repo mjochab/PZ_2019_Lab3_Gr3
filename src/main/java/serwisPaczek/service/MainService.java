@@ -123,8 +123,8 @@ public class MainService {
         recipientAdressRepository.saveAll(recipientAdressList);
         senderAdressRepository.saveAll(senderAdressList);
         giftOrderRepository.saveAll(giftOrderList);
-        orderRepository.saveAll(orderList);
         parcelRepository.saveAll(parcelList);
+        orderRepository.saveAll(orderList);
         opinionRepository.saveAll(opinionList);
     }
 }
