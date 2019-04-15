@@ -17,6 +17,7 @@ public enum SceneType {
     EDIT_USER("editUserProfile"),
     USER_MENU("mainUser"),
     ADMIN_MENU("mainAdmin"),
+    ADMIN_USERS_LIST("usersList"),
     WORKER_MENU("mainWorker"),
     MENU("main");
 
