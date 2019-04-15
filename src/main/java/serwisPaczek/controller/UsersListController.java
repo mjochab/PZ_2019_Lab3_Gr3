@@ -10,11 +10,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import jdk.nashorn.internal.objects.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.model.Adress;
 import serwisPaczek.model.User;
+import serwisPaczek.model.dto.UserAdressDto;
+import serwisPaczek.repository.AdressRepository;
+import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -25,67 +30,77 @@ public class UsersListController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    private AdressRepository adressRepository;
+
     //Configure the table
     @FXML
-    private TableView<User> tableView;
+    private TableView<UserAdressDto> tableView;
     @FXML
-    private TableColumn<User, String> idColumn;
+    private TableColumn<UserAdressDto, String> idColumn;
     @FXML
-    private TableColumn<User, String> userNameColumn;
+    private TableColumn<UserAdressDto, String> userNameColumn;
     @FXML
-    private TableColumn<User, String> nameColumn;
+    private TableColumn<UserAdressDto, String> nameColumn;
     @FXML
-    private TableColumn<User, String> surnameColumn;
+    private TableColumn<UserAdressDto, String> surnameColumn;
     @FXML
-    private TableColumn<User, String> cityColumn;
+    private TableColumn<UserAdressDto, String> cityColumn;
     @FXML
-    private TableColumn<User, String> streetColumn;
+    private TableColumn<UserAdressDto, String> streetColumn;
     @FXML
-    private TableColumn<User, String> houseNumberColumn;
+    private TableColumn<UserAdressDto, String> houseNumberColumn;
     @FXML
-    private TableColumn<User, String> zipCodeColumn;
+    private TableColumn<UserAdressDto, String> zipCodeColumn;
     @FXML
-    private TableColumn<User, String> telephoneNumberColumn;
+    private TableColumn<UserAdressDto, String> telephoneNumberColumn;
     @FXML
-    private TableColumn<User, String> emailColumn;
+    private TableColumn<UserAdressDto, String> emailColumn;
 
-
-    public void fillTest(ActionEvent event) {
-        List<User> listUsers = userRepository.findAll();
-
-        for (User user : listUsers) {
-            System.out.println(
-                    user.getId() + " " +
-                            user.getUsername() + " " +
-                            user.getAdress().getName() + " " +
-                            user.getAdress().getSurname() + " " +
-                            user.getAdress().getCity() + " " +
-                            user.getAdress().getStreet() + " " +
-                            user.getAdress().getHouseNumber() + " " +
-                            user.getAdress().getZipCode() + " " +
-                            user.getAdress().getTelephoneNumber() + " " +
-                            user.getAdress().getEmail()
-            );
-        }
-    }
 
     @FXML
     public void initialize() {
-        //set up the columns in the table
-        idColumn.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
-        userNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<User, String>("city"));
-        streetColumn.setCellValueFactory(new PropertyValueFactory<User, String>("street"));
-        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<User, String>("houseNumber"));
-        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<User, String>("zipCode"));
-        telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<User, String>("telephoneNumber"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-
-        //load data
         List<User> listUsers = userRepository.findAll();
-        ObservableList<User> observableListUsers = FXCollections.observableArrayList(listUsers);
+        List<UserAdressDto> userAdressDtos = new ArrayList<>();
+        for(User user : listUsers){
+            Adress adress = adressRepository.findByUser(user);
+            if (adress != null) {
+                userAdressDtos.add(new UserAdressDto(user.getId(),
+                        user.getUsername(),
+                        adress.getName(),
+                        adress.getSurname(),
+                        adress.getCity(),
+                        adress.getStreet(),
+                        adress.getHouseNumber(),
+                        adress.getZipCode(),
+                        adress.getTelephoneNumber(),
+                        adress.getEmail()
+                ));}
+            else
+                userAdressDtos.add(new UserAdressDto(user.getId(),
+                        user.getUsername(),
+                        "",
+                        "",
+                        "",
+                        "",
+                        0,
+                        "",
+                        0L,
+                        ""
+                ));}
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("id"));
+        userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("username"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("name"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("surname"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("city"));
+        streetColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("street"));
+        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("houseNumber"));
+        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("zipCode"));
+        telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("telephoneNumber"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("email"));
+
+        ObservableList<UserAdressDto> observableListUsers = FXCollections.observableArrayList(userAdressDtos);
         tableView.setItems(observableListUsers);
     }
 

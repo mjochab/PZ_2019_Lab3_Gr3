@@ -20,17 +20,12 @@
     <bottom>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Lista użytkowników:" textFill="WHITE" wrapText="true">
+                <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Lista użytkowników" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Button>
                 <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="290.0" mnemonicParsing="false" onAction="#BackToAdmin" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: green;" text="Powrót" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-                <Button fx:id="ToEditUserProfileButton" layoutX="269.0" layoutY="291.0" mnemonicParsing="false" onAction="#fillTest" prefHeight="47.0" prefWidth="136.0" style="-fx-background-color: red;" text="Fill" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
