@@ -1,10 +1,13 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
 public class Adress {
 
     @Id
@@ -30,6 +33,9 @@ public class Adress {
 
     @OneToMany(mappedBy = "adress", cascade = CascadeType.ALL)
     private List<RecipientAdress> recipientAdressList = new ArrayList<>();
+
+    public Adress() {
+    }
 
     public Adress(String name, String surname, String city, String street, int houseNumber, String zipCode, Long telephoneNumber, String email) {
         this.name = name;

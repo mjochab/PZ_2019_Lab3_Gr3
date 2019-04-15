@@ -47,8 +47,11 @@ public class User {
         this.password = password;
         this.role = role;
     }
-    public User(){}
+
+    public User() {
+    }
+
     //    @ManyToOne
-//    @JoinColumn(name = "address_id")
-//    private Address address;
+    //    @JoinColumn(name = "address_id")
+    //    private Address address;
 }

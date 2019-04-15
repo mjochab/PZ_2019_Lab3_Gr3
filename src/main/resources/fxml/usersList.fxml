@@ -30,7 +30,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="ToEditUserProfileButton" layoutX="269.0" layoutY="291.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="136.0" style="-fx-background-color: red;" text="Fill" textFill="WHITE">
+                <Button fx:id="ToEditUserProfileButton" layoutX="269.0" layoutY="291.0" mnemonicParsing="false" onAction="#fillTest" prefHeight="47.0" prefWidth="136.0" style="-fx-background-color: red;" text="Fill" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
