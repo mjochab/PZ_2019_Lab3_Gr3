@@ -62,6 +62,7 @@ price float,
 date DATETIME,
 user_id bigint,
 courier_id bigint,
+parcel_id bigint,
 status varchar(40),
 sender_adress_id bigint,
 recipient_adress_id bigint,
@@ -89,5 +90,24 @@ PRIMARY KEY(id)
 create table sender_adress(
 id bigint NOT NULL AUTO_INCREMENT,
 adress_id bigint,
+PRIMARY KEY(id)
+);
+
+create table parcel(
+id bigint NOT NULL AUTO_INCREMENT,
+length int,
+width int,
+height int,
+type varchar(50),
+content varchar(50),
+PRIMARY KEY(id)
+);
+
+create table opinion(
+id bigint NOT NULL AUTO_INCREMENT,
+user_order_id bigint,
+date DATETIME,
+content varchar(150),
+rating int,
 PRIMARY KEY(id)
 );

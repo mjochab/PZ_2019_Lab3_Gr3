@@ -18,7 +18,13 @@ public enum SceneType {
     USER_MENU("mainUser"),
     ADMIN_MENU("mainAdmin"),
     WORKER_MENU("mainWorker"),
-    MENU("main");
+    MENU("main"),
+    EDIT_COURIER("editCourier"),
+    USERS_LIST("usersList"),
+    EDIT_ABOUT("editAbout"),
+    GIFT_ORDER("giftOrder"),
+    EDIT_GIFT("editGift"),
+    ORDER_GIFT("orderGift");
 
     private String fxmlPath;
 
