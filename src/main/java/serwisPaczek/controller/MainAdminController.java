@@ -41,6 +41,12 @@ public class MainAdminController {
     public void openAbout(ActionEvent event) {
         sceneManager.show(SceneType.ABOUT);
     }
+
+    @FXML
+    public void openUsersList(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_USERS_LIST);
+    }
+
     @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
