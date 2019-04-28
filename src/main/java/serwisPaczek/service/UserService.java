@@ -63,7 +63,6 @@ public class UserService {
         usernameWarning.setVisible(false);
         passwordWarning.setVisible(false);
         repeatPasswordWarning.setVisible(false);
-//?
 
         if (!isCorrect(username)) usernameWarning.setVisible(true);
         if (!isCorrect(password)) passwordWarning.setVisible(true);
