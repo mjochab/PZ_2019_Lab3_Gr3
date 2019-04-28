@@ -17,6 +17,7 @@ import serwisPaczek.utils.SceneType;
 
 import java.io.IOException;
 
+import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.utils.TextFieldUtils.isCorrect;
 
 @Service
@@ -33,7 +34,7 @@ public class UserService {
     @Autowired
     private SceneManager sceneManager;
 
-    public void login(String username, String password) throws IOException {
+    public void login(String username, String password) {
 
         User user = userRepository.findByUsername(username);
 
@@ -48,11 +49,7 @@ public class UserService {
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
                 sceneManager.show(SceneType.ADMIN_MENU);
             else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Podałeś zły username lub hasło", ButtonType.OK);
-                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-                alert.setTitle("Komunikat");
-                alert.setHeaderText(null);
-                alert.show();
+                showDialog("Podałeś zły username lub hasło");
             }
         }
     }
@@ -68,15 +65,17 @@ public class UserService {
         if (!isCorrect(password)) passwordWarning.setVisible(true);
         if (!isCorrect(repeatPassword)) repeatPasswordWarning.setVisible(true);
 
-        if (!password.equals(repeatPassword)) {passwordWarning.setText("Hasła się różnią");
-            passwordWarning.setVisible(true);
+        if (!password.equals(repeatPassword)) {
+            passwordWarning.setText("Hasła się różnią");
             repeatPasswordWarning.setText("Hasła się różnią");
+            passwordWarning.setVisible(true);
             repeatPasswordWarning.setVisible(true);
         }
 
         if (password.length() < 6 || password.length() > 18)
-        {passwordWarning.setText("Hasło musi zawierać pomiędzy 6 a 18 znaków");
-            repeatPasswordWarning.setVisible(true);}
+        {
+            passwordWarning.setText("Hasło musi zawierać pomiędzy 6 a 18 znaków");
+            passwordWarning.setVisible(true);}
 
         if (isCorrect(username) && isCorrect(password) && isCorrect(repeatPassword)
                 && password.equals(repeatPassword)
@@ -84,12 +83,7 @@ public class UserService {
                 && password.length()<=18) {
 
             if (userRepository.findByUsername(username) != null) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Użytkownik o podanej nazwie użytkownika " +
-                        "istnieje!", ButtonType.OK);
-                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-                alert.setTitle("Komunikat");
-                alert.setHeaderText(null);
-                alert.show();
+                showDialog("Użytkownik o podanej nazwie użytkownika istnieje!");
             }
             else{
 

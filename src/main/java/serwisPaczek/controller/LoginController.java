@@ -42,15 +42,6 @@ public class LoginController {
         userService.login(TFUsername.getText(),PFPassword.getText());
     }
 
-    @FXML
-    public void OpenAdmin(ActionEvent event) {
-        sceneManager.show(SceneType.ADMIN_MENU);
-    }
-
-    @FXML
-    public void OpenWorker(ActionEvent event) {
-        sceneManager.show(SceneType.WORKER_MENU);
-    }
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
