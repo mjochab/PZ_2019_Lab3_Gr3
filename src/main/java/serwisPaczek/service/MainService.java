@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import serwisPaczek.model.*;
 import serwisPaczek.repository.*;
+import serwisPaczek.security.Encryption;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -38,11 +39,11 @@ public class MainService {
     private GiftOrderRepository giftOrderRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private Encryption encryption;
 
-    @SuppressWarnings("Duplicates")
     public void fillDatabase() {
 
-        List<Role> roleList = new ArrayList<>();
         List<User> userList = new ArrayList<>();
         List<Adress> adressList = new ArrayList<>();
         List<Courier> courierList = new ArrayList<>();
@@ -56,8 +57,6 @@ public class MainService {
         List<UserOrder> orderList = new ArrayList<>();
 
         for (int i = 1; i < 10; i++) {
-            Role role = new Role("ROLE_" + i);
-            roleList.add(role);
 
             Adress adress = new Adress("name" + i, "surname" + i,
                     "Rzeszów" + i, "Rejtana" + i, i,
@@ -66,7 +65,9 @@ public class MainService {
             );
             adressList.add(adress);
 
-            User user = new User("Patryk" + i, "Brzuchacz" + i, role, adress);
+            User user = new User("Patryk" + i, encryption.encode("Brzuchacz" + i), roleRepository.findByRoleName(
+                    "USER_ROLE"),
+                    adress);
             userList.add(user);
 
             Courier courier = new Courier("Kurier " + i);
@@ -100,7 +101,6 @@ public class MainService {
             orderList.add(userOrder);
         }
 
-        roleRepository.saveAll(roleList);
         adressRepository.saveAll(adressList);
         userRepository.saveAll(userList);
         courierRepository.saveAll(courierList);
