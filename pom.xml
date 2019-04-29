@@ -49,6 +49,10 @@
             <artifactId>spring-security-core</artifactId>
             <version>5.0.9.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

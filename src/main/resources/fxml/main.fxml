@@ -35,7 +35,7 @@
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="OpenPriceListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
+                        <Button fx:id="OpenCourierListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" onAction="#OpenCourierList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
