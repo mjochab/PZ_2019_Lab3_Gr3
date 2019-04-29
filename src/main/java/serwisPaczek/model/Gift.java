@@ -1,9 +1,12 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 public class Gift {
 
@@ -23,5 +26,8 @@ public class Gift {
     public Gift(String name, int premiumPoints) {
         this.name = name;
         this.premiumPoints = premiumPoints;
+    }
+
+    public Gift() {
     }
 }

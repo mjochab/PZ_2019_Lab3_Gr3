@@ -1,9 +1,12 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 public class SenderAdress {
 
@@ -18,6 +21,9 @@ public class SenderAdress {
 
     @OneToMany(mappedBy = "senderAdress", cascade = CascadeType.ALL)
     private List<UserOrder> userOrder = new ArrayList<>();
+
+    public SenderAdress() {
+    }
 
     public SenderAdress(Adress adress) {
         this.adress = adress;

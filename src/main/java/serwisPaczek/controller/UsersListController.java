@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import jdk.nashorn.internal.objects.annotations.Property;
+//import jdk.nashorn.internal.objects.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Adress;

@@ -1,7 +1,10 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class EnvelopePricing {
     @Id
@@ -16,5 +19,8 @@ public class EnvelopePricing {
     public EnvelopePricing(float up_to_1, Courier courier) {
         this.up_to_1 = up_to_1;
         this.courier = courier;
+    }
+
+    public EnvelopePricing() {
     }
 }

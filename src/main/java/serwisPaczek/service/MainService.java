@@ -96,7 +96,7 @@ public class MainService {
             giftOrderList.add(giftOrder);
 
 
-            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
+            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
             orderList.add(userOrder);
         }
 
