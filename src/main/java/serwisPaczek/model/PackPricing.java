@@ -29,4 +29,8 @@ public class PackPricing {
         this.up_to_30 = up_to_30;
         this.courier = courier;
     }
+
+    public PackPricing(){
+
+    }
 }

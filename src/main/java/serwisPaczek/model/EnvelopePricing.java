@@ -17,4 +17,8 @@ public class EnvelopePricing {
         this.up_to_1 = up_to_1;
         this.courier = courier;
     }
+
+    public EnvelopePricing() {
+
+    }
 }

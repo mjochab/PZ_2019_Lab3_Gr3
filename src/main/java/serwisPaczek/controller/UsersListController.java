@@ -61,6 +61,8 @@ public class UsersListController {
     @FXML
     public void initialize() {
         List<User> listUsers = userRepository.findAll();
+
+
         List<UserAdressDto> userAdressDtos = new ArrayList<>();
         for(User user : listUsers){
             Adress adress = adressRepository.findByUser(user);

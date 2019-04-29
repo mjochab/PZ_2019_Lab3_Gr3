@@ -24,4 +24,8 @@ public class PalletPricing {
         this.up_to_1000 = up_to_1000;
         this.courier = courier;
     }
+
+    public PalletPricing(){
+
+    }
 }
