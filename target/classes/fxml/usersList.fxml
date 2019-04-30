@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListCell?>
 <Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.UsersListController">
     <children>
         <StackPane layoutX="1.0">
@@ -23,8 +25,10 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                        <ListView layoutX="14.0" layoutY="14.0" prefHeight="268.0" prefWidth="775.0" />
-                        <Button fx:id="DeactivateUserButton" layoutX="632.0" layoutY="293.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: red;" text="Dezaktywuj konto" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <ListView fx:id="listView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="268.0" prefWidth="775.0" >
+
+                        </ListView>
+                        <Button fx:id="DeactivateUserButton" layoutX="632.0" layoutY="293.0" mnemonicParsing="false" onAction="#DeactivateUser" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: red;" text="Dezaktywuj konto" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
