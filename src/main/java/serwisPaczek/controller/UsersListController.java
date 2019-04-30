@@ -19,7 +19,6 @@ import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
