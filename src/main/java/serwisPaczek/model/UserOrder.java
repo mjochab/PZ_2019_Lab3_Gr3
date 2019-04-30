@@ -1,9 +1,14 @@
 package serwisPaczek.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
 @Entity
 public class UserOrder {
 
@@ -33,10 +38,15 @@ public class UserOrder {
     @JoinColumn(name = "recipient_adress_id")
     private RecipientAdress recipientAdress;
 
+
+    public UserOrder()
+    {}
+
     @OneToOne(mappedBy = "userOrder", cascade = CascadeType.ALL)
     private Opinion opinion;
 
     public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, serwisPaczek.model.RecipientAdress recipientAdress, Parcel parcel) {
+
         this.price = price;
         this.date = date;
         this.user = user;
@@ -46,4 +56,6 @@ public class UserOrder {
         this.recipientAdress = recipientAdress;
         this.parcel = parcel;
     }
+
+
 }

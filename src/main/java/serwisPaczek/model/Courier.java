@@ -1,8 +1,10 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
-
+@Data
 @Entity
 public class Courier {
     @Id
@@ -21,6 +23,7 @@ public class Courier {
         this.name = name;
     }
 
-
+    public Courier() {
+    }
 }
 
