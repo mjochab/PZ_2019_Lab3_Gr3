@@ -41,6 +41,9 @@ public class MainService {
     private OrderRepository orderRepository;
     @Autowired
     private Encryption encryption;
+    private ParcelRepository parcelRepository;
+    @Autowired
+    private OpinionRepository opinionRepository;
 
     public void fillDatabase() {
 
@@ -55,6 +58,8 @@ public class MainService {
         List<SenderAdress> senderAdressList = new ArrayList<>();
         List<GiftOrder> giftOrderList = new ArrayList<>();
         List<UserOrder> orderList = new ArrayList<>();
+        List<Parcel> parcelList = new ArrayList<>();
+        List<Opinion> opinionList = new ArrayList<>();
 
         for (int i = 1; i < 10; i++) {
 
@@ -96,9 +101,15 @@ public class MainService {
             GiftOrder giftOrder = new GiftOrder(date, gift, user, recipientAdress);
             giftOrderList.add(giftOrder);
 
+            Parcel parcel = new Parcel(100 + i,20 + i,30 + i,"Paczka", "Karnisz");
+            parcelList.add(parcel);
 
-            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
+            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress, parcel);
             orderList.add(userOrder);
+
+            Opinion opinion = new Opinion(date,"Bardzo dobrze",2 + i, userOrder);
+            opinionList.add(opinion);
+
         }
 
         adressRepository.saveAll(adressList);
@@ -111,6 +122,8 @@ public class MainService {
         recipientAdressRepository.saveAll(recipientAdressList);
         senderAdressRepository.saveAll(senderAdressList);
         giftOrderRepository.saveAll(giftOrderList);
+        parcelRepository.saveAll(parcelList);
         orderRepository.saveAll(orderList);
+        opinionRepository.saveAll(opinionList);
     }
 }

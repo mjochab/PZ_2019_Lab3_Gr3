@@ -34,12 +34,17 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                        <Button fx:id="OpenWorkerPanelButton1" layoutX="408.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenWorkerPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Zarządzaj sklepem premium" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="OpenGiftOrderPanelButton1" layoutX="408.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenGiftOrderPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Wyświetl listę zamówionych prezentów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
                         <Button fx:id="logoutButton" layoutX="29.0" layoutY="284.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="OpenEditGiftPanelButton" layoutX="567.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenEditGiftPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Zarządzaj prezentami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>

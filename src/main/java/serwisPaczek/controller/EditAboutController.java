@@ -8,25 +8,14 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class MainWorkerController {
+public class EditAboutController {
+
     private SceneManager sceneManager;
 
     @FXML
-    public void OpenWorkerPanel(ActionEvent event) {
-        sceneManager.show(SceneType.WORKER_PANEL);
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
+    public void BackToMenu(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
-
-    @FXML
-    void OpenGiftOrderPanel(ActionEvent event) {sceneManager.show(SceneType.GIFT_ORDER);}
-
-    @FXML
-    void OpenEditGiftPanel(ActionEvent event) {sceneManager.show(SceneType.EDIT_GIFT);}
-
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
