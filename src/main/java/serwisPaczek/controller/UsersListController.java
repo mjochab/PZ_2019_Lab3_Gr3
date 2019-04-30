@@ -1,5 +1,6 @@
 package serwisPaczek.controller;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +19,6 @@ import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -109,8 +109,11 @@ public class UsersListController {
         sceneManager.show(SceneType.ADMIN_MENU);
     }
 
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
+
 }
+

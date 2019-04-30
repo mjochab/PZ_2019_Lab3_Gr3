@@ -48,6 +48,9 @@ public class MainUserController {
     }
 
     @FXML
+    void OpenOrderGiftPanel(ActionEvent event) { sceneManager.show((SceneType.ORDER_GIFT));}
+
+    @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
