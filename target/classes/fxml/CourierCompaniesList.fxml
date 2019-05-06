@@ -14,6 +14,27 @@
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
+            <ScrollPane layoutX="14.0" layoutY="85.0" prefHeight="442.0" prefWidth="762.0">
+               <content>
+                  <GridPane fx:id="gridPane" alignment="TOP_CENTER" hgap="52.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="120.0" prefWidth="696.0" vgap="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="52.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </ScrollPane>
                 <Button layoutX="61.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="679.0" style="-fx-background-color: Blue;" text="Wybierz firmę kurierską" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="17.0" />
@@ -24,21 +45,6 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-            <ScrollPane layoutX="14.0" layoutY="85.0" prefHeight="442.0" prefWidth="762.0">
-               <content>
-                  <GridPane fx:id="gridPane" hgap="52.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="120.0" prefWidth="696.0" vgap="20.0">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
-                    </rowConstraints>
-                  </GridPane>
-               </content>
-            </ScrollPane>
             </children>
          <BorderPane.margin>
             <Insets />

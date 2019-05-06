@@ -18,7 +18,6 @@ import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -57,14 +56,12 @@ public class UsersListController {
     @FXML
     private TableColumn<UserAdressDto, String> emailColumn;
 
-
     @FXML
     public void initialize() {
         List<User> listUsers = userRepository.findAll();
-
-
         List<UserAdressDto> userAdressDtos = new ArrayList<>();
-        for(User user : listUsers){
+
+        for (User user : listUsers) {
             Adress adress = adressRepository.findByUser(user);
             if (adress != null) {
                 userAdressDtos.add(new UserAdressDto(user.getId(),
@@ -77,8 +74,8 @@ public class UsersListController {
                         adress.getZipCode(),
                         adress.getTelephoneNumber(),
                         adress.getEmail()
-                ));}
-            else
+                ));
+            } else
                 userAdressDtos.add(new UserAdressDto(user.getId(),
                         user.getUsername(),
                         "",
@@ -89,8 +86,8 @@ public class UsersListController {
                         "",
                         0L,
                         ""
-                ));}
-
+                ));
+        }
         idColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("id"));
         userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("username"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("name"));
@@ -101,7 +98,6 @@ public class UsersListController {
         zipCodeColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("zipCode"));
         telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("telephoneNumber"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("email"));
-
         ObservableList<UserAdressDto> observableListUsers = FXCollections.observableArrayList(userAdressDtos);
         tableView.setItems(observableListUsers);
     }

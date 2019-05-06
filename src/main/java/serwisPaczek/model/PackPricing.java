@@ -1,8 +1,11 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 public class PackPricing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //inkrementacja ID
@@ -30,7 +33,6 @@ public class PackPricing {
         this.courier = courier;
     }
 
-    public PackPricing(){
-
+    public PackPricing() {
     }
 }
