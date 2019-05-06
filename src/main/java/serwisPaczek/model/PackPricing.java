@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Data
 public class PackPricing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //inkrementacja ID

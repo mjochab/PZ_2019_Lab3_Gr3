@@ -4,6 +4,7 @@ public enum SceneType {
     MAIN("main"),
     ABOUT("about"),
     CHOOSE_COURIER("chooseCourierCompany"),
+    COURIER_LIST("courierCompaniesList"),
     COURIER_RANKING("courierRanking"),
     FILL_ADRESSESS("fillAdressessForm"),
     FINALIZE("finalize"),

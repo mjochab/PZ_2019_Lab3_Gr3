@@ -19,7 +19,7 @@
    <center>
       <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="DHL" textFill="WHITE" wrapText="true">
+            <Button fx:id="courierNameButton" layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="17.0" />
                </font>
@@ -44,9 +44,9 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <ListView layoutX="61.0" layoutY="137.0" prefHeight="124.0" prefWidth="210.0" />
-            <ListView layoutX="296.0" layoutY="137.0" prefHeight="124.0" prefWidth="210.0" />
-            <ListView layoutX="531.0" layoutY="137.0" prefHeight="124.0" prefWidth="210.0" />
+            <ListView fx:id="envelopeList" layoutX="61.0" layoutY="137.0" prefHeight="124.0" prefWidth="210.0" />
+            <ListView fx:id="packList" layoutX="296.0" layoutY="137.0" prefHeight="124.0" prefWidth="210.0" />
+            <ListView fx:id="palletList" layoutX="531.0" layoutY="137.0" prefHeight="124.0" prefWidth="210.0" />
             <Button fx:id="CourierOpinionButton" layoutX="531.0" layoutY="298.0" mnemonicParsing="false" onAction="#CourierOpinion" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: rgb(120,1,1);" text="Opinie" textFill="WHITE">
                <font>
                   <Font size="15.0" />

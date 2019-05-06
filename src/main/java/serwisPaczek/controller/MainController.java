@@ -34,8 +34,8 @@ public class MainController {
     }
 
     @FXML
-    void OpenPriceList(ActionEvent event) {
-        sceneManager.show(SceneType.PRICE_LIST);
+    void OpenCourierList(ActionEvent event) {
+        sceneManager.show(SceneType.COURIER_LIST);
     }
 
     @FXML

@@ -1,7 +1,7 @@
 package serwisPaczek.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data
@@ -12,6 +12,7 @@ public class Courier {
     private Long id;
 
     private String name;
+
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
     private EnvelopePricing envelopePricing;
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
