@@ -19,6 +19,9 @@ public class Opinion{
 
     private int rating;
 
+    public Opinion() {
+    }
+
     public Opinion(Date date, String content, int rating, UserOrder userOrder){
         this.date = date;
         this.content = content;

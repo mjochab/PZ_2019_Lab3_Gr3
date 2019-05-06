@@ -23,6 +23,9 @@ public class Parcel{
     @OneToOne(mappedBy = "parcel", cascade = CascadeType.ALL)
     private UserOrder userOrder;
 
+    public Parcel() {
+    }
+
     public Parcel(int lenght, int width, int height, String type, String content){
         this.length = lenght;
         this.width = width;

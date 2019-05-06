@@ -38,12 +38,15 @@ public class MainService {
     @Autowired
     private GiftOrderRepository giftOrderRepository;
     @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private Encryption encryption;
     private ParcelRepository parcelRepository;
     @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
     private OpinionRepository opinionRepository;
+    @Autowired
+    private Encryption encryption;
+
+
 
     public void fillDatabase() {
 
@@ -104,7 +107,7 @@ public class MainService {
             Parcel parcel = new Parcel(100 + i,20 + i,30 + i,"Paczka", "Karnisz");
             parcelList.add(parcel);
 
-            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
+            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress,parcel);
             orderList.add(userOrder);
 
             Opinion opinion = new Opinion(date,"Bardzo dobrze",2 + i, userOrder);
