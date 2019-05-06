@@ -21,6 +21,13 @@ public class MainWorkerController {
         sceneManager.show(SceneType.MAIN);
     }
 
+    @FXML
+    void OpenGiftOrderPanel(ActionEvent event) {sceneManager.show(SceneType.GIFT_ORDER);}
+
+    @FXML
+    void OpenEditGiftPanel(ActionEvent event) {sceneManager.show(SceneType.EDIT_GIFT);}
+
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;

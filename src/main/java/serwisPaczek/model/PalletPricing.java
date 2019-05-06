@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Data
 public class PalletPricing {

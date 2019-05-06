@@ -29,6 +29,7 @@
                                         <Font size="17.0" />
                                     </font>
                                 </Button>
+
                                 <Button fx:id="OpenUserListButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" onAction="#openUsersList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Lista użytkowników" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
@@ -39,7 +40,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="redirectToAboutButton" layoutX="453.0" layoutY="165.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="EditAboutButton" layoutX="453.0" layoutY="165.0" mnemonicParsing="false" onAction="#EditAbout" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -55,6 +56,11 @@
                                     </font>
                                 </Button>
                                 <Button fx:id="logoutButton" layoutX="45.0" layoutY="242.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="editCourierButton" layoutX="460.0" layoutY="296.0" mnemonicParsing="false" onAction="#OpenEditCourier" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: orange;" text="Edytuj cennik" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>

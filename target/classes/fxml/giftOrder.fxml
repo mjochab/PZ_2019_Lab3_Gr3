@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.GiftOrderController">
+    <top>
+        <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+            <image>
+                <Image url="@../images/BigBanner_Delivery.png" />
+            </image>
+        </ImageView>
+    </top>
+    <center>
+        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="580.0" layoutY="25.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="192.0" style="-fx-background-color: Blue;" text="Szukaj" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="273.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;" text="Powrót na strone główną" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <ListView layoutX="61.0" layoutY="74.0" prefHeight="187.0" prefWidth="710.0" />
+                <Button layoutX="641.0" layoutY="273.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="130.0" style="-fx-background-color: blue;" text="Zmień status" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TextField layoutX="205.0" layoutY="25.0" prefHeight="37.0" prefWidth="363.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font></TextField>
+                <Label layoutX="61.0" layoutY="28.0" prefHeight="30.0" prefWidth="142.0" text="Nr zamówienia:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <ComboBox layoutX="481.0" layoutY="274.0" prefHeight="45.0" prefWidth="143.0" promptText="Doręczono" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

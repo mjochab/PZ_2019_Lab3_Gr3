@@ -38,6 +38,9 @@ public class MainAdminController {
     }
 
     @FXML
+    public void OpenEditCourier(ActionEvent event) {sceneManager.show(SceneType.EDIT_COURIER);}
+
+    @FXML
     public void openAbout(ActionEvent event) {
         sceneManager.show(SceneType.ABOUT);
     }
@@ -51,6 +54,10 @@ public class MainAdminController {
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
+    @FXML
+    void EditAbout(ActionEvent event) {sceneManager.show(SceneType.EDIT_ABOUT);}
+    @FXML
+    void OpenUserList(ActionEvent event) {sceneManager.show(SceneType.USERS_LIST);}
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

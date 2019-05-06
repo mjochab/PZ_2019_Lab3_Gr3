@@ -59,6 +59,11 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
+                        <Button fx:id="OpenOrderGiftPanelButton" layoutX="453.0" layoutY="290.0" mnemonicParsing="false" onAction="#OpenOrderGiftPanel" prefHeight="44.0" prefWidth="288.0" style="-fx-background-color: red;" text="Odbierz nagrodę" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </left>

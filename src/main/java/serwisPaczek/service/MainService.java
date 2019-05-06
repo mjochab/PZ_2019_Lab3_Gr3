@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import serwisPaczek.model.*;
 import serwisPaczek.repository.*;
+import serwisPaczek.security.Encryption;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -38,11 +39,14 @@ public class MainService {
     private GiftOrderRepository giftOrderRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private Encryption encryption;
+    private ParcelRepository parcelRepository;
+    @Autowired
+    private OpinionRepository opinionRepository;
 
-    @SuppressWarnings("Duplicates")
     public void fillDatabase() {
 
-        List<Role> roleList = new ArrayList<>();
         List<User> userList = new ArrayList<>();
         List<Adress> adressList = new ArrayList<>();
         List<Courier> courierList = new ArrayList<>();
@@ -54,10 +58,10 @@ public class MainService {
         List<SenderAdress> senderAdressList = new ArrayList<>();
         List<GiftOrder> giftOrderList = new ArrayList<>();
         List<UserOrder> orderList = new ArrayList<>();
+        List<Parcel> parcelList = new ArrayList<>();
+        List<Opinion> opinionList = new ArrayList<>();
 
         for (int i = 1; i < 10; i++) {
-            Role role = new Role("ROLE_" + i);
-            roleList.add(role);
 
             Adress adress = new Adress("name" + i, "surname" + i,
                     "Rzeszów" + i, "Rejtana" + i, i,
@@ -66,7 +70,9 @@ public class MainService {
             );
             adressList.add(adress);
 
-            User user = new User("Patryk" + i, "Brzuchacz" + i, role, adress);
+            User user = new User("Patryk" + i, encryption.encode("Brzuchacz" + i), roleRepository.findByRoleName(
+                    "USER_ROLE"),
+                    adress);
             userList.add(user);
 
             Courier courier = new Courier("Kurier " + i);
@@ -95,12 +101,17 @@ public class MainService {
             GiftOrder giftOrder = new GiftOrder(date, gift, user, recipientAdress);
             giftOrderList.add(giftOrder);
 
+            Parcel parcel = new Parcel(100 + i,20 + i,30 + i,"Paczka", "Karnisz");
+            parcelList.add(parcel);
 
-            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
+            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress);
             orderList.add(userOrder);
+
+            Opinion opinion = new Opinion(date,"Bardzo dobrze",2 + i, userOrder);
+            opinionList.add(opinion);
+
         }
 
-        roleRepository.saveAll(roleList);
         adressRepository.saveAll(adressList);
         userRepository.saveAll(userList);
         courierRepository.saveAll(courierList);
@@ -111,6 +122,8 @@ public class MainService {
         recipientAdressRepository.saveAll(recipientAdressList);
         senderAdressRepository.saveAll(senderAdressList);
         giftOrderRepository.saveAll(giftOrderList);
+        parcelRepository.saveAll(parcelList);
         orderRepository.saveAll(orderList);
+        opinionRepository.saveAll(opinionList);
     }
 }

@@ -18,7 +18,7 @@ public class Adress {
     private String city;
     private String street;
     @JoinColumn(name = "house_number")
-    private int houseNumber;
+    private Integer houseNumber;
     @JoinColumn(name = "zip_code")
     private String zipCode;
     @JoinColumn(name = "telephone_number")
