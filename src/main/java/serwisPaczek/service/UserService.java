@@ -43,9 +43,9 @@ public class UserService {
             UserLoginDto.setLoggedUser(user);
 
             if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("USER_ROLE"))
-                sceneManager.show(SceneType.USER_MENU);
+                sceneManager.show(SceneType.MAIN_USER);
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("WORKER_ROLE"))
-                sceneManager.show(SceneType.WORKER_MENU);
+                sceneManager.show(SceneType.WORKER_MAIN);
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
                 sceneManager.show(SceneType.ADMIN_MAIN);
             else {

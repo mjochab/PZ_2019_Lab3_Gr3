@@ -1,4 +1,4 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.user.other;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -57,18 +57,21 @@ public class UserCourierCompaniesListController {
                 gridPane.addRow(gridRow);
             }
             // Btn color switcher
-            switch (index % 4) {
+            switch (index % 5) {
                 case (0):
                     color = "red";
                     break;
                 case (1):
-                    color = "orange";
+                    color = "darkslategray";
                     break;
                 case (2):
-                    color = "olive";
+                    color = "orange";
                     break;
                 case (3):
                     color = "indigo";
+                    break;
+                case (4):
+                    color = "hotpink";
                     break;
             }
             button[index] = new Button(courier.getName());
@@ -84,7 +87,7 @@ public class UserCourierCompaniesListController {
                 public void handle(ActionEvent event) {
                     setCourierID(courier.getId());
                     setCourierName(courier.getName());
-                    sceneManager.show(SceneType.PRICE_LIST);
+                    sceneManager.show(SceneType.USER_COURIER_COMPANY_PRICING);
                 }
             });
             gridPane.add(button[index], gridCol, gridRow);

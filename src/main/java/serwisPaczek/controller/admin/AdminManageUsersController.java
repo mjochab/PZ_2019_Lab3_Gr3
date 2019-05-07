@@ -1,4 +1,4 @@
-package serwisPaczek.controller.adminController;
+package serwisPaczek.controller.admin;
 
 
 import javafx.collections.FXCollections;
@@ -15,14 +15,12 @@ import serwisPaczek.model.Adress;
 import serwisPaczek.model.User;
 import serwisPaczek.model.dto.UserAdressDto;
 import serwisPaczek.repository.AdressRepository;
-import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 @Controller
 public class AdminManageUsersController {

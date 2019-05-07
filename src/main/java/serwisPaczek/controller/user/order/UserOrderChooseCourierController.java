@@ -15,7 +15,7 @@ import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 
 @Controller
-public class ChooseCourierController {
+public class UserOrderChooseCourierController {
 
     private SceneManager sceneManager;
 

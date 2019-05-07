@@ -11,7 +11,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class FillAdressessController {
+public class UserOrderFillAddressesFormController {
     private SceneManager sceneManager;
     //
     @FXML

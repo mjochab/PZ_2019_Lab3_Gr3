@@ -1,4 +1,4 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.worker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

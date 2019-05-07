@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class OrderListController {
+public class UserProfileOrderListController {
     private SceneManager sceneManager;
 
     @FXML

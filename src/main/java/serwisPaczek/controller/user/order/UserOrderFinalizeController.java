@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class FinalizeController {
+public class UserOrderFinalizeController {
     private SceneManager sceneManager;
 
     @FXML

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class OrderGiftController {
+public class UserGiftOrderController {
     private SceneManager sceneManager;
 
     @Autowired

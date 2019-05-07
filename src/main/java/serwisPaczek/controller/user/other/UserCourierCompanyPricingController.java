@@ -1,4 +1,4 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.user.other;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,7 +67,7 @@ public class UserCourierCompanyPricingController {
 
     @FXML
     public void CourierOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.COURIER_OPINIONS);
+        sceneManager.show(SceneType.USER_COURIER_OPINIONS);
     }
 
     @Autowired

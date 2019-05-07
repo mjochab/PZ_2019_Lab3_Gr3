@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class CourierOpinionsController {
+public class UserCourierOpinionsController {
     private SceneManager sceneManager;
 
     @FXML

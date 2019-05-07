@@ -1,42 +1,52 @@
 package serwisPaczek.utils;
 
 public enum SceneType {
-    MAIN("main"),
-    ABOUT("about"),
-    ADMIN_MAIN("adminPanel/adminMain"),
-    ADMIN_MANAGE_USERS("adminPanel/adminManageUsers"),
-    ADMIN_MANAGE_PARCELS("adminPanel/adminManageParcels"),
-    ADMIN_ADD_COURIER("adminPanel/adminAddCourier"),
-    ADMIN_EDIT_ABOUT("adminPanel/adminEditAbout"),
-    ADMIN_EDIT_COURIER("adminPanel/adminEditCourier"),
+    // APPLICATION
+    MAIN("application/main"),
+    LOGIN("application/login"),
+    REGISTER("application/register"),
 
+    // ADMIN
+    ADMIN_MAIN("admin/adminMain"),
+    ADMIN_MANAGE_USERS("admin/adminManageUsers"),
+    ADMIN_MANAGE_PARCELS("admin/adminManageParcels"),
+    ADMIN_ADD_COURIER("admin/adminAddCourier"),
+    ADMIN_EDIT_ABOUT("admin/adminEditAbout"),
+    ADMIN_EDIT_COURIER("admin/adminEditCourier"),
 
-    CHOOSE_COURIER("chooseCourierCompany"),
-    COURIER_LIST("courierCompaniesList"),
-    COURIER_RANKING("courierRanking"),
-    FILL_ADRESSESS("fillAdressessForm"),
-    FINALIZE("finalize"),
-    LOGIN("login"),
-    ORDER("order"),
-    PRICE_LIST("priceList"),
-    REGISTER("register"),
-    WORKER_PANEL("workerPanel"),
-    ORDER_LIST("orderList"),
+    // WORKER
+    WORKER_MAIN("worker/mainWorker"),
+    WORKER_MANAGE_PARCELS("worker/workerManageParcels"),
+    WORKER_MANAGE_GIFT_ORDERS("worker/workerManageGiftOrders"),
+    WORKER_EDIT_GIFT("worker/workerEditGift"),
 
-    EDIT_USER("editUserProfile"),
-    USER_MENU("mainUser"),
+    // USER
+    MAIN_USER("user/mainUser"),
 
-    ADMIN_USERS_LIST("usersList"),
-    WORKER_MENU("mainWorker"),
-    MENU("main"),
-    ADD_OPINION("addOpinion"),
-    MY_OPINIONS("myOpinions"),
-    COURIER_OPINIONS("courierOpinions"),
+    // USER - PROFILE
+    USER_PROFILE_EDIT_PROFILE("user.profile/userProfileEditProfile"),
+    USER_PROFILE_MY_OPINIONS("user.profile/userProfileMyOpinions"),
+    USER_PROFILE_ORDER_LIST("user.profile/userProfileOrderList"),
 
+    // USER - ORDER
+    USER_ORDER_MAIN("user.order/userOrderMain"),
+    USER_ORDER_CHOOSE_COURIER("user.order/userOrderChooseCourier"),
+    USER_ORDER_FILL_ADDRESSES("user.order/userOrderFillAddressesForm"),
+    USER_ORDER_FINALIZE("user.order/userOrderFinalize"),
+    USER_ORDER_ADD_OPINION("user.order/userOrderAddOpinion"),
 
-    GIFT_ORDER("giftOrder"),
-    EDIT_GIFT("editGift"),
-    ORDER_GIFT("orderGift");
+    // USER - GIFT
+    USER_GIFT_ORDER("user.gift/userGiftOrder"),
+
+    // USER - OTHER
+    USER_COURIER_COMPANIES_LIST("user.other/userCourierCompaniesList"),
+    USER_ABOUT("user.other/userAbout"),
+    USER_COURIER_COMPANY_PRICING("user.other/userCourierCompanyPricing"),
+    USER_COURIER_OPINIONS("user.other/userCourierOpinions"),
+    USER_COURIER_RANKING("user.other/userCouriersRanking"),
+
+    // OTHERS
+    MENU("main");
 
     private String fxmlPath;
 

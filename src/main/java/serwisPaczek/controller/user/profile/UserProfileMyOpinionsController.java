@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class MyOpinionsController {
+public class UserProfileMyOpinionsController {
     private SceneManager sceneManager;
 
     @FXML

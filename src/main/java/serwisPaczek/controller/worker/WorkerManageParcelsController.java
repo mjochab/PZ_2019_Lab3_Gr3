@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class WorkerPanelController {
+public class WorkerManageParcelsController {
     private SceneManager sceneManager;
 
     @FXML

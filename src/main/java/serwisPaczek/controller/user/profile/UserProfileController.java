@@ -1,4 +1,4 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.user.profile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,12 +42,12 @@ public class UserProfileController {
 
     @FXML
     public void BackToUserProfile(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MENU);
+        sceneManager.show(SceneType.MAIN_USER);
     }
 
     @FXML
     public void GoToMyOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MENU);
+        sceneManager.show(SceneType.MAIN_USER);
     }
 
 

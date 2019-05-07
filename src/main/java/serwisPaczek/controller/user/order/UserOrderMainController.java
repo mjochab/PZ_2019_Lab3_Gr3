@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class OrderController {
+public class UserOrderMainController {
     private SceneManager sceneManager;
 
     @FXML
@@ -18,13 +18,11 @@ public class OrderController {
 
     @FXML
     public void OpenPriceListButton(ActionEvent event) {
-        sceneManager.show(SceneType.CHOOSE_COURIER);
+        sceneManager.show(SceneType.USER_ORDER_CHOOSE_COURIER);
     }
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
-
 }

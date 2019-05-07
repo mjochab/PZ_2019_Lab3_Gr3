@@ -1,4 +1,4 @@
-package serwisPaczek.controller;
+package serwisPaczek.controller.user;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,41 +14,34 @@ public class MainUserController {
 
     @FXML
     public void openAbout(ActionEvent event) {
-        sceneManager.show(SceneType.ABOUT);
-    }
-
-    @FXML
-    void OpenLoginPanel(ActionEvent event) {
-        sceneManager.show(SceneType.LOGIN);
+        sceneManager.show(SceneType.USER_ABOUT);
     }
 
     @FXML
     void OpenPriceList(ActionEvent event) {
-        sceneManager.show(SceneType.PRICE_LIST);
-    }
-
-    @FXML
-    void OpenRegisterPanel(ActionEvent event) {
-        sceneManager.show(SceneType.REGISTER);
+        sceneManager.show(SceneType.USER_COURIER_COMPANIES_LIST);
     }
 
     @FXML
     void OpenOrderCourier(ActionEvent event) {
-        sceneManager.show(SceneType.ORDER);
+        sceneManager.show(SceneType.USER_ORDER_MAIN);
     }
 
     @FXML
     void OpenCourierRanking(ActionEvent event) {
-        sceneManager.show(SceneType.COURIER_RANKING);
+        sceneManager.show(SceneType.USER_COURIER_RANKING);
     }
 
     @FXML
     void OpenEditUserProfile(ActionEvent event) {
-        sceneManager.show(SceneType.EDIT_USER);
+        sceneManager.show(SceneType.USER_PROFILE_EDIT_PROFILE);
     }
 
     @FXML
-    void OpenOrderGiftPanel(ActionEvent event) { sceneManager.show((SceneType.ORDER_GIFT));}
+    void OpenOrderGiftPanel(ActionEvent event) {
+        // TODO FIX
+        sceneManager.show(SceneType.USER_GIFT_ORDER);
+    }
 
     @FXML
     void logout(ActionEvent event) {

@@ -1,4 +1,4 @@
-package serwisPaczek.controller.worker;
+package serwisPaczek.controller.user.order;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,24 +8,18 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class WorkerMainController {
+public class UserOrderAddOpinionController {
     private SceneManager sceneManager;
 
     @FXML
-    public void OpenWorkerPanel(ActionEvent event) {
-        sceneManager.show(SceneType.WORKER_MANAGE_PARCELS);
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
+    public void BackToMenu(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
 
     @FXML
-    void OpenGiftOrderPanel(ActionEvent event) {sceneManager.show(SceneType.WORKER_MANAGE_GIFT_ORDERS);}
-
-    @FXML
-    void OpenEditGiftPanel(ActionEvent event) {sceneManager.show(SceneType.WORKER_EDIT_GIFT);}
+    public void MyOpinions(ActionEvent event) {
+        sceneManager.show(SceneType.USER_PROFILE_MY_OPINIONS);
+    }
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
