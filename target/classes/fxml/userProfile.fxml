@@ -80,14 +80,14 @@
                   <Image url="@../images/kurier.png" />
                </image>
             </ImageView>
-            <TextField layoutX="107.0" layoutY="109.0" prefHeight="25.0" prefWidth="176.0" />
-            <TextField layoutX="146.0" layoutY="148.0" prefHeight="25.0" prefWidth="137.0" />
-            <TextField layoutX="134.0" layoutY="187.0" prefHeight="25.0" prefWidth="149.0" />
-            <TextField layoutX="117.0" layoutY="222.0" prefHeight="25.0" prefWidth="166.0" />
-            <TextField layoutX="351.0" layoutY="109.0" prefHeight="25.0" prefWidth="216.0" />
-            <TextField layoutX="377.0" layoutY="148.0" prefHeight="25.0" prefWidth="190.0" />
-            <TextField layoutX="391.0" layoutY="187.0" prefHeight="25.0" prefWidth="176.0" />
-            <TextField layoutX="431.0" layoutY="222.0" prefHeight="25.0" prefWidth="136.0" />
+            <TextField fx:id="TFname" layoutX="107.0" layoutY="109.0" prefHeight="25.0" prefWidth="176.0" />
+            <TextField fx:id="TFsurname" layoutX="146.0" layoutY="148.0" prefHeight="25.0" prefWidth="137.0" />
+            <TextField fx:id="TFphone" layoutX="134.0" layoutY="187.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="TFemail" layoutX="117.0" layoutY="222.0" prefHeight="25.0" prefWidth="166.0" />
+            <TextField fx:id="TFstreet" layoutX="351.0" layoutY="109.0" prefHeight="25.0" prefWidth="216.0" />
+            <TextField fx:id="TFcity" layoutX="377.0" layoutY="148.0" prefHeight="25.0" prefWidth="190.0" />
+            <TextField fx:id="TFhouse" layoutX="391.0" layoutY="187.0" prefHeight="25.0" prefWidth="176.0" />
+            <TextField fx:id="TFzip" layoutX="431.0" layoutY="222.0" prefHeight="25.0" prefWidth="136.0" />
             <Button fx:id="GoToMyOpinionButton" layoutX="489.0" layoutY="299.0" mnemonicParsing="false" onAction="#GoToMyOpinion" prefHeight="46.0" prefWidth="131.0" style="-fx-background-color: rgb(120,1,1);" text="Twoje opinie" textFill="WHITE">
                <font>
                   <Font size="15.0" />
