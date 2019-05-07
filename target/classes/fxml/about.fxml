@@ -36,13 +36,6 @@
                      </children>
                   </AnchorPane>
                </left>
-               <right>
-                  <ImageView fitHeight="336.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@../images/kurier.png" />
-                     </image>
-                  </ImageView>
-               </right>
                <top>
                   <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
                      <image>
@@ -50,6 +43,16 @@
                      </image>
                   </ImageView>
                </top>
+               <right>
+                  <ImageView fitHeight="336.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../images/kurier.png" />
+                     </image>
+                     <BorderPane.margin>
+                        <Insets right="20.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </right>
             </BorderPane>
          </children>
       </StackPane>

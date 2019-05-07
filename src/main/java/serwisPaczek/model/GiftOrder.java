@@ -1,8 +1,11 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
 @Entity
 public class GiftOrder {
     @Id
@@ -28,5 +31,8 @@ public class GiftOrder {
         this.gift = gift;
         this.user = user;
         this.recipientAdress = recipientAdress;
+    }
+
+    public GiftOrder() {
     }
 }
