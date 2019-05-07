@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.WorkerMainController">
+    <children>
+        <StackPane layoutX="1.0">
+            <children>
+                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+                    <top>
+                        <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                            <image>
+                                <Image url="@../images/BigBanner_Delivery.png" />
+                            </image>
+                        </ImageView>
+                    </top>
+                    <left>
+                        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Button layoutX="258.0" layoutY="23.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="285.0" style="-fx-background-color: Blue;" text="Witaj Pracowniku" textFill="WHITE" wrapText="true">
+                                    <font>
+                                        <Font size="17.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="OpenWorkerPanelButton" layoutX="258.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenWorkerPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Zarządzaj przesyłkami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+                        <Button fx:id="OpenGiftOrderPanelButton1" layoutX="408.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenGiftOrderPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Wyświetl listę zamówionych prezentów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutButton" layoutX="29.0" layoutY="284.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: sandybrown;" text="Wyloguj się" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="OpenEditGiftPanelButton" layoutX="567.0" layoutY="165.0" mnemonicParsing="false" onAction="#OpenEditGiftPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Zarządzaj prezentami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </AnchorPane>
+                    </left>
+                </BorderPane>
+            </children>
+        </StackPane>
+    </children>
+</Pane>
