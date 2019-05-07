@@ -19,12 +19,13 @@ import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 @Controller
-public class UsersListController {
+public class AdminManageUsersController {
     private SceneManager sceneManager;
 
     @Autowired
@@ -104,10 +105,9 @@ public class UsersListController {
     }
 
     @FXML
-    public void BackToAdmin(ActionEvent event) {
-        sceneManager.show(SceneType.ADMIN_MENU);
+    public void openAdminMain(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_MAIN);
     }
-
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

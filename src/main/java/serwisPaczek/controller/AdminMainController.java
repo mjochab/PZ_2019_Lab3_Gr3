@@ -12,25 +12,16 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class MainAdminController {
+public class AdminMainController {
     private SceneManager sceneManager;
 
     @Autowired
     private MainService mainService;
 
-    @FXML
-    public void OpenWorkerPanel(ActionEvent event) {
-        sceneManager.show(SceneType.WORKER_PANEL);
-    }
-
-    @FXML
-    public void OpenAddCourier(ActionEvent event) {
-        sceneManager.show(SceneType.ADD_COURIER);
-    }
-
     public void FillTheBaseWithExampleData() {
         mainService.fillDatabase();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Dane zostały poprawnie dodane do bazy", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Dane zostały poprawnie dodane do bazy", ButtonType.OK);
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.setTitle("Komunikat");
         alert.setHeaderText(null);
@@ -38,26 +29,39 @@ public class MainAdminController {
     }
 
     @FXML
-    public void OpenEditCourier(ActionEvent event) {sceneManager.show(SceneType.EDIT_COURIER);}
-
-    @FXML
-    public void openAbout(ActionEvent event) {
-        sceneManager.show(SceneType.ABOUT);
+    void openManageUserPanel(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_MANAGE_USERS);
     }
 
     @FXML
-    public void openUsersList(ActionEvent event) {
-        sceneManager.show(SceneType.ADMIN_USERS_LIST);
+    void openManageWorkerPanel(ActionEvent event) {
+        //TODO FXML
+    }
+
+    @FXML
+    public void openEditCourier(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_EDIT_COURIER);
+    }
+
+    @FXML
+    public void openManageParcelPanel(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_MANAGE_PARCELS);
+    }
+
+    @FXML
+    public void openAddCourierPanel(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_ADD_COURIER);
+    }
+
+    @FXML
+    void openEditAboutPanel(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_EDIT_ABOUT);
     }
 
     @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
-    @FXML
-    void EditAbout(ActionEvent event) {sceneManager.show(SceneType.EDIT_ABOUT);}
-    @FXML
-    void OpenUserList(ActionEvent event) {sceneManager.show(SceneType.USERS_LIST);}
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

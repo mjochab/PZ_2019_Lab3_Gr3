@@ -8,13 +8,12 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class EditAboutController {
-
+public class AdminAddCourierController {
     private SceneManager sceneManager;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void openAdminMain(ActionEvent event) {
+        sceneManager.show(SceneType.ADMIN_MAIN);
     }
 
     @Autowired

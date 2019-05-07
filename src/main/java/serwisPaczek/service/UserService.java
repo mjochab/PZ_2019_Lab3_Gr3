@@ -47,7 +47,7 @@ public class UserService {
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("WORKER_ROLE"))
                 sceneManager.show(SceneType.WORKER_MENU);
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
-                sceneManager.show(SceneType.ADMIN_MENU);
+                sceneManager.show(SceneType.ADMIN_MAIN);
             else {
                 showDialog("Podałeś zły username lub hasło");
             }

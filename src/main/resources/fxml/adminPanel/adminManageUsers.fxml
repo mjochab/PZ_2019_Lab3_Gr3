@@ -3,35 +3,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.UsersListController">
-    <top>
-        <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
-            <image>
-                <Image url="@../images/BigBanner_Delivery.png" />
-            </image>
-        </ImageView>
-    </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.AdminManageUsersController">
     <bottom>
-        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="602.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Lista użytkowników" textFill="WHITE" wrapText="true">
+                <Button layoutX="61.0" layoutY="12.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Lista użytkowników" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="290.0" mnemonicParsing="false" onAction="#BackToAdmin" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: green;" text="Powrót" textFill="WHITE">
+                <Button fx:id="AdminMainButton" layoutX="61.0" layoutY="520.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: green;" text="Wstecz" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <TableView fx:id="tableView" layoutX="61.0" layoutY="73.0" prefHeight="200.0" prefWidth="679.0">
+                <TableView fx:id="tableView" layoutX="61.0" layoutY="73.0" prefHeight="431.0" prefWidth="679.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="49.000030517578125" text="Id" />
                         <TableColumn fx:id="userNameColumn" prefWidth="135.99998474121094" text="Nazwa użytkownika" />
@@ -49,4 +39,3 @@
         </AnchorPane>
     </bottom>
 </BorderPane>
-

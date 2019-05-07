@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.AddCourierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.AdminAddCourierController">
     <top>
         <ImageView fitHeight="210.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../images/BigBanner_Delivery.png" />
+                <Image url="@../../images/BigBanner_Delivery.png" />
             </image>
         </ImageView>
     </top>
@@ -25,12 +25,12 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToAdminMenu" layoutX="24.0" layoutY="339.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+                <Button layoutX="24.0" layoutY="339.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToAdminMenuCancel" layoutX="211.0" layoutY="339.0" mnemonicParsing="false" onAction="#OpenAdmin" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+                <Button fx:id="AdminMainButton" layoutX="211.0" layoutY="339.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
