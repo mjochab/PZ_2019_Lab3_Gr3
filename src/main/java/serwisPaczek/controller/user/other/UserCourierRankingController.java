@@ -5,12 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.model.*;
+import serwisPaczek.model.UserOrder;
 import serwisPaczek.repository.OrderRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserCourierRankingController {
@@ -18,7 +20,6 @@ public class UserCourierRankingController {
 
     @Autowired
     OrderRepository orderRepository;
-
 
 
     @FXML
@@ -45,8 +46,8 @@ public class UserCourierRankingController {
             courierCount.put(order.getCourier().getName(), (count == null) ? 1 : count + 1);
         }
 
-        for(Map.Entry<String,Integer> entry : courierCount.entrySet()){
-            rankingPieChart.getData().add(new PieChart.Data(entry.getKey(),entry.getValue()));
+        for (Map.Entry<String, Integer> entry : courierCount.entrySet()) {
+            rankingPieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
 //            System.out.println(entry.getKey() + " = " + entry.getValue());
         }
 

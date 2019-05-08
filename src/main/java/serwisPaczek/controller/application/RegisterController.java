@@ -33,18 +33,18 @@ public class RegisterController {
 
     @FXML
     public void initialize() {
-   usernameWarning.setVisible(false);
-   passwordWarning.setVisible(false);
-   repeatPasswordWarning.setVisible(false);
+        usernameWarning.setVisible(false);
+        passwordWarning.setVisible(false);
+        repeatPasswordWarning.setVisible(false);
     }
 
     @FXML
     public void register(ActionEvent event) {
-        userService.createUser(TFUsername.getText(),PFPassword.getText(),
+        userService.createUser(TFUsername.getText(), PFPassword.getText(),
                 PFRepeatPassword.getText(),
                 usernameWarning,
                 passwordWarning,
-                repeatPasswordWarning);;
+                repeatPasswordWarning);
     }
 
     @FXML

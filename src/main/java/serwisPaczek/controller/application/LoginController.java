@@ -39,7 +39,7 @@ public class LoginController {
     @FXML
     public void login(ActionEvent event) throws IOException {
 
-        userService.login(TFUsername.getText(),PFPassword.getText());
+        userService.login(TFUsername.getText(), PFPassword.getText());
     }
 
 

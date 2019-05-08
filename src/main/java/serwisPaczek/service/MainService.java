@@ -10,8 +10,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import static serwisPaczek.model.Status.WYSLANO_ZGLOSZENIE;
-
 @Service
 public class MainService {
 
@@ -45,7 +43,6 @@ public class MainService {
     private OpinionRepository opinionRepository;
     @Autowired
     private Encryption encryption;
-
 
 
     public void fillDatabase() {
@@ -104,13 +101,13 @@ public class MainService {
             GiftOrder giftOrder = new GiftOrder(date, gift, user, recipientAdress);
             giftOrderList.add(giftOrder);
 
-            Parcel parcel = new Parcel(100 + i,20 + i,30 + i,"Paczka", "Karnisz");
+            Parcel parcel = new Parcel(100 + i, 20 + i, 30 + i, "Paczka", "Karnisz");
             parcelList.add(parcel);
 
-            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress,parcel);
+            UserOrder userOrder = new UserOrder(123 + i, date, user, courier, Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress, parcel);
             orderList.add(userOrder);
 
-            Opinion opinion = new Opinion(date,"Bardzo dobrze",2 + i, userOrder);
+            Opinion opinion = new Opinion(date, "Bardzo dobrze", 2 + i, userOrder);
             opinionList.add(opinion);
 
         }

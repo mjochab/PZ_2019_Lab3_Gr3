@@ -14,7 +14,6 @@ public class RecipientAdress {
     private Long id;
 
 
-
     @ManyToOne
     @JoinColumn(name = "adress_id")
     private Adress adress;

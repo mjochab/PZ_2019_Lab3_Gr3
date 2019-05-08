@@ -1,8 +1,5 @@
 package serwisPaczek.service;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,8 +11,6 @@ import serwisPaczek.repository.UserRepository;
 import serwisPaczek.security.Encryption;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
-import java.io.IOException;
 
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.utils.TextFieldUtils.isCorrect;
@@ -72,27 +67,27 @@ public class UserService {
             repeatPasswordWarning.setVisible(true);
         }
 
-        if (password.length() < 6 || password.length() > 18)
-        {
+        if (password.length() < 6 || password.length() > 18) {
             passwordWarning.setText("Hasło musi zawierać pomiędzy 6 a 18 znaków");
-            passwordWarning.setVisible(true);}
+            passwordWarning.setVisible(true);
+        }
 
         if (isCorrect(username) && isCorrect(password) && isCorrect(repeatPassword)
                 && password.equals(repeatPassword)
-                && password.length()>=6
-                && password.length()<=18) {
+                && password.length() >= 6
+                && password.length() <= 18) {
 
             if (userRepository.findByUsername(username) != null) {
                 showDialog("Użytkownik o podanej nazwie użytkownika istnieje!");
-            }
-            else{
+            } else {
 
-                    User user = new User(username,encryption.encode(password),roleRepository.findByRoleName(
-                            "USER_ROLE"));
-                    userRepository.save(user);
-                    sceneManager.show(SceneType.LOGIN);
-                }
-            }}
+                User user = new User(username, encryption.encode(password), roleRepository.findByRoleName(
+                        "USER_ROLE"));
+                userRepository.save(user);
+                sceneManager.show(SceneType.LOGIN);
+            }
+        }
     }
+}
 
 

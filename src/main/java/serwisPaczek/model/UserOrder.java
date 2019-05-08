@@ -39,13 +39,13 @@ public class UserOrder {
     private RecipientAdress recipientAdress;
 
 
-    public UserOrder()
-    {}
+    public UserOrder() {
+    }
 
     @OneToOne(mappedBy = "userOrder", cascade = CascadeType.ALL)
     private Opinion opinion;
 
-    public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, serwisPaczek.model.RecipientAdress recipientAdress, Parcel parcel) {
+    public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
 
         this.price = price;
         this.date = date;
@@ -55,6 +55,16 @@ public class UserOrder {
         this.senderAdress = senderAdress;
         this.recipientAdress = recipientAdress;
         this.parcel = parcel;
+    }
+
+    public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress) {
+        this.price = price;
+        this.date = date;
+        this.user = user;
+        this.courier = courier;
+        this.status = status;
+        this.senderAdress = senderAdress;
+        this.recipientAdress = recipientAdress;
     }
 
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Opinion{
+public class Opinion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +22,7 @@ public class Opinion{
     public Opinion() {
     }
 
-    public Opinion(Date date, String content, int rating, UserOrder userOrder){
+    public Opinion(Date date, String content, int rating, UserOrder userOrder) {
         this.date = date;
         this.content = content;
         this.rating = rating;

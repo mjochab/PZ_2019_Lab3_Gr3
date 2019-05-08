@@ -4,13 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Courier;
+import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-import serwisPaczek.repository.CourierRepository;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class UserCourierCompaniesListController {
         int gridCol = 0;
         String color = "";
         int numberOfButtons = (int) courierRepository.count();
-        Button button[];
+        Button[] button;
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {

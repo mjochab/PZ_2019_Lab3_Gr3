@@ -2,11 +2,7 @@ package serwisPaczek.utils;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
-
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class DialogsUtils {
 
@@ -17,7 +13,6 @@ public class DialogsUtils {
         alert.setHeaderText(null);
         alert.show();
     }
-
 
 
 }

@@ -22,10 +22,14 @@ public class WorkerMainController {
     }
 
     @FXML
-    void OpenGiftOrderPanel(ActionEvent event) {sceneManager.show(SceneType.WORKER_MANAGE_GIFT_ORDERS);}
+    void OpenGiftOrderPanel(ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_MANAGE_GIFT_ORDERS);
+    }
 
     @FXML
-    void OpenEditGiftPanel(ActionEvent event) {sceneManager.show(SceneType.WORKER_EDIT_GIFT);}
+    void OpenEditGiftPanel(ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_EDIT_GIFT);
+    }
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

@@ -1,10 +1,9 @@
 package serwisPaczek.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-public class Parcel{
+public class Parcel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,7 @@ public class Parcel{
     public Parcel() {
     }
 
-    public Parcel(int lenght, int width, int height, String type, String content){
+    public Parcel(int lenght, int width, int height, String type, String content) {
         this.length = lenght;
         this.width = width;
         this.height = height;

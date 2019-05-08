@@ -37,7 +37,7 @@ public class UserGiftOrderController {
     public void initialize() {
         List<Gift> listGifts = giftRepository.findAll();
         List<Gift> gifts = new ArrayList<>();
-        for(Gift gift : listGifts) {
+        for (Gift gift : listGifts) {
         }
 
 

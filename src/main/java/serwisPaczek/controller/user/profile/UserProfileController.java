@@ -55,9 +55,10 @@ public class UserProfileController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
+
     @FXML
     public void initialize() {
-        if(UserLoginDto.getLoggedUser().getAdress()!=null){
+        if (UserLoginDto.getLoggedUser().getAdress() != null) {
             TFname.setText(UserLoginDto.getLoggedUser().getAdress().getName());
             TFsurname.setText(UserLoginDto.getLoggedUser().getAdress().getSurname());
             TFstreet.setText(UserLoginDto.getLoggedUser().getAdress().getStreet());
@@ -66,10 +67,7 @@ public class UserProfileController {
             TFhouse.setText(UserLoginDto.getLoggedUser().getAdress().getHouseNumber().toString());
             TFcity.setText(UserLoginDto.getLoggedUser().getAdress().getCity());
             TFzip.setText(UserLoginDto.getLoggedUser().getAdress().getZipCode());
-        }
-
-        else
-        {
+        } else {
             TFname.setText("");
             TFsurname.setText("");
             TFstreet.setText("");

@@ -13,26 +13,25 @@ import java.io.IOException;
 
 @Component
 public class SceneManager {
-
     private StageConfig stageConfig;
     private ApplicationContext context;
-    private Stage stage;
+    public static Stage stage;
 
 
     public void init(Stage stage) {
-        this.stage = stage;
+        SceneManager.stage = stage;
 
         Scene scene = new Scene(
                 getView(stageConfig.getView().getFxmlPath()),
                 stageConfig.getWidth(),
                 stageConfig.getHeight());
-        this.stage.setScene(scene);
+        SceneManager.stage.setScene(scene);
 
-        this.stage.setTitle(stageConfig.getApplicationTitle());
-        this.stage.setMaximized(false);
-        this.stage.setFullScreen(false);
+        SceneManager.stage.setTitle(stageConfig.getApplicationTitle());
+        SceneManager.stage.setMaximized(false);
+        SceneManager.stage.setFullScreen(false);
 
-        this.stage.show();
+        SceneManager.stage.show();
     }
 
     public void show(SceneType sceneType) {
@@ -44,7 +43,6 @@ public class SceneManager {
         FXMLLoader loader = new FXMLLoader();
         loader.setControllerFactory(context::getBean);
         loader.setLocation(getClass().getResource("/fxml/" + viewName + ".fxml"));
-
         try {
             return (Parent) loader.load();
         } catch (IOException e) {
@@ -62,4 +60,3 @@ public class SceneManager {
         this.stageConfig = stageConfig;
     }
 }
-
