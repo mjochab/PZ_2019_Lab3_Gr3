@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Courier;
+import serwisPaczek.model.Parcel;
 import serwisPaczek.model.dto.UserLoginDto;
 import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.repository.EnvelopePricingRepository;
@@ -24,6 +25,7 @@ import serwisPaczek.utils.SceneType;
 import java.io.IOException;
 import java.util.List;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.utils.SceneManager.stage;
 
@@ -35,7 +37,7 @@ public class UserOrderChooseCourierController {
     public void setContext(ApplicationContext context) {
         this.context = context;
     }
-
+private Parcel parcel;
     private SceneManager sceneManager;
     @FXML
     private GridPane gridPane;
@@ -48,55 +50,22 @@ public class UserOrderChooseCourierController {
     @Autowired
     private EnvelopePricingRepository envelopePricingRepository;
 
-    String type;
-    String weight;
-    String width;
-    String height;
-    String length;
     int ratio = 1;
-    double price;
+    float price;
 
     @FXML
     private Label test;
 
     @FXML
-    public void OpenFillAdressessForm(ActionEvent actionEvent) {
-        if (UserLoginDto.getLoggedUser() != null) {
+    public void initialize(Parcel parcel){
+this.parcel = parcel;
+        if (parcel.getType() == "paczka") {
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
-                loader.setControllerFactory(context::getBean);
-                Parent root = loader.load();
-                UserOrderFillAddressesFormController fillAdressessController = loader.getController();
-                fillAdressessController.initialize(type, weight, length, width, height);
-
-                stage.setScene(new Scene(root));
-                stage.show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            showDialog("Musisz być zalogowany by dokonać zamówienia!");
-        }
-    }
-
-    @FXML
-    public void initialize(String type, String weight, String length, String width, String height) {
-        this.type = type;
-        this.weight = weight;
-        this.length = length;
-        this.width = width;
-        this.height = height;
-
-        if (type == "paczka") {
-
-            if (Integer.parseInt(length) <= 60 && Integer.parseInt(width) <= 50 && Integer.parseInt(height) <= 30)
+            if ( parcel.getLength()<= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
                 ratio = 1;
-            else if (Integer.parseInt(length) <= 80 && Integer.parseInt(width) <= 70 && Integer.parseInt(height) <= 50)
+            else if ( parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
                 ratio = 2;
-            else if (Integer.parseInt(length) <= 100 && Integer.parseInt(width) <= 90 && Integer.parseInt(height) <= 70)
+            else if (  parcel.getLength() <= 100 && parcel.getWidth()<= 90 && parcel.getHeight() <= 70)
                 ratio = 3;
         }
         List<Courier> listCouriers = courierRepository.findAll();
@@ -111,39 +80,39 @@ public class UserOrderChooseCourierController {
 
         for (Courier courier : listCouriers) {
 
-            if (type == "koperta") {
+            if (parcel.getType() == "koperta") {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
-            } else if (type == "paczka") {
+            } else if (parcel.getType() == "paczka") {
 
-                if (Integer.parseInt(weight) <= 1) {
+                if (parcel.getWeight() <= 1) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
                 }
-                if (Integer.parseInt(weight) <= 2) {
+                if (parcel.getWeight() <= 2) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_2() * ratio;
                 }
-                if (Integer.parseInt(weight) <= 5) {
+                if (parcel.getWeight() <= 5) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_5() * ratio;
                 }
-                if (Integer.parseInt(weight) <= 10) {
+                if (parcel.getWeight() <= 10) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_10() * ratio;
                 }
-                if (Integer.parseInt(weight) <= 15) {
+                if (parcel.getWeight() <= 15) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_15() * ratio;
                 }
-                if (Integer.parseInt(weight) <= 20) {
+                if (parcel.getWeight() <= 20) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_20() * ratio;
                 }
-                if (Integer.parseInt(weight) <= 30) {
+                if (parcel.getWeight()<= 30) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_30() * ratio;
                 }
-            } else if (type == "paleta") {
-                if (Integer.parseInt(weight) <= 300) {
+            } else if (parcel.getType() == "paleta") {
+                if (parcel.getWeight() <= 300) {
                     price = palletPricingRepository.findByCourier(courier).getUp_to_300();
-                } else if (Integer.parseInt(weight) <= 500) {
+                } else if (parcel.getWeight() <= 500) {
                     price = palletPricingRepository.findByCourier(courier).getUp_to_500();
-                } else if (Integer.parseInt(weight) <= 800) {
+                } else if (parcel.getWeight() <= 800) {
                     price = palletPricingRepository.findByCourier(courier).getUp_to_800();
-                } else if (Integer.parseInt(weight) <= 1000) {
+                } else if (parcel.getWeight() <= 1000) {
                     price = palletPricingRepository.findByCourier(courier).getUp_to_1000();
                 }
             }
@@ -171,7 +140,7 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
-            button[index] = new Button(courier.getName() + price + "zł");
+            button[index] = new Button(courier.getName() + " " + price + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
             button[index].setStyle("-fx-background-radius: 3px; " +
@@ -182,19 +151,22 @@ public class UserOrderChooseCourierController {
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+if(getLoggedUser() != null) {
 
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
-                        loader.setControllerFactory(context::getBean);
-                        Parent root = loader.load();
-                        UserOrderFillAddressesFormController fillAdressessController = loader.getController();
-                        stage.setScene(new Scene(root));
-                        stage.show();
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
+        loader.setControllerFactory(context::getBean);
+        Parent root = loader.load();
+        UserOrderFillAddressesFormController fillAdressessController = loader.getController();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-                        fillAdressessController.initialize(type, weight, length, width, height);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        fillAdressessController.initialize(parcel, courier, price);
+    } catch (IOException e) {
+        showDialog("Musisz być zalogowany by dokonać zamówienia!");
+    }
+}
+else showDialog("Musisz być zalogowany by dokonać zamówienia!");
                 }
             });
             gridPane.add(button[index], gridCol, gridRow);

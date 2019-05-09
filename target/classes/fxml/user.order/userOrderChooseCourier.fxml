@@ -1,59 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.geometry.Insets?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.order.UserOrderChooseCourierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="serwisPaczek.controller.user.order.UserOrderChooseCourierController">
     <top>
         <ImageView fitHeight="194.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/BigBanner_Delivery.png" />
+                <Image url="@../../images/BigBanner_Delivery.png"/>
             </image>
         </ImageView>
     </top>
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="61.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="679.0" style="-fx-background-color: Blue;" text="Wybierz firmę kurierską" textFill="WHITE" wrapText="true">
+                <Button layoutX="61.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="679.0"
+                        style="-fx-background-color: Blue;" text="Wybierz firmę kurierską" textFill="WHITE"
+                        wrapText="true">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="17.0"/>
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="356.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="691.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textFill="WHITE">
+                <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="356.0" mnemonicParsing="false"
+                        onAction="#BackToMenu" prefHeight="41.0" prefWidth="691.0" style="-fx-background-color: green;"
+                        text="Powrót do strony głównej" textFill="WHITE">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
-            <ScrollPane layoutX="61.0" layoutY="72.0" prefHeight="272.0" prefWidth="682.0">
-              <content>
-                  <GridPane fx:id="gridPane" alignment="TOP_CENTER" hgap="52.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="120.0" prefWidth="696.0" vgap="20.0">
-                      <columnConstraints>
-                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                          <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
-                      </rowConstraints>
-                      <opaqueInsets>
-                          <Insets />
-                      </opaqueInsets>
-                      <padding>
-                          <Insets left="52.0" />
-                      </padding>
-                  </GridPane>
-              </content>
-            </ScrollPane>
+                <ScrollPane layoutX="61.0" layoutY="72.0" prefHeight="272.0" prefWidth="682.0">
+                    <content>
+                        <GridPane fx:id="gridPane" alignment="TOP_CENTER" hgap="52.0" nodeOrientation="LEFT_TO_RIGHT"
+                                  prefHeight="120.0" prefWidth="696.0" vgap="20.0">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="ALWAYS"/>
+                            </rowConstraints>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <padding>
+                                <Insets left="52.0"/>
+                            </padding>
+                        </GridPane>
+                    </content>
+                </ScrollPane>
             </children>
         </AnchorPane>
     </center>

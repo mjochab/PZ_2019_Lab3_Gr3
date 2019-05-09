@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.model.Parcel;
+import serwisPaczek.repository.ParcelRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
@@ -23,6 +25,8 @@ public class UserOrderMainController {
     private SceneManager sceneManager;
 
     private ApplicationContext context;
+    @Autowired
+    private ParcelRepository parcelRepository;
 
     @FXML
     private TextField TFdlugosc;
@@ -63,14 +67,19 @@ public class UserOrderMainController {
             typ = "paczka";
         } else typ = "paleta";
 
+        Parcel parcel = parcelRepository.save(new Parcel(Integer.parseInt(TFdlugosc.getText()),
+                Integer.parseInt(TFszerokosc.getText()),
+                Integer.parseInt(TFwysokosc.getText()),
+                typ, Integer.parseInt(TFwaga.getText())
+                ));
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderChooseCourier.fxml"));
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
 
             UserOrderChooseCourierController chooseCourierController = loader.getController();
-            chooseCourierController.initialize(typ, TFwaga.getText(), TFdlugosc.getText(),
-                    TFszerokosc.getText(), TFwysokosc.getText());
+            chooseCourierController.initialize(parcel);
 
             stage.setScene(new Scene(root));
             stage.show();
