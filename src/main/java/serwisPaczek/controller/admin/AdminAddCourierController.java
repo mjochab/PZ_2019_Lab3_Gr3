@@ -89,6 +89,7 @@ public class AdminAddCourierController {
                         pack_up_to_10, pack_up_to_15, pack_up_to_20, pack_up_to_30, pallet_up_to_300, pallet_up_to_500,
                         pallet_up_to_800, pallet_up_to_1000);
                 showDialog("Poprawnie dodano kuriera do bazy.");
+                sceneManager.show(SceneType.ADMIN_ADD_COURIER);
             } else {
                 throw new NumberFormatException();
             }
