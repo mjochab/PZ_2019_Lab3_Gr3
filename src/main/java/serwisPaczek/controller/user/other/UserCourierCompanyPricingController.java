@@ -37,8 +37,8 @@ public class UserCourierCompanyPricingController {
     @Autowired
     PalletPricingRepository palletPricingRepository;
 
-    public void initialize() {
-        Long courierID = UserCourierCompaniesListController.getCourierID();
+    @FXML
+    public void initialize(Long courierID, String courierName) {
         Courier courier = courierRepository.getOne(courierID);
 
         // Get price lists
@@ -46,7 +46,7 @@ public class UserCourierCompanyPricingController {
         PackPricing packPricing = packPricingRepository.findByCourier(courier);
         PalletPricing palletPricing = palletPricingRepository.findByCourier(courier);
 
-        courierNameButton.setText(UserCourierCompaniesListController.getCourierName());
+        courierNameButton.setText(courierName);
         envelopeList.getItems().addAll("do 1 kg: " + envelopePricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 1 kg: " + packPricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 2 kg: " + packPricing.getUp_to_2() + " zł");
