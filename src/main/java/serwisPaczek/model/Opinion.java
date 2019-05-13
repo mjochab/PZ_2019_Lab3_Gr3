@@ -1,9 +1,12 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Data
 public class Opinion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

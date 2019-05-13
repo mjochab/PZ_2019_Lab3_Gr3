@@ -7,38 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="serwisPaczek.controller.user.other.UserCourierOpinionsController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.other.UserCourierOpinionsController">
     <top>
         <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/BigBanner_Delivery.png"/>
+                <Image url="@../../images/BigBanner_Delivery.png" />
             </image>
         </ImageView>
     </top>
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0"
-                        style="-fx-background-color: Blue;" text="Opinie firmy DHL" textFill="WHITE" wrapText="true">
+                <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0" style="-fx-background-color: Blue;" text="Opinie firmy DHL" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="17.0"/>
+                        <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="298.0" mnemonicParsing="false"
-                        onAction="#BackToMenu" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;"
-                        text="Powrót na strone główną" textFill="WHITE">
+                <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="298.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;" text="Powrót na strone główną" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <ListView layoutX="62.0" layoutY="76.0" prefHeight="211.0" prefWidth="674.0"/>
-                <Button fx:id="PriceListButton" layoutX="530.0" layoutY="298.0" mnemonicParsing="false"
-                        onAction="#PriceList" prefHeight="46.0" prefWidth="211.0"
-                        style="-fx-background-color: rgb(120,1,1);" text="Powrót do cennika" textFill="WHITE">
+                <ListView fx:id="opinionList" layoutX="62.0" layoutY="76.0" prefHeight="211.0" prefWidth="674.0" />
+                <Button fx:id="PriceListButton" layoutX="530.0" layoutY="298.0" mnemonicParsing="false" onAction="#PriceList" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: rgb(120,1,1);" text="Powrót do cennika" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
             </children>
