@@ -13,7 +13,6 @@ import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.service.CourierService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
 import java.util.List;
 
 import static serwisPaczek.utils.DialogsUtils.showDialog;
