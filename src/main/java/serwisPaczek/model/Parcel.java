@@ -1,8 +1,11 @@
 package serwisPaczek.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 public class Parcel {
 
     @Id
@@ -17,7 +20,7 @@ public class Parcel {
 
     private String type;
 
-    private String content;
+    private int weight;
 
     @OneToOne(mappedBy = "parcel", cascade = CascadeType.ALL)
     private UserOrder userOrder;
@@ -25,12 +28,12 @@ public class Parcel {
     public Parcel() {
     }
 
-    public Parcel(int lenght, int width, int height, String type, String content) {
+    public Parcel(int lenght, int width, int height, String type, int weight) {
         this.length = lenght;
         this.width = width;
         this.height = height;
         this.type = type;
-        this.content = content;
+        this.weight=weight;
     }
 
 }

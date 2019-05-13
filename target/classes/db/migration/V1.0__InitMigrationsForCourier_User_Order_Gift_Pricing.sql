@@ -99,7 +99,7 @@ length int,
 width int,
 height int,
 type varchar(50),
-content varchar(50),
+weight int,
 PRIMARY KEY(id)
 );
 

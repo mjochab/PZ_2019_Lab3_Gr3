@@ -1,5 +1,6 @@
 package serwisPaczek;
 
+import generate.GeneratePdf;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,15 @@ public class Main extends Application {
 
     private ConfigurableApplicationContext springContext;
 
+
+
+
+
     @Autowired
     private SceneManager sceneManager;
 
     public static void main(String[] args) {
+
         launch(args);
     }
 

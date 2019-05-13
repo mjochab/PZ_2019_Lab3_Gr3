@@ -80,7 +80,6 @@ public class UserService {
             if (userRepository.findByUsername(username) != null) {
                 showDialog("Użytkownik o podanej nazwie użytkownika istnieje!");
             } else {
-
                 User user = new User(username, encryption.encode(password), roleRepository.findByRoleName(
                         "USER_ROLE"));
                 userRepository.save(user);

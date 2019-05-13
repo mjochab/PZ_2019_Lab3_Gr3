@@ -44,13 +44,9 @@ public class UserOrderFillAddressesFormController {
         this.context = context;
     }
 
-    String typ;
-    String waga;
-    String szerokosc;
-    String wysokosc;
-    String dlugosc;
-
-
+    private Parcel parcel;
+    private Courier courier;
+    private float price;
     @FXML
     private TextField TFsenderSurname;
 
@@ -117,24 +113,24 @@ public class UserOrderFillAddressesFormController {
                 TFsenderCity.getText(),
                 TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
                 Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
+        adressRepository.save(received);
+        adressRepository.save(sender);
+
+        RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
+        SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
+
+        //example add order
+        UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
+                courierRepository.getOne(5L),
+                Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
             UserOrderFinalizeController finalizeController = loader.getController();
-            finalizeController.initialize(typ, waga, dlugosc, szerokosc, wysokosc, sender, received);
+            finalizeController.initialize( order, sender, received, courier,parcel);
 
-            adressRepository.save(received);
-            adressRepository.save(sender);
-
-            RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
-            SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
-
-            //example add order
-            orderRepository.save(new UserOrder(300, new Date(), getLoggedUser(),
-                    courierRepository.getOne(5L),
-                    Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
 
             stage.setScene(new Scene(root));
             stage.show();
@@ -147,13 +143,11 @@ public class UserOrderFillAddressesFormController {
 
 
     @FXML
-    public void initialize(String typ, String waga, String dlugosc, String szerokosc, String wysokosc) {
-        this.typ = typ;
-        this.waga = waga;
-        this.dlugosc = dlugosc;
-        this.szerokosc = szerokosc;
-        this.wysokosc = wysokosc;
-
+    public void initialize(Parcel parcel,
+                           Courier courier, float price) {
+     this.parcel=parcel;
+        this.courier = courier;
+        this.price=price;
         fillAdressCheckbox.setVisible(false);
         if (getLoggedUser().getAdress() != null) {
             fillAdressCheckbox.setVisible(true);

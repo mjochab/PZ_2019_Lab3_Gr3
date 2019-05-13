@@ -3,42 +3,32 @@ package serwisPaczek.controller.user.other;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Courier;
 import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.io.IOException;
 import java.util.List;
+
+import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompaniesListController {
     private SceneManager sceneManager;
-    private static long courierID;
-    private static String courierName;
+    private ApplicationContext context;
     @FXML
     private GridPane gridPane;
     @Autowired
     CourierRepository courierRepository;
-
-    public static long getCourierID() {
-        return courierID;
-    }
-
-    private static void setCourierID(long courierID) {
-        UserCourierCompaniesListController.courierID = courierID;
-    }
-
-    public static String getCourierName() {
-        return courierName;
-    }
-
-    private static void setCourierName(String courierName) {
-        UserCourierCompaniesListController.courierName = courierName;
-    }
 
     public void initialize() {
         List<Courier> listCouriers = courierRepository.findAll();
@@ -85,9 +75,18 @@ public class UserCourierCompaniesListController {
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    setCourierID(courier.getId());
-                    setCourierName(courier.getName());
-                    sceneManager.show(SceneType.USER_COURIER_COMPANY_PRICING);
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierCompanyPricing.fxml"));
+                        loader.setControllerFactory(context::getBean);
+                        Parent root = loader.load();
+                        UserCourierCompanyPricingController userCourierCompanyPricingController = loader.getController();
+                        userCourierCompanyPricingController.initialize(courier.getId(), courier.getName());
+                        stage.setScene(new Scene(root));
+                        stage.show();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             gridPane.add(button[index], gridCol, gridRow);
@@ -104,5 +103,10 @@ public class UserCourierCompaniesListController {
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
+    }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
     }
 }
