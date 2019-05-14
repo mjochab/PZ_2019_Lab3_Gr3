@@ -2,10 +2,15 @@ package serwisPaczek.controller.user.other;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.controller.user.order.UserOrderChooseCourierController;
 import serwisPaczek.model.Courier;
 import serwisPaczek.model.EnvelopePricing;
 import serwisPaczek.model.PackPricing;
@@ -17,9 +22,14 @@ import serwisPaczek.repository.PalletPricingRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.io.IOException;
+
+import static serwisPaczek.utils.SceneManager.stage;
+
 @Controller
 public class UserCourierCompanyPricingController {
     private SceneManager sceneManager;
+    private ApplicationContext context;
     @FXML
     private ListView<String> envelopeList;
     @FXML
@@ -36,9 +46,10 @@ public class UserCourierCompanyPricingController {
     PackPricingRepository packPricingRepository;
     @Autowired
     PalletPricingRepository palletPricingRepository;
-
+    private Long courierID;
     @FXML
     public void initialize(Long courierID, String courierName) {
+        this.courierID=courierID;
         Courier courier = courierRepository.getOne(courierID);
 
         // Get price lists
@@ -46,7 +57,7 @@ public class UserCourierCompanyPricingController {
         PackPricing packPricing = packPricingRepository.findByCourier(courier);
         PalletPricing palletPricing = palletPricingRepository.findByCourier(courier);
 
-        courierNameButton.setText(courierName);
+        courierNameButton.setText(courier.getName());
         envelopeList.getItems().addAll("do 1 kg: " + envelopePricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 1 kg: " + packPricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 2 kg: " + packPricing.getUp_to_2() + " zł");
@@ -68,11 +79,31 @@ public class UserCourierCompanyPricingController {
 
     @FXML
     public void CourierOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.USER_COURIER_OPINIONS);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierOpinions.fxml"));
+            loader.setControllerFactory(context::getBean);
+            Parent root = loader.load();
+
+            UserCourierOpinionsController userCourierOpinionsController = loader.getController();
+            userCourierOpinionsController.initialize(courierID);
+
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
+    }
+
 }

@@ -12,6 +12,8 @@ import serwisPaczek.repository.OpinionRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.util.List;
+
 @Controller
 public class UserCourierOpinionsController {
     private SceneManager sceneManager;
@@ -23,19 +25,17 @@ public class UserCourierOpinionsController {
     OpinionRepository opinionRepository;
 
 
-    public void initialize() {
-        // Get courier
-        Long courierID = UserCourierCompaniesListController.getCourierID();
-        Courier courier = courierRepository.getOne(courierID);
+    @FXML
+    public void initialize(Long courierId) {
+        Courier courier = courierRepository.getOne(courierId);
 
         // Get opinions
-        Opinion opinions = opinionRepository.findByUserOrder_Courier(courier);
+        List<Opinion> opinions = opinionRepository.findAllByUserOrder_Courier(courier);
 
-        // Show opinions in opinionList container
-        opinionList.getItems().addAll(opinions.getDate() + " " + " |  Ocena: " +
-                opinions.getRating() + "  |  " + opinions.getContent());
-
-
+        for (Opinion op : opinions) {
+            opinionList.getItems().add(op.getDate() + " " + " |  Ocena: " +
+                    op.getRating() + "  |  " + op.getContent());
+        }
     }
 
     @FXML

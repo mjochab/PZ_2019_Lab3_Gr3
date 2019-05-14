@@ -29,7 +29,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <ListView fx:id="opinionList" layoutX="62.0" layoutY="76.0" prefHeight="211.0" prefWidth="674.0" />
+                <ListView fx:id="opinionList" layoutX="61.0" layoutY="65.0" prefHeight="211.0" prefWidth="680.0" />
                 <Button fx:id="PriceListButton" layoutX="530.0" layoutY="298.0" mnemonicParsing="false" onAction="#PriceList" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: rgb(120,1,1);" text="Powrót do cennika" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
