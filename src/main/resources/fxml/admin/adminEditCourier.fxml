@@ -13,7 +13,7 @@
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
                 <ComboBox fx:id="courierComboBox" layoutX="18.0" layoutY="61.0" onAction="#showCourier" prefHeight="38.0" prefWidth="765.0" />
-                <Button fx:id="editCourierButton" layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#editCourier" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+                <Button fx:id="editCourierButton" layoutX="199.0" layoutY="554.0" mnemonicParsing="false" onAction="#editCourier" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -34,7 +34,7 @@
                 <TextField fx:id="pallet_up_to_800" layoutX="558.0" layoutY="275.0" prefHeight="25.0" prefWidth="220.0" promptText="800 kg" />
                 <TextField fx:id="pallet_up_to_1000" layoutX="557.0" layoutY="310.0" prefHeight="25.0" prefWidth="220.0" promptText="1000 kg" />
 
-                <Button fx:id="adminMainButton" layoutX="199.0" layoutY="554.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+                <Button fx:id="adminMainButton" layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

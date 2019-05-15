@@ -27,12 +27,12 @@
                 <TextField fx:id="pallet_up_to_500" layoutX="557.0" layoutY="203.0" prefHeight="25.0" prefWidth="220.0" promptText="500 kg" />
                 <TextField fx:id="pallet_up_to_800" layoutX="558.0" layoutY="238.0" prefHeight="25.0" prefWidth="220.0" promptText="800 kg" />
                 <TextField fx:id="pallet_up_to_1000" layoutX="557.0" layoutY="273.0" prefHeight="25.0" prefWidth="220.0" promptText="1000 kg" />
-                <Button fx:id="addCourierButton" layoutX="18.0" layoutY="553.0" mnemonicParsing="false" onAction="#addCourier" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+                <Button fx:id="addCourierButton" layoutX="203.0" layoutY="553.0" mnemonicParsing="false" onAction="#addCourier" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="AdminMainButton" layoutX="203.0" layoutY="553.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+                <Button fx:id="AdminMainButton" layoutX="18.0" layoutY="553.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

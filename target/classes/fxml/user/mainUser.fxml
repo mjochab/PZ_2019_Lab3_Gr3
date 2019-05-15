@@ -28,7 +28,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenPriceListButton" layoutX="226.0" layoutY="80.0" mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
+                <Button fx:id="OpenPriceListButton" layoutX="226.0" layoutY="73.0" mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -38,7 +38,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenOrdeCourierrButton" layoutX="80.0" layoutY="80.0" mnemonicParsing="false" onAction="#OpenOrderCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Zamów kuriera" textFill="WHITE">
+                <Button fx:id="OpenOrdeCourierrButton" layoutX="80.0" layoutY="73.0" mnemonicParsing="false" onAction="#OpenOrderCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Zamów kuriera" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

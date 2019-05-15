@@ -1,45 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="serwisPaczek.controller.user.gift.UserGiftOrderController">
-    <top>
-        <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
-            <image>
-                <Image url="@../../images/BigBanner_Delivery.png"/>
-            </image>
-        </ImageView>
-    </top>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.gift.UserGiftOrderController">
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="273.0" mnemonicParsing="false"
-                        onAction="#BackToMenu" prefHeight="46.0" prefWidth="211.0" style="-fx-background-color: green;"
-                        text="Powrót na strone główną" textFill="WHITE">
+                <Button fx:id="BackToMenuButton" layoutX="45.0" layoutY="551.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <TableView fx:id="tableView" layoutX="61.0" layoutY="50.0" prefHeight="210.0" prefWidth="710.0">
+                <TableView fx:id="tableView" layoutX="45.0" layoutY="70.0" prefHeight="462.0" prefWidth="710.0">
                     <columns>
-                        <TableColumn fx:id="nameColumn" prefWidth="393.00001525878906" text="Nazwa"/>
-                        <TableColumn fx:id="premiumPointsColumn" minWidth="0.0" prefWidth="183.0" text="Ilość punktów"/>
-                        <TableColumn fx:id="logoColumn" prefWidth="133.0" text="Logo"/>
+                        <TableColumn fx:id="nameColumn" prefWidth="393.00001525878906" text="Nazwa" />
+                        <TableColumn fx:id="premiumPointsColumn" minWidth="0.0" prefWidth="183.0" text="Ilość punktów" />
+                        <TableColumn fx:id="logoColumn" prefWidth="133.0" text="Logo" />
                     </columns>
                 </TableView>
-                <Button layoutX="641.0" layoutY="273.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="130.0"
-                        style="-fx-background-color: blue;" text="Zamów" textFill="WHITE">
+                <Button layoutX="580.0" layoutY="551.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="253.0" layoutY="22.0" text="Wybierz prezent a następnie kliknij &quot;Zamów&quot;"/>
+            <Button layoutX="45.0" layoutY="16.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="709.0" style="-fx-background-color: Blue;" text="Wybierz prezent a następnie kliknij &quot;Zamów&quot;" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </center>

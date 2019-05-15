@@ -1,118 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="serwisPaczek.controller.user.order.UserOrderMainController">
-    <top>
-        <ImageView fitHeight="196.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
-            <image>
-                <Image url="@../../images/BigBanner_Delivery.png"/>
-            </image>
-        </ImageView>
-    </top>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.order.UserOrderMainController">
     <center>
         <AnchorPane prefHeight="404.0" prefWidth="665.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="BackToMenuButton" layoutX="14.0" layoutY="357.0" mnemonicParsing="false"
-                        onAction="#BackToMenu" prefHeight="36.0" prefWidth="209.0" style="-fx-background-color: green;"
-                        text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="BackToMenuButton" layoutX="31.0" layoutY="545.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="67.0" layoutY="14.0" prefHeight="44.0" prefWidth="410.0"
-                       style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
-                       text="Wybierz rodzaj paczki" textFill="WHITE">
+                <Label layoutX="33.0" layoutY="21.0" prefHeight="35.0" prefWidth="410.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Wybierz rodzaj paczki" textFill="WHITE">
                     <font>
-                        <Font size="17.0"/>
+                        <Font size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="TFdlugosc" layoutX="67.0" layoutY="264.0" prefHeight="29.0" prefWidth="189.0"
-                           promptText="Długość">
+                <TextField fx:id="TFdlugosc" layoutX="33.0" layoutY="212.0" prefHeight="30.0" prefWidth="410.0" promptText="Długość">
                     <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="TFwaga" layoutX="68.0" layoutY="180.0" prefHeight="29.0" prefWidth="407.0"
-                           promptText="Waga">
+                <TextField fx:id="TFwaga" layoutX="33.0" layoutY="172.0" prefHeight="30.0" prefWidth="410.0" promptText="Waga">
                     <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="TFwysokosc" layoutX="68.0" layoutY="220.0" prefHeight="29.0" prefWidth="407.0"
-                           promptText="Wysokość">
+                <TextField fx:id="TFwysokosc" layoutX="33.0" layoutY="291.0" prefHeight="30.0" prefWidth="410.0" promptText="Wysokość">
                     <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </TextField>
-                <RadioButton fx:id="RBkoperta" layoutX="75.0" layoutY="72.0" mnemonicParsing="false" prefHeight="17.0"
-                             prefWidth="67.0">
+                <RadioButton fx:id="RBkoperta" layoutX="33.0" layoutY="69.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../icons/koperta.PNG"/>
+                                <Image url="@../../icons/koperta.PNG" />
                             </image>
                         </ImageView>
                     </graphic>
                     <toggleGroup>
-                        <ToggleGroup fx:id="typ"/>
+                        <ToggleGroup fx:id="typ" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="RBpaczka" layoutX="216.0" layoutY="72.0" mnemonicParsing="false" toggleGroup="$typ">
+                <RadioButton fx:id="RBpaczka" layoutX="188.0" layoutY="69.0" mnemonicParsing="false" toggleGroup="$typ">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../icons/paczka.PNG"/>
+                                <Image url="@../../icons/paczka.PNG" />
                             </image>
                         </ImageView>
                     </graphic>
                 </RadioButton>
-                <RadioButton fx:id="RBpaleta" layoutX="349.0" layoutY="72.0" mnemonicParsing="false" toggleGroup="$typ">
+                <RadioButton fx:id="RBpaleta" layoutX="332.0" layoutY="69.0" mnemonicParsing="false" toggleGroup="$typ">
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../icons/paleta.PNG"/>
+                                <Image url="@../../icons/paleta.PNG" />
                             </image>
                         </ImageView>
                     </graphic>
                 </RadioButton>
-                <Label layoutX="68.0" layoutY="120.0" prefHeight="44.0" prefWidth="408.0"
-                       style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
-                       text="Podaj wymiary paczki" textFill="WHITE">
+                <Label layoutX="33.0" layoutY="126.0" prefHeight="35.0" prefWidth="410.0" style="-fx-background-color: dimgray; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Podaj wymiary paczki" textFill="WHITE">
                     <font>
-                        <Font size="17.0"/>
+                        <Font size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="TFszerokosc" layoutX="272.0" layoutY="264.0" prefHeight="29.0" prefWidth="203.0"
-                           promptText="Szerokość">
+                <TextField fx:id="TFszerokosc" layoutX="33.0" layoutY="251.0" prefHeight="30.0" prefWidth="410.0" promptText="Szerokość">
                     <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </TextField>
-                <Button fx:id="openPriceListButton" layoutX="67.0" layoutY="307.0" mnemonicParsing="false"
-                        onAction="#OpenPriceListButton" prefHeight="34.0" prefWidth="407.0"
-                        style="-fx-background-color: red;" text="Sprawdź ceny" textFill="WHITE" wrapText="true">
+                <Button fx:id="openPriceListButton" layoutX="249.0" layoutY="545.0" mnemonicParsing="false" onAction="#OpenPriceListButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Sprawdź ceny" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <ImageView fitHeight="188.0" fitWidth="266.0" layoutX="508.0" layoutY="14.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <ImageView fitHeight="372.0" fitWidth="268.0" layoutX="508.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/maks wymiary.PNG"/>
+                        <Image url="@../../images/kurier.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="198.0" fitWidth="200.0" layoutX="578.0" layoutY="194.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@../../images/kurier.png"/>
-                    </image>
-                </ImageView>
+            <Pane layoutX="486.0" layoutY="4.0" prefHeight="168.0" prefWidth="300.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="13.0" prefHeight="35.0" prefWidth="270.0" style="-fx-background-color: blue; -fx-alignment: center;" text="Maksymalne wymiary paczki" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="42.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: blue; -fx-alignment: center;" text="waga x dł. x szer. x wys." textAlignment="CENTER" textFill="WHITE" />
+                  <Label layoutX="13.0" layoutY="72.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: darkorange; -fx-alignment: center;" text="Koperta: 1kg x 35cm x 25cm x 5cm" textFill="WHITE" />
+                  <Label layoutX="13.0" layoutY="102.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: red; -fx-alignment: center;" text="Paczka: 30kg x 100cm x 90cm x 70cm" textFill="WHITE" />
+                  <Label layoutX="13.0" layoutY="132.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: purple; -fx-alignment: center;" text="Paleta: 100kg x 200cm x 140cm x 200cm" textFill="WHITE" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="157.0" layoutX="6.0" layoutY="6.0" stroke="BLUE" strokeType="INSIDE" width="288.0" />
+               </children>
+            </Pane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="318.0" layoutX="26.0" layoutY="13.0" stroke="BLUE" strokeType="INSIDE" width="427.0" />
             </children>
         </AnchorPane>
     </center>
