@@ -15,7 +15,7 @@
                     <left>
                         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
                             <children>
-                                <Button layoutX="83.0" layoutY="15.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="639.0" style="-fx-background-color: dimgrey;" text="Witaj Admin" textFill="WHITE" wrapText="true">
+                                <Button layoutX="81.0" layoutY="27.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: dimgrey;" text="Witaj Admin" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="17.0" />
                                     </font>
@@ -26,12 +26,12 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="openAddCourierButton" layoutX="439.0" layoutY="126.0" mnemonicParsing="false" onAction="#openAddCourierPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Dodaj kuriera" textFill="WHITE">
+                                <Button fx:id="openAddCourierButton" layoutX="435.0" layoutY="126.0" mnemonicParsing="false" onAction="#openAddCourierPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Dodaj kuriera" textFill="WHITE">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="editAboutButtonPanel" layoutX="439.0" layoutY="310.0" mnemonicParsing="false" onAction="#openEditAboutPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="editAboutButtonPanel" layoutX="435.0" layoutY="310.0" mnemonicParsing="false" onAction="#openEditAboutPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -41,7 +41,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="587.0" layoutY="311.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="119.0" prefWidth="138.0" style="-fx-background-color: Blue;" text="Wypełnij bazę przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="583.0" layoutY="311.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="119.0" prefWidth="138.0" style="-fx-background-color: Blue;" text="Wypełnij bazę przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -51,12 +51,12 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="editCourierButton" layoutX="588.0" layoutY="126.0" mnemonicParsing="false" onAction="#openEditCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj cennik" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="editCourierButton" layoutX="584.0" layoutY="126.0" mnemonicParsing="false" onAction="#openEditCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj cennik" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button graphicTextGap="1.0" layoutX="439.0" layoutY="83.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zarządanie firmami kurierskimi" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                                <Button graphicTextGap="1.0" layoutX="435.0" layoutY="83.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zarządanie firmami kurierskimi" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
@@ -71,7 +71,7 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Button>
-                                <Button graphicTextGap="1.0" layoutX="439.0" layoutY="268.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zarządanie firmą" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                                <Button graphicTextGap="1.0" layoutX="435.0" layoutY="268.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zarządanie firmą" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
