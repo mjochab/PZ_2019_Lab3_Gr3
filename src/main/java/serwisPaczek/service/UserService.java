@@ -44,7 +44,7 @@ public class UserService {
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
                 sceneManager.show(SceneType.ADMIN_MAIN);
             else {
-                showDialog("Podałeś zły username lub hasło");
+                showDialog("Podałeś zły username lub hasło!");
             }
         }
     }
@@ -68,7 +68,7 @@ public class UserService {
         }
 
         if (password.length() < 6 || password.length() > 18) {
-            passwordWarning.setText("Hasło musi zawierać pomiędzy 6 a 18 znaków");
+            passwordWarning.setText("Hasło musi zawierać pomiędzy 6 a 18 znaków!");
             passwordWarning.setVisible(true);
         }
 
