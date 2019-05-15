@@ -10,7 +10,6 @@ import javafx.scene.control.ListView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.controller.user.order.UserOrderChooseCourierController;
 import serwisPaczek.model.Courier;
 import serwisPaczek.model.EnvelopePricing;
 import serwisPaczek.model.PackPricing;
@@ -28,6 +27,14 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompanyPricingController {
+    @Autowired
+    CourierRepository courierRepository;
+    @Autowired
+    EnvelopePricingRepository envelopePricingRepository;
+    @Autowired
+    PackPricingRepository packPricingRepository;
+    @Autowired
+    PalletPricingRepository palletPricingRepository;
     private SceneManager sceneManager;
     private ApplicationContext context;
     @FXML
@@ -38,18 +45,11 @@ public class UserCourierCompanyPricingController {
     private ListView<String> palletList;
     @FXML
     private Button courierNameButton;
-    @Autowired
-    CourierRepository courierRepository;
-    @Autowired
-    EnvelopePricingRepository envelopePricingRepository;
-    @Autowired
-    PackPricingRepository packPricingRepository;
-    @Autowired
-    PalletPricingRepository palletPricingRepository;
     private Long courierID;
+
     @FXML
     public void initialize(Long courierID, String courierName) {
-        this.courierID=courierID;
+        this.courierID = courierID;
         Courier courier = courierRepository.getOne(courierID);
 
         // Get price lists

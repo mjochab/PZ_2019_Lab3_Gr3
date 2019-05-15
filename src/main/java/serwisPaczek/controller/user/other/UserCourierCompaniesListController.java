@@ -23,12 +23,12 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompaniesListController {
+    @Autowired
+    CourierRepository courierRepository;
     private SceneManager sceneManager;
     private ApplicationContext context;
     @FXML
     private GridPane gridPane;
-    @Autowired
-    CourierRepository courierRepository;
 
     public void initialize() {
         List<Courier> listCouriers = courierRepository.findAll();

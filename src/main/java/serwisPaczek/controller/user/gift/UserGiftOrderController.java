@@ -19,11 +19,9 @@ import java.util.List;
 
 @Controller
 public class UserGiftOrderController {
-    private SceneManager sceneManager;
-
     @Autowired
     GiftRepository giftRepository;
-
+    private SceneManager sceneManager;
     @FXML
     private TableView<Gift> tableView;
     @FXML

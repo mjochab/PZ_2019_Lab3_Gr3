@@ -1,56 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.admin.AdminAddCourierController">
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="serwisPaczek.controller.admin.AdminAddCourierController">
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="courier_name" layoutX="23.0" layoutY="75.0" prefHeight="25.0" prefWidth="755.0" promptText="Nazwa Firmy" />
-                <TextField fx:id="envelope_up_to_1" layoutX="24.0" layoutY="166.0" prefHeight="25.0" prefWidth="220.0" promptText="1 kg" />
-                <TextField fx:id="pack_up_to_1" layoutX="293.0" layoutY="166.0" prefHeight="25.0" prefWidth="220.0" promptText="1 kg" />
-                <TextField fx:id="pack_up_to_2" layoutX="293.0" layoutY="200.0" prefHeight="25.0" prefWidth="220.0" promptText="2 kg" />
-                <TextField fx:id="pack_up_to_5" layoutX="293.0" layoutY="235.0" prefHeight="25.0" prefWidth="220.0" promptText="5 kg" />
-                <TextField fx:id="pack_up_to_10" layoutX="293.0" layoutY="270.0" prefHeight="25.0" prefWidth="220.0" promptText="10 kg" />
-                <TextField fx:id="pack_up_to_15" layoutX="293.0" layoutY="305.0" prefHeight="25.0" prefWidth="220.0" promptText="15 kg" />
-                <TextField fx:id="pack_up_to_20" layoutX="293.0" layoutY="340.0" prefHeight="25.0" prefWidth="220.0" promptText="20 kg" />
-                <TextField fx:id="pack_up_to_30" layoutX="293.0" layoutY="376.0" prefHeight="25.0" prefWidth="220.0" promptText="30 kg" />
-                <TextField fx:id="pallet_up_to_300" layoutX="557.0" layoutY="168.0" prefHeight="25.0" prefWidth="220.0" promptText="300 kg" />
-                <TextField fx:id="pallet_up_to_500" layoutX="557.0" layoutY="203.0" prefHeight="25.0" prefWidth="220.0" promptText="500 kg" />
-                <TextField fx:id="pallet_up_to_800" layoutX="558.0" layoutY="238.0" prefHeight="25.0" prefWidth="220.0" promptText="800 kg" />
-                <TextField fx:id="pallet_up_to_1000" layoutX="557.0" layoutY="273.0" prefHeight="25.0" prefWidth="220.0" promptText="1000 kg" />
-                <Button fx:id="addCourierButton" layoutX="24.0" layoutY="528.0" mnemonicParsing="false" onAction="#addCourier" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+                <TextField fx:id="courier_name" layoutX="23.0" layoutY="75.0" prefHeight="25.0" prefWidth="755.0"
+                           promptText="Nazwa Firmy"/>
+                <TextField fx:id="envelope_up_to_1" layoutX="24.0" layoutY="166.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="1 kg"/>
+                <TextField fx:id="pack_up_to_1" layoutX="293.0" layoutY="166.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="1 kg"/>
+                <TextField fx:id="pack_up_to_2" layoutX="293.0" layoutY="200.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="2 kg"/>
+                <TextField fx:id="pack_up_to_5" layoutX="293.0" layoutY="235.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="5 kg"/>
+                <TextField fx:id="pack_up_to_10" layoutX="293.0" layoutY="270.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="10 kg"/>
+                <TextField fx:id="pack_up_to_15" layoutX="293.0" layoutY="305.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="15 kg"/>
+                <TextField fx:id="pack_up_to_20" layoutX="293.0" layoutY="340.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="20 kg"/>
+                <TextField fx:id="pack_up_to_30" layoutX="293.0" layoutY="376.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="30 kg"/>
+                <TextField fx:id="pallet_up_to_300" layoutX="557.0" layoutY="168.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="300 kg"/>
+                <TextField fx:id="pallet_up_to_500" layoutX="557.0" layoutY="203.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="500 kg"/>
+                <TextField fx:id="pallet_up_to_800" layoutX="558.0" layoutY="238.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="800 kg"/>
+                <TextField fx:id="pallet_up_to_1000" layoutX="557.0" layoutY="273.0" prefHeight="25.0" prefWidth="220.0"
+                           promptText="1000 kg"/>
+                <Button fx:id="addCourierButton" layoutX="24.0" layoutY="528.0" mnemonicParsing="false"
+                        onAction="#addCourier" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;"
+                        text="Zatwierdź" textFill="WHITE">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button fx:id="AdminMainButton" layoutX="219.0" layoutY="528.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+                <Button fx:id="AdminMainButton" layoutX="219.0" layoutY="528.0" mnemonicParsing="false"
+                        onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;"
+                        text="Anuluj" textFill="WHITE">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="755.0" style="-fx-background-color: Blue;" text="Podaj dane firmy kurierskiej" textFill="WHITE" wrapText="true">
+                <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="755.0"
+                        style="-fx-background-color: Blue;" text="Podaj dane firmy kurierskiej" textFill="WHITE"
+                        wrapText="true">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="17.0"/>
                     </font>
                 </Button>
-                <Button layoutX="24.0" layoutY="125.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="220.0" style="-fx-background-color: darkorange;" text="Koperta" textFill="WHITE" wrapText="true">
+                <Button layoutX="24.0" layoutY="125.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="220.0"
+                        style="-fx-background-color: darkorange;" text="Koperta" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Button>
-                <Button layoutX="557.0" layoutY="127.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: slategrey;" text="Paleta" textFill="WHITE" wrapText="true">
+                <Button layoutX="557.0" layoutY="127.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0"
+                        style="-fx-background-color: slategrey;" text="Paleta" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Button>
-                <Button layoutX="293.0" layoutY="125.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: darkolivegreen;" text="Paczka" textFill="WHITE" wrapText="true">
+                <Button layoutX="293.0" layoutY="125.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0"
+                        style="-fx-background-color: darkolivegreen;" text="Paczka" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Button>
             </children>

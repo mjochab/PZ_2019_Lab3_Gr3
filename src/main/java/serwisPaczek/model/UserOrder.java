@@ -37,13 +37,11 @@ public class UserOrder {
     @ManyToOne
     @JoinColumn(name = "recipient_adress_id")
     private RecipientAdress recipientAdress;
-
+    @OneToOne(mappedBy = "userOrder", cascade = CascadeType.ALL)
+    private Opinion opinion;
 
     public UserOrder() {
     }
-
-    @OneToOne(mappedBy = "userOrder", cascade = CascadeType.ALL)
-    private Opinion opinion;
 
     public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
 

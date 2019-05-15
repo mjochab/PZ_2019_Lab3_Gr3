@@ -33,7 +33,7 @@ public class Parcel {
         this.width = width;
         this.height = height;
         this.type = type;
-        this.weight=weight;
+        this.weight = weight;
     }
 
 }

@@ -14,7 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Courier;
 import serwisPaczek.model.Parcel;
-import serwisPaczek.model.dto.UserLoginDto;
 import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.repository.EnvelopePricingRepository;
 import serwisPaczek.repository.PackPricingRepository;
@@ -31,41 +30,39 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserOrderChooseCourierController {
-    private ApplicationContext context;
-
     @Autowired
-    public void setContext(ApplicationContext context) {
-        this.context = context;
-    }
-private Parcel parcel;
+    CourierRepository courierRepository;
+    int ratio = 1;
+    float price;
+    private ApplicationContext context;
+    private Parcel parcel;
     private SceneManager sceneManager;
     @FXML
     private GridPane gridPane;
-    @Autowired
-    CourierRepository courierRepository;
     @Autowired
     private PackPricingRepository packPricingRepository;
     @Autowired
     private PalletPricingRepository palletPricingRepository;
     @Autowired
     private EnvelopePricingRepository envelopePricingRepository;
-
-    int ratio = 1;
-    float price;
-
     @FXML
     private Label test;
 
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
+    }
+
     @FXML
-    public void initialize(Parcel parcel){
-this.parcel = parcel;
+    public void initialize(Parcel parcel) {
+        this.parcel = parcel;
         if (parcel.getType() == "paczka") {
 
-            if ( parcel.getLength()<= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
+            if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
                 ratio = 1;
-            else if ( parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
+            else if (parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
                 ratio = 2;
-            else if (  parcel.getLength() <= 100 && parcel.getWidth()<= 90 && parcel.getHeight() <= 70)
+            else if (parcel.getLength() <= 100 && parcel.getWidth() <= 90 && parcel.getHeight() <= 70)
                 ratio = 3;
         }
         List<Courier> listCouriers = courierRepository.findAll();
@@ -102,7 +99,7 @@ this.parcel = parcel;
                 if (parcel.getWeight() <= 20) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_20() * ratio;
                 }
-                if (parcel.getWeight()<= 30) {
+                if (parcel.getWeight() <= 30) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_30() * ratio;
                 }
             } else if (parcel.getType() == "paleta") {
@@ -151,22 +148,21 @@ this.parcel = parcel;
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-if(getLoggedUser() != null) {
+                    if (getLoggedUser() != null) {
 
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
-        loader.setControllerFactory(context::getBean);
-        Parent root = loader.load();
-        UserOrderFillAddressesFormController fillAdressessController = loader.getController();
-        stage.setScene(new Scene(root));
-        stage.show();
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
+                            loader.setControllerFactory(context::getBean);
+                            Parent root = loader.load();
+                            UserOrderFillAddressesFormController fillAdressessController = loader.getController();
+                            stage.setScene(new Scene(root));
+                            stage.show();
 
-        fillAdressessController.initialize(parcel, courier, price);
-    } catch (IOException e) {
-        showDialog("Musisz być zalogowany by dokonać zamówienia!");
-    }
-}
-else showDialog("Musisz być zalogowany by dokonać zamówienia!");
+                            fillAdressessController.initialize(parcel, courier, price);
+                        } catch (IOException e) {
+                            showDialog("Musisz być zalogowany by dokonać zamówienia!");
+                        }
+                    } else showDialog("Musisz być zalogowany by dokonać zamówienia!");
                 }
             });
             gridPane.add(button[index], gridCol, gridRow);

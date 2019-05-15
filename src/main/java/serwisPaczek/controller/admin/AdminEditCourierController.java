@@ -13,20 +13,21 @@ import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.service.CourierService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
 import java.util.List;
 
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class AdminEditCourierController {
-    private SceneManager sceneManager;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
     CourierService courierService;
-    private Courier courier;
     @FXML
     ComboBox courierComboBox;
+    private SceneManager sceneManager;
+    private Courier courier;
     @FXML
     private TextField courier_name;
     @FXML

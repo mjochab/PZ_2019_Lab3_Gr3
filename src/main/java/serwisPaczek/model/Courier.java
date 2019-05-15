@@ -20,16 +20,16 @@ public class Courier {
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
     private PackPricing packPricing;
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
     public Courier(String name) {
         this.name = name;
     }
 
     public Courier() {
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
 

@@ -16,12 +16,9 @@ import java.util.Map;
 
 @Controller
 public class UserCourierRankingController {
-    private SceneManager sceneManager;
-
     @Autowired
     OrderRepository orderRepository;
-
-
+    private SceneManager sceneManager;
     @FXML
     private PieChart rankingPieChart;
 

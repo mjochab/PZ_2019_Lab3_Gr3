@@ -38,66 +38,48 @@ public class UserOrderFillAddressesFormController {
 
 
     private ApplicationContext context;
-
-    @Autowired
-    public void setContext(ApplicationContext context) {
-        this.context = context;
-    }
-
     private Parcel parcel;
     private Courier courier;
     private float price;
     @FXML
     private TextField TFsenderSurname;
-
     @FXML
     private TextField TFhouseNumber;
-
     @FXML
     private TextField TFsenderHouseNumber;
-
     @FXML
     private TextField TFsenderStreet;
-
     @FXML
     private TextField TFemail;
-
     @FXML
     private TextField TFzipCode;
-
     @FXML
     private CheckBox fillAdressCheckbox;
-
     @FXML
     private TextField TFnr;
-
     @FXML
     private TextField TFsenderCity;
-
     @FXML
     private TextField TFspot;
-
     @FXML
     private TextField TFsenderName;
-
     @FXML
     private TextField TFsenderEmail;
-
     @FXML
     private TextField TFname;
-
     @FXML
     private TextField TFstreet;
-
     @FXML
     private TextField TFsenderNr;
-
     @FXML
     private TextField TFsurname;
-
     @FXML
     private TextField TFsenderZipCode;
 
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
+    }
 
     @FXML
     public void BackToMenu(ActionEvent event) {
@@ -129,7 +111,7 @@ public class UserOrderFillAddressesFormController {
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
             UserOrderFinalizeController finalizeController = loader.getController();
-            finalizeController.initialize( order, sender, received, courier,parcel);
+            finalizeController.initialize(order, sender, received, courier, parcel);
 
 
             stage.setScene(new Scene(root));
@@ -145,9 +127,9 @@ public class UserOrderFillAddressesFormController {
     @FXML
     public void initialize(Parcel parcel,
                            Courier courier, float price) {
-     this.parcel=parcel;
+        this.parcel = parcel;
         this.courier = courier;
-        this.price=price;
+        this.price = price;
         fillAdressCheckbox.setVisible(false);
         if (getLoggedUser().getAdress() != null) {
             fillAdressCheckbox.setVisible(true);

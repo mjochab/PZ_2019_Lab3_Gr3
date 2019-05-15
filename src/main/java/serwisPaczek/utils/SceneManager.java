@@ -13,10 +13,9 @@ import java.io.IOException;
 
 @Component
 public class SceneManager {
+    public static Stage stage;
     private StageConfig stageConfig;
     private ApplicationContext context;
-    public static Stage stage;
-
 
     public void init(Stage stage) {
         SceneManager.stage = stage;

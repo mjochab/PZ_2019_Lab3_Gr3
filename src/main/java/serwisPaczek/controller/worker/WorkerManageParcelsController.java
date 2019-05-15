@@ -16,19 +16,17 @@ import java.util.List;
 
 @Controller
 public class WorkerManageParcelsController {
+    @Autowired
+    OrderRepository orderRepository;
     private SceneManager sceneManager;
-
     @FXML
     private ListView<String> workerOrdersList;
     @FXML
     private ComboBox<Status> statusComboBox;
     @FXML
     private Spinner<Integer> ordersSearchField;
-    @Autowired
-    OrderRepository orderRepository;
 
-    private void fillListWithOrders(UserOrder order)
-    {
+    private void fillListWithOrders(UserOrder order) {
         workerOrdersList.getItems().add(order.getId().toString() + "  |  " +
                 order.getUser().getUsername() + "  " +
                 order.getCourier().getName() + "  " +
@@ -37,7 +35,7 @@ public class WorkerManageParcelsController {
                 order.getDate().toString());
     }
 
-    private void alertError(String message){
+    private void alertError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 message, ButtonType.OK);
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -58,7 +56,7 @@ public class WorkerManageParcelsController {
 
         // Value factory for spinner
         SpinnerValueFactory<Integer> valueFactory = //
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,Integer.MAX_VALUE,1);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
         ordersSearchField.setValueFactory(valueFactory);
     }
 
@@ -67,7 +65,7 @@ public class WorkerManageParcelsController {
         try {
             UserOrder order = orderRepository.getOne(ordersSearchField.getValue().longValue());
             workerOrdersList.getItems().clear();
-            fillListWithOrders(order);;
+            fillListWithOrders(order);
         } catch (Exception e) {
             alertError("Nie znaleziono zamówienia o takim id");
         }

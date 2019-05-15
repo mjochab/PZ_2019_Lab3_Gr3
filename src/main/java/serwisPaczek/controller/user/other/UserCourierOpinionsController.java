@@ -16,14 +16,13 @@ import java.util.List;
 
 @Controller
 public class UserCourierOpinionsController {
-    private SceneManager sceneManager;
-    @FXML
-    private ListView<String> opinionList;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
     OpinionRepository opinionRepository;
-
+    private SceneManager sceneManager;
+    @FXML
+    private ListView<String> opinionList;
 
     @FXML
     public void initialize(Long courierId) {

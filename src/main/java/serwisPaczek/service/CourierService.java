@@ -39,9 +39,9 @@ public class CourierService {
     }
 
     public void editCourierCompany(Courier courier, String name, float envelope_up_to_1, float pack_up_to_1, float pack_up_to_2,
-                                     float pack_up_to_5, float pack_up_to_10, float pack_up_to_15, float pack_up_to_20,
-                                     float pack_up_to_30, float pallet_up_to_300, float pallet_up_to_500,
-                                     float pallet_up_to_800, float pallet_up_to_1000) {
+                                   float pack_up_to_5, float pack_up_to_10, float pack_up_to_15, float pack_up_to_20,
+                                   float pack_up_to_30, float pallet_up_to_300, float pallet_up_to_500,
+                                   float pallet_up_to_800, float pallet_up_to_1000) {
         courier.setName(name);
         courier.getEnvelopePricing().setUp_to_1(envelope_up_to_1);
         courier.getPackPricing().setUp_to_1(pack_up_to_1);
