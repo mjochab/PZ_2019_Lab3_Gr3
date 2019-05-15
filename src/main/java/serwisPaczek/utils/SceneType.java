@@ -9,7 +9,6 @@ public enum SceneType {
     // ADMIN
     ADMIN_MAIN("admin/adminMain"),
     ADMIN_MANAGE_USERS("admin/adminManageUsers"),
-    ADMIN_MANAGE_PARCELS("admin/adminManageParcels"),
     ADMIN_ADD_COURIER("admin/adminAddCourier"),
     ADMIN_EDIT_ABOUT("admin/adminEditAbout"),
     ADMIN_EDIT_COURIER("admin/adminEditCourier"),
