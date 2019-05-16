@@ -12,7 +12,7 @@ public class WorkerManageGiftOrdersController {
     private SceneManager sceneManager;
 
     @FXML
-    public void backToWorkerMain(ActionEvent event) {
+    public void openMainWorkerPanel(ActionEvent event) {
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 

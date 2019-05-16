@@ -16,9 +16,9 @@ import java.util.List;
 
 @Controller
 public class WorkerManageParcelsController {
+    private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
-    private SceneManager sceneManager;
     @FXML
     private ListView<String> workerOrdersList;
     @FXML
@@ -26,26 +26,7 @@ public class WorkerManageParcelsController {
     @FXML
     private Spinner<Integer> ordersSearchField;
 
-    private void fillListWithOrders(UserOrder order) {
-        workerOrdersList.getItems().add(order.getId().toString() + "  |  " +
-                order.getUser().getUsername() + "  " +
-                order.getCourier().getName() + "  " +
-                order.getPrice() + " zł  " +
-                order.getStatus().name() + "    " +
-                order.getDate().toString());
-    }
-
-    private void alertError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR,
-                message, ButtonType.OK);
-        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.show();
-    }
-
     public void initialize() {
-
         List<UserOrder> orders = orderRepository.findAll();
 
         for (UserOrder order : orders) {
@@ -58,6 +39,15 @@ public class WorkerManageParcelsController {
         SpinnerValueFactory<Integer> valueFactory = //
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
         ordersSearchField.setValueFactory(valueFactory);
+    }
+
+    private void fillListWithOrders(UserOrder order) {
+        workerOrdersList.getItems().add(order.getId().toString() + "  |  " +
+                order.getUser().getUsername() + "  " +
+                order.getCourier().getName() + "  " +
+                order.getPrice() + " zł  " +
+                order.getStatus().name() + "    " +
+                order.getDate().toString());
     }
 
     @FXML
@@ -73,9 +63,6 @@ public class WorkerManageParcelsController {
 
     @FXML
     public void orderChangeStatus(ActionEvent event) {
-//        String selectedItem = workerOrdersList.getSelectionModel().getSelectedItem();
-
-
         try {
             UserOrder order = orderRepository.getOne(ordersSearchField.getValue().longValue());
             order.setStatus(statusComboBox.getValue());
@@ -87,8 +74,18 @@ public class WorkerManageParcelsController {
         }
     }
 
+    private void alertError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                message, ButtonType.OK);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.show();
+    }
+
     @FXML
-    public void backToWorkerMain(ActionEvent event) {
+    public void openMainPanel(ActionEvent event) {
+        //TODO WORKER_MAIN OR ADMIN_MAIN
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 

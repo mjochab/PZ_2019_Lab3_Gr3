@@ -12,18 +12,19 @@ public class UserProfileOrderListController {
     private SceneManager sceneManager;
 
     @FXML
-    public void openUserMain(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
-    }
-
-    @FXML
-    public void OpenFinalize(ActionEvent event) {
+    public void openDetails(ActionEvent event) {
+        //TODO FIX
         sceneManager.show(SceneType.USER_ORDER_FINALIZE);
     }
 
     @FXML
-    public void AddOpinion(ActionEvent event) {
+    public void addOpinion(ActionEvent event) {
         sceneManager.show(SceneType.USER_ORDER_ADD_OPINION);
+    }
+
+    @FXML
+    public void openUserMainPanel(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

@@ -24,7 +24,10 @@ import static serwisPaczek.utils.SceneManager.stage;
 @Controller
 public class UserOrderFillAddressesFormController {
     private SceneManager sceneManager;
-
+    private ApplicationContext context;
+    private Parcel parcel;
+    private Courier courier;
+    private float price;
     @Autowired
     private AdressRepository adressRepository;
     @Autowired
@@ -35,12 +38,6 @@ public class UserOrderFillAddressesFormController {
     private OrderRepository orderRepository;
     @Autowired
     private CourierRepository courierRepository;
-
-
-    private ApplicationContext context;
-    private Parcel parcel;
-    private Courier courier;
-    private float price;
     @FXML
     private TextField TFsenderSurname;
     @FXML
@@ -54,7 +51,7 @@ public class UserOrderFillAddressesFormController {
     @FXML
     private TextField TFzipCode;
     @FXML
-    private CheckBox fillAdressCheckbox;
+    private CheckBox fillAddressCheckbox;
     @FXML
     private TextField TFnr;
     @FXML
@@ -76,18 +73,20 @@ public class UserOrderFillAddressesFormController {
     @FXML
     private TextField TFsenderZipCode;
 
-    @Autowired
-    public void setContext(ApplicationContext context) {
-        this.context = context;
+    @FXML
+    public void initialize(Parcel parcel,
+                           Courier courier, float price) {
+        this.parcel = parcel;
+        this.courier = courier;
+        this.price = price;
+        fillAddressCheckbox.setVisible(false);
+        if (getLoggedUser().getAdress() != null) {
+            fillAddressCheckbox.setVisible(true);
+        }
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
-    }
-
-    @FXML
-    public void OpenFinalize(ActionEvent event) throws IOException {
+    public void openFinalizePanel(ActionEvent event) throws IOException {
         Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(),
                 TFstreet.getText(), Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(),
                 Long.parseLong(TFnr.getText()), TFemail.getText());
@@ -112,34 +111,17 @@ public class UserOrderFillAddressesFormController {
             Parent root = loader.load();
             UserOrderFinalizeController finalizeController = loader.getController();
             finalizeController.initialize(order, sender, received, courier, parcel);
-
-
             stage.setScene(new Scene(root));
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-
     @FXML
-    public void initialize(Parcel parcel,
-                           Courier courier, float price) {
-        this.parcel = parcel;
-        this.courier = courier;
-        this.price = price;
-        fillAdressCheckbox.setVisible(false);
-        if (getLoggedUser().getAdress() != null) {
-            fillAdressCheckbox.setVisible(true);
-        }
-    }
-
-
-    @FXML
-    public void fillAdress(ActionEvent event) {
-        if (fillAdressCheckbox.isSelected()) {
+    public void fillAddress(ActionEvent event) {
+        if (fillAddressCheckbox.isSelected()) {
             TFname.setText(getLoggedUser().getAdress().getName());
             TFsurname.setText(getLoggedUser().getAdress().getSurname());
             TFstreet.setText(getLoggedUser().getAdress().getStreet());
@@ -160,9 +142,18 @@ public class UserOrderFillAddressesFormController {
         }
     }
 
+    @FXML
+    public void openUserMain(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
+    }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
+    }
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
 }

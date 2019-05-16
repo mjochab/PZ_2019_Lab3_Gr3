@@ -24,32 +24,32 @@
     <left>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="openLoginPanelButton" layoutX="53.0" layoutY="180.0" mnemonicParsing="false" onAction="#OpenLoginPanel" prefHeight="120.0" prefWidth="185.0" style="-fx-background-color: grey;" text="Zaloguj się" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenLoginPanel" layoutX="53.0" layoutY="180.0" mnemonicParsing="false" onAction="#openLoginPanel" prefHeight="120.0" prefWidth="185.0" style="-fx-background-color: grey;" text="Zaloguj się" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenCourierListButton" layoutX="459.0" layoutY="48.0" mnemonicParsing="false" onAction="#OpenCourierList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
+                <Button fx:id="btnOpenCourierCompaniesListPanel" layoutX="459.0" layoutY="48.0" mnemonicParsing="false" onAction="#openCourierCompaniesListPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="openRegisterPanelButton" layoutX="255.0" layoutY="180.0" mnemonicParsing="false" onAction="#OpenRegisterPanel" prefHeight="120.0" prefWidth="185.0" style="-fx-background-color: darkblue;" text="Zarejestruj się" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenRegisterPanel" layoutX="255.0" layoutY="180.0" mnemonicParsing="false" onAction="#openRegisterPanel" prefHeight="120.0" prefWidth="185.0" style="-fx-background-color: darkblue;" text="Zarejestruj się" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenOrdeCourierrButton" layoutX="612.0" layoutY="48.0" mnemonicParsing="false" onAction="#OpenOrderCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Zamów kuriera" textFill="WHITE">
+                <Button fx:id="btnOpenOrderCourierMainPanel" layoutX="612.0" layoutY="48.0" mnemonicParsing="false" onAction="#openOrderCourierMainPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Zamów kuriera" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="redirectToAboutButton" layoutX="459.0" layoutY="180.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="O firmie" textFill="WHITE">
+                <Button fx:id="btnOpenAboutPanel" layoutX="459.0" layoutY="180.0" mnemonicParsing="false" onAction="#openAboutPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="O firmie" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenCourierRankingButton" layoutX="612.0" layoutY="180.0" mnemonicParsing="false" onAction="#OpenCourierRanking" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Ranking kurierów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenCourierRankingPanel" layoutX="612.0" layoutY="180.0" mnemonicParsing="false" onAction="#openCourierRankingPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Ranking kurierów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>

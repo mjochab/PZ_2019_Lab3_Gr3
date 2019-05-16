@@ -13,21 +13,15 @@ import serwisPaczek.utils.SceneType;
 
 @Controller
 public class RegisterController {
-
     private SceneManager sceneManager;
-
     @Autowired
     private UserService userService;
-
     @FXML
     private Text usernameWarning, passwordWarning, repeatPasswordWarning;
-
     @FXML
     private PasswordField PFPassword;
-
     @FXML
     private PasswordField PFRepeatPassword;
-
     @FXML
     private TextField TFUsername;
 
@@ -53,7 +47,7 @@ public class RegisterController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
+    public void openMainAppPanel(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
 

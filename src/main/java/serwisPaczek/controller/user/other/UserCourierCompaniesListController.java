@@ -83,7 +83,6 @@ public class UserCourierCompaniesListController {
                         userCourierCompanyPricingController.initialize(courier.getId());
                         stage.setScene(new Scene(root));
                         stage.show();
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -96,7 +95,8 @@ public class UserCourierCompaniesListController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
+    public void openMainPanel(ActionEvent event) {
+        //TODO MAIN OR USER_MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

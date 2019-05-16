@@ -12,13 +12,13 @@ public class UserOrderAddOpinionController {
     private SceneManager sceneManager;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
+    public void addOpinion(ActionEvent event) {
+        sceneManager.show(SceneType.USER_PROFILE_MY_OPINIONS);
     }
 
     @FXML
-    public void MyOpinions(ActionEvent event) {
-        sceneManager.show(SceneType.USER_PROFILE_MY_OPINIONS);
+    public void openUserMain(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

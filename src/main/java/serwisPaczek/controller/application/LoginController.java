@@ -15,33 +15,27 @@ import java.io.IOException;
 @Controller
 public class LoginController {
     private SceneManager sceneManager;
-
     @Autowired
     private UserService userService;
-//    @FXML
-//    private Text usernameWarning, passwordWarning, repeatPasswordWarning;
-
     @FXML
     private TextField TFUsername;
     @FXML
     private PasswordField PFPassword;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void login(ActionEvent event) throws IOException {
+        userService.login(TFUsername.getText(), PFPassword.getText());
     }
 
     @FXML
-    void OpenRegisterPanel(ActionEvent event) {
+    void openRegisterPanel(ActionEvent event) {
         sceneManager.show(SceneType.REGISTER);
     }
 
     @FXML
-    public void login(ActionEvent event) throws IOException {
-
-        userService.login(TFUsername.getText(), PFPassword.getText());
+    public void openMainAppPanel(ActionEvent event) {
+        sceneManager.show(SceneType.MAIN);
     }
-
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

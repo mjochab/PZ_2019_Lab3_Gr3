@@ -12,12 +12,7 @@ public class UserProfileEditProfileController {
     private SceneManager sceneManager;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
-    }
-
-    @FXML
-    public void BackToUserProfile(ActionEvent event) {
+    public void openMainUserPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_MAIN);
     }
 

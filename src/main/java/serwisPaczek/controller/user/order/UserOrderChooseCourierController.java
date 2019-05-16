@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -30,15 +29,13 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserOrderChooseCourierController {
-    @Autowired
-    CourierRepository courierRepository;
-    int ratio = 1;
-    float price;
+    private SceneManager sceneManager;
+    private int ratio = 1;
+    private float price;
     private ApplicationContext context;
     private Parcel parcel;
-    private SceneManager sceneManager;
-    @FXML
-    private GridPane gridPane;
+    @Autowired
+    CourierRepository courierRepository;
     @Autowired
     private PackPricingRepository packPricingRepository;
     @Autowired
@@ -46,12 +43,7 @@ public class UserOrderChooseCourierController {
     @Autowired
     private EnvelopePricingRepository envelopePricingRepository;
     @FXML
-    private Label test;
-
-    @Autowired
-    public void setContext(ApplicationContext context) {
-        this.context = context;
-    }
+    private GridPane gridPane;
 
     @FXML
     public void initialize(Parcel parcel) {
@@ -66,7 +58,6 @@ public class UserOrderChooseCourierController {
                 ratio = 3;
         }
         List<Courier> listCouriers = courierRepository.findAll();
-
         int index = 0;
         int gridRow = 0;
         int gridCol = 0;
@@ -76,11 +67,9 @@ public class UserOrderChooseCourierController {
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {
-
             if (parcel.getType() == "koperta") {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
             } else if (parcel.getType() == "paczka") {
-
                 if (parcel.getWeight() <= 1) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
                 }
@@ -119,7 +108,7 @@ public class UserOrderChooseCourierController {
                 gridCol = 0;
                 gridPane.addRow(gridRow);
             }
-            // Btn color switcher
+            // btn color switcher
             switch (index % 5) {
                 case (0):
                     color = "red";
@@ -145,7 +134,6 @@ public class UserOrderChooseCourierController {
                     "-fx-text-alignment: center;" +
                     "-fx-background-color: " + color + ";"
             );
-
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -158,7 +146,6 @@ public class UserOrderChooseCourierController {
                             UserOrderFillAddressesFormController fillAdressessController = loader.getController();
                             stage.setScene(new Scene(root));
                             stage.show();
-
                             fillAdressessController.initialize(parcel, courier, price);
                         } catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
@@ -173,8 +160,14 @@ public class UserOrderChooseCourierController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
+    public void openMainPanel(ActionEvent event) {
+        // TODO: USER_MAIN OR MAIN
+        sceneManager.show(SceneType.MAIN);
+    }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
     }
 
     @Autowired

@@ -14,76 +14,76 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="logoutButton" layoutX="80.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: grey;" text="Wyloguj się" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnLogout" layoutX="80.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: grey;" text="Wyloguj się" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenPriceListButton" layoutX="230.0" layoutY="116.0" mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
+                <Button fx:id="btnOpenCourierCompaniesListPanel" layoutX="230.0" layoutY="116.0" mnemonicParsing="false" onAction="#openCourierCompaniesListPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenEditUserProfileButton" layoutX="436.0" layoutY="431.0" mnemonicParsing="false" onAction="#OpenEditUserProfile" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkblue;" text="Edytuj swoje dane" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenEditUserProfilePanel" layoutX="436.0" layoutY="431.0" mnemonicParsing="false" onAction="#openEditUserProfilePanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkblue;" text="Edytuj swoje dane" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenOrdeCourierrButton" layoutX="80.0" layoutY="116.0" mnemonicParsing="false" onAction="#OpenOrderCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkslategray;" text="Zamów kuriera" textFill="WHITE">
+                <Button fx:id="btnOpenOrderCourierMainPanel" layoutX="80.0" layoutY="116.0" mnemonicParsing="false" onAction="#openOrderCourierMainPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkslategray;" text="Zamów kuriera" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="redirectToAboutButton" layoutX="230.0" layoutY="298.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="O firmie" textFill="WHITE">
+                <Button fx:id="btnOpenAboutPanel" layoutX="230.0" layoutY="298.0" mnemonicParsing="false" onAction="#openAboutPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="O firmie" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenCourierRankingButton" layoutX="80.0" layoutY="298.0" mnemonicParsing="false" onAction="#OpenCourierRanking" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Ranking kurierów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenCourierRankingPanel" layoutX="80.0" layoutY="298.0" mnemonicParsing="false" onAction="#openCourierRankingPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Ranking kurierów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="OpenOrderGiftPanelButton" layoutX="585.0" layoutY="116.0" mnemonicParsing="false" onAction="#OpenOrderGiftPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Odbierz nagrodę" textFill="WHITE">
+                <Button fx:id="btnOpenOrderGiftPanel" layoutX="585.0" layoutY="116.0" mnemonicParsing="false" onAction="#openOrderGiftPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Odbierz nagrodę" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-            <Button graphicTextGap="1.0" layoutX="80.0" layoutY="72.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zamów kuriera" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button graphicTextGap="1.0" layoutX="436.0" layoutY="72.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zamówienie" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="ButtonOrderList" layoutX="436.0" layoutY="116.0" mnemonicParsing="false" onAction="#openEditOrderList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: blue;" text="Twoje zamówienia" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button graphicTextGap="1.0" layoutX="436.0" layoutY="388.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Profil" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button graphicTextGap="1.0" layoutX="80.0" layoutY="254.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Firma" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="buttonUserOpinions" layoutX="436.0" layoutY="251.0" mnemonicParsing="false" onAction="#openUserOpinions" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Twoje opinie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="buttonUserWallet" layoutX="585.0" layoutY="431.0" mnemonicParsing="false" onAction="#openUserWallet" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkorange;" text="Portfel" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
+                <Button graphicTextGap="1.0" layoutX="80.0" layoutY="72.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zamów kuriera" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button graphicTextGap="1.0" layoutX="436.0" layoutY="72.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zamówienie" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnOpenEditOrderList" layoutX="436.0" layoutY="116.0" mnemonicParsing="false" onAction="#openEditOrderList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: blue;" text="Twoje zamówienia" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button graphicTextGap="1.0" layoutX="436.0" layoutY="388.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Profil" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button graphicTextGap="1.0" layoutX="80.0" layoutY="254.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Firma" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnOpenUserOpinions" layoutX="436.0" layoutY="251.0" mnemonicParsing="false" onAction="#openUserOpinions" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Twoje opinie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnOpenUserWallet" layoutX="585.0" layoutY="431.0" mnemonicParsing="false" onAction="#openUserWallet" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkorange;" text="Portfel" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
             </children>
         </AnchorPane>
     </left>

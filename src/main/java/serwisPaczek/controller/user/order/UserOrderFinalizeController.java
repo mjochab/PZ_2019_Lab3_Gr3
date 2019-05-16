@@ -1,7 +1,5 @@
 package serwisPaczek.controller.user.order;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Font;
 import generate.GeneratePdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,19 +13,8 @@ import serwisPaczek.model.UserOrder;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-
 @Controller
 public class UserOrderFinalizeController {
-    private static Font bigFont = new Font(Font.FontFamily.TIMES_ROMAN, 24,
-            Font.BOLD);
-    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-            Font.BOLD);
-    private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-            Font.NORMAL, BaseColor.RED);
-    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
-            Font.BOLD);
-    private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-            Font.BOLD);
     private SceneManager sceneManager;
     private UserOrder userOrder;
     private Adress received;
@@ -66,19 +53,8 @@ public class UserOrderFinalizeController {
     private Label TFfromZipCode;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
-    }
-
-    @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
-
-    @FXML
     public void initialize(UserOrder userOrder, Adress sender,
                            Adress received, Courier courier, Parcel parcel) {
-
         this.userOrder = userOrder;
         this.sender = sender;
         this.received = received;
@@ -87,21 +63,20 @@ public class UserOrderFinalizeController {
         TFnr.setText(userOrder.getId().toString());
         TFcourier.setText(courier.getName());
         TFmoney.setText(String.valueOf(userOrder.getPrice()));
-
+        // sender
         TFcity.setText(received.getCity());
         TFzipCode.setText(received.getZipCode());
         TFstreet.setText(received.getStreet());
         TFhouseNumber.setText(received.getHouseNumber().toString());
         TFname.setText(received.getName());
         TFsurname.setText(received.getSurname());
-
+        // receiver
         TFfromSurname.setText(sender.getSurname());
         TFfromName.setText(sender.getName());
         TFfromCity.setText(sender.getCity());
         TFfromHouseNumber.setText(sender.getHouseNumber().toString());
         TFfromStreet.setText(sender.getStreet());
         TFfromZipCode.setText(sender.getZipCode());
-
     }
 
     @FXML
@@ -115,5 +90,15 @@ public class UserOrderFinalizeController {
                 sender.getHouseNumber(), received.getHouseNumber(),
                 parcel.getWeight(), parcel.getLength(), parcel.getWidth(),
                 parcel.getHeight(), parcel.getType());
+    }
+
+    @FXML
+    public void openUserMain(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
+    }
+
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
     }
 }

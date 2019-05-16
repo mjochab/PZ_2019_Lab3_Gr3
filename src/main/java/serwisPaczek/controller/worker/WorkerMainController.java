@@ -13,7 +13,6 @@ import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 @Controller
 public class WorkerMainController {
     private SceneManager sceneManager;
-
     @FXML
     private Button btnWelcomeWorker;
 
@@ -23,23 +22,23 @@ public class WorkerMainController {
     }
 
     @FXML
-    public void OpenWorkerPanel(ActionEvent event) {
+    public void openManageParcelsPanel(ActionEvent event) {
         sceneManager.show(SceneType.WORKER_MANAGE_PARCELS);
+    }
+
+    @FXML
+    void openGiftOrderPanel(ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_MANAGE_GIFT_ORDERS);
+    }
+
+    @FXML
+    void openEditGiftPanel(ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_EDIT_GIFT);
     }
 
     @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
-    }
-
-    @FXML
-    void OpenGiftOrderPanel(ActionEvent event) {
-        sceneManager.show(SceneType.WORKER_MANAGE_GIFT_ORDERS);
-    }
-
-    @FXML
-    void OpenEditGiftPanel(ActionEvent event) {
-        sceneManager.show(SceneType.WORKER_EDIT_GIFT);
     }
 
     @Autowired

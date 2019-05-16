@@ -8,10 +8,8 @@ import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-
 @Controller
 public class MainController {
-
     private SceneManager sceneManager;
     @Autowired
     private MainService mainService;
@@ -19,34 +17,33 @@ public class MainController {
     public MainController() {
     }
 
-
     @FXML
-    public void openAbout(ActionEvent event) {
+    public void openAboutPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_ABOUT);
     }
 
     @FXML
-    void OpenLoginPanel(ActionEvent event) {
+    void openLoginPanel(ActionEvent event) {
         sceneManager.show(SceneType.LOGIN);
     }
 
     @FXML
-    void OpenCourierList(ActionEvent event) {
+    void openCourierCompaniesListPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_COURIER_COMPANIES_LIST);
     }
 
     @FXML
-    void OpenRegisterPanel(ActionEvent event) {
+    void openRegisterPanel(ActionEvent event) {
         sceneManager.show(SceneType.REGISTER);
     }
 
     @FXML
-    void OpenOrderCourier(ActionEvent event) {
+    void openOrderCourierMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_ORDER_MAIN);
     }
 
     @FXML
-    void OpenCourierRanking(ActionEvent event) {
+    void openCourierRankingPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_COURIER_RANKING);
     }
 
@@ -54,5 +51,4 @@ public class MainController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
 }

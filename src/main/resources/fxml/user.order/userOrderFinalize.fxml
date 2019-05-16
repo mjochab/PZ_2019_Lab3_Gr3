@@ -51,12 +51,12 @@
             <Label fx:id="TFfromHouseNumber" layoutX="206.0" layoutY="429.0" prefHeight="22.0" prefWidth="499.0" style="-fx-background-color: darkslategray; -fx-alignment: left; -fx-label-padding: 3;" textFill="WHITE" AnchorPane.leftAnchor="206.0" />
             <Label layoutX="68.0" layoutY="455.0" prefHeight="22.0" prefWidth="130.0" style="-fx-background-color: dimgray; -fx-alignment: center;" text="Kod pocztowy" textFill="WHITE" AnchorPane.leftAnchor="68.0" />
             <Label fx:id="TFfromZipCode" layoutX="206.0" layoutY="455.0" prefHeight="22.0" prefWidth="499.0" style="-fx-background-color: dimgray; -fx-alignment: left; -fx-label-padding: 3;" textFill="WHITE" AnchorPane.leftAnchor="206.0" />
-                <Button layoutX="515.0" layoutY="551.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Generuj PDF" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnGeneratePDF" layoutX="515.0" layoutY="551.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Generuj PDF" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="60.0" layoutY="551.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: red;" text="Potwrót do panelu użytkownika" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenUserMain" layoutX="60.0" layoutY="551.0" mnemonicParsing="false" onAction="#openUserMain" prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: red;" text="Potwrót do panelu użytkownika" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>

@@ -54,7 +54,6 @@ public class UserCourierCompanyPricingController {
         EnvelopePricing envelopePricing = envelopePricingRepository.findByCourier(courier);
         PackPricing packPricing = packPricingRepository.findByCourier(courier);
         PalletPricing palletPricing = palletPricingRepository.findByCourier(courier);
-
         // fill courier information
         courierNameButton.setText(courier.getName());
         envelopeList.getItems().addAll("do 1 kg: " + envelopePricing.getUp_to_1() + " zł");
@@ -71,7 +70,7 @@ public class UserCourierCompanyPricingController {
         palletList.getItems().addAll("do 1000 kg: " + palletPricing.getUp_to_1000() + " zł");
     }
 
-    public void CourierOpinion(ActionEvent event) {
+    public void openCourierOpinionPanel(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierOpinions.fxml"));
             loader.setControllerFactory(context::getBean);
@@ -86,7 +85,7 @@ public class UserCourierCompanyPricingController {
     }
 
     @FXML
-    public void backToCompanyList(ActionEvent event) {
+    public void openCompanyListPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_COURIER_COMPANIES_LIST);
     }
 
