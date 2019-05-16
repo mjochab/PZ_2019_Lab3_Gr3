@@ -44,12 +44,6 @@ public class MainUserController {
     }
 
     @FXML
-    void OpenOrderList(ActionEvent event) {
-
-        sceneManager.show(SceneType.USER_PROFILE_ORDER_LIST);
-    }
-
-    @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
