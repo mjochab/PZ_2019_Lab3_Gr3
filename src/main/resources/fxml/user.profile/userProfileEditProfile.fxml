@@ -88,6 +88,12 @@
                 <TextField fx:id="TFhome" layoutX="405.0" layoutY="186.0" prefHeight="25.0" prefWidth="126.0" />
                 <TextField fx:id="TFcity" layoutX="405.0" layoutY="147.0" prefHeight="25.0" prefWidth="125.0" />
                 <TextField fx:id="TFstreet" layoutX="405.0" layoutY="109.0" prefHeight="25.0" prefWidth="127.0" />
+            <TextField fx:id="TFzip1" layoutX="405.0" layoutY="257.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label layoutX="290.0" layoutY="257.0" text="Hasło:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </center>
