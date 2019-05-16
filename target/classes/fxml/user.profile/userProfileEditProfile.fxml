@@ -1,98 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="serwisPaczek.controller.user.profile.UserProfileEditProfileController">
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.profile.UserProfileEditProfileController">
     <top>
         <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/BigBanner_Delivery.png"/>
+                <Image url="@../../images/BigBanner_Delivery.png" />
             </image>
         </ImageView>
     </top>
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="61.0" layoutY="8.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="680.0"
-                        style="-fx-background-color: Blue;" text="Twoje dane" textFill="WHITE" wrapText="true">
+                <Button layoutX="44.0" layoutY="21.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="700.0" style="-fx-background-color: Blue;" text="Twoje dane" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="17.0"/>
+                        <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="GoToUserProfileAccepted" layoutX="61.0" layoutY="299.0" mnemonicParsing="false"
-                        onAction="#BackToUserProfile" prefHeight="46.0" prefWidth="211.0"
-                        style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
+                <Button fx:id="GoToUserProfileAccepted" layoutX="230.0" layoutY="309.0" mnemonicParsing="false" onAction="#BackToUserProfile" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zatwierdź" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="61.0" layoutY="104.0" prefHeight="35.0" prefWidth="80.0" text="Imię:">
+                <Label layoutX="46.0" layoutY="83.0" prefHeight="30.0" prefWidth="110.0" text="Imię:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="61.0" layoutY="147.0" text="Nazwisko:">
+                <Label layoutX="421.0" layoutY="84.0" prefHeight="30.0" prefWidth="75.0" text="Nazwisko:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="61.0" layoutY="186.0" text="Telefon:">
+                <Label layoutX="421.0" layoutY="210.0" prefHeight="30.0" prefWidth="75.0" text="Telefon:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="61.0" layoutY="221.0" text="Email:">
+                <Label layoutX="44.0" layoutY="210.0" prefHeight="30.0" prefWidth="110.0" text="Email:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="290.0" layoutY="108.0" text="Ulica:">
+                <Label layoutX="44.0" layoutY="128.0" prefWidth="110.0" text="Ulica:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="290.0" layoutY="147.0" text="Miasto:">
+                <Label layoutX="421.0" layoutY="131.0" prefWidth="75.0" text="Miasto:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="290.0" layoutY="221.0" text="Kod pocztowy:">
+                <Label layoutX="44.0" layoutY="171.0" prefWidth="110.0" text="Kod pocztowy:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="290.0" layoutY="186.0" text="Nr domu:">
+                <Label layoutX="421.0" layoutY="174.0" prefWidth="75.0" text="Nr domu:">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Button fx:id="GoToUserProfileRefused" layoutX="290.0" layoutY="298.0" mnemonicParsing="false"
-                        onAction="#BackToUserProfile" prefHeight="47.0" prefWidth="189.0"
-                        style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+                <Button fx:id="GoToUserProfileRefused" layoutX="44.0" layoutY="309.0" mnemonicParsing="false" onAction="#BackToUserProfile" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <ImageView fitHeight="281.0" fitWidth="211.0" layoutX="538.0" layoutY="59.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@../../images/kurier.png"/>
-                    </image>
-                </ImageView>
-                <TextField layoutX="147.0" layoutY="109.0" prefHeight="25.0" prefWidth="125.0"/>
-                <TextField layoutX="147.0" layoutY="147.0" prefHeight="25.0" prefWidth="125.0"/>
-                <TextField layoutX="147.0" layoutY="186.0" prefHeight="25.0" prefWidth="126.0"/>
-                <TextField layoutX="147.0" layoutY="221.0" prefHeight="25.0" prefWidth="127.0"/>
-                <TextField layoutX="405.0" layoutY="221.0" prefHeight="25.0" prefWidth="126.0"/>
-                <TextField layoutX="405.0" layoutY="186.0" prefHeight="25.0" prefWidth="126.0"/>
-                <TextField layoutX="405.0" layoutY="147.0" prefHeight="25.0" prefWidth="125.0"/>
-                <TextField layoutX="405.0" layoutY="109.0" prefHeight="25.0" prefWidth="127.0"/>
+                <TextField layoutX="159.0" layoutY="84.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField layoutX="504.0" layoutY="87.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField layoutX="504.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField layoutX="159.0" layoutY="210.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField layoutX="159.0" layoutY="169.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField layoutX="504.0" layoutY="171.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField layoutX="504.0" layoutY="128.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField layoutX="159.0" layoutY="126.0" prefHeight="30.0" prefWidth="245.0" />
             </children>
         </AnchorPane>
     </center>
