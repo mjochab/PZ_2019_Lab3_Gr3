@@ -13,7 +13,7 @@ public class UserOrderAddOpinionController {
 
     @FXML
     public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @FXML

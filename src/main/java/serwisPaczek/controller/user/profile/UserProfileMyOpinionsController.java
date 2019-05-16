@@ -13,7 +13,7 @@ public class UserProfileMyOpinionsController {
 
     @FXML
     public void openUserMain(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN_USER);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

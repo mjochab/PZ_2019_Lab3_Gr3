@@ -42,12 +42,12 @@ public class UserProfileController {
 
     @FXML
     public void BackToUserProfile(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN_USER);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @FXML
     public void GoToMyOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN_USER);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
 

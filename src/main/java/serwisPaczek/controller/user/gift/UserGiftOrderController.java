@@ -33,23 +33,23 @@ public class UserGiftOrderController {
 
     @FXML
     public void initialize() {
-        List<Gift> listGifts = giftRepository.findAll();
-        List<Gift> gifts = new ArrayList<>();
-        for (Gift gift : listGifts) {
-        }
-
-
-        idColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("id"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
-        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
-
-        ObservableList<Gift> observableListUsers = FXCollections.observableArrayList(gifts);
-        tableView.setItems(observableListUsers);
+//        List<Gift> listGifts = giftRepository.findAll();
+//        List<Gift> gifts = new ArrayList<>();
+//        for (Gift gift : listGifts) {
+//        }
+//
+//
+//        idColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("id"));
+//        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
+//        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
+//
+//        ObservableList<Gift> observableListUsers = FXCollections.observableArrayList(gifts);
+//        tableView.setItems(observableListUsers);
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void backToUserMain(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

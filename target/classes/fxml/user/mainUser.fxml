@@ -79,7 +79,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonUserwallet" layoutX="585.0" layoutY="431.0" mnemonicParsing="false" onAction="#openUserWallet" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkorange;" text="Portfel" textFill="WHITE">
+            <Button fx:id="buttonUserWallet" layoutX="585.0" layoutY="431.0" mnemonicParsing="false" onAction="#openUserWallet" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkorange;" text="Portfel" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

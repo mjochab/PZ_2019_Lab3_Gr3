@@ -174,7 +174,7 @@ public class UserOrderChooseCourierController {
 
     @FXML
     public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

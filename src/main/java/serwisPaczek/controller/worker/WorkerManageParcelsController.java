@@ -88,8 +88,8 @@ public class WorkerManageParcelsController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void backToWorkerMain(ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_MAIN);
     }
 
     @Autowired
