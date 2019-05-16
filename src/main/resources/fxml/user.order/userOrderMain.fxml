@@ -17,7 +17,6 @@
     <center>
         <AnchorPane prefHeight="404.0" prefWidth="665.0" BorderPane.alignment="CENTER">
             <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="318.0" layoutX="26.0" layoutY="13.0" stroke="BLUE" strokeType="INSIDE" width="427.0" />
                 <Button fx:id="BackToMenuButton" layoutX="31.0" layoutY="545.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
@@ -83,7 +82,7 @@
                         <Font size="13.0" />
                     </font>
                 </TextField>
-                <Button fx:id="openPriceListButton" layoutX="249.0" layoutY="545.0" mnemonicParsing="false" onAction="#OpenPriceListButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Sprawdź ceny" textFill="WHITE" wrapText="true">
+                <Button fx:id="openPriceListButton" layoutX="242.0" layoutY="545.0" mnemonicParsing="false" onAction="#OpenPriceListButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Sprawdź ceny" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -104,7 +103,7 @@
                   <Label layoutX="13.0" layoutY="72.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: darkorange; -fx-alignment: center;" text="Koperta: 1kg x 35cm x 25cm x 5cm" textFill="WHITE" />
                   <Label layoutX="13.0" layoutY="102.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: red; -fx-alignment: center;" text="Paczka: 30kg x 100cm x 90cm x 70cm" textFill="WHITE" />
                   <Label layoutX="13.0" layoutY="132.0" prefHeight="24.0" prefWidth="270.0" style="-fx-background-color: purple; -fx-alignment: center;" text="Paleta: 100kg x 200cm x 140cm x 200cm" textFill="WHITE" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="157.0" layoutX="6.0" layoutY="6.0" stroke="BLUE" strokeType="INSIDE" width="288.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="157.0" layoutX="6.0" layoutY="6.0" stroke="BLUE" strokeType="INSIDE" width="285.0" />
                </children>
             </Pane>
             </children>

@@ -137,11 +137,12 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
-            button[index] = new Button(courier.getName() + " " + price + "zł");
+            button[index] = new Button(courier.getName() + "\n" + price + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
             button[index].setStyle("-fx-background-radius: 3px; " +
                     "-fx-text-fill: white;" +
+                    "-fx-text-alignment: center;" +
                     "-fx-background-color: " + color + ";"
             );
 

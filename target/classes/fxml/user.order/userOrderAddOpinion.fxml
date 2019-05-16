@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.order.UserOrderAddOpinionController">
@@ -21,7 +22,8 @@
     <right>
         <AnchorPane prefHeight="404.0" prefWidth="794.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="MyOpinionsButton" layoutX="535.0" layoutY="299.0" mnemonicParsing="false" onAction="#MyOpinions" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Dodaj" textFill="WHITE" wrapText="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="273.0" layoutX="67.0" layoutY="7.0" stroke="BLUE" strokeType="INSIDE" width="659.0" />
+                <Button fx:id="MyOpinionsButton" layoutX="551.0" layoutY="299.0" mnemonicParsing="false" onAction="#MyOpinions" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Dodaj" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -36,7 +38,7 @@
                         <Font size="13.0" />
                     </font>
                 </TextField>
-                <Button fx:id="BackToMenuButton" layoutX="80.0" layoutY="299.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE" wrapText="true">
+                <Button fx:id="BackToMenuButton" layoutX="67.0" layoutY="299.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>

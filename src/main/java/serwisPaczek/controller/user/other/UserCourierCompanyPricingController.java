@@ -73,11 +73,6 @@ public class UserCourierCompanyPricingController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
-    }
-
-    @FXML
     public void CourierOpinion(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierOpinions.fxml"));
@@ -93,7 +88,11 @@ public class UserCourierCompanyPricingController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @FXML
+    public void backToCompanyList(ActionEvent event) {
+        sceneManager.show(SceneType.USER_COURIER_COMPANIES_LIST);
     }
 
     @Autowired

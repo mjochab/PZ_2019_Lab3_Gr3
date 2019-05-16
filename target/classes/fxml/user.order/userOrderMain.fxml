@@ -17,7 +17,6 @@
     <center>
         <AnchorPane prefHeight="404.0" prefWidth="665.0" BorderPane.alignment="CENTER">
             <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="318.0" layoutX="26.0" layoutY="13.0" stroke="BLUE" strokeType="INSIDE" width="427.0" />
                 <Button fx:id="BackToMenuButton" layoutX="31.0" layoutY="545.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
