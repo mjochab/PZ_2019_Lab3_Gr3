@@ -1,4 +1,4 @@
-package serwisPaczek.controller.user.order;
+package serwisPaczek.controller.user.profile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +12,8 @@ public class UserProfileOrderListController {
     private SceneManager sceneManager;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void openUserMain(ActionEvent event) {
+        sceneManager.show(SceneType.MAIN_USER);
     }
 
     @FXML

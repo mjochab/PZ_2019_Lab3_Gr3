@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.order.UserProfileOrderListController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.profile.UserProfileOrderListController">
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
@@ -16,7 +16,7 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="19.0" layoutY="551.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót na strone główną" textFill="WHITE">
+                <Button fx:id="backToUserMainButton" layoutX="19.0" layoutY="551.0" mnemonicParsing="false" onAction="#openUserMain" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
