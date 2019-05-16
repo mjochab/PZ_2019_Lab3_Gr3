@@ -21,6 +21,8 @@ public class User {
 
     private String password;
 
+    private double account_balance;
+
     @ManyToOne
     @NonNull
     @JoinColumn(name = "role_id")

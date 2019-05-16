@@ -26,6 +26,7 @@ public enum SceneType {
     USER_PROFILE_EDIT_PROFILE("user.profile/userProfileEditProfile"),
     USER_PROFILE_MY_OPINIONS("user.profile/userProfileMyOpinions"),
     USER_PROFILE_ORDER_LIST("user.profile/userProfileOrderList"),
+    USER_PROFILE_WALLET("user.profile/userProfileWallet"),
 
     // USER - ORDER
     USER_ORDER_MAIN("user.order/userOrderMain"),

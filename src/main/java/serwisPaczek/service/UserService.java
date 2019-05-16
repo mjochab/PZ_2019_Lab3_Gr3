@@ -30,13 +30,10 @@ public class UserService {
     private SceneManager sceneManager;
 
     public void login(String username, String password) {
-
         User user = userRepository.findByUsername(username);
 
         if (passwordEncoder.matches(password, user.getPassword())) {
-
             UserLoginDto.setLoggedUser(user);
-
             if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("USER_ROLE"))
                 sceneManager.show(SceneType.USER_MAIN);
             else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("WORKER_ROLE"))
@@ -51,7 +48,6 @@ public class UserService {
 
     public void createUser(String username, String password, String repeatPassword,
                            Text usernameWarning, Text passwordWarning, Text repeatPasswordWarning) {
-
         usernameWarning.setVisible(false);
         passwordWarning.setVisible(false);
         repeatPasswordWarning.setVisible(false);
@@ -86,6 +82,20 @@ public class UserService {
                 sceneManager.show(SceneType.LOGIN);
             }
         }
+    }
+
+    public void withdrawFunds(User user, double funds) {
+        double accountBalance = user.getAccount_balance();
+        accountBalance -= funds;
+        user.setAccount_balance(accountBalance);
+        userRepository.save(user);
+    }
+
+    public void depositFunds(User user, double funds) {
+        double accountBalance = user.getAccount_balance();
+        accountBalance += funds;
+        user.setAccount_balance(accountBalance);
+        userRepository.save(user);
     }
 }
 
