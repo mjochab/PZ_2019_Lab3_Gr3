@@ -23,39 +23,26 @@ import static serwisPaczek.utils.SceneManager.stage;
 @Controller
 public class UserOrderMainController {
     private SceneManager sceneManager;
-
     private ApplicationContext context;
     @Autowired
     private ParcelRepository parcelRepository;
-
     @FXML
     private TextField TFdlugosc;
-
     @FXML
     private RadioButton RBkoperta;
-
     @FXML
     private RadioButton RBpaleta;
-
     @FXML
     private TextField TFszerokosc;
-
     @FXML
     private TextField TFwysokosc;
-
     @FXML
     private RadioButton RBpaczka;
-
     @FXML
     private TextField TFwaga;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
-    }
-
-    @FXML
-    public void OpenPriceListButton(ActionEvent event) {
+    public void openOrderChooseCourierPanel(ActionEvent event) {
         if (!(RBpaczka.isSelected() || RBkoperta.isSelected() || RBpaleta.isSelected())) {
             showDialog("Wybierz typ paczki");
             return;
@@ -77,22 +64,19 @@ public class UserOrderMainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderChooseCourier.fxml"));
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
-
             UserOrderChooseCourierController chooseCourierController = loader.getController();
             chooseCourierController.initialize(parcel);
-
             stage.setScene(new Scene(root));
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
+    @FXML
+    public void openMainPanel(ActionEvent event) {
+        // TODO: USER_MAIN OR MAIN
+        sceneManager.show(SceneType.MAIN);
     }
 
     @Autowired
@@ -100,4 +84,8 @@ public class UserOrderMainController {
         this.context = context;
     }
 
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 }

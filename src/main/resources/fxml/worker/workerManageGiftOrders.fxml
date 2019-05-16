@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.GiftOrderController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.WorkerManageGiftOrdersController">
     <top>
         <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
@@ -28,7 +28,7 @@
                         <Font size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="backToWorkerMainButton" layoutX="23.0" layoutY="309.0" mnemonicParsing="false" onAction="#backToWorkerMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                <Button fx:id="btnOpenMainWorkerPanel" layoutX="23.0" layoutY="309.0" mnemonicParsing="false" onAction="#openMainWorkerPanel" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

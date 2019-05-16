@@ -23,10 +23,10 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompaniesListController {
-    @Autowired
-    CourierRepository courierRepository;
     private SceneManager sceneManager;
     private ApplicationContext context;
+    @Autowired
+    CourierRepository courierRepository;
     @FXML
     private GridPane gridPane;
 
@@ -46,7 +46,7 @@ public class UserCourierCompaniesListController {
                 gridCol = 0;
                 gridPane.addRow(gridRow);
             }
-            // Btn color switcher
+            // btn color switcher
             switch (index % 5) {
                 case (0):
                     color = "red";
@@ -80,10 +80,9 @@ public class UserCourierCompaniesListController {
                         loader.setControllerFactory(context::getBean);
                         Parent root = loader.load();
                         UserCourierCompanyPricingController userCourierCompanyPricingController = loader.getController();
-                        userCourierCompanyPricingController.initialize(courier.getId(), courier.getName());
+                        userCourierCompanyPricingController.initialize(courier.getId());
                         stage.setScene(new Scene(root));
                         stage.show();
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -96,17 +95,18 @@ public class UserCourierCompaniesListController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
+    public void openMainPanel(ActionEvent event) {
+        //TODO MAIN OR USER_MAIN
         sceneManager.show(SceneType.MAIN);
-    }
-
-    @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
     }
 
     @Autowired
     public void setContext(ApplicationContext context) {
         this.context = context;
+    }
+
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
     }
 }

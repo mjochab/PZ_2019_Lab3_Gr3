@@ -101,7 +101,7 @@ public class AdminAddCourierController {
     }
 
     @FXML
-    public void openAdminMain(ActionEvent event) {
+    public void openAdminMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.ADMIN_MAIN);
     }
 

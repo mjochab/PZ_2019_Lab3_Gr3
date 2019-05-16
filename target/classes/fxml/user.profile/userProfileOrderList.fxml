@@ -16,7 +16,7 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="backToUserMainButton" layoutX="19.0" layoutY="551.0" mnemonicParsing="false" onAction="#openUserMain" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                <Button fx:id="btnOpenUserMainPanel" layoutX="19.0" layoutY="551.0" mnemonicParsing="false" onAction="#openUserMainPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -37,12 +37,12 @@
                         <TableColumn fx:id="emailColumn" prefWidth="20.0" text="Email" />
                     </columns>
                 </TableView>
-                <Button fx:id="DetailsButton" layoutX="583.0" layoutY="551.0" mnemonicParsing="false" onAction="#OpenFinalize" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: blue;" text="Sczegóły" textFill="WHITE">
+                <Button fx:id="btnOpenDetails" layoutX="583.0" layoutY="551.0" mnemonicParsing="false" onAction="#openDetails" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: blue;" text="Sczegóły" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="AddOpinionButton" layoutX="300.0" layoutY="551.0" mnemonicParsing="false" onAction="#AddOpinion" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: rgb(120,1,1);" text="Wystaw opinie" textFill="WHITE">
+                <Button fx:id="btnAddOpinion" layoutX="300.0" layoutY="551.0" mnemonicParsing="false" onAction="#addOpinion" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: rgb(120,1,1);" text="Wystaw opinie" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

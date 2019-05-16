@@ -9,11 +9,11 @@ import serwisPaczek.utils.SceneType;
 
 @Controller
 public class UserAboutController {
-
     private SceneManager sceneManager;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
+    public void openMainPanel(ActionEvent event) {
+        //TODO MAIN or USER_MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

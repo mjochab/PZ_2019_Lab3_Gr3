@@ -16,20 +16,19 @@ import java.util.List;
 
 @Controller
 public class UserCourierOpinionsController {
+    private SceneManager sceneManager;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
     OpinionRepository opinionRepository;
-    private SceneManager sceneManager;
     @FXML
     private ListView<String> opinionList;
 
     @FXML
     public void initialize(Long courierId) {
+        //TODO [ALAN]: "OPINIE firmy X" -> you must change it to specific company
         Courier courier = courierRepository.getOne(courierId);
-
-        // Get opinions
-        List<Opinion> opinions = opinionRepository.findAllByUserOrder_Courier(courier);
+        List<Opinion> opinions = opinionRepository.findAllByUserOrder_Courier(courier);  // get opinions
 
         for (Opinion op : opinions) {
             opinionList.getItems().add(op.getDate() + " " + " |  Ocena: " +
@@ -38,12 +37,13 @@ public class UserCourierOpinionsController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
+    public void openMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
 
     @FXML
-    public void PriceList(ActionEvent event) {
+    public void openCourierCompanyPricingPanel(ActionEvent event) {
+        //TODO [ALAN] FIX
         sceneManager.show(SceneType.USER_COURIER_COMPANY_PRICING);
     }
 

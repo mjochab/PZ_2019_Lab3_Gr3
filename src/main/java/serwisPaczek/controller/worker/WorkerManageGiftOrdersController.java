@@ -8,11 +8,11 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class GiftOrderController {
+public class WorkerManageGiftOrdersController {
     private SceneManager sceneManager;
 
     @FXML
-    public void backToWorkerMain(ActionEvent event) {
+    public void openMainWorkerPanel(ActionEvent event) {
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 

@@ -20,14 +20,14 @@ import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class AdminEditCourierController {
+    private SceneManager sceneManager;
+    private Courier courier;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
     CourierService courierService;
     @FXML
     ComboBox courierComboBox;
-    private SceneManager sceneManager;
-    private Courier courier;
     @FXML
     private TextField courier_name;
     @FXML
@@ -92,6 +92,8 @@ public class AdminEditCourierController {
                     && pallet_up_to_800.getText().length() > 0
                     && this.pallet_up_to_1000.getText().matches("\\d+(\\.\\d{1,2})?")
                     && pallet_up_to_1000.getText().length() > 0) {
+                //TODO[P]: create class and obj to hold courier pricing information
+                //TODO[P]: block courier
                 String courier_name = this.courier_name.getText();
                 float envelope_up_to_1 = Float.parseFloat(this.envelope_up_to_1.getText());
                 float pack_up_to_1 = Float.parseFloat(this.pack_up_to_1.getText());
@@ -142,7 +144,7 @@ public class AdminEditCourierController {
     }
 
     @FXML
-    public void openAdminMain(ActionEvent event) {
+    public void openAdminMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.ADMIN_MAIN);
     }
 

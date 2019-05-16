@@ -9,11 +9,10 @@ import serwisPaczek.utils.SceneType;
 
 @Controller
 public class AdminEditAboutController {
-
     private SceneManager sceneManager;
 
     @FXML
-    public void openAdminMain(ActionEvent event) {
+    public void openAdminMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.ADMIN_MAIN);
     }
 

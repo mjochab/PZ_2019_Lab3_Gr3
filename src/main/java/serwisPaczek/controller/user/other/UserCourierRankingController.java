@@ -16,26 +16,15 @@ import java.util.Map;
 
 @Controller
 public class UserCourierRankingController {
+    private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
-    private SceneManager sceneManager;
     @FXML
     private PieChart rankingPieChart;
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
-    }
-
-    @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
-
-    @FXML
     public void initialize() {
         List<UserOrder> orders = orderRepository.findAll();
-//        System.out.println(orderRepository.count());
 
         Map<String, Integer> courierCount = new HashMap<>();
         for (UserOrder order : orders) {
@@ -45,8 +34,17 @@ public class UserCourierRankingController {
 
         for (Map.Entry<String, Integer> entry : courierCount.entrySet()) {
             rankingPieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
-//            System.out.println(entry.getKey() + " = " + entry.getValue());
         }
+    }
 
+    @FXML
+    public void openMainPanel(ActionEvent event) {
+        //TODO MAIN OR USER_MAIN
+        sceneManager.show(SceneType.MAIN);
+    }
+
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
     }
 }

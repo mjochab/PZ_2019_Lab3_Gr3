@@ -34,7 +34,7 @@
                 <TextField fx:id="pallet_up_to_800" layoutX="558.0" layoutY="275.0" prefHeight="25.0" prefWidth="220.0" promptText="800 kg" />
                 <TextField fx:id="pallet_up_to_1000" layoutX="557.0" layoutY="310.0" prefHeight="25.0" prefWidth="220.0" promptText="1000 kg" />
 
-                <Button fx:id="adminMainButton" layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
+                <Button fx:id="adminMainButton" layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#openAdminMainPanel" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Anuluj" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

@@ -16,7 +16,7 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="AdminMainButton" layoutX="61.0" layoutY="554.0" mnemonicParsing="false" onAction="#openAdminMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Wstecz" textFill="WHITE">
+                <Button fx:id="AdminMainButton" layoutX="61.0" layoutY="554.0" mnemonicParsing="false" onAction="#openAdminMainPanel" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Wstecz" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

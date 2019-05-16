@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.EditGiftController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.WorkerEditGiftController">
     <top>
         <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
@@ -23,7 +23,7 @@
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="280.0" layoutX="496.0" layoutY="14.0" stroke="BLUE" strokeType="INSIDE" width="298.0" />
-                <Button fx:id="backToWorkerMain" layoutX="14.0" layoutY="302.0" mnemonicParsing="false" onAction="#backToWorkerMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                <Button fx:id="btnOpenWorkerPanel" layoutX="14.0" layoutY="302.0" mnemonicParsing="false" onAction="#openMainWorkerPanel" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -43,7 +43,7 @@
                 </Button>
                 <TextField layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Prezentu" />
                 <TextField layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Liczba punktów" />
-                <Button fx:id="AddGiftButton" layoutX="505.0" layoutY="248.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj prezent" textFill="WHITE">
+                <Button fx:id="btnAddGift" layoutX="505.0" layoutY="248.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj prezent" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

@@ -27,13 +27,13 @@
                         <Font size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="61.0" layoutY="302.0" mnemonicParsing="false" onAction="#backToWorkerMain" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                <Button fx:id="btnOpenMainPanel" layoutX="61.0" layoutY="302.0" mnemonicParsing="false" onAction="#openMainPanel" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
                 <ListView fx:id="workerOrdersList" layoutX="61.0" layoutY="74.0" prefHeight="209.0" prefWidth="710.0" />
-                <Button fx:id="orderChangeStatusButton" layoutX="641.0" layoutY="292.0" mnemonicParsing="false" onAction="#orderChangeStatus" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: green;" text="Zmień status" textFill="WHITE">
+                <Button fx:id="btnOrderChangeStatus" layoutX="641.0" layoutY="292.0" mnemonicParsing="false" onAction="#orderChangeStatus" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: green;" text="Zmień status" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

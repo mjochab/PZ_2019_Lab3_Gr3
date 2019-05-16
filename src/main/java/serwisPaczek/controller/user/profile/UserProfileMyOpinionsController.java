@@ -12,7 +12,7 @@ public class UserProfileMyOpinionsController {
     private SceneManager sceneManager;
 
     @FXML
-    public void openUserMain(ActionEvent event) {
+    public void openUserMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_MAIN);
     }
 

@@ -2,38 +2,47 @@ package serwisPaczek.controller.user;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-@Controller
-public class MainUserController {
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
+@Controller
+public class UserMainController {
     private SceneManager sceneManager;
+    @FXML
+    private Button btnWelcomeUser;
 
     @FXML
-    public void openAbout(ActionEvent event) {
+    public void initialize() {
+        btnWelcomeUser.setText("Witaj " + getLoggedUser().getUsername() + "!");
+    }
+
+    @FXML
+    public void openAboutPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_ABOUT);
     }
 
     @FXML
-    void OpenPriceList(ActionEvent event) {
+    void openCourierCompaniesListPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_COURIER_COMPANIES_LIST);
     }
 
     @FXML
-    void OpenOrderCourier(ActionEvent event) {
+    void openOrderCourierMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_ORDER_MAIN);
     }
 
     @FXML
-    void OpenCourierRanking(ActionEvent event) {
+    void openCourierRankingPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_COURIER_RANKING);
     }
 
     @FXML
-    void OpenEditUserProfile(ActionEvent event) {
+    void openEditUserProfilePanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_PROFILE_EDIT_PROFILE);
     }
 
@@ -53,8 +62,7 @@ public class MainUserController {
     }
 
     @FXML
-    void OpenOrderGiftPanel(ActionEvent event) {
-        // TODO FIX
+    void openOrderGiftPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_GIFT_ORDER);
     }
 
@@ -67,5 +75,4 @@ public class MainUserController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
 }
