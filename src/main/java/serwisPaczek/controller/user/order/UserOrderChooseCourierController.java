@@ -67,6 +67,9 @@ public class UserOrderChooseCourierController {
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {
+            if(courier.is_blocked()) {
+                continue;
+            }
             if (parcel.getType() == "koperta") {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
             } else if (parcel.getType() == "paczka") {

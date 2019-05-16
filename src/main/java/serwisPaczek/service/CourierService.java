@@ -26,7 +26,7 @@ public class CourierService {
                                      float pack_up_to_5, float pack_up_to_10, float pack_up_to_15, float pack_up_to_20,
                                      float pack_up_to_30, float pallet_up_to_300, float pallet_up_to_500,
                                      float pallet_up_to_800, float pallet_up_to_1000) {
-        Courier courier = new Courier(name);
+        Courier courier = new Courier(name, false);
         EnvelopePricing envelopePricing = new EnvelopePricing(envelope_up_to_1, courier);
         PackPricing packPricing = new PackPricing(pack_up_to_1, pack_up_to_2, pack_up_to_5, pack_up_to_10,
                 pack_up_to_15, pack_up_to_20, pack_up_to_30, courier);
@@ -38,11 +38,12 @@ public class CourierService {
         palletPricingRepository.save(palletPricing);
     }
 
-    public void editCourierCompany(Courier courier, String name, float envelope_up_to_1, float pack_up_to_1, float pack_up_to_2,
+    public void editCourierCompany(Courier courier, String name, boolean isBlocked, float envelope_up_to_1, float pack_up_to_1, float pack_up_to_2,
                                    float pack_up_to_5, float pack_up_to_10, float pack_up_to_15, float pack_up_to_20,
                                    float pack_up_to_30, float pallet_up_to_300, float pallet_up_to_500,
                                    float pallet_up_to_800, float pallet_up_to_1000) {
         courier.setName(name);
+        courier.set_blocked(isBlocked);
         courier.getEnvelopePricing().setUp_to_1(envelope_up_to_1);
         courier.getPackPricing().setUp_to_1(pack_up_to_1);
         courier.getPackPricing().setUp_to_2(pack_up_to_2);

@@ -75,7 +75,7 @@ public class MainService {
                     adress);
             userList.add(user);
 
-            Courier courier = new Courier("Kurier " + i);
+            Courier courier = new Courier("Kurier " + i, false);
             courierList.add(courier);
 
             EnvelopePricing envelopePricing = new EnvelopePricing(1 + i, courier);

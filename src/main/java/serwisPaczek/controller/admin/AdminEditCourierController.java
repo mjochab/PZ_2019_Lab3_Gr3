@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,8 @@ public class AdminEditCourierController {
     private TextField pallet_up_to_800;
     @FXML
     private TextField pallet_up_to_1000;
+    @FXML
+    private CheckBox blockCourierCheckBox;
 
     public void initialize() {
         List<Courier> courierList = courierRepository.findAll();
@@ -92,8 +95,6 @@ public class AdminEditCourierController {
                     && pallet_up_to_800.getText().length() > 0
                     && this.pallet_up_to_1000.getText().matches("\\d+(\\.\\d{1,2})?")
                     && pallet_up_to_1000.getText().length() > 0) {
-                //TODO[P]: create class and obj to hold courier pricing information
-                //TODO[P]: block courier
                 String courier_name = this.courier_name.getText();
                 float envelope_up_to_1 = Float.parseFloat(this.envelope_up_to_1.getText());
                 float pack_up_to_1 = Float.parseFloat(this.pack_up_to_1.getText());
@@ -107,8 +108,10 @@ public class AdminEditCourierController {
                 float pallet_up_to_500 = Float.parseFloat(this.pallet_up_to_500.getText());
                 float pallet_up_to_800 = Float.parseFloat(this.pallet_up_to_800.getText());
                 float pallet_up_to_1000 = Float.parseFloat(this.pallet_up_to_1000.getText());
+                boolean isBlocked = blockCourierCheckBox.isSelected();
 
-                courierService.editCourierCompany(this.courier, courier_name, envelope_up_to_1, pack_up_to_1, pack_up_to_2, pack_up_to_5,
+                //TODO[P]: create class and obj to hold courier pricing information
+                courierService.editCourierCompany(this.courier, courier_name, isBlocked, envelope_up_to_1, pack_up_to_1, pack_up_to_2, pack_up_to_5,
                         pack_up_to_10, pack_up_to_15, pack_up_to_20, pack_up_to_30, pallet_up_to_300, pallet_up_to_500,
                         pallet_up_to_800, pallet_up_to_1000);
                 showDialog("Poprawna edycja kuriera.");
@@ -127,7 +130,7 @@ public class AdminEditCourierController {
 
     @FXML
     public void showCourier(ActionEvent event) {
-        this.courier = (Courier) courierComboBox.getSelectionModel().getSelectedItem();
+        courier = (Courier) courierComboBox.getSelectionModel().getSelectedItem();
         courier_name.setText(courier.getName());
         envelope_up_to_1.setText(Float.toString(courier.getEnvelopePricing().getUp_to_1()));
         pack_up_to_1.setText(Float.toString(courier.getPackPricing().getUp_to_1()));
@@ -141,6 +144,7 @@ public class AdminEditCourierController {
         pallet_up_to_500.setText(Float.toString(courier.getPalletPricing().getUp_to_500()));
         pallet_up_to_800.setText(Float.toString(courier.getPalletPricing().getUp_to_800()));
         pallet_up_to_1000.setText(Float.toString(courier.getPalletPricing().getUp_to_1000()));
+        blockCourierCheckBox.setSelected(courier.is_blocked());
     }
 
     @FXML

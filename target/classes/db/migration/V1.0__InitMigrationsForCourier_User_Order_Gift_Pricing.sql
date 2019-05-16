@@ -14,6 +14,7 @@ Primary Key(id));
 create table courier (
 id bigint not null auto_increment,
 name varchar(255),
+is_blocked BOOLEAN not null default 0,
 Primary Key(id));
 
 create table envelope_pricing (
