@@ -40,7 +40,7 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="19.0" layoutY="538.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="762.0" style="-fx-background-color: green;" text="Powrót do strony głównej" textFill="WHITE">
+                <Button fx:id="BackToMenuButton" layoutX="19.0" layoutY="538.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="762.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

@@ -23,7 +23,7 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="logoutButton" layoutX="80.0" layoutY="299.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: grey;" text="Wyloguj się" textFill="WHITE" wrapText="true">
+                <Button fx:id="logoutButton" layoutX="80.0" layoutY="292.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: grey;" text="Wyloguj się" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
                     </font>

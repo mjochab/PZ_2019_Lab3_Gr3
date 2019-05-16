@@ -13,6 +13,8 @@
     <left>
         <AnchorPane prefHeight="404.0" prefWidth="770.0" BorderPane.alignment="CENTER">
             <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="417.0" layoutY="118.0" stroke="DARKORANGE" strokeType="INSIDE" width="366.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="24.0" layoutY="118.0" stroke="BLUE" strokeType="INSIDE" width="366.0" />
                 <Label layoutX="24.0" layoutY="64.0" prefHeight="35.0" prefWidth="366.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;" text="Dane odbiorcy" textFill="WHITE">
                     <font>
                         <Font size="17.0" />
@@ -114,8 +116,6 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="417.0" layoutY="118.0" stroke="DARKORANGE" strokeType="INSIDE" width="366.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="24.0" layoutY="118.0" stroke="BLUE" strokeType="INSIDE" width="366.0" />
             <Label layoutX="24.0" layoutY="15.0" prefHeight="35.0" prefWidth="757.0" style="-fx-background-color: purple; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;" text="Dane wysyłkowe" textFill="WHITE">
                <font>
                   <Font size="17.0" />
