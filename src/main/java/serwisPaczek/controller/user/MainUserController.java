@@ -38,6 +38,21 @@ public class MainUserController {
     }
 
     @FXML
+    void openEditOrderList(ActionEvent event) {
+        sceneManager.show(SceneType.USER_PROFILE_ORDER_LIST);
+    }
+
+    @FXML
+    void openUserOpinions(ActionEvent event) {
+        sceneManager.show(SceneType.USER_PROFILE_MY_OPINIONS);
+    }
+
+    @FXML
+    void openUserWallet(ActionEvent event) {
+        //TODO create user wallet .fxml
+    }
+
+    @FXML
     void OpenOrderGiftPanel(ActionEvent event) {
         // TODO FIX
         sceneManager.show(SceneType.USER_GIFT_ORDER);

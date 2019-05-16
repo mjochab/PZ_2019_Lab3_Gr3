@@ -9,7 +9,6 @@ public enum SceneType {
     // ADMIN
     ADMIN_MAIN("admin/adminMain"),
     ADMIN_MANAGE_USERS("admin/adminManageUsers"),
-    ADMIN_MANAGE_PARCELS("admin/adminManageParcels"),
     ADMIN_ADD_COURIER("admin/adminAddCourier"),
     ADMIN_EDIT_ABOUT("admin/adminEditAbout"),
     ADMIN_EDIT_COURIER("admin/adminEditCourier"),
@@ -21,7 +20,7 @@ public enum SceneType {
     WORKER_EDIT_GIFT("worker/workerEditGift"),
 
     // USER
-    MAIN_USER("user/mainUser"),
+    USER_MAIN("user/mainUser"),
 
     // USER - PROFILE
     USER_PROFILE_EDIT_PROFILE("user.profile/userProfileEditProfile"),
@@ -30,8 +29,8 @@ public enum SceneType {
 
     // USER - ORDER
     USER_ORDER_MAIN("user.order/userOrderMain"),
-    USER_ORDER_CHOOSE_COURIER("user.order/userOrderChooseCourier"),
-    USER_ORDER_FILL_ADDRESSES("user.order/userOrderFillAddressesForm"),
+    USER_ORDER_CHOOSE_COURIER("user.order/userOrderChooseCourier"), //FXML loader
+    USER_ORDER_FILL_ADDRESSES("user.order/userOrderFillAddressesForm"), //FXML loader
     USER_ORDER_FINALIZE("user.order/userOrderFinalize"),
     USER_ORDER_ADD_OPINION("user.order/userOrderAddOpinion"),
 

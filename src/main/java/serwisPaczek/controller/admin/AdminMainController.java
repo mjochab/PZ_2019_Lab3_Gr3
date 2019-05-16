@@ -45,7 +45,7 @@ public class AdminMainController {
 
     @FXML
     public void openManageParcelPanel(ActionEvent event) {
-        sceneManager.show(SceneType.ADMIN_MANAGE_PARCELS);
+        sceneManager.show(SceneType.WORKER_MANAGE_PARCELS);
     }
 
     @FXML

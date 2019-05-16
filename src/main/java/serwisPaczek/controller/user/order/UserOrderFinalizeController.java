@@ -35,39 +35,39 @@ public class UserOrderFinalizeController {
     private Parcel parcel;
     private Courier courier;
     @FXML
-    private Label TFfromHouseNumber;
+    private Label TFnr;
     @FXML
     private Label TFcourier;
     @FXML
-    private Label TFhouseNumber;
+    private Label TFmoney;
     @FXML
-    private Label TFfromSurname;
+    private Label TFname;
+    @FXML
+    private Label TFsurname;
+    @FXML
+    private Label TFstreet;
+    @FXML
+    private Label TFcity;
+    @FXML
+    private Label TFhouseNumber;
     @FXML
     private Label TFzipCode;
     @FXML
-    private Label TFfromZipCode;
+    private Label TFfromName;
+    @FXML
+    private Label TFfromSurname;
     @FXML
     private Label TFfromStreet;
     @FXML
     private Label TFfromCity;
     @FXML
-    private Label TFnr;
+    private Label TFfromHouseNumber;
     @FXML
-    private Label TFname;
-    @FXML
-    private Label TFstreet;
-    @FXML
-    private Label TFfromName;
-    @FXML
-    private Label TFmoney;
-    @FXML
-    private Label TFcity;
-    @FXML
-    private Label TFsurname;
+    private Label TFfromZipCode;
 
     @FXML
     public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

@@ -18,7 +18,7 @@ public class UserProfileEditProfileController {
 
     @FXML
     public void BackToUserProfile(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN_USER);
+        sceneManager.show(SceneType.USER_MAIN);
     }
 
     @Autowired

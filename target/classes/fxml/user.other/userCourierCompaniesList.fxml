@@ -3,53 +3,51 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="serwisPaczek.controller.user.other.UserCourierCompaniesListController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.other.UserCourierCompaniesListController">
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <ScrollPane layoutX="14.0" layoutY="85.0" prefHeight="442.0" prefWidth="762.0">
+                <ScrollPane layoutX="20.0" layoutY="68.0" prefHeight="453.0" prefWidth="762.0">
                     <content>
-                        <GridPane fx:id="gridPane" alignment="TOP_CENTER" hgap="52.0" nodeOrientation="LEFT_TO_RIGHT"
-                                  prefHeight="120.0" prefWidth="696.0" vgap="20.0">
+                        <GridPane fx:id="gridPane" alignment="TOP_CENTER" hgap="52.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="120.0" prefWidth="696.0" vgap="20.0">
                             <columnConstraints>
-                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
-                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
-                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
-                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0"/>
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" vgrow="ALWAYS"/>
+                                <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
                             </rowConstraints>
                             <opaqueInsets>
-                                <Insets/>
+                                <Insets />
                             </opaqueInsets>
                             <padding>
-                                <Insets left="52.0"/>
+                                <Insets left="52.0" />
                             </padding>
                         </GridPane>
                     </content>
                 </ScrollPane>
-                <Button layoutX="61.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="679.0"
-                        style="-fx-background-color: Blue;" text="Wybierz firmę kurierską" textFill="WHITE"
-                        wrapText="true">
+                <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="762.0" style="-fx-background-color: Blue;" text="Wybierz firmę kurierską" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="17.0"/>
+                        <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="BackToMenuButton" layoutX="55.0" layoutY="545.0" mnemonicParsing="false"
-                        onAction="#BackToMenu" prefHeight="41.0" prefWidth="691.0" style="-fx-background-color: green;"
-                        text="Powrót do strony głównej" textFill="WHITE">
+                <Button fx:id="BackToMenuButton" layoutX="19.0" layoutY="538.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textFill="WHITE">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
             </children>
             <BorderPane.margin>
-                <Insets/>
+                <Insets />
             </BorderPane.margin>
         </AnchorPane>
     </center>

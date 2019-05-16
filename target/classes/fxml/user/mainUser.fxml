@@ -1,97 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
-      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="serwisPaczek.controller.user.MainUserController">
-    <children>
-        <StackPane layoutX="1.0">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.MainUserController">
+    <left>
+        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                            prefHeight="600.0" prefWidth="800.0">
-                    <top>
-                        <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
-                            <image>
-                                <Image url="@../../images/BigBanner_Delivery.png"/>
-                            </image>
-                        </ImageView>
-                    </top>
-                    <left>
-                        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
-                            <children>
-                                <Button layoutX="47.0" layoutY="33.0" mnemonicParsing="false" prefHeight="120.0"
-                                        prefWidth="285.0" style="-fx-background-color: Blue;"
-                                        text="Witaj w serwisie paczek!    Skorzystaj z naszych usług.    Szybko, tanio i wygodnie!"
-                                        textFill="WHITE" wrapText="true">
-                                    <font>
-                                        <Font size="17.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="logoutButton" layoutX="47.0" layoutY="165.0" mnemonicParsing="false"
-                                        onAction="#logout" prefHeight="120.0" prefWidth="135.0"
-                                        style="-fx-background-color: grey;" text="Wyloguj się" textFill="WHITE"
-                                        wrapText="true">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="OpenPriceListButton" layoutX="453.0" layoutY="33.0"
-                                        mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0"
-                                        prefWidth="135.0" style="-fx-background-color: green;" text="Cennik"
-                                        textFill="WHITE">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="OpenEditUserProfileButton" layoutX="199.0" layoutY="165.0"
-                                        mnemonicParsing="false" onAction="#OpenEditUserProfile" prefHeight="120.0"
-                                        prefWidth="135.0" style="-fx-background-color: darkblue;"
-                                        text="Edytuj swoje dane" textAlignment="CENTER" textFill="WHITE"
-                                        wrapText="true">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="OpenOrdeCourierrButton" layoutX="606.0" layoutY="33.0"
-                                        mnemonicParsing="false" onAction="#OpenOrderCourier" prefHeight="120.0"
-                                        prefWidth="135.0" style="-fx-background-color: red;" text="Zamów kuriera"
-                                        textFill="WHITE">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="redirectToAboutButton" layoutX="453.0" layoutY="165.0"
-                                        mnemonicParsing="false" onAction="#openAbout" prefHeight="120.0"
-                                        prefWidth="135.0" style="-fx-background-color: orange;" text="O firmie"
-                                        textFill="WHITE">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="OpenCourierRankingButton" layoutX="606.0" layoutY="165.0"
-                                        mnemonicParsing="false" onAction="#OpenCourierRanking" prefHeight="120.0"
-                                        prefWidth="135.0" style="-fx-background-color: purple;" text="Ranking kurierów"
-                                        textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="OpenOrderGiftPanelButton" layoutX="453.0" layoutY="290.0"
-                                        mnemonicParsing="false" onAction="#OpenOrderGiftPanel" prefHeight="44.0"
-                                        prefWidth="288.0" style="-fx-background-color: red;" text="Odbierz nagrodę"
-                                        textFill="WHITE">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Button>
-                            </children>
-                        </AnchorPane>
-                    </left>
-                </BorderPane>
+                <Button layoutX="80.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: Blue;" text="Witaj User!" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+                <Button fx:id="logoutButton" layoutX="80.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: grey;" text="Wyloguj się" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="OpenPriceListButton" layoutX="230.0" layoutY="116.0" mnemonicParsing="false" onAction="#OpenPriceList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Cennik" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="OpenEditUserProfileButton" layoutX="436.0" layoutY="431.0" mnemonicParsing="false" onAction="#OpenEditUserProfile" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkblue;" text="Edytuj swoje dane" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="OpenOrdeCourierrButton" layoutX="80.0" layoutY="116.0" mnemonicParsing="false" onAction="#OpenOrderCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkslategray;" text="Zamów kuriera" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="redirectToAboutButton" layoutX="230.0" layoutY="298.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="O firmie" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="OpenCourierRankingButton" layoutX="80.0" layoutY="298.0" mnemonicParsing="false" onAction="#OpenCourierRanking" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Ranking kurierów" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="OpenOrderGiftPanelButton" layoutX="585.0" layoutY="116.0" mnemonicParsing="false" onAction="#OpenOrderGiftPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Odbierz nagrodę" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+            <Button graphicTextGap="1.0" layoutX="80.0" layoutY="72.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zamów kuriera" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button graphicTextGap="1.0" layoutX="436.0" layoutY="72.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Zamówienie" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="ButtonOrderList" layoutX="436.0" layoutY="116.0" mnemonicParsing="false" onAction="#openEditOrderList" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: blue;" text="Twoje zamówienia" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button graphicTextGap="1.0" layoutX="436.0" layoutY="388.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Profil" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button graphicTextGap="1.0" layoutX="80.0" layoutY="254.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="284.0" style="-fx-border-color: Blue; -fx-background-color: white;" text="Firma" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonUserOpinions" layoutX="436.0" layoutY="251.0" mnemonicParsing="false" onAction="#openUserOpinions" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Twoje opinie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonUserWallet" layoutX="585.0" layoutY="431.0" mnemonicParsing="false" onAction="#openUserWallet" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: darkorange;" text="Portfel" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
             </children>
-        </StackPane>
-    </children>
-</Pane>
+        </AnchorPane>
+    </left>
+</BorderPane>

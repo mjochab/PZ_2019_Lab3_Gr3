@@ -11,10 +11,9 @@ import serwisPaczek.utils.SceneType;
 public class GiftOrderController {
     private SceneManager sceneManager;
 
-
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void backToWorkerMain(ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_MAIN);
     }
 
     @Autowired
