@@ -9,7 +9,6 @@ import serwisPaczek.utils.SceneType;
 
 @Controller
 public class AdminEditAboutController {
-
     private SceneManager sceneManager;
 
     @FXML

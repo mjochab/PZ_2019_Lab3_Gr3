@@ -8,7 +8,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 @Controller
-public class GiftOrderController {
+public class WorkerManageGiftOrdersController {
     private SceneManager sceneManager;
 
     @FXML

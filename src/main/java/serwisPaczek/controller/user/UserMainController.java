@@ -2,15 +2,25 @@ package serwisPaczek.controller.user;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
 @Controller
-public class MainUserController {
+public class UserMainController {
 
     private SceneManager sceneManager;
+    @FXML
+    private Button btnWelcomeUser;
+
+    @FXML
+    public void initialize() {
+        btnWelcomeUser.setText("Witaj " + getLoggedUser().getUsername() + "!");
+    }
 
     @FXML
     public void openAbout(ActionEvent event) {
@@ -67,5 +77,4 @@ public class MainUserController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
 }

@@ -3,6 +3,7 @@ package serwisPaczek.controller.admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,25 @@ import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
 @Controller
 public class AdminMainController {
     private SceneManager sceneManager;
 
+    @FXML
+    private Button btnWelcomeAdmin;
+
     @Autowired
     private MainService mainService;
 
-    public void FillTheBaseWithExampleData() {
+    @FXML
+    public void initialize() {
+        btnWelcomeAdmin.setText("Witaj " + getLoggedUser().getUsername() + "!");
+    }
+
+    @FXML
+    public void fillDataBaseWithExampleData() {
         mainService.fillDatabase();
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "Dane zostały poprawnie dodane do bazy", ButtonType.OK);
@@ -35,7 +47,7 @@ public class AdminMainController {
 
     @FXML
     void openManageWorkerPanel(ActionEvent event) {
-        //TODO FXML
+        //TODO ManageWorkerPanel
     }
 
     @FXML

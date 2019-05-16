@@ -2,14 +2,25 @@ package serwisPaczek.controller.worker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
 @Controller
 public class WorkerMainController {
     private SceneManager sceneManager;
+
+    @FXML
+    private Button btnWelcomeWorker;
+
+    @FXML
+    public void initialize() {
+        btnWelcomeWorker.setText("Witaj " + getLoggedUser().getUsername() + "!");
+    }
 
     @FXML
     public void OpenWorkerPanel(ActionEvent event) {

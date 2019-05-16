@@ -15,33 +15,33 @@
                     <left>
                         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
                             <children>
-                                <Button layoutX="81.0" layoutY="27.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: dimgrey;" text="Witaj Admin" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnWelcomeAdmin" layoutX="81.0" layoutY="27.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: dimgrey;" text="Witaj Admin!" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="17.0" />
                                     </font>
                                 </Button>
 
-                                <Button fx:id="manageUserPanelButton" layoutX="82.0" layoutY="126.0" mnemonicParsing="false" onAction="#openManageUserPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Zarządzaj użytkownikami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnManageUserPanel" layoutX="82.0" layoutY="126.0" mnemonicParsing="false" onAction="#openManageUserPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: green;" text="Zarządzaj użytkownikami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="openAddCourierButton" layoutX="435.0" layoutY="126.0" mnemonicParsing="false" onAction="#openAddCourierPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Dodaj kuriera" textFill="WHITE">
+                                <Button fx:id="btnAddCourierPanel" layoutX="435.0" layoutY="126.0" mnemonicParsing="false" onAction="#openAddCourierPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Dodaj kuriera" textFill="WHITE">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="editAboutButtonPanel" layoutX="435.0" layoutY="310.0" mnemonicParsing="false" onAction="#openEditAboutPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnEditAboutPanel" layoutX="435.0" layoutY="310.0" mnemonicParsing="false" onAction="#openEditAboutPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj informacje o  firmie" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="ManageParcelPanel" layoutX="231.0" layoutY="126.0" mnemonicParsing="false" onAction="#openManageParcelPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Zarządzaj zamówieniami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnManageParcelPanel" layoutX="231.0" layoutY="126.0" mnemonicParsing="false" onAction="#openManageParcelPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: purple;" text="Zarządzaj zamówieniami" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="FillTheBaseWithExampleDataButton" layoutX="583.0" layoutY="311.0" mnemonicParsing="false" onAction="#FillTheBaseWithExampleData" prefHeight="119.0" prefWidth="138.0" style="-fx-background-color: Blue;" text="Wypełnij bazę przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnFillDataBaseWithExampleData" layoutX="583.0" layoutY="311.0" mnemonicParsing="false" onAction="#fillDataBaseWithExampleData" prefHeight="119.0" prefWidth="138.0" style="-fx-background-color: Blue;" text="Wypełnij bazę przykładowymi danymi" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -51,7 +51,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="editCourierButton" layoutX="584.0" layoutY="126.0" mnemonicParsing="false" onAction="#openEditCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj cennik" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnEditCourier" layoutX="584.0" layoutY="126.0" mnemonicParsing="false" onAction="#openEditCourier" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: orange;" text="Edytuj cennik" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -76,7 +76,7 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="manageWorkerButton" layoutX="80.0" layoutY="311.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Zarządzaj pracownikami [DO ZROBIENIA]" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Button fx:id="btnManageWorkerPanel" layoutX="80.0" layoutY="311.0" mnemonicParsing="false" onAction="#openManageWorkerPanel" prefHeight="120.0" prefWidth="135.0" style="-fx-background-color: red;" text="Zarządzaj pracownikami [DO ZROBIENIA]" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="15.0" />
                                     </font>

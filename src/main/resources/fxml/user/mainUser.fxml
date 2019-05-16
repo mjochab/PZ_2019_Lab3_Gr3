@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.MainUserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.UserMainController">
     <left>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="80.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: Blue;" text="Witaj User!" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnWelcomeUser" layoutX="80.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: Blue;" text="Witaj User!" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="17.0" />
                     </font>

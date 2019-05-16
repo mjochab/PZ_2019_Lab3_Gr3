@@ -1,6 +1,5 @@
 package serwisPaczek.controller.admin;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,17 +20,13 @@ import serwisPaczek.utils.SceneType;
 import java.util.ArrayList;
 import java.util.List;
 
-//import jdk.nashorn.internal.objects.annotations.Property;
-
 @Controller
 public class AdminManageUsersController {
-    @Autowired
-    UserRepository userRepository;
     private SceneManager sceneManager;
     @Autowired
+    UserRepository userRepository;
+    @Autowired
     private AdressRepository adressRepository;
-
-    //Configure the table
     @FXML
     private TableView<UserAdressDto> tableView;
     @FXML
@@ -110,6 +105,5 @@ public class AdminManageUsersController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
 }
 

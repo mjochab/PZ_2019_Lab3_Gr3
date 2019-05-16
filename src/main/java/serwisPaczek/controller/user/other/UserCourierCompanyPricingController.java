@@ -27,6 +27,9 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompanyPricingController {
+    private SceneManager sceneManager;
+    private ApplicationContext context;
+    private Long courierID;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
@@ -35,8 +38,6 @@ public class UserCourierCompanyPricingController {
     PackPricingRepository packPricingRepository;
     @Autowired
     PalletPricingRepository palletPricingRepository;
-    private SceneManager sceneManager;
-    private ApplicationContext context;
     @FXML
     private ListView<String> envelopeList;
     @FXML
@@ -45,18 +46,16 @@ public class UserCourierCompanyPricingController {
     private ListView<String> palletList;
     @FXML
     private Button courierNameButton;
-    private Long courierID;
 
-    @FXML
-    public void initialize(Long courierID, String courierName) {
+    public void initialize(Long courierID) {
+        // get courier and pricing
         this.courierID = courierID;
         Courier courier = courierRepository.getOne(courierID);
-
-        // Get price lists
         EnvelopePricing envelopePricing = envelopePricingRepository.findByCourier(courier);
         PackPricing packPricing = packPricingRepository.findByCourier(courier);
         PalletPricing palletPricing = palletPricingRepository.findByCourier(courier);
 
+        // fill courier information
         courierNameButton.setText(courier.getName());
         envelopeList.getItems().addAll("do 1 kg: " + envelopePricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 1 kg: " + packPricing.getUp_to_1() + " zł");
@@ -72,19 +71,15 @@ public class UserCourierCompanyPricingController {
         palletList.getItems().addAll("do 1000 kg: " + palletPricing.getUp_to_1000() + " zł");
     }
 
-    @FXML
     public void CourierOpinion(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierOpinions.fxml"));
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
-
             UserCourierOpinionsController userCourierOpinionsController = loader.getController();
             userCourierOpinionsController.initialize(courierID);
-
             stage.setScene(new Scene(root));
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,13 +91,12 @@ public class UserCourierCompanyPricingController {
     }
 
     @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
-
-    @Autowired
     public void setContext(ApplicationContext context) {
         this.context = context;
     }
 
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 }
