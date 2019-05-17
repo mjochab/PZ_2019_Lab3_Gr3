@@ -12,10 +12,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.*;
 import serwisPaczek.repository.*;
+import serwisPaczek.service.UserService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
@@ -28,6 +31,7 @@ public class UserOrderFillAddressesFormController {
     private Parcel parcel;
     private Courier courier;
     private float price;
+    private UserService userService;
     @Autowired
     private AdressRepository adressRepository;
     @Autowired
@@ -38,6 +42,8 @@ public class UserOrderFillAddressesFormController {
     private OrderRepository orderRepository;
     @Autowired
     private CourierRepository courierRepository;
+    @Autowired
+    private UserRepository userRepository;
     @FXML
     private TextField TFsenderSurname;
     @FXML
@@ -86,25 +92,32 @@ public class UserOrderFillAddressesFormController {
     }
 
     @FXML
-    public void openFinalizePanel(ActionEvent event) throws IOException {
-        Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(),
-                TFstreet.getText(), Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(),
-                Long.parseLong(TFnr.getText()), TFemail.getText());
-        Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(),
-                TFsenderCity.getText(),
-                TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
+    public void openFinalizePanel(ActionEvent event) {
+        Adress sender = new Adress(
+                TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
+                Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
+                TFemail.getText());
+        Adress received = new Adress(
+                TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(), TFsenderStreet.getText(),
+                Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
                 Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
         adressRepository.save(received);
         adressRepository.save(sender);
-
         RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
         SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
-
-        //example add order
-        UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
-                courierRepository.getOne(5L),
-                Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
-
+        // create user order
+        UserOrder order = orderRepository.save(new UserOrder(
+                price, new Date(), getLoggedUser(), courierRepository.getOne(5L), Status.WYSLANO_ZGLOSZENIE,
+                senderAdress, recipientAdress));
+        // TODO: [PATRYK] USER SERVICE NOT WORKING (UserProfileWallet.java TAM działa)
+        // userService.withdrawFunds(getLoggedUser(), (double)price); //TU NIE działa
+        // update account balance
+        User user = getLoggedUser();
+        double accountBalance = user.getAccount_balance();
+        accountBalance -= price;
+        accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        user.setAccount_balance(accountBalance);
+        userRepository.save(user);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
             loader.setControllerFactory(context::getBean);
@@ -116,7 +129,6 @@ public class UserOrderFillAddressesFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML

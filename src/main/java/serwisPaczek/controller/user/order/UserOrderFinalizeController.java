@@ -4,6 +4,7 @@ import generate.GeneratePdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Adress;
@@ -12,6 +13,8 @@ import serwisPaczek.model.Parcel;
 import serwisPaczek.model.UserOrder;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
 @Controller
 public class UserOrderFinalizeController {
@@ -51,6 +54,8 @@ public class UserOrderFinalizeController {
     private Label TFfromHouseNumber;
     @FXML
     private Label TFfromZipCode;
+    @FXML
+    private TextField TFaccountBalace;
 
     @FXML
     public void initialize(UserOrder userOrder, Adress sender,
@@ -77,6 +82,9 @@ public class UserOrderFinalizeController {
         TFfromHouseNumber.setText(sender.getHouseNumber().toString());
         TFfromStreet.setText(sender.getStreet());
         TFfromZipCode.setText(sender.getZipCode());
+        // show acc balance
+        TFaccountBalace.setText(String.valueOf(getLoggedUser().getAccount_balance()));
+
     }
 
     @FXML

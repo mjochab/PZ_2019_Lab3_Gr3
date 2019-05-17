@@ -41,6 +41,9 @@ public class UserCourierCompaniesListController {
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {
+            if(courier.is_blocked()) {
+                continue;
+            }
             if (index % 4 == 0) {
                 gridRow++;
                 gridCol = 0;

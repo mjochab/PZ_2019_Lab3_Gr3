@@ -9,16 +9,12 @@ import java.util.List;
 @Data
 @Entity
 public class SenderAdress {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     @ManyToOne
     @JoinColumn(name = "adress_id")
     private Adress adress;
-
     @OneToMany(mappedBy = "senderAdress", cascade = CascadeType.ALL)
     private List<UserOrder> userOrder = new ArrayList<>();
 
@@ -29,3 +25,4 @@ public class SenderAdress {
         this.adress = adress;
     }
 }
+//TODO: Rename class SenderAdress -> SenderAddress

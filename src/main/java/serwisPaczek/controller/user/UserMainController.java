@@ -58,7 +58,7 @@ public class UserMainController {
 
     @FXML
     void openUserWallet(ActionEvent event) {
-        //TODO create user wallet .fxml
+        sceneManager.show(SceneType.USER_PROFILE_WALLET);
     }
 
     @FXML

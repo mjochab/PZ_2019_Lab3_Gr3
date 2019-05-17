@@ -48,8 +48,7 @@ public class UserOrderChooseCourierController {
     @FXML
     public void initialize(Parcel parcel) {
         this.parcel = parcel;
-        if (parcel.getType() == "paczka") {
-
+        if (parcel.getType().equals("paczka")) {
             if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
                 ratio = 1;
             else if (parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
@@ -67,9 +66,12 @@ public class UserOrderChooseCourierController {
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {
-            if (parcel.getType() == "koperta") {
+            if (courier.is_blocked()) {
+                continue;
+            }
+            if (parcel.getType().equals("koperta")) {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
-            } else if (parcel.getType() == "paczka") {
+            } else if (parcel.getType().equals("paczka")) {
                 if (parcel.getWeight() <= 1) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
                 }
@@ -91,7 +93,7 @@ public class UserOrderChooseCourierController {
                 if (parcel.getWeight() <= 30) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_30() * ratio;
                 }
-            } else if (parcel.getType() == "paleta") {
+            } else if (parcel.getType().equals("paleta")) {
                 if (parcel.getWeight() <= 300) {
                     price = palletPricingRepository.findByCourier(courier).getUp_to_300();
                 } else if (parcel.getWeight() <= 500) {
@@ -138,8 +140,12 @@ public class UserOrderChooseCourierController {
                 @Override
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {
-
                         try {
+                            System.out.println(price);
+                            // TODO [Patryk] Naprawić złą cenę w zmiennej
+                            if (getLoggedUser().getAccount_balance() < price) {
+                                throw new ArithmeticException();
+                            }
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
                             loader.setControllerFactory(context::getBean);
                             Parent root = loader.load();
@@ -149,6 +155,9 @@ public class UserOrderChooseCourierController {
                             fillAdressessController.initialize(parcel, courier, price);
                         } catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
+                        } catch (ArithmeticException e) {
+                            showDialog("Nie wystarczająca ilość środków na koncie!\n"
+                                    + "Stan konta: " + getLoggedUser().getAccount_balance() + " PLN.");
                         }
                     } else showDialog("Musisz być zalogowany by dokonać zamówienia!");
                 }
