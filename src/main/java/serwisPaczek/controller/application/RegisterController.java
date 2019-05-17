@@ -32,6 +32,9 @@ public class RegisterController {
         repeatPasswordWarning.setVisible(false);
     }
 
+    /**
+     * This method is used to register a new user.
+     */
     @FXML
     public void register(ActionEvent event) {
         userService.createUser(TFUsername.getText(), PFPassword.getText(),

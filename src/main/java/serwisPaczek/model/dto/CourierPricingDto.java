@@ -3,6 +3,9 @@ package serwisPaczek.model.dto;
 import lombok.Data;
 import serwisPaczek.model.Courier;
 
+/**
+ * This class is used to create an object that stores courier data and courier price list.
+ */
 @Data
 public class CourierPricingDto {
     private Courier courier;
@@ -67,6 +70,12 @@ public class CourierPricingDto {
         this.txtPallet_up_to_1000 = txtPallet_up_to_1000;
     }
 
+    /**
+     * This method validate the data needed for editing/adding courier to the database.
+     * If validation was successful also parse data to float.
+     *
+     * @return Whether the validation was successful or not.
+     */
     public boolean validate() {
         if (courier_name.length() > 0
                 && txtEnvelope_up_to_1.matches("\\d+(\\.\\d{1,2})?") && txtEnvelope_up_to_1.length() > 0

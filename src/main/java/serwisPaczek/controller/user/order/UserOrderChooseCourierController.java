@@ -45,6 +45,9 @@ public class UserOrderChooseCourierController {
     @FXML
     private GridPane gridPane;
 
+    /**
+     * This method is used to display all existing, non blocked courier companies and their prices for chosen parcel.
+     */
     @FXML
     public void initialize(Parcel parcel) {
         this.parcel = parcel;
@@ -137,6 +140,11 @@ public class UserOrderChooseCourierController {
                     "-fx-background-color: " + color + ";"
             );
             button[index].setOnAction(new EventHandler<ActionEvent>() {
+                /**
+                 * This method is used to handle btn click.
+                 * After user click btn this method redirect him to userOrderFillAddressesForm.fxml
+                 * This method also pass parcel, courier and price information to UserOrderFillAddressesFormController.
+                 */
                 @Override
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {

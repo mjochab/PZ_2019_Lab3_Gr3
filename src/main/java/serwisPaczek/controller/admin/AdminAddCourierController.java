@@ -44,6 +44,11 @@ public class AdminAddCourierController {
     @FXML
     private TextField pallet_up_to_1000;
 
+    /**
+     * This method is used to create a new courier company in the database.
+     *
+     * @return Whether adding a courier company to the database was successful or not.
+     */
     @FXML
     public boolean addCourier(ActionEvent event) {
         CourierPricingDto courierPricing = new CourierPricingDto(

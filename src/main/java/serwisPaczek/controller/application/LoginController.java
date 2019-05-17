@@ -22,6 +22,9 @@ public class LoginController {
     @FXML
     private PasswordField PFPassword;
 
+    /**
+     * This method is used to log in the user.
+     */
     @FXML
     public void login(ActionEvent event) throws IOException {
         userService.login(TFUsername.getText(), PFPassword.getText());

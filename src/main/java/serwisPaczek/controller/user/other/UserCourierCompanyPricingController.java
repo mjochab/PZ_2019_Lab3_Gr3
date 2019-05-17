@@ -47,6 +47,9 @@ public class UserCourierCompanyPricingController {
     @FXML
     private Button courierNameButton;
 
+    /**
+     * This method is used to display the prices of the selected courier company.
+     */
     public void initialize(Long courierID) {
         // get courier and pricing
         this.courierID = courierID;

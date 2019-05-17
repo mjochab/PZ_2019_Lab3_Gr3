@@ -29,6 +29,9 @@ public class AdminMainController {
         btnWelcomeAdmin.setText("Witaj " + getLoggedUser().getUsername() + "!");
     }
 
+    /**
+     * This method is used to fill the database with example data.
+     */
     @FXML
     public void fillDataBaseWithExampleData() {
         mainService.fillDatabase();

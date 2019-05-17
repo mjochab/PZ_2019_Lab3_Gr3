@@ -12,6 +12,9 @@ import serwisPaczek.repository.EnvelopePricingRepository;
 import serwisPaczek.repository.PackPricingRepository;
 import serwisPaczek.repository.PalletPricingRepository;
 
+/**
+ * This class is responsible for managing the courier in the database.
+ */
 @Service
 public class CourierService {
     @Autowired
@@ -23,6 +26,11 @@ public class CourierService {
     @Autowired
     PalletPricingRepository palletPricingRepository;
 
+    /**
+     * This method is used to create a new courier company and and it's pricing.
+     *
+     * @param courierPricing The object that stores necessary information needed to create a courier.
+     */
     public void createCourierCompany(CourierPricingDto courierPricing) {
         Courier courier = new Courier(
                 courierPricing.getCourier_name());
@@ -41,6 +49,11 @@ public class CourierService {
         palletPricingRepository.save(palletPricing);
     }
 
+    /**
+     * This method is used to edit an existing courier company and it's pricing.
+     *
+     * @param courierPricing The object that stores necessary information needed to edit an existing courier.
+     */
     public void editCourierCompany(CourierPricingDto courierPricing) {
         Courier courier = courierPricing.getCourier();
         courier.setName(courierPricing.getCourier_name());

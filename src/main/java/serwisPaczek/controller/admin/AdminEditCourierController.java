@@ -65,6 +65,11 @@ public class AdminEditCourierController {
         courierComboBox.setItems(observableListUsers);
     }
 
+    /**
+     * This method is used to edit an existing courier company in the database.
+     *
+     * @return Whether editing a courier company to the database was successful or not.
+     */
     @FXML
     public boolean editCourier(ActionEvent event) {
         if (courierComboBox.getSelectionModel().isEmpty()) {
@@ -91,6 +96,9 @@ public class AdminEditCourierController {
         }
     }
 
+    /**
+     * This method is used to show courier company and it's pricing.
+     */
     @FXML
     public void showCourier(ActionEvent event) {
         courier = (Courier) courierComboBox.getSelectionModel().getSelectedItem();

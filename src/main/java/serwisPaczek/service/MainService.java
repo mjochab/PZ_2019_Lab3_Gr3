@@ -46,7 +46,6 @@ public class MainService {
 
 
     public void fillDatabase() {
-
         List<User> userList = new ArrayList<>();
         List<Adress> adressList = new ArrayList<>();
         List<Courier> courierList = new ArrayList<>();
