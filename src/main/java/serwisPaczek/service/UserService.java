@@ -12,6 +12,9 @@ import serwisPaczek.security.Encryption;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.utils.TextFieldUtils.isCorrect;
 
@@ -87,10 +90,7 @@ public class UserService {
     public void withdrawFunds(User user, double funds) {
         double accountBalance = user.getAccount_balance();
         accountBalance -= funds;
-        // round trick
-        accountBalance *= 100;
-        accountBalance = Math.round(accountBalance);
-        accountBalance /= 100;
+        accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
         user.setAccount_balance(accountBalance);
         userRepository.save(user);
     }
@@ -98,10 +98,7 @@ public class UserService {
     public void depositFunds(User user, double funds) {
         double accountBalance = user.getAccount_balance();
         accountBalance += funds;
-        // round trick
-        accountBalance *= 100;
-        accountBalance = Math.round(accountBalance);
-        accountBalance /= 100;
+        accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
         user.setAccount_balance(accountBalance);
         userRepository.save(user);
     }

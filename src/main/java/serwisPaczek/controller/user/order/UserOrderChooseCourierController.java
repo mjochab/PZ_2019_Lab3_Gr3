@@ -48,8 +48,7 @@ public class UserOrderChooseCourierController {
     @FXML
     public void initialize(Parcel parcel) {
         this.parcel = parcel;
-        if (parcel.getType() == "paczka") {
-
+        if (parcel.getType().equals("paczka")) {
             if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
                 ratio = 1;
             else if (parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
@@ -65,14 +64,16 @@ public class UserOrderChooseCourierController {
         int numberOfButtons = (int) courierRepository.count();
         Button[] button;
         button = new Button[numberOfButtons];
+        float[] priceArray;
+        priceArray = new float[numberOfButtons];
 
         for (Courier courier : listCouriers) {
-            if(courier.is_blocked()) {
+            if (courier.is_blocked()) {
                 continue;
             }
-            if (parcel.getType() == "koperta") {
+            if (parcel.getType().equals("koperta")) {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
-            } else if (parcel.getType() == "paczka") {
+            } else if (parcel.getType().equals("paczka")) {
                 if (parcel.getWeight() <= 1) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
                 }
@@ -94,7 +95,7 @@ public class UserOrderChooseCourierController {
                 if (parcel.getWeight() <= 30) {
                     price = packPricingRepository.findByCourier(courier).getUp_to_30() * ratio;
                 }
-            } else if (parcel.getType() == "paleta") {
+            } else if (parcel.getType().equals("paleta")) {
                 if (parcel.getWeight() <= 300) {
                     price = palletPricingRepository.findByCourier(courier).getUp_to_300();
                 } else if (parcel.getWeight() <= 500) {
@@ -129,6 +130,7 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
+            priceArray[index] = price;
             button[index] = new Button(courier.getName() + "\n" + price + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
@@ -142,7 +144,9 @@ public class UserOrderChooseCourierController {
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {
                         try {
-                            if(getLoggedUser().getAccount_balance() < price){
+                            System.out.println(price);
+                            // TODO [Patryk] Naprawić złą cenę w zmiennej
+                            if (getLoggedUser().getAccount_balance() < price) {
                                 throw new ArithmeticException();
                             }
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
@@ -154,8 +158,7 @@ public class UserOrderChooseCourierController {
                             fillAdressessController.initialize(parcel, courier, price);
                         } catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
-                        }
-                        catch (ArithmeticException e){
+                        } catch (ArithmeticException e) {
                             showDialog("Nie wystarczająca ilość środków na koncie!\n"
                                     + "Stan konta: " + getLoggedUser().getAccount_balance() + " PLN.");
                         }

@@ -17,6 +17,8 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
@@ -113,10 +115,7 @@ public class UserOrderFillAddressesFormController {
         User user = getLoggedUser();
         double accountBalance = user.getAccount_balance();
         accountBalance -= price;
-        // round trick
-        accountBalance *= 100;
-        accountBalance = Math.round(accountBalance);
-        accountBalance /= 100;
+        accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
         user.setAccount_balance(accountBalance);
         userRepository.save(user);
         try {
