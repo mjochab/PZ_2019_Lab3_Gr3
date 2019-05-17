@@ -25,4 +25,4 @@ public class SenderAdress {
         this.adress = adress;
     }
 }
-//TODO: Rename class SenderAdress -> SenderAddress
+//TODO[PATRYK]: Rename class SenderAdress -> SenderAddress

@@ -47,7 +47,7 @@ public class AdminMainController {
 
     @FXML
     void openManageWorkerPanel(ActionEvent event) {
-        //TODO ManageWorkerPanel
+        //TODO[ALAN]: ManageWorkerPanel
     }
 
     @FXML

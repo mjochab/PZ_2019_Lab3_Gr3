@@ -142,7 +142,7 @@ public class UserOrderChooseCourierController {
                     if (getLoggedUser() != null) {
                         try {
                             System.out.println(price);
-                            // TODO [Patryk] Naprawić złą cenę w zmiennej
+                            // TODO[Patryk]: Naprawić złą cenę w zmiennej
                             if (getLoggedUser().getAccount_balance() < price) {
                                 throw new ArithmeticException();
                             }
@@ -170,7 +170,7 @@ public class UserOrderChooseCourierController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        // TODO: USER_MAIN OR MAIN
+        //TODO[ALAN]: USER_MAIN OR MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

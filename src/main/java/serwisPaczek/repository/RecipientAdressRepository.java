@@ -7,4 +7,4 @@ import serwisPaczek.model.RecipientAdress;
 @Repository
 public interface RecipientAdressRepository extends JpaRepository<RecipientAdress, Long> {
 }
-//TODO: Rename class RecipientAdressRepository -> RecipientAddressRepository
+//TODO[PATRYK]: Rename class RecipientAdressRepository -> RecipientAddressRepository

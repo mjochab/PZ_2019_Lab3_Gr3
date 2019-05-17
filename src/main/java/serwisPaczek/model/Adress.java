@@ -46,4 +46,4 @@ public class Adress {
         this.email = email;
     }
 }
-//TODO: Rename class Adress -> Address
+//TODO[PATRYK]: Rename class Adress -> Address

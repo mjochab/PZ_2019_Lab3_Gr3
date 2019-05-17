@@ -39,7 +39,7 @@ public class UserCourierRankingController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO MAIN OR USER_MAIN
+        //TODO[ALAN]: MAIN OR USER_MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

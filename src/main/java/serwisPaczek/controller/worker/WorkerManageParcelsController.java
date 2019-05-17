@@ -85,7 +85,7 @@ public class WorkerManageParcelsController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO WORKER_MAIN OR ADMIN_MAIN
+        //TODO[ALAN]: WORKER_MAIN OR ADMIN_MAIN
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 

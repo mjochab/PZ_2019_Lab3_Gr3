@@ -13,7 +13,7 @@ public class UserAboutController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO MAIN or USER_MAIN
+        //TODO[ALAN]: MAIN or USER_MAIN
         sceneManager.show(SceneType.MAIN);
     }
 
