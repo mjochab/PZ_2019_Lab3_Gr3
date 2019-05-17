@@ -64,8 +64,6 @@ public class UserOrderChooseCourierController {
         int numberOfButtons = (int) courierRepository.count();
         Button[] button;
         button = new Button[numberOfButtons];
-        float[] priceArray;
-        priceArray = new float[numberOfButtons];
 
         for (Courier courier : listCouriers) {
             if (courier.is_blocked()) {
@@ -130,7 +128,6 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
-            priceArray[index] = price;
             button[index] = new Button(courier.getName() + "\n" + price + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
