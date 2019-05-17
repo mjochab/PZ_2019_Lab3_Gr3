@@ -10,15 +10,12 @@ import serwisPaczek.utils.SceneManager;
 
 @SpringBootApplication
 public class Main extends Application {
-
     private ConfigurableApplicationContext springContext;
-
 
     @Autowired
     private SceneManager sceneManager;
 
     public static void main(String[] args) {
-
         launch(args);
     }
 

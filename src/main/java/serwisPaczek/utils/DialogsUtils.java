@@ -5,7 +5,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 
 public class DialogsUtils {
-
     public static void showDialog(String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, text, ButtonType.OK);
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -13,6 +12,4 @@ public class DialogsUtils {
         alert.setHeaderText(null);
         alert.show();
     }
-
-
 }

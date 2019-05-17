@@ -92,23 +92,23 @@ public class UserOrderFillAddressesFormController {
     }
 
     @FXML
-    public void openFinalizePanel(ActionEvent event) throws IOException {
-        Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
+    public void openFinalizePanel(ActionEvent event) {
+        Adress sender = new Adress(
+                TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
                 Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
                 TFemail.getText());
-        Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
-                TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
+        Adress received = new Adress(
+                TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(), TFsenderStreet.getText(),
+                Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
                 Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
         adressRepository.save(received);
         adressRepository.save(sender);
-
         RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
         SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
-        // example add order
-        UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
-                courierRepository.getOne(5L),
-                Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
-
+        // create user order
+        UserOrder order = orderRepository.save(new UserOrder(
+                price, new Date(), getLoggedUser(), courierRepository.getOne(5L), Status.WYSLANO_ZGLOSZENIE,
+                senderAdress, recipientAdress));
         // TODO: [PATRYK] USER SERVICE NOT WORKING (UserProfileWallet.java TAM działa)
         // userService.withdrawFunds(getLoggedUser(), (double)price); //TU NIE działa
         // update account balance
