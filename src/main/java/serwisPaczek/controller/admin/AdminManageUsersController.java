@@ -22,9 +22,9 @@ import java.util.List;
 
 @Controller
 public class AdminManageUsersController {
-    private SceneManager sceneManager;
     @Autowired
     UserRepository userRepository;
+    private SceneManager sceneManager;
     @Autowired
     private AdressRepository adressRepository;
     @FXML

@@ -29,13 +29,13 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserOrderChooseCourierController {
+    @Autowired
+    CourierRepository courierRepository;
     private SceneManager sceneManager;
     private int ratio = 1;
     private float price;
     private ApplicationContext context;
     private Parcel parcel;
-    @Autowired
-    CourierRepository courierRepository;
     @Autowired
     private PackPricingRepository packPricingRepository;
     @Autowired

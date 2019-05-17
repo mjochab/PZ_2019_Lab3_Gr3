@@ -16,9 +16,9 @@ import java.util.List;
 
 @Controller
 public class WorkerManageParcelsController {
-    private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
+    private SceneManager sceneManager;
     @FXML
     private ListView<String> workerOrdersList;
     @FXML

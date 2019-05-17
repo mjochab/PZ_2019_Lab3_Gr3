@@ -23,10 +23,10 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompaniesListController {
-    private SceneManager sceneManager;
-    private ApplicationContext context;
     @Autowired
     CourierRepository courierRepository;
+    private SceneManager sceneManager;
+    private ApplicationContext context;
     @FXML
     private GridPane gridPane;
 

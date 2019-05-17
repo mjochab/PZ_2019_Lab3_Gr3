@@ -8,9 +8,9 @@ import serwisPaczek.model.Courier;
  */
 @Data
 public class CourierPricingDto {
+    boolean isBlocked;
     private Courier courier;
     private String courier_name;
-    boolean isBlocked;
     private String txtEnvelope_up_to_1;
     private String txtPack_up_to_1;
     private String txtPack_up_to_2;

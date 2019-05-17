@@ -28,7 +28,7 @@ public class UserProfileWalletController {
 
     public void initialize() {
         user = UserLoginDto.getLoggedUser();
-        accountBalanceTextField.setText(String.valueOf(user.getAccount_balance()) + " PLN");
+        accountBalanceTextField.setText(user.getAccount_balance() + " PLN");
     }
 
     /**

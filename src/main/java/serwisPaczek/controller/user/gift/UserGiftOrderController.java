@@ -1,12 +1,9 @@
 package serwisPaczek.controller.user.gift;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Gift;
@@ -14,14 +11,11 @@ import serwisPaczek.repository.GiftRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class UserGiftOrderController {
-    private SceneManager sceneManager;
     @Autowired
     GiftRepository giftRepository;
+    private SceneManager sceneManager;
     @FXML
     private TableView<Gift> tableView;
     @FXML

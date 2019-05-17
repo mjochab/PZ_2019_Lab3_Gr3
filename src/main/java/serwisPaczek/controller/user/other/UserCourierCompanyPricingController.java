@@ -27,9 +27,6 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompanyPricingController {
-    private SceneManager sceneManager;
-    private ApplicationContext context;
-    private Long courierID;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
@@ -38,6 +35,9 @@ public class UserCourierCompanyPricingController {
     PackPricingRepository packPricingRepository;
     @Autowired
     PalletPricingRepository palletPricingRepository;
+    private SceneManager sceneManager;
+    private ApplicationContext context;
+    private Long courierID;
     @FXML
     private ListView<String> envelopeList;
     @FXML

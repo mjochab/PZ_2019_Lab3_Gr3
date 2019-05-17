@@ -22,14 +22,14 @@ import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class AdminEditCourierController {
-    private SceneManager sceneManager;
-    private Courier courier;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
     CourierService courierService;
     @FXML
     ComboBox courierComboBox;
+    private SceneManager sceneManager;
+    private Courier courier;
     @FXML
     private TextField courier_name;
     @FXML
