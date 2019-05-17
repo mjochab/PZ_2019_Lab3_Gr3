@@ -80,8 +80,7 @@ public class UserOrderFillAddressesFormController {
     private TextField TFsenderZipCode;
 
     @FXML
-    public void initialize(Parcel parcel,
-                           Courier courier, float price) {
+    public void initialize(Parcel parcel, Courier courier, float price) {
         this.parcel = parcel;
         this.courier = courier;
         this.price = price;
