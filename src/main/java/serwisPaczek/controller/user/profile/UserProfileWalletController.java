@@ -14,7 +14,7 @@ import serwisPaczek.utils.SceneType;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
-public class UserProfileWallet {
+public class UserProfileWalletController {
     private SceneManager sceneManager;
     private User user;
     @Autowired
