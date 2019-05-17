@@ -87,6 +87,10 @@ public class UserService {
     public void withdrawFunds(User user, double funds) {
         double accountBalance = user.getAccount_balance();
         accountBalance -= funds;
+        // round trick
+        accountBalance *= 100;
+        accountBalance = Math.round(accountBalance);
+        accountBalance /= 100;
         user.setAccount_balance(accountBalance);
         userRepository.save(user);
     }
@@ -94,6 +98,10 @@ public class UserService {
     public void depositFunds(User user, double funds) {
         double accountBalance = user.getAccount_balance();
         accountBalance += funds;
+        // round trick
+        accountBalance *= 100;
+        accountBalance = Math.round(accountBalance);
+        accountBalance /= 100;
         user.setAccount_balance(accountBalance);
         userRepository.save(user);
     }

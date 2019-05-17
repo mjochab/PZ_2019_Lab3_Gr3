@@ -141,8 +141,10 @@ public class UserOrderChooseCourierController {
                 @Override
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {
-
                         try {
+                            if(getLoggedUser().getAccount_balance() < price){
+                                throw new ArithmeticException();
+                            }
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
                             loader.setControllerFactory(context::getBean);
                             Parent root = loader.load();
@@ -152,6 +154,10 @@ public class UserOrderChooseCourierController {
                             fillAdressessController.initialize(parcel, courier, price);
                         } catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
+                        }
+                        catch (ArithmeticException e){
+                            showDialog("Nie wystarczająca ilość środków na koncie!\n"
+                                    + "Stan konta: " + getLoggedUser().getAccount_balance() + " PLN.");
                         }
                     } else showDialog("Musisz być zalogowany by dokonać zamówienia!");
                 }

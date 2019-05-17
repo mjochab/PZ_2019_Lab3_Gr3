@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.*;
 import serwisPaczek.repository.*;
+import serwisPaczek.service.UserService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
@@ -28,6 +29,7 @@ public class UserOrderFillAddressesFormController {
     private Parcel parcel;
     private Courier courier;
     private float price;
+    private UserService userService;
     @Autowired
     private AdressRepository adressRepository;
     @Autowired
@@ -38,6 +40,8 @@ public class UserOrderFillAddressesFormController {
     private OrderRepository orderRepository;
     @Autowired
     private CourierRepository courierRepository;
+    @Autowired
+    private UserRepository userRepository;
     @FXML
     private TextField TFsenderSurname;
     @FXML
@@ -87,11 +91,10 @@ public class UserOrderFillAddressesFormController {
 
     @FXML
     public void openFinalizePanel(ActionEvent event) throws IOException {
-        Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(),
-                TFstreet.getText(), Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(),
-                Long.parseLong(TFnr.getText()), TFemail.getText());
-        Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(),
-                TFsenderCity.getText(),
+        Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
+                Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
+                TFemail.getText());
+        Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
                 TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
                 Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
         adressRepository.save(received);
@@ -99,12 +102,23 @@ public class UserOrderFillAddressesFormController {
 
         RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
         SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
-
-        //example add order
+        // example add order
         UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
                 courierRepository.getOne(5L),
                 Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
 
+        // TODO: [PATRYK] USER SERVICE NOT WORKING (UserProfileWallet.java TAM działa)
+        // userService.withdrawFunds(getLoggedUser(), (double)price); //TU NIE działa
+        // update account balance
+        User user = getLoggedUser();
+        double accountBalance = user.getAccount_balance();
+        accountBalance -= price;
+        // round trick
+        accountBalance *= 100;
+        accountBalance = Math.round(accountBalance);
+        accountBalance /= 100;
+        user.setAccount_balance(accountBalance);
+        userRepository.save(user);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
             loader.setControllerFactory(context::getBean);
@@ -116,7 +130,6 @@ public class UserOrderFillAddressesFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
