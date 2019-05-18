@@ -113,3 +113,9 @@ content varchar(150),
 rating int,
 PRIMARY KEY(id)
 );
+
+create table about(
+id int NOT NULL AUTO_INCREMENT,
+content varchar(1500),
+PRIMARY KEY(id)
+)

@@ -5,27 +5,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.other.UserAboutController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="serwisPaczek.controller.user.other.UserAboutController">
     <left>
         <AnchorPane prefHeight="348.0" prefWidth="434.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="BackToMenuButton" layoutX="74.0" layoutY="294.0" mnemonicParsing="false" onAction="#openMainPanel" prefHeight="40.0" prefWidth="431.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="BackToMenuButton" layoutX="74.0" layoutY="294.0" mnemonicParsing="false"
+                        onAction="#openMainPanel" prefHeight="40.0" prefWidth="431.0" style="-fx-background-color: red;"
+                        text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
-                <Label layoutX="75.0" layoutY="20.0" prefHeight="34.0" prefWidth="430.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="O firmie" textFill="WHITE">
+                <Label layoutX="75.0" layoutY="20.0" prefHeight="34.0" prefWidth="430.0"
+                       style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
+                       text="O firmie" textFill="WHITE">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="17.0"/>
                     </font>
                 </Label>
-                <Label layoutX="75.0" layoutY="62.0" prefHeight="224.0" prefWidth="431.0" style="-fx-background-color: orange;" text="Serwis nadawania paczek to nowoczesna platforma wysyłkowa umożliwiająca wysyłkę paczek zarówno na terenie całego kraju jak i za granicę. Wyróżnia nas szeroki wachlarz usług oraz dbałość o ich najwyższą jakość i niską cenę. Poprzez współpracę z najlepszymi firmami kurierskimi takimi jak UPS, DPD, Geis, InPost, FedEx, Paczkomaty, DHL zawsze zapewniamy naszym klientom najkorzystniejsze warunki. Odpowiadając na nieustannie rozwijający się handel międzynarodowy, ciągle poszerzamy naszą ofertę o możliwość wysyłki paczek nawet w najbardziej odległe zakątki świata. Nasi kurierzy codziennie przemierzają tysiące kilometrów aby na czas dostarczyć nawet najbardziej niestandardowe przesyłki. Oprócz platformy wysyłkowej serwis paczek to również ponad 150 stacjonarnych placówek w całej Polsce, które każdego dnia obsługują tysiące zadowolonych klientów." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+                <Label fx:id="label" layoutX="75.0" layoutY="62.0" prefHeight="224.0" prefWidth="431.0"
+                       style="-fx-background-color: orange;"
+                       textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                 </Label>
             </children>
@@ -34,17 +40,18 @@
     <top>
         <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/BigBanner_Delivery.png" />
+                <Image url="@../../images/BigBanner_Delivery.png"/>
             </image>
         </ImageView>
     </top>
     <right>
-        <ImageView fitHeight="336.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+        <ImageView fitHeight="336.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true"
+                   BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/kurier.png" />
+                <Image url="@../../images/kurier.png"/>
             </image>
             <BorderPane.margin>
-                <Insets right="20.0" />
+                <Insets right="20.0"/>
             </BorderPane.margin>
         </ImageView>
     </right>

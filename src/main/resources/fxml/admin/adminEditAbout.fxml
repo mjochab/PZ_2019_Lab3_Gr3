@@ -19,8 +19,7 @@
                         <Font size="17.0"/>
                     </font>
                 </Label>
-                <TextArea layoutX="38.0" layoutY="55.0" prefHeight="490.0" prefWidth="725.0"
-                          text="Serwis nadawania paczek to nowoczesna platforma wysyłkowa umożliwiająca wysyłkę paczek zarówno na terenie całego kraju jak i za granicę. Wyróżnia nas szeroki wachlarz usług oraz dbałość o ich najwyższą jakość i niską cenę. Poprzez współpracę z najlepszymi firmami kurierskimi takimi jak UPS, DPD, Geis, InPost, FedEx, Paczkomaty, DHL zawsze zapewniamy naszym klientom najkorzystniejsze warunki. Odpowiadając na nieustannie rozwijający się handel międzynarodowy, ciągle poszerzamy naszą ofertę o możliwość wysyłki paczek nawet w najbardziej odległe zakątki świata. Nasi kurierzy codziennie przemierzają tysiące kilometrów aby na czas dostarczyć nawet najbardziej niestandardowe przesyłki. Oprócz platformy wysyłkowej serwis paczek to również ponad 150 stacjonarnych placówek w całej Polsce, które każdego dnia obsługują tysiące zadowolonych klientów."
+                <TextArea fx:id="textArea" layoutX="38.0" layoutY="55.0" prefHeight="490.0" prefWidth="725.0"
                           wrapText="true"/>
                 <Button fx:id="AdminMainButton" layoutX="37.0" layoutY="554.0" mnemonicParsing="false"
                         onAction="#openAdminMainPanel" prefHeight="35.0" prefWidth="175.0"
@@ -30,7 +29,7 @@
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button layoutX="223.0" layoutY="554.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0"
+                <Button fx:id="accept" onAction="#acceptChanges" layoutX="223.0" layoutY="554.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0"
                         style="-fx-background-color: green;" text="Zatwierdź" textAlignment="CENTER" textFill="WHITE"
                         wrapText="true">
                     <font>
