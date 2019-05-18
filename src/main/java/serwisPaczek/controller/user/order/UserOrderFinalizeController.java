@@ -18,6 +18,7 @@ import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
 @Controller
 public class UserOrderFinalizeController {
+
     private SceneManager sceneManager;
     private UserOrder userOrder;
     private Adress received;
@@ -83,7 +84,7 @@ public class UserOrderFinalizeController {
         TFfromStreet.setText(sender.getStreet());
         TFfromZipCode.setText(sender.getZipCode());
         // show acc balance
-        TFaccountBalace.setText(String.valueOf(getLoggedUser().getAccount_balance()));
+        TFaccountBalace.setText(String.valueOf(getLoggedUser().getAccountBalance()));
 
     }
 

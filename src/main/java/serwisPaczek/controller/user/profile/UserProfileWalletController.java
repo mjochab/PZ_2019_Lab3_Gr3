@@ -28,7 +28,7 @@ public class UserProfileWalletController {
 
     public void initialize() {
         user = UserLoginDto.getLoggedUser();
-        accountBalanceTextField.setText(String.valueOf(user.getAccount_balance()) + " PLN");
+        accountBalanceTextField.setText(String.valueOf(user.getAccountBalance()) + " PLN");
     }
 
     @FXML
@@ -59,7 +59,7 @@ public class UserProfileWalletController {
             if (withdrawTextField.getText().matches("\\d+(\\.\\d{1,2})?")
             ) {
                 double withdrawValue = Double.valueOf(withdrawTextField.getText());
-                if (withdrawValue > 0 && user.getAccount_balance() >= withdrawValue) {
+                if (withdrawValue > 0 && user.getAccountBalance() >= withdrawValue) {
                     userService.withdrawFunds(user, withdrawValue);
                     showDialog("Pomyślnie wypłacono środki.");
                     sceneManager.show(SceneType.USER_PROFILE_WALLET);

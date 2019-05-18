@@ -31,9 +31,9 @@ import static serwisPaczek.utils.SceneManager.stage;
 public class UserOrderChooseCourierController {
     private SceneManager sceneManager;
     private int ratio = 1;
-    private float price;
+
     private ApplicationContext context;
-    private Parcel parcel;
+
     @Autowired
     CourierRepository courierRepository;
     @Autowired
@@ -47,7 +47,6 @@ public class UserOrderChooseCourierController {
 
     @FXML
     public void initialize(Parcel parcel) {
-        this.parcel = parcel;
         if (parcel.getType().equals("paczka")) {
             if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
                 ratio = 1;
@@ -69,6 +68,7 @@ public class UserOrderChooseCourierController {
             if (courier.is_blocked()) {
                 continue;
             }
+            float price = 0;
             if (parcel.getType().equals("koperta")) {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
             } else if (parcel.getType().equals("paczka")) {
@@ -136,28 +136,32 @@ public class UserOrderChooseCourierController {
                     "-fx-text-alignment: center;" +
                     "-fx-background-color: " + color + ";"
             );
+
+            float finalPrice = price;
             button[index].setOnAction(new EventHandler<ActionEvent>() {
+
                 @Override
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {
                         try {
-                            System.out.println(price);
-                            // TODO [Patryk] Naprawić złą cenę w zmiennej
-                            if (getLoggedUser().getAccount_balance() < price) {
+
+                            if (getLoggedUser().getAccountBalance() < finalPrice) {
                                 throw new ArithmeticException();
                             }
+
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
                             loader.setControllerFactory(context::getBean);
                             Parent root = loader.load();
                             UserOrderFillAddressesFormController fillAdressessController = loader.getController();
+                            fillAdressessController.initialize(parcel, courier, finalPrice);
                             stage.setScene(new Scene(root));
                             stage.show();
-                            fillAdressessController.initialize(parcel, courier, price);
+
                         } catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
                         } catch (ArithmeticException e) {
                             showDialog("Nie wystarczająca ilość środków na koncie!\n"
-                                    + "Stan konta: " + getLoggedUser().getAccount_balance() + " PLN.");
+                                    + "Stan konta: " + getLoggedUser().getAccountBalance() + " PLN.");
                         }
                     } else showDialog("Musisz być zalogowany by dokonać zamówienia!");
                 }

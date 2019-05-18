@@ -21,7 +21,8 @@ public class User {
 
     private String password;
 
-    private double account_balance;
+    @Column(name = "account_balance")
+    private double accountBalance;
 
     @ManyToOne
     @NonNull

@@ -88,18 +88,18 @@ public class UserService {
     }
 
     public void withdrawFunds(User user, double funds) {
-        double accountBalance = user.getAccount_balance();
+        double accountBalance = user.getAccountBalance();
         accountBalance -= funds;
         accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
-        user.setAccount_balance(accountBalance);
+        user.setAccountBalance(accountBalance);
         userRepository.save(user);
     }
 
     public void depositFunds(User user, double funds) {
-        double accountBalance = user.getAccount_balance();
+        double accountBalance = user.getAccountBalance();
         accountBalance += funds;
         accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
-        user.setAccount_balance(accountBalance);
+        user.setAccountBalance(accountBalance);
         userRepository.save(user);
     }
 }

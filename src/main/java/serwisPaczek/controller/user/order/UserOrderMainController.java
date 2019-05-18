@@ -19,13 +19,15 @@ import java.io.IOException;
 
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.utils.SceneManager.stage;
+import static serwisPaczek.utils.TextFieldUtils.isCorrect;
 
 @Controller
 public class UserOrderMainController {
     private SceneManager sceneManager;
     private ApplicationContext context;
-    @Autowired
-    private ParcelRepository parcelRepository;
+@Autowired
+private ParcelRepository parcelRepository;
+
     @FXML
     private TextField TFdlugosc;
     @FXML
@@ -47,6 +49,9 @@ public class UserOrderMainController {
             showDialog("Wybierz typ paczki");
             return;
         }
+        if(isCorrect(TFdlugosc.getText()) && isCorrect(TFszerokosc.getText()) && isCorrect(TFwysokosc.getText())  &&
+         isCorrect(TFwaga.getText())){
+
         String typ;
         if (RBkoperta.isSelected()) {
             typ = "koperta";
@@ -54,23 +59,44 @@ public class UserOrderMainController {
             typ = "paczka";
         } else typ = "paleta";
 
-        Parcel parcel = parcelRepository.save(new Parcel(Integer.parseInt(TFdlugosc.getText()),
-                Integer.parseInt(TFszerokosc.getText()),
-                Integer.parseInt(TFwysokosc.getText()),
-                typ, Integer.parseInt(TFwaga.getText())
-        ));
+        if(typ=="koperta" && (Integer.parseInt(TFwaga.getText())>1 || Integer.parseInt(TFdlugosc.getText())>35
+        || Integer.parseInt(TFszerokosc.getText())>25 || Integer.parseInt(TFwysokosc.getText())>25)){
+            showDialog("Złe wymiary dla koperty!");
+            return;
+        }
+        else if(typ=="paczka" && (Integer.parseInt(TFwaga.getText())>30 || Integer.parseInt(TFdlugosc.getText())>100
+                    || Integer.parseInt(TFszerokosc.getText())>90 || Integer.parseInt(TFwysokosc.getText())>70)){
+                showDialog("Złe wymiary dla paczki!");
+                return;
+        }
+        else if(typ=="paleta" && (Integer.parseInt(TFwaga.getText())>100 || Integer.parseInt(TFdlugosc.getText())>200
+                    || Integer.parseInt(TFszerokosc.getText())>140 || Integer.parseInt(TFwysokosc.getText())>200)){
+                showDialog("Złe wymiary dla palety!");
+                return;
+        }
 
-        try {
+            try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderChooseCourier.fxml"));
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
+
             UserOrderChooseCourierController chooseCourierController = loader.getController();
-            chooseCourierController.initialize(parcel);
+
+            chooseCourierController.initialize(new Parcel(Integer.parseInt(TFdlugosc.getText()),
+                    Integer.parseInt(TFszerokosc.getText()),
+                    Integer.parseInt(TFwysokosc.getText()),
+                    typ, Integer.parseInt(TFwaga.getText())));
+
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }}
+        else {
+        showDialog("Uzupełnij wszystkie pola wymiarów paczki!");
+        return;
+    }
+
     }
 
     @FXML

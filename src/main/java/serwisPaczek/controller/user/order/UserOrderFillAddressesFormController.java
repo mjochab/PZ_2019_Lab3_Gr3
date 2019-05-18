@@ -21,8 +21,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Date;
 
+import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.SceneManager.stage;
+import static serwisPaczek.utils.TextFieldUtils.*;
 
 @Controller
 public class UserOrderFillAddressesFormController {
@@ -31,6 +33,8 @@ public class UserOrderFillAddressesFormController {
     private Parcel parcel;
     private Courier courier;
     private float price;
+
+    @Autowired
     private UserService userService;
     @Autowired
     private AdressRepository adressRepository;
@@ -42,8 +46,7 @@ public class UserOrderFillAddressesFormController {
     private OrderRepository orderRepository;
     @Autowired
     private CourierRepository courierRepository;
-    @Autowired
-    private UserRepository userRepository;
+
     @FXML
     private TextField TFsenderSurname;
     @FXML
@@ -93,44 +96,55 @@ public class UserOrderFillAddressesFormController {
 
     @FXML
     public void openFinalizePanel(ActionEvent event) throws IOException {
-        Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
-                Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
-                TFemail.getText());
-        Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
-                TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
-                Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
-        adressRepository.save(received);
-        adressRepository.save(sender);
+        if (isCorrectAndNoDigit(TFname.getText()) && isCorrectAndNoDigit(TFsurname.getText())
+                && isCorrectAndNoDigit(TFspot.getText()) &&
+                isCorrectAndNoDigit(TFstreet.getText()) &&
+                isCorrectAndOnlyDigit(TFhouseNumber.getText()) && isCorrect(TFzipCode.getText()) &&
+                isCorrectAndOnlyDigit(TFnr.getText()) &&
+                isCorrect(TFemail.getText()) &&
+                isCorrectAndNoDigit(TFsenderName.getText()) && isCorrectAndNoDigit(TFsenderSurname.getText())
+                && isCorrectAndNoDigit(TFsenderCity.getText()) &&
+                isCorrectAndNoDigit(TFsenderStreet.getText()) &&
+                isCorrectAndOnlyDigit(TFsenderHouseNumber.getText()) && isCorrect(TFsenderZipCode.getText()) &&
+                isCorrectAndOnlyDigit(TFsenderNr.getText()) &&
+                isCorrect(TFsenderEmail.getText())) {
 
-        RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
-        SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
-        // example add order
-        UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
-                courierRepository.getOne(5L),
-                Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
+            Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
+                    Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
+                    TFemail.getText());
+            Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
+                    TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
+                    Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
+            adressRepository.save(received);
+            adressRepository.save(sender);
 
-        // TODO: [PATRYK] USER SERVICE NOT WORKING (UserProfileWallet.java TAM działa)
-        // userService.withdrawFunds(getLoggedUser(), (double)price); //TU NIE działa
-        // update account balance
-        User user = getLoggedUser();
-        double accountBalance = user.getAccount_balance();
-        accountBalance -= price;
-        accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
-        user.setAccount_balance(accountBalance);
-        userRepository.save(user);
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
-            loader.setControllerFactory(context::getBean);
-            Parent root = loader.load();
-            UserOrderFinalizeController finalizeController = loader.getController();
-            finalizeController.initialize(order, sender, received, courier, parcel);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
+            SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
+            // example add order
+            UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
+                    courierRepository.getOne(5L),
+                    Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
+
+
+            userService.withdrawFunds(getLoggedUser(), (double) price);
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
+                loader.setControllerFactory(context::getBean);
+                Parent root = loader.load();
+                UserOrderFinalizeController finalizeController = loader.getController();
+                finalizeController.initialize(order, sender, received, courier, parcel);
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            showDialog("Pola nie zostały poprawnie wypełnione!");
+            return;
         }
     }
-
     @FXML
     public void fillAddress(ActionEvent event) {
         if (fillAddressCheckbox.isSelected()) {
