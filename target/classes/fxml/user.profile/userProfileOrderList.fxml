@@ -25,18 +25,20 @@
                 </Button>
                 <TableView fx:id="tableView" layoutX="19.0" layoutY="69.0" prefHeight="467.0" prefWidth="765.0">
                     <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="49.000030517578125" text="Id paczki"/>
-                        <TableColumn fx:id="dateColumn" prefWidth="135.99998474121094" text="Data nadania"/>
-                        <TableColumn fx:id="courierColumn" prefWidth="100.0" text="Kurier"/>
-                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Imię odbiorcy"/>
-                        <TableColumn fx:id="surnameColumn" prefWidth="100.0" text="Nazwisko odbiorcy"/>
-                        <TableColumn fx:id="cityColumn" prefWidth="100.0" text="Miasto"/>
-                        <TableColumn fx:id="streetColumn" prefWidth="100.0" text="Ulica"/>
-                        <TableColumn fx:id="houseNumberColumn" prefWidth="100.0" text="Numer domu"/>
-                        <TableColumn fx:id="zipCodeColumn" prefWidth="100.0" text="Kod pocztowy"/>
-                        <TableColumn fx:id="telephoneNumberColumn" prefWidth="100.0" text="Telefon"/>
-                        <TableColumn fx:id="emailColumn" prefWidth="100.0" text="Email"/>
+                        <TableColumn fx:id="idColumn" prefWidth="30.0" text="Id paczki"/>
+                        <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Data nadania"/>
+                        <TableColumn fx:id="courierColumn" prefWidth="75.0" text="Kurier"/>
+                        <TableColumn fx:id="statusColumn" prefWidth="75.0" text="Status"/>
+                        <TableColumn fx:id="senderNameColumn" prefWidth="75.0" text="Imię nadawcy"/>
+                        <TableColumn fx:id="senderSurnameColumn" prefWidth="75.0" text="Nazwisko nadawcy"/>
+                        <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Imię odbiorcy"/>
+                        <TableColumn fx:id="surnameColumn" prefWidth="75.0" text="Nazwisko odbiorcy"/>
+                        <TableColumn fx:id="cityColumn" prefWidth="75.0" text="Miasto"/>
+                        <TableColumn fx:id="streetColumn" prefWidth="75.0" text="Ulica"/>
+                        <TableColumn fx:id="houseNumberColumn" prefWidth="75.0" text="Numer domu"/>
+                        <TableColumn fx:id="zipCodeColumn" prefWidth="75.0" text="Kod pocztowy"/>
+                        <TableColumn fx:id="telephoneNumberColumn" prefWidth="75.0" text="Telefon"/>
+                        <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email"/>
                     </columns>
                 </TableView>
                 <Button fx:id="btnOpenDetails" layoutX="583.0" layoutY="551.0" mnemonicParsing="false"

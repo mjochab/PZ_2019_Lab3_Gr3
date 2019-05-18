@@ -48,7 +48,11 @@ public class UserProfileOrderListController {
     @FXML
     private TableColumn<UserOrderDto, String> nameColumn;
     @FXML
+    private TableColumn<UserOrderDto, String> senderNameColumn;
+    @FXML
     private TableColumn<UserOrderDto, String> surnameColumn;
+    @FXML
+    private TableColumn<UserOrderDto, String> senderSurnameColumn;
     @FXML
     private TableColumn<UserOrderDto, String> cityColumn;
     @FXML
@@ -80,7 +84,9 @@ public class UserProfileOrderListController {
                         order.getRecipientAdress().getAdress().getEmail(),
                         order.getDate().toString(),
                         order.getCourier().getName(),
-                        order.getStatus()
+                        order.getStatus(),
+                        order.getSenderAdress().getAdress().getName(),
+                        order.getSenderAdress().getAdress().getSurname()
                 ));
             }
 
@@ -90,6 +96,8 @@ public class UserProfileOrderListController {
         dateColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("date"));
         courierColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("courier"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("status"));
+        senderNameColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("senderName"));
+        senderSurnameColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("senderSurname"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("name"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("surname"));
         cityColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("city"));

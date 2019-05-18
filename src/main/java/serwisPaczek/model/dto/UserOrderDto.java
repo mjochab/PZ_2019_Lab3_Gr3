@@ -21,4 +21,6 @@ public class UserOrderDto {
     private String date;
     private String courier;
     private Status status;
+    private String senderName;
+    private String senderSurname;
 }
