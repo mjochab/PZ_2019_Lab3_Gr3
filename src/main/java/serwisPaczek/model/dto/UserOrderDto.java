@@ -3,6 +3,7 @@ package serwisPaczek.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import serwisPaczek.model.Status;
 
 @Data
 @NoArgsConstructor
@@ -19,5 +20,5 @@ public class UserOrderDto {
     private String email;
     private String date;
     private String courier;
-    private String status;
+    private Status status;
 }
