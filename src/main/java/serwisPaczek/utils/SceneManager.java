@@ -19,17 +19,14 @@ public class SceneManager {
 
     public void init(Stage stage) {
         SceneManager.stage = stage;
-
         Scene scene = new Scene(
                 getView(stageConfig.getView().getFxmlPath()),
                 stageConfig.getWidth(),
                 stageConfig.getHeight());
         SceneManager.stage.setScene(scene);
-
         SceneManager.stage.setTitle(stageConfig.getApplicationTitle());
         SceneManager.stage.setMaximized(false);
         SceneManager.stage.setFullScreen(false);
-
         SceneManager.stage.show();
     }
 

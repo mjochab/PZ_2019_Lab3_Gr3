@@ -7,21 +7,14 @@ import javax.persistence.*;
 @Entity
 @Data
 public class Parcel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private int length;
-
     private int width;
-
     private int height;
-
     private String type;
-
     private int weight;
-
     @OneToOne(mappedBy = "parcel", cascade = CascadeType.ALL)
     private UserOrder userOrder;
 
@@ -35,6 +28,5 @@ public class Parcel {
         this.type = type;
         this.weight = weight;
     }
-
 }
 

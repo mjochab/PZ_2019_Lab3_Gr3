@@ -9,3 +9,4 @@ import serwisPaczek.model.User;
 public interface AdressRepository extends JpaRepository<Adress, Long> {
     Adress findByUser(User username);
 }
+//TODO[PATRYK]: Rename class AdressRepository -> AddressRepository

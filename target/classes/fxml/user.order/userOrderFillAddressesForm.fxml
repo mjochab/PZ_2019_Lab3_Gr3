@@ -1,126 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.order.UserOrderFillAddressesFormController">
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="serwisPaczek.controller.user.order.UserOrderFillAddressesFormController">
     <left>
         <AnchorPane prefHeight="404.0" prefWidth="770.0" BorderPane.alignment="CENTER">
             <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="417.0" layoutY="118.0" stroke="DARKORANGE" strokeType="INSIDE" width="366.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="24.0" layoutY="118.0" stroke="BLUE" strokeType="INSIDE" width="366.0" />
-                <Label layoutX="24.0" layoutY="64.0" prefHeight="35.0" prefWidth="366.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;" text="Dane odbiorcy" textFill="WHITE">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="417.0"
+                           layoutY="118.0" stroke="DARKORANGE" strokeType="INSIDE" width="366.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="179.0" layoutX="24.0"
+                           layoutY="118.0" stroke="BLUE" strokeType="INSIDE" width="366.0"/>
+                <Label layoutX="24.0" layoutY="64.0" prefHeight="35.0" prefWidth="366.0"
+                       style="-fx-background-color: blue; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;"
+                       text="Dane odbiorcy" textFill="WHITE">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="17.0"/>
                     </font>
                 </Label>
-                <Label layoutX="417.0" layoutY="64.0" prefHeight="35.0" prefWidth="366.0" style="-fx-background-color: darkorange; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;" text="Dane nadawcy" textFill="WHITE">
+                <Label layoutX="417.0" layoutY="64.0" prefHeight="35.0" prefWidth="366.0"
+                       style="-fx-background-color: darkorange; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;"
+                       text="Dane nadawcy" textFill="WHITE">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="17.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="TFsenderName" layoutX="34.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0" promptText="Imię">
+                <TextField fx:id="TFsenderName" layoutX="34.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Imię">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderSurname" layoutX="212.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0" promptText="Nazwisko">
+                <TextField fx:id="TFsenderSurname" layoutX="212.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Nazwisko">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderNr" layoutX="34.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0" promptText="Nr telefonu">
+                <TextField fx:id="TFsenderNr" layoutX="34.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Nr telefonu">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderEmail" layoutX="212.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0" promptText="E-mail">
+                <TextField fx:id="TFsenderEmail" layoutX="212.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="E-mail">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderCity" layoutX="34.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0" promptText="Miejscowość">
+                <TextField fx:id="TFsenderCity" layoutX="34.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Miejscowość">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderStreet" layoutX="212.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0" promptText="Ulica">
+                <TextField fx:id="TFsenderStreet" layoutX="212.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Ulica">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderHouseNumber" layoutX="34.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0" promptText="Nr domu">
+                <TextField fx:id="TFsenderHouseNumber" layoutX="34.0" layoutY="256.0" prefHeight="29.0"
+                           prefWidth="166.0" promptText="Nr domu">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsenderZipCode" layoutX="212.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0" promptText="Kod pocztowy">
+                <TextField fx:id="TFsenderZipCode" layoutX="212.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Kod pocztowy">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFname" layoutX="424.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0" promptText="Imię">
+                <TextField fx:id="TFname" layoutX="424.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Imię">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFsurname" layoutX="606.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0" promptText="Nazwisko">
+                <TextField fx:id="TFsurname" layoutX="606.0" layoutY="128.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Nazwisko">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFnr" layoutX="424.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0" promptText="Nr telefonu">
+                <TextField fx:id="TFnr" layoutX="424.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Nr telefonu">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFemail" layoutX="606.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0" promptText="E-mail">
+                <TextField fx:id="TFemail" layoutX="606.0" layoutY="171.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="E-mail">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFspot" layoutX="424.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0" promptText="Miejscowość">
+                <TextField fx:id="TFspot" layoutX="424.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Miejscowość">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFstreet" layoutX="606.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0" promptText="Ulica">
+                <TextField fx:id="TFstreet" layoutX="606.0" layoutY="216.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Ulica">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFhouseNumber" layoutX="424.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0" promptText="Nr domu">
+                <TextField fx:id="TFhouseNumber" layoutX="424.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Nr domu">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="TFzipCode" layoutX="606.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0" promptText="Kod pocztowy">
+                <TextField fx:id="TFzipCode" layoutX="606.0" layoutY="256.0" prefHeight="29.0" prefWidth="166.0"
+                           promptText="Kod pocztowy">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </TextField>
-                <CheckBox fx:id="fillAddressCheckbox" layoutX="626.0" layoutY="305.0" mnemonicParsing="false" onAction="#fillAddress" text="Wypełnij moimi danymi" />
-                <Button fx:id="btnOpenUserMain" layoutX="24.0" layoutY="549.0" mnemonicParsing="false" onAction="#openUserMain" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Anuluj" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <CheckBox fx:id="fillAddressCheckbox" layoutX="626.0" layoutY="305.0" mnemonicParsing="false"
+                          onAction="#fillAddress" text="Wypełnij moimi danymi"/>
+                <Button fx:id="btnOpenUserMain" layoutX="24.0" layoutY="549.0" mnemonicParsing="false"
+                        onAction="#openUserMain" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;"
+                        text="Anuluj" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button fx:id="btnOpenFinalizePanel" layoutX="236.0" layoutY="549.0" mnemonicParsing="false" onAction="#openFinalizePanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnOpenFinalizePanel" layoutX="236.0" layoutY="549.0" mnemonicParsing="false"
+                        onAction="#openFinalizePanel" prefHeight="35.0" prefWidth="200.0"
+                        style="-fx-background-color: green;" text="Zamów" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
-            <Label layoutX="24.0" layoutY="15.0" prefHeight="35.0" prefWidth="757.0" style="-fx-background-color: purple; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;" text="Dane wysyłkowe" textFill="WHITE">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
+                <Label layoutX="24.0" layoutY="15.0" prefHeight="35.0" prefWidth="757.0"
+                       style="-fx-background-color: purple; -fx-alignment: center; -fx-background-radius: 3; -fx-border-radius: 3;"
+                       text="Dane wysyłkowe" textFill="WHITE">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </left>

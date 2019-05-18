@@ -10,9 +10,7 @@ public class Courier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private boolean is_blocked;
 
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
@@ -22,8 +20,7 @@ public class Courier {
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
     private PackPricing packPricing;
 
-    public Courier(){
-
+    public Courier() {
     }
 
     public Courier(String name) {

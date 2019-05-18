@@ -101,7 +101,7 @@ private ParcelRepository parcelRepository;
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        // TODO: USER_MAIN OR MAIN
+        //TODO[ALAN]: USER_MAIN OR MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

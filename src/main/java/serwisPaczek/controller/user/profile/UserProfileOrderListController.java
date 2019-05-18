@@ -13,7 +13,6 @@ public class UserProfileOrderListController {
 
     @FXML
     public void openDetails(ActionEvent event) {
-        //TODO FIX
         sceneManager.show(SceneType.USER_ORDER_FINALIZE);
     }
 

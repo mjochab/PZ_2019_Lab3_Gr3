@@ -6,11 +6,15 @@ import serwisPaczek.model.Courier;
 import serwisPaczek.model.EnvelopePricing;
 import serwisPaczek.model.PackPricing;
 import serwisPaczek.model.PalletPricing;
+import serwisPaczek.model.dto.CourierPricingDto;
 import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.repository.EnvelopePricingRepository;
 import serwisPaczek.repository.PackPricingRepository;
 import serwisPaczek.repository.PalletPricingRepository;
 
+/**
+ * This class is responsible for managing the courier in the database.
+ */
 @Service
 public class CourierService {
     @Autowired
@@ -22,40 +26,50 @@ public class CourierService {
     @Autowired
     PalletPricingRepository palletPricingRepository;
 
-    public void createCourierCompany(String name, float envelope_up_to_1, float pack_up_to_1, float pack_up_to_2,
-                                     float pack_up_to_5, float pack_up_to_10, float pack_up_to_15, float pack_up_to_20,
-                                     float pack_up_to_30, float pallet_up_to_300, float pallet_up_to_500,
-                                     float pallet_up_to_800, float pallet_up_to_1000) {
-        Courier courier = new Courier(name, false);
-        EnvelopePricing envelopePricing = new EnvelopePricing(envelope_up_to_1, courier);
-        PackPricing packPricing = new PackPricing(pack_up_to_1, pack_up_to_2, pack_up_to_5, pack_up_to_10,
-                pack_up_to_15, pack_up_to_20, pack_up_to_30, courier);
-        PalletPricing palletPricing = new PalletPricing(pallet_up_to_300, pallet_up_to_500, pallet_up_to_800,
-                pallet_up_to_1000, courier);
+    /**
+     * This method is used to create a new courier company and and it's pricing.
+     *
+     * @param courierPricing The object that stores necessary information needed to create a courier.
+     */
+    public void createCourierCompany(CourierPricingDto courierPricing) {
+        Courier courier = new Courier(
+                courierPricing.getCourier_name());
+        EnvelopePricing envelopePricing = new EnvelopePricing(
+                courierPricing.getEnvelope_up_to_1(), courier);
+        PackPricing packPricing = new PackPricing(
+                courierPricing.getPack_up_to_1(), courierPricing.getPack_up_to_2(), courierPricing.getPack_up_to_5(),
+                courierPricing.getPack_up_to_10(), courierPricing.getPack_up_to_15(), courierPricing.getPack_up_to_20(),
+                courierPricing.getPack_up_to_30(), courier);
+        PalletPricing palletPricing = new PalletPricing(
+                courierPricing.getPallet_up_to_300(), courierPricing.getPallet_up_to_500(),
+                courierPricing.getPallet_up_to_800(), courierPricing.getPallet_up_to_1000(), courier);
         courierRepository.save(courier);
         envelopePricingRepository.save(envelopePricing);
         packPricingRepository.save(packPricing);
         palletPricingRepository.save(palletPricing);
     }
 
-    public void editCourierCompany(Courier courier, String name, boolean isBlocked, float envelope_up_to_1, float pack_up_to_1, float pack_up_to_2,
-                                   float pack_up_to_5, float pack_up_to_10, float pack_up_to_15, float pack_up_to_20,
-                                   float pack_up_to_30, float pallet_up_to_300, float pallet_up_to_500,
-                                   float pallet_up_to_800, float pallet_up_to_1000) {
-        courier.setName(name);
-        courier.set_blocked(isBlocked);
-        courier.getEnvelopePricing().setUp_to_1(envelope_up_to_1);
-        courier.getPackPricing().setUp_to_1(pack_up_to_1);
-        courier.getPackPricing().setUp_to_2(pack_up_to_2);
-        courier.getPackPricing().setUp_to_5(pack_up_to_5);
-        courier.getPackPricing().setUp_to_10(pack_up_to_10);
-        courier.getPackPricing().setUp_to_15(pack_up_to_15);
-        courier.getPackPricing().setUp_to_20(pack_up_to_20);
-        courier.getPackPricing().setUp_to_30(pack_up_to_30);
-        courier.getPalletPricing().setUp_to_300(pallet_up_to_300);
-        courier.getPalletPricing().setUp_to_500(pallet_up_to_500);
-        courier.getPalletPricing().setUp_to_800(pallet_up_to_800);
-        courier.getPalletPricing().setUp_to_1000(pallet_up_to_1000);
+    /**
+     * This method is used to edit an existing courier company and it's pricing.
+     *
+     * @param courierPricing The object that stores necessary information needed to edit an existing courier.
+     */
+    public void editCourierCompany(CourierPricingDto courierPricing) {
+        Courier courier = courierPricing.getCourier();
+        courier.setName(courierPricing.getCourier_name());
+        courier.set_blocked(courierPricing.isBlocked());
+        courier.getEnvelopePricing().setUp_to_1(courierPricing.getEnvelope_up_to_1());
+        courier.getPackPricing().setUp_to_1(courierPricing.getPack_up_to_1());
+        courier.getPackPricing().setUp_to_2(courierPricing.getPack_up_to_2());
+        courier.getPackPricing().setUp_to_5(courierPricing.getPack_up_to_5());
+        courier.getPackPricing().setUp_to_10(courierPricing.getPack_up_to_10());
+        courier.getPackPricing().setUp_to_15(courierPricing.getPack_up_to_15());
+        courier.getPackPricing().setUp_to_20(courierPricing.getPack_up_to_20());
+        courier.getPackPricing().setUp_to_30(courierPricing.getPack_up_to_30());
+        courier.getPalletPricing().setUp_to_300(courierPricing.getPallet_up_to_300());
+        courier.getPalletPricing().setUp_to_500(courierPricing.getPallet_up_to_500());
+        courier.getPalletPricing().setUp_to_800(courierPricing.getPallet_up_to_800());
+        courier.getPalletPricing().setUp_to_1000(courierPricing.getPallet_up_to_1000());
         courierRepository.save(courier);
     }
 }

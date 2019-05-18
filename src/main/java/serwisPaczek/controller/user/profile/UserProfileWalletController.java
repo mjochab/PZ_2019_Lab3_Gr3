@@ -28,9 +28,12 @@ public class UserProfileWalletController {
 
     public void initialize() {
         user = UserLoginDto.getLoggedUser();
-        accountBalanceTextField.setText(String.valueOf(user.getAccountBalance()) + " PLN");
+        accountBalanceTextField.setText(user.getAccountBalance() + " PLN");
     }
 
+    /**
+     * This method is used to deposit funds by user and handle incorrect input data.
+     */
     @FXML
     public void depositFunds(ActionEvent event) {
         try {
@@ -53,6 +56,9 @@ public class UserProfileWalletController {
         }
     }
 
+    /**
+     * This method is used to withdraw funds by user and handle incorrect input data.
+     */
     @FXML
     public void withdrawFunds(ActionEvent event) {
         try {

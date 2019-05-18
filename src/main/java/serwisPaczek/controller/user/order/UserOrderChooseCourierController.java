@@ -29,6 +29,7 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserOrderChooseCourierController {
+
     private SceneManager sceneManager;
     private int ratio = 1;
 
@@ -45,6 +46,9 @@ public class UserOrderChooseCourierController {
     @FXML
     private GridPane gridPane;
 
+    /**
+     * This method is used to display all existing, non blocked courier companies and their prices for chosen parcel.
+     */
     @FXML
     public void initialize(Parcel parcel) {
         if (parcel.getType().equals("paczka")) {
@@ -139,25 +143,29 @@ public class UserOrderChooseCourierController {
 
             float finalPrice = price;
             button[index].setOnAction(new EventHandler<ActionEvent>() {
-
+                /**
+                 * This method is used to handle btn click.
+                 * After user click btn this method redirect him to userOrderFillAddressesForm.fxml
+                 * This method also pass parcel, courier and price information to UserOrderFillAddressesFormController.
+                 */
                 @Override
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {
                         try {
+                                if (getLoggedUser().getAccountBalance() < finalPrice) {
+                                    throw new ArithmeticException();
+                                }
 
-                            if (getLoggedUser().getAccountBalance() < finalPrice) {
-                                throw new ArithmeticException();
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                                        "/fxml/user.order/userOrderFillAddressesForm.fxml"));
+                                loader.setControllerFactory(context::getBean);
+                                Parent root = loader.load();
+                                UserOrderFillAddressesFormController fillAdressessController = loader.getController();
+                                fillAdressessController.initialize(parcel, courier, finalPrice);
+                                stage.setScene(new Scene(root));
+                                stage.show();
                             }
-
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFillAddressesForm.fxml"));
-                            loader.setControllerFactory(context::getBean);
-                            Parent root = loader.load();
-                            UserOrderFillAddressesFormController fillAdressessController = loader.getController();
-                            fillAdressessController.initialize(parcel, courier, finalPrice);
-                            stage.setScene(new Scene(root));
-                            stage.show();
-
-                        } catch (IOException e) {
+                         catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
                         } catch (ArithmeticException e) {
                             showDialog("Nie wystarczająca ilość środków na koncie!\n"
@@ -174,7 +182,7 @@ public class UserOrderChooseCourierController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        // TODO: USER_MAIN OR MAIN
+        //TODO[ALAN]: USER_MAIN OR MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

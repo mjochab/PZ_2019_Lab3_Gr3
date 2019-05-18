@@ -16,9 +16,9 @@ import java.util.Map;
 
 @Controller
 public class UserCourierRankingController {
-    private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
+    private SceneManager sceneManager;
     @FXML
     private PieChart rankingPieChart;
 
@@ -39,7 +39,7 @@ public class UserCourierRankingController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO MAIN OR USER_MAIN
+        //TODO[ALAN]: MAIN OR USER_MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

@@ -6,20 +6,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.other.UserCourierRankingController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="serwisPaczek.controller.user.other.UserCourierRankingController">
     <left>
         <AnchorPane prefHeight="308.0" prefWidth="802.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="87.0" layoutY="14.0" prefHeight="32.0" prefWidth="637.0" style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Ranking kurierów" textFill="WHITE">
+                <Label layoutX="87.0" layoutY="14.0" prefHeight="32.0" prefWidth="637.0"
+                       style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
+                       text="Ranking kurierów" textFill="WHITE">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="17.0"/>
                     </font>
                 </Label>
-                <PieChart fx:id="rankingPieChart" layoutX="43.0" layoutY="52.0" prefHeight="487.0" prefWidth="729.0" title="Popularność" />
-                <Button fx:id="btnOpenMainPanel" layoutX="87.0" layoutY="551.0" mnemonicParsing="false" onAction="#openMainPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <PieChart fx:id="rankingPieChart" layoutX="43.0" layoutY="52.0" prefHeight="487.0" prefWidth="729.0"
+                          title="Popularność"/>
+                <Button fx:id="btnOpenMainPanel" layoutX="87.0" layoutY="551.0" mnemonicParsing="false"
+                        onAction="#openMainPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;"
+                        text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
             </children>

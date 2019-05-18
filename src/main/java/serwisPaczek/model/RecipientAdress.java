@@ -12,19 +12,13 @@ public class RecipientAdress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     @ManyToOne
     @JoinColumn(name = "adress_id")
     private Adress adress;
-
-
     @OneToMany(mappedBy = "recipientAdress", cascade = CascadeType.ALL)
     private List<GiftOrder> giftOrder = new ArrayList<>();
-
     @OneToMany(mappedBy = "recipientAdress", cascade = CascadeType.ALL)
     private List<UserOrder> userOrder = new ArrayList<>();
-
 
     public RecipientAdress() {
     }
@@ -33,3 +27,4 @@ public class RecipientAdress {
         this.adress = adress;
     }
 }
+//TODO[PATRYK]: Rename class RecipientAdress -> RecipientAddress

@@ -23,13 +23,16 @@ import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompaniesListController {
-    private SceneManager sceneManager;
-    private ApplicationContext context;
     @Autowired
     CourierRepository courierRepository;
+    private SceneManager sceneManager;
+    private ApplicationContext context;
     @FXML
     private GridPane gridPane;
 
+    /**
+     * This method is used to display all existing, non blocked courier companies.
+     */
     public void initialize() {
         List<Courier> listCouriers = courierRepository.findAll();
         int index = 0;
@@ -41,7 +44,7 @@ public class UserCourierCompaniesListController {
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {
-            if(courier.is_blocked()) {
+            if (courier.is_blocked()) {
                 continue;
             }
             if (index % 4 == 0) {
@@ -76,6 +79,10 @@ public class UserCourierCompaniesListController {
             );
 
             button[index].setOnAction(new EventHandler<ActionEvent>() {
+                /**
+                 * This method is used to handle btn click.
+                 * After user click btn this method redirect him to specific courier company pricing.
+                 */
                 @Override
                 public void handle(ActionEvent event) {
                     try {
@@ -99,7 +106,7 @@ public class UserCourierCompaniesListController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO MAIN OR USER_MAIN
+        //TODO[ALAN]: MAIN OR USER_MAIN
         sceneManager.show(SceneType.MAIN);
     }
 

@@ -32,9 +32,13 @@ public class UserService {
     @Autowired
     private SceneManager sceneManager;
 
+    /**
+     * This method is used to log in the user and check correctness of the given data by user.
+     *
+     * @param all Data needed to log in.
+     */
     public void login(String username, String password) {
         User user = userRepository.findByUsername(username);
-
         if (passwordEncoder.matches(password, user.getPassword())) {
             UserLoginDto.setLoggedUser(user);
             if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("USER_ROLE"))
@@ -49,6 +53,11 @@ public class UserService {
         }
     }
 
+    /**
+     * This method is used to create a new user and check correctness of the given data by user.
+     *
+     * @param all Data needed to create an account.
+     */
     public void createUser(String username, String password, String repeatPassword,
                            Text usernameWarning, Text passwordWarning, Text repeatPasswordWarning) {
         usernameWarning.setVisible(false);
@@ -87,6 +96,12 @@ public class UserService {
         }
     }
 
+    /**
+     * This method is used to withdraw funds from user wallet.
+     *
+     * @param user  The user who wants withdraw funds from his wallet.
+     * @param funds The value of withdrawn funds.
+     */
     public void withdrawFunds(User user, double funds) {
         double accountBalance = user.getAccountBalance();
         accountBalance -= funds;
@@ -95,6 +110,12 @@ public class UserService {
         userRepository.save(user);
     }
 
+    /**
+     * This method is used to deposit funds to user wallet.
+     *
+     * @param user  The user who wants deposit funds to his wallet.
+     * @param funds The value of deposited funds.
+     */
     public void depositFunds(User user, double funds) {
         double accountBalance = user.getAccountBalance();
         accountBalance += funds;

@@ -16,9 +16,9 @@ import java.util.List;
 
 @Controller
 public class WorkerManageParcelsController {
-    private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
+    private SceneManager sceneManager;
     @FXML
     private ListView<String> workerOrdersList;
     @FXML
@@ -85,7 +85,7 @@ public class WorkerManageParcelsController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO WORKER_MAIN OR ADMIN_MAIN
+        //TODO[ALAN]: WORKER_MAIN OR ADMIN_MAIN
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 

@@ -11,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class Adress {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,13 +25,10 @@ public class Adress {
     @JoinColumn(name = "telephone_number")
     private Long telephoneNumber;
     private String email;
-
     @OneToOne(mappedBy = "adress", cascade = CascadeType.ALL)
     private User user;
-
     @OneToMany(mappedBy = "adress", cascade = CascadeType.ALL)
     private List<SenderAdress> senderAdressList = new ArrayList<>();
-
     @OneToMany(mappedBy = "adress", cascade = CascadeType.ALL)
     private List<RecipientAdress> recipientAdressList = new ArrayList<>();
 
@@ -50,3 +46,4 @@ public class Adress {
         this.email = email;
     }
 }
+//TODO[PATRYK]: Rename class Adress -> Address

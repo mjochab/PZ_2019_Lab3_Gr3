@@ -22,9 +22,9 @@ import java.util.List;
 
 @Controller
 public class AdminManageUsersController {
-    private SceneManager sceneManager;
     @Autowired
     UserRepository userRepository;
+    private SceneManager sceneManager;
     @Autowired
     private AdressRepository adressRepository;
     @FXML
@@ -50,6 +50,9 @@ public class AdminManageUsersController {
     @FXML
     private TableColumn<UserAdressDto, String> emailColumn;
 
+    /**
+     * This method is used to show all existing users and their information in the list.
+     */
     @FXML
     public void initialize() {
         List<User> listUsers = userRepository.findAll();

@@ -12,14 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
-
     private String password;
+
 
     @Column(name = "account_balance")
     private double accountBalance;
@@ -28,16 +26,16 @@ public class User {
     @NonNull
     @JoinColumn(name = "role_id")
     private Role role;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserOrder> orders = new ArrayList<>();
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GiftOrder> giftOrders = new ArrayList<>();
-
     @OneToOne
     @JoinColumn(name = "adress_id")
     private Adress adress;
+
+    public User() {
+    }
 
     public User(String username, String password, Role role, Adress adress) {
         this.username = username;
@@ -51,11 +49,4 @@ public class User {
         this.password = password;
         this.role = role;
     }
-
-    public User() {
-    }
-
-    //    @ManyToOne
-    //    @JoinColumn(name = "address_id")
-    //    private Address address;
 }

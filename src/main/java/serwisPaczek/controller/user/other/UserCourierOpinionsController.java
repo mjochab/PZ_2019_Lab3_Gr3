@@ -16,11 +16,11 @@ import java.util.List;
 
 @Controller
 public class UserCourierOpinionsController {
-    private SceneManager sceneManager;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
     OpinionRepository opinionRepository;
+    private SceneManager sceneManager;
     @FXML
     private ListView<String> opinionList;
 
@@ -43,7 +43,7 @@ public class UserCourierOpinionsController {
 
     @FXML
     public void openCourierCompanyPricingPanel(ActionEvent event) {
-        //TODO [ALAN] FIX
+        //TODO[ALAN]: FIX PRICING AFTER SCENE CHANGE
         sceneManager.show(SceneType.USER_COURIER_COMPANY_PRICING);
     }
 

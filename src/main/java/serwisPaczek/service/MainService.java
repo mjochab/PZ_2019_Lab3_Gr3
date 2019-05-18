@@ -46,7 +46,6 @@ public class MainService {
 
 
     public void fillDatabase() {
-
         List<User> userList = new ArrayList<>();
         List<Adress> adressList = new ArrayList<>();
         List<Courier> courierList = new ArrayList<>();
@@ -75,7 +74,7 @@ public class MainService {
                     adress);
             userList.add(user);
 
-            Courier courier = new Courier("Kurier " + i, false);
+            Courier courier = new Courier("Kurier " + i);
             courierList.add(courier);
 
             EnvelopePricing envelopePricing = new EnvelopePricing(1 + i, courier);
