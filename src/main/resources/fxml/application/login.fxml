@@ -1,71 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="serwisPaczek.controller.application.LoginController">
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.application.LoginController">
     <left>
         <AnchorPane prefHeight="348.0" prefWidth="557.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="TFUsername" layoutX="37.0" layoutY="83.0" prefHeight="35.0" prefWidth="520.0"
-                           promptText="Nazwa użytkownika">
+                <TextField fx:id="TFUsername" layoutX="37.0" layoutY="83.0" prefHeight="35.0" prefWidth="520.0" promptText="Nazwa użytkownika">
                     <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </TextField>
-                <PasswordField fx:id="PFPassword" layoutX="39.0" layoutY="129.0" prefHeight="35.0" prefWidth="520.0"
-                               promptText="Hasło"/>
-                <Button fx:id="btnLogin" layoutX="37.0" layoutY="175.0" mnemonicParsing="false" onAction="#login"
-                        prefHeight="35.0" prefWidth="520.0" style="-fx-background-color: blue;" text="Zaloguj się"
-                        textFill="WHITE" wrapText="true">
+                <PasswordField fx:id="PFPassword" layoutX="39.0" layoutY="129.0" prefHeight="35.0" prefWidth="520.0" promptText="Hasło" />
+                <Button fx:id="btnLogin" defaultButton="true" layoutX="37.0" layoutY="175.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="520.0" style="-fx-background-color: blue;" text="Zaloguj się" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="477.0" layoutY="217.0" prefHeight="21.0" prefWidth="80.0" text="Zarejestruj się."
-                       textFill="#290af2"/>
-                <Button fx:id="btnOpenRegisterPanel" layoutX="476.0" layoutY="215.0" mnemonicParsing="false"
-                        onAction="#openRegisterPanel" opacity="0.0" prefHeight="21.0" prefWidth="80.0" text="Button"/>
-                <Button fx:id="btnOpenMainAppPanel" layoutX="36.0" layoutY="302.0" mnemonicParsing="false"
-                        onAction="#openMainAppPanel" prefHeight="35.0" prefWidth="200.0"
-                        style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER"
-                        textFill="WHITE" wrapText="true">
+                <Label layoutX="477.0" layoutY="217.0" prefHeight="21.0" prefWidth="80.0" text="Zarejestruj się." textFill="#290af2" />
+                <Button fx:id="btnOpenRegisterPanel" layoutX="476.0" layoutY="215.0" mnemonicParsing="false" onAction="#openRegisterPanel" opacity="0.0" prefHeight="21.0" prefWidth="80.0" text="Button" />
+                <Button fx:id="btnOpenMainAppPanel" cancelButton="true" layoutX="36.0" layoutY="302.0" mnemonicParsing="false" onAction="#openMainAppPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót do strony głównej" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="385.0" layoutY="212.0" prefHeight="30.0" prefWidth="96.0" text="Nie masz konta?"
-                       textFill="#010007"/>
-                <Label layoutX="37.0" layoutY="38.0" prefHeight="35.0" prefWidth="520.0"
-                       style="-fx-background-color: sandybrown; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
-                       text="Formularz logowania" textFill="WHITE">
+                <Label layoutX="385.0" layoutY="212.0" prefHeight="30.0" prefWidth="96.0" text="Nie masz konta?" textFill="#010007" />
+                <Label layoutX="37.0" layoutY="38.0" prefHeight="35.0" prefWidth="520.0" style="-fx-background-color: sandybrown; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;" text="Formularz logowania" textFill="WHITE">
                     <font>
-                        <Font size="17.0"/>
+                        <Font size="17.0" />
                     </font>
                 </Label>
+            <Text fx:id="usernameWarning" fill="RED" layoutX="433.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pole obowiązkowe!" textAlignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="passwordWarning" fill="RED" layoutX="433.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pole obowiązkowe!" textAlignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
             </children>
         </AnchorPane>
     </left>
     <right>
-        <ImageView fitHeight="336.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
-                   BorderPane.alignment="CENTER">
+        <ImageView fitHeight="336.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/kurier.png"/>
+                <Image url="@../../images/kurier.png" />
             </image>
             <BorderPane.margin>
-                <Insets bottom="25.0" right="20.0"/>
+                <Insets bottom="25.0" right="20.0" />
             </BorderPane.margin>
         </ImageView>
     </right>
     <top>
         <ImageView fitHeight="252.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="@../../images/BigBanner_Delivery.png"/>
+                <Image url="@../../images/BigBanner_Delivery.png" />
             </image>
         </ImageView>
     </top>
