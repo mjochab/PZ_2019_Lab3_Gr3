@@ -18,6 +18,7 @@ public enum SceneType {
     WORKER_MANAGE_PARCELS("worker/workerManageParcels"),
     WORKER_MANAGE_GIFT_ORDERS("worker/workerManageGiftOrders"),
     WORKER_EDIT_GIFT("worker/workerEditGift"),
+    WORKER_EDIT_COUPON("worker/workerEditCoupons"),
 
     // USER
     USER_MAIN("user/mainUser"),

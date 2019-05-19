@@ -45,6 +45,8 @@ public class MainService {
     private Encryption encryption;
     @Autowired
     private AboutRepository aboutRepository;
+    @Autowired
+    private CouponRepository couponRepository;
 
 
     public void fillDatabase() {
@@ -62,6 +64,7 @@ public class MainService {
         List<Parcel> parcelList = new ArrayList<>();
         List<Opinion> opinionList = new ArrayList<>();
         List<About> aboutList = new ArrayList<>();
+        List<Coupon> couponList = new ArrayList<>();
 
         for (int i = 1; i < 10; i++) {
 
@@ -112,6 +115,9 @@ public class MainService {
             Opinion opinion = new Opinion(date, "Bardzo dobrze", 2 + i, userOrder);
             opinionList.add(opinion);
 
+            Coupon coupon = new Coupon("Kupon"+i, 10+i);
+            couponList.add(coupon);
+
         }
 
         About about = new About("Serwis nadawania paczek to nowoczesna platforma wysyłkowa umożliwiająca wysyłkę paczek zarówno na terenie całego kraju jak i za granicę. Wyróżnia nas szeroki wachlarz usług oraz dbałość o ich najwyższą jakość i niską cenę. Poprzez współpracę z najlepszymi firmami kurierskimi takimi jak UPS, DPD, Geis, InPost, FedEx, Paczkomaty, DHL zawsze zapewniamy naszym klientom najkorzystniejsze warunki. Odpowiadając na nieustannie rozwijający się handel międzynarodowy, ciągle poszerzamy naszą ofertę o możliwość wysyłki paczek nawet w najbardziej odległe zakątki świata. Nasi kurierzy codziennie przemierzają tysiące kilometrów aby na czas dostarczyć nawet najbardziej niestandardowe przesyłki. Oprócz platformy wysyłkowej serwis paczek to również ponad 150 stacjonarnych placówek w całej Polsce, które każdego dnia obsługują tysiące zadowolonych klientów.");
@@ -131,5 +137,6 @@ public class MainService {
         parcelRepository.saveAll(parcelList);
         orderRepository.saveAll(orderList);
         opinionRepository.saveAll(opinionList);
+        couponRepository.saveAll(couponList);
     }
 }

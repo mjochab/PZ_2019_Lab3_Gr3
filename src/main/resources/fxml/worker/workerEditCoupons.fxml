@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.WorkerEditGiftController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.worker.WorkerEditCouponsController">
     <top>
         <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
             <image>
@@ -31,8 +31,8 @@
                 <TableView fx:id="tableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="470.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id" />
-                        <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="171.0" text="Nazwa" />
-                        <TableColumn fx:id="premiumPointsColumn" onEditCommit="#changePremiumPointsEvent" prefWidth="254.0" text="Ilość punktów" />
+                        <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="223.0" text="Nazwa" />
+                        <TableColumn fx:id="premiumPointsColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0" text="Obniżka" />
                     </columns>
                 </TableView>
                 <Button layoutX="199.0" layoutY="302.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zapisz zmiany" textFill="WHITE">
@@ -40,23 +40,23 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <TextField fx:id="addGiftName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Prezentu" />
-                <TextField fx:id="addGiftPoints" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Liczba punktów" />
-                <Button fx:id="btnAddGift" layoutX="505.0" layoutY="144.0" mnemonicParsing="false" onAction="#addGift" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj prezent" textFill="WHITE">
+                <TextField fx:id="addCouponName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Kuponu" />
+                <TextField fx:id="addDiscount" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Rabat" />
+                <Button fx:id="btnAddGift" layoutX="505.0" layoutY="144.0" mnemonicParsing="false" onAction="#addCoupon" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj kupon" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button layoutX="505.0" layoutY="22.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="279.0" style="-fx-background-color: blue;" text="Dodawanie prezentu" textFill="WHITE">
+                <Button layoutX="505.0" layoutY="22.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="279.0" style="-fx-background-color: blue;" text="Dodawanie kuponu" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-            <Button fx:id="btnDeleteGift" layoutX="397.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteGift" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
+                <Button fx:id="btnDeleteCoupon" layoutX="397.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteGift" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
             </children>
         </AnchorPane>
     </center>

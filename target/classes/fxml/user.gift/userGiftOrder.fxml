@@ -19,12 +19,11 @@
                 </Button>
                 <TableView fx:id="tableView" layoutX="45.0" layoutY="69.0" prefHeight="462.0" prefWidth="710.0">
                     <columns>
-                        <TableColumn fx:id="nameColumn" prefWidth="393.00001525878906" text="Nazwa" />
-                        <TableColumn fx:id="premiumPointsColumn" minWidth="0.0" prefWidth="183.0" text="Ilość punktów" />
-                        <TableColumn fx:id="logoColumn" prefWidth="133.0" text="Logo" />
+                        <TableColumn fx:id="nameColumn" prefWidth="469.0" text="Nazwa" />
+                        <TableColumn fx:id="premiumPointsColumn" minWidth="0.0" prefWidth="239.0" text="Ilość punktów" />
                     </columns>
                 </TableView>
-                <Button fx:id="order" onAction="#orderGift" layoutX="580.0" layoutY="550.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE">
+                <Button fx:id="order" layoutX="580.0" layoutY="550.0" mnemonicParsing="false" onAction="#orderGift" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

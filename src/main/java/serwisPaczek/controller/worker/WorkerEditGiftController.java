@@ -77,7 +77,10 @@ public class WorkerEditGiftController {
     }
     @FXML
     public void changePremiumPointsEvent(TableColumn.CellEditEvent event){
-
+        Gift gift = tableView.getSelectionModel().getSelectedItem();
+        gift.setPremiumPoints(Integer.valueOf(event.getNewValue().toString()));
+        giftRepository.save(gift);
+        fillTableView();
     }
 
     @Autowired

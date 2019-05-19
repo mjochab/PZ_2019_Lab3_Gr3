@@ -1,18 +1,23 @@
 package serwisPaczek.controller.user.gift;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Gift;
+import serwisPaczek.model.User;
 import serwisPaczek.repository.GiftRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+import java.util.List;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
@@ -30,16 +35,17 @@ public class UserGiftOrderController {
     @FXML
     private TableView<Gift> tableView;
     @FXML
-    private TableColumn<Gift, String> idColumn;
-    @FXML
     private TableColumn<Gift, String> nameColumn;
     @FXML
     private TableColumn<Gift, String> premiumPointsColumn;
 
     @FXML
     public void initialize() {
-//        List<Gift> listGifts = giftRepository.findAll();
-//        List<Gift> gifts = new ArrayList<>();
+        List<Gift> giftList = giftRepository.findAll();
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
+        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
+        ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
+        tableView.setItems(observableListGifts);
 //        for (Gift gift : listGifts) {
 //        }
 //
@@ -55,7 +61,11 @@ public class UserGiftOrderController {
 
     @FXML
     public void orderGift(ActionEvent event){
-       System.out.print(getLoggedUser().getAccount_balance());
+        User user = getLoggedUser();
+        Gift gift = tableView.getSelectionModel().getSelectedItem();
+        getLoggedUser().setAccount_balance(getLoggedUser().getAccount_balance()-gift.getPremiumPoints());
+        userRepository.save(user);
+        premiumPoints.setText(String.valueOf(getLoggedUser().getAccount_balance()));
     }
 
     @FXML

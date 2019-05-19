@@ -37,6 +37,11 @@ public class WorkerMainController {
     }
 
     @FXML
+    void openEditCouponsPanel (ActionEvent event) {
+        sceneManager.show(SceneType.WORKER_EDIT_COUPON);
+    }
+
+    @FXML
     void logout(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }

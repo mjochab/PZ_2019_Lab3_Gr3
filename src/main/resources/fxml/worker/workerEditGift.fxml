@@ -57,13 +57,6 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="editGiftName" layoutX="496.0" layoutY="209.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Prezentu" />
-            <TextField fx:id="editGiftPoints" layoutX="496.0" layoutY="248.0" prefHeight="25.0" prefWidth="280.0" promptText="Liczba punktów" />
-            <Button fx:id="btnDeleteGift1" layoutX="609.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteGift" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Zapisz" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
             </children>
         </AnchorPane>
     </center>
