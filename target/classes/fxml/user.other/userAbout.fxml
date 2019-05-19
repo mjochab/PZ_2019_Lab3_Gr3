@@ -27,7 +27,6 @@
                         <Font size="17.0"/>
                     </font>
                 </Label>
-
                 <Label fx:id="label" layoutX="75.0" layoutY="62.0" prefHeight="224.0" prefWidth="431.0"
                        style="-fx-background-color: orange;"
                        textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
