@@ -19,6 +19,7 @@ import serwisPaczek.utils.SceneType;
 import java.io.IOException;
 import java.util.List;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
@@ -106,8 +107,11 @@ public class UserCourierCompaniesListController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO[ALAN]: MAIN OR USER_MAIN
-        sceneManager.show(SceneType.MAIN);
+        if (getLoggedUser() == null) {
+            sceneManager.show(SceneType.MAIN);
+        } else {
+            sceneManager.show(SceneType.USER_MAIN);
+        }
     }
 
     @Autowired

@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
 @Controller
 public class WorkerManageParcelsController {
     @Autowired
@@ -97,8 +99,11 @@ public class WorkerManageParcelsController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO[ALAN]: WORKER_MAIN OR ADMIN_MAIN
-        sceneManager.show(SceneType.WORKER_MAIN);
+        if (getLoggedUser().getRole().getId()==1) {
+            sceneManager.show(SceneType.ADMIN_MAIN);
+        } else {
+            sceneManager.show(SceneType.WORKER_MAIN);
+        }
     }
 
     @Autowired
