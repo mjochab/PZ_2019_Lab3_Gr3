@@ -47,13 +47,18 @@ public class UserService {
         if (isCorrect(username) && isCorrect(password)) {
             User user = userRepository.findByUsername(username);
             if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-                UserLoginDto.setLoggedUser(user);
-                if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("USER_ROLE"))
-                    sceneManager.show(SceneType.USER_MAIN);
-                else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("WORKER_ROLE"))
-                    sceneManager.show(SceneType.WORKER_MAIN);
-                else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
-                    sceneManager.show(SceneType.ADMIN_MAIN);
+
+                if (user.getActive()) {
+                    UserLoginDto.setLoggedUser(user);
+                    if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("USER_ROLE"))
+                        sceneManager.show(SceneType.USER_MAIN);
+                    else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("WORKER_ROLE"))
+                        sceneManager.show(SceneType.WORKER_MAIN);
+                    else if (UserLoginDto.getLoggedUser().getRole().getRoleName().equals("ADMIN_ROLE"))
+                        sceneManager.show(SceneType.ADMIN_MAIN);
+                } else {
+                    showDialog("Twoje konto jest zablokowane!");
+                }
             } else {
                 showDialog("Podałeś złą nazwę użytkownika lub hasło!");
             }

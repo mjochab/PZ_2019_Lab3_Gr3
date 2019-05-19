@@ -12,6 +12,7 @@ public enum SceneType {
     ADMIN_ADD_COURIER("admin/adminAddCourier"),
     ADMIN_EDIT_ABOUT("admin/adminEditAbout"),
     ADMIN_EDIT_COURIER("admin/adminEditCourier"),
+    ADMIN_MANAGE_WORKERS("admin/adminManageWorkers"),
 
     // WORKER
     WORKER_MAIN("worker/mainWorker"),

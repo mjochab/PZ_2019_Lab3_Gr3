@@ -50,7 +50,7 @@ public class AdminMainController {
 
     @FXML
     void openManageWorkerPanel(ActionEvent event) {
-        //TODO[ALAN]: ManageWorkerPanel
+        sceneManager.show(SceneType.ADMIN_MANAGE_WORKERS);
     }
 
     @FXML
