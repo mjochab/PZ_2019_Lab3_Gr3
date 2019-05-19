@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.UserOrder;
 import serwisPaczek.model.dto.UserOrderDto;
-import serwisPaczek.repository.AdressRepository;
 import serwisPaczek.repository.OrderRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
@@ -27,14 +26,8 @@ public class UserProfileOrderListController {
     private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
-
-    @Autowired
-    private AdressRepository adressRepository;
-
     @Autowired
     UserRepository userRepository;
-
-
     @FXML
     private TableView<UserOrderDto> tableView;
     @FXML
@@ -89,9 +82,7 @@ public class UserProfileOrderListController {
                         order.getSenderAdress().getAdress().getSurname()
                 ));
             }
-
         }
-
         idColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("id"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("date"));
         courierColumn.setCellValueFactory(new PropertyValueFactory<UserOrderDto, String>("courier"));
@@ -116,9 +107,7 @@ public class UserProfileOrderListController {
     }
 
     @FXML
-    public void addOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.USER_ORDER_ADD_OPINION);
-    }
+    public void addOpinion(ActionEvent event) { sceneManager.show(SceneType.USER_ORDER_ADD_OPINION); }
 
     @FXML
     public void openUserMainPanel(ActionEvent event) {

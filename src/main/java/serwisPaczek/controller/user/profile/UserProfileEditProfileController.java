@@ -18,42 +18,26 @@ import static serwisPaczek.utils.DialogsUtils.showDialog;
 @Controller
 public class UserProfileEditProfileController {
     private SceneManager sceneManager;
-
-
     @Autowired
     private AdressRepository adressRepository;
-
     @Autowired
     private UserRepository userRepository;
-
     @FXML
     private TextField TFphone;
-
     @FXML
     private TextField TFcity;
-
     @FXML
     private TextField TFhome;
-
     @FXML
     private TextField TFname;
-
     @FXML
     private TextField TFstreet;
-
     @FXML
     private TextField TFemail;
-
     @FXML
     private TextField TFzip;
-
     @FXML
     private TextField TFsurname;
-
-    @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
-        }
 
     @FXML
     public void initialize() {
@@ -81,15 +65,14 @@ public class UserProfileEditProfileController {
     @FXML
     public void EditUser(ActionEvent event) {
         try {
-            if (TFname.getText().length() > 0
-                    && TFsurname.getText().length() > 0
-                    && TFcity.getText().length() > 0
-                    && TFemail.getText().length() > 0
-                    && TFzip.getText().length() > 0
-                    && TFhome.getText().length() > 0
-                    && this.TFhome.getText().matches("\\d+")
-                    && TFphone.getText().length() > 0
-                    && this.TFphone.getText().matches("\\d+")) {
+            if (TFname.getText().length() > 2
+                    && TFname.getText().matches("[a-zA-Z]+")
+                    && TFsurname.getText().length() > 2 && TFsurname.getText().matches("[a-zA-Z]+")
+                    && TFcity.getText().length() > 2 && TFcity.getText().matches("[a-zA-Z]+")
+                    && TFemail.getText().matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+                    && TFzip.getText().matches("[0-9]{2}+-[0-9]{3}")
+                    && TFhome.getText().length() > 0 && TFhome.getText().matches("\\d+")
+                    && TFphone.getText().length() == 9 && TFphone.getText().matches("\\d+")) {
                 String name = TFname.getText();
                 String surname = TFsurname.getText();
                 String city = TFcity.getText();
@@ -100,7 +83,6 @@ public class UserProfileEditProfileController {
                 long phone = Long.parseLong(TFphone.getText());
 
                 if (getLoggedUser().getAdress() != null) {
-
                     Adress adress = getLoggedUser().getAdress();
                     adress.setName(name);
                     adress.setSurname(surname);
@@ -115,40 +97,27 @@ public class UserProfileEditProfileController {
                     user.setAdress(adress);
                     userRepository.save(user);
                     showDialog("Poprawna edycja profilu.");
-                    sceneManager.show(SceneType.MAIN);
-
-                }
-
-                else {
+                    sceneManager.show(SceneType.USER_MAIN);
+                } else {
                     Adress adress = new Adress(name, surname, city, street, home, zip, phone, email);
                     adressRepository.save(adress);
                     User user = getLoggedUser();
                     user.setAdress(adress);
                     userRepository.save(user);
                     showDialog("Poprawna edycja profilu.");
-                    sceneManager.show(SceneType.MAIN);
-
-
-                }}
-
-
-            else {
+                    sceneManager.show(SceneType.USER_MAIN);
+                }
+            } else {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
             showDialog("Uzupełnij wszystkie pola poprawnymi danymi.");
-
         }
-
     }
 
     @FXML
-    public void openMainUserPanel(ActionEvent event) {
-        sceneManager.show(SceneType.USER_MAIN);
-    }
+    public void openMainUserPanel(ActionEvent event) { sceneManager.show(SceneType.USER_MAIN); }
 
     @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
+    public void setSceneManager(SceneManager sceneManager) { this.sceneManager = sceneManager; }
 }
