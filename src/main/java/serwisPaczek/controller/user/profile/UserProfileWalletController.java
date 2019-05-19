@@ -6,11 +6,11 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.User;
-import serwisPaczek.model.dto.UserLoginDto;
 import serwisPaczek.service.UserService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
@@ -27,7 +27,7 @@ public class UserProfileWalletController {
     private TextField withdrawTextField;
 
     public void initialize() {
-        user = UserLoginDto.getLoggedUser();
+        user = getLoggedUser();
         accountBalanceTextField.setText(user.getAccountBalance() + " PLN");
     }
 
