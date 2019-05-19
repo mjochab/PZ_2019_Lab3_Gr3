@@ -46,26 +46,16 @@ public class UserGiftOrderController {
         premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
         ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
         tableView.setItems(observableListGifts);
-//        for (Gift gift : listGifts) {
-//        }
-//
-//
-//        idColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("id"));
-//        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
-//        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
-//
-//        ObservableList<Gift> observableListUsers = FXCollections.observableArrayList(gifts);
-//        tableView.setItems(observableListUsers);
-        premiumPoints.setText(String.valueOf(getLoggedUser().getAccount_balance()));
+        premiumPoints.setText(String.valueOf(getLoggedUser().getAccountBalance()));
     }
 
     @FXML
     public void orderGift(ActionEvent event){
         User user = getLoggedUser();
         Gift gift = tableView.getSelectionModel().getSelectedItem();
-        getLoggedUser().setAccount_balance(getLoggedUser().getAccount_balance()-gift.getPremiumPoints());
+        getLoggedUser().setAccountBalance(getLoggedUser().getAccountBalance()-gift.getPremiumPoints());
         userRepository.save(user);
-        premiumPoints.setText(String.valueOf(getLoggedUser().getAccount_balance()));
+        premiumPoints.setText(String.valueOf(getLoggedUser().getAccountBalance()));
     }
 
     @FXML
