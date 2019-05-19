@@ -20,21 +20,18 @@
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="280.0" layoutX="496.0"
-                           layoutY="14.0" stroke="BLUE" strokeType="INSIDE" width="298.0"/>
-                <Button fx:id="btnOpenWorkerPanel" layoutX="14.0" layoutY="302.0" mnemonicParsing="false"
-                        onAction="#openMainWorkerPanel" prefHeight="35.0" prefWidth="175.0"
-                        style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="173.0" layoutX="496.0" layoutY="14.0" stroke="BLUE" strokeType="INSIDE" width="298.0" />
+                <Button fx:id="btnOpenWorkerPanel" layoutX="14.0" layoutY="302.0" mnemonicParsing="false" onAction="#openMainWorkerPanel" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
                     <font>
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="470.0">
+                <TableView fx:id="tableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="470.0">
                     <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id"/>
-                        <TableColumn fx:id="nameColumn" prefWidth="171.0" text="Nazwa"/>
-                        <TableColumn fx:id="premiumPointsColumn" prefWidth="109.0" text="Ilość punktów"/>
-                        <TableColumn fx:id="logoColumn" prefWidth="145.0" text="Logo"/>
+                        <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id" />
+                        <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="171.0" text="Nazwa" />
+                        <TableColumn fx:id="premiumPointsColumn" onEditCommit="#changePremiumPointsEvent" prefWidth="254.0" text="Ilość punktów" />
                     </columns>
                 </TableView>
                 <Button layoutX="199.0" layoutY="302.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0"
@@ -53,20 +50,25 @@
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button fx:id="ChooseLogoButton" layoutX="505.0" layoutY="139.0" mnemonicParsing="false"
-                        prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: grey;" text="Wybierz logo"
-                        textFill="WHITE">
+                <TextField fx:id="addGiftName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Prezentu" />
+                <TextField fx:id="addGiftPoints" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Liczba punktów" />
+                <Button fx:id="btnAddGift" layoutX="505.0" layoutY="144.0" mnemonicParsing="false" onAction="#addGift" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj prezent" textFill="WHITE">
+
                     <font>
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button fx:id="ChooseLogoButton1" layoutX="505.0" layoutY="22.0" mnemonicParsing="false"
-                        prefHeight="35.0" prefWidth="279.0" style="-fx-background-color: blue;"
-                        text="Dodawanie prezentu" textFill="WHITE">
+                <Button layoutX="505.0" layoutY="22.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="279.0" style="-fx-background-color: blue;" text="Dodawanie prezentu" textFill="WHITE">
                     <font>
                         <Font size="15.0"/>
                     </font>
                 </Button>
+
+            <Button fx:id="btnDeleteGift" layoutX="397.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteGift" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </center>

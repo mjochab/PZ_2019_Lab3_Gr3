@@ -113,3 +113,16 @@ content varchar(150),
 rating int,
 PRIMARY KEY(id)
 );
+
+create table about(
+id int NOT NULL AUTO_INCREMENT,
+content varchar(1500),
+PRIMARY KEY(id)
+);
+
+create table coupon(
+id bigint NOT NULL AUTO_INCREMENT,
+name varchar(150),
+discount int,
+PRIMARY KEY(id)
+);
