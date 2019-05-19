@@ -23,7 +23,7 @@
                           wrapText="true"/>
                 <Button fx:id="AdminMainButton" layoutX="37.0" layoutY="554.0" mnemonicParsing="false"
                         onAction="#openAdminMainPanel" prefHeight="35.0" prefWidth="175.0"
-                        style="-fx-background-color: red;" text="Anuluj" textAlignment="CENTER" textFill="WHITE"
+                        style="-fx-background-color: red;" text="Wyjdź" textAlignment="CENTER" textFill="WHITE"
                         wrapText="true">
                     <font>
                         <Font size="15.0"/>

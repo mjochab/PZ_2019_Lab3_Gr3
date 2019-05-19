@@ -2,9 +2,13 @@ package serwisPaczek.controller.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 import javafx.scene.control.TextArea;
@@ -22,6 +26,9 @@ public class AdminEditAboutController {
     @Autowired
     AboutRepository aboutRepository;
 
+    @Autowired
+    private MainService mainService;
+
     @FXML
     public void initialize(){
         List<About> listAbout = aboutRepository.findAll();
@@ -30,9 +37,16 @@ public class AdminEditAboutController {
 
     @FXML
     public void acceptChanges (ActionEvent event){
+        if (aboutRepository.findAll().isEmpty()) mainService.addAbout();
         List<About> listAbout = aboutRepository.findAll();
         listAbout.get(0).setContent(textArea.getText());
         aboutRepository.saveAll(listAbout);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Zmiany zostały zapisane", ButtonType.OK);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.setTitle("Komunikat");
+        alert.setHeaderText(null);
+        alert.show();
     }
 
     @FXML

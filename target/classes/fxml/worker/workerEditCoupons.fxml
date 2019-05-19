@@ -35,11 +35,6 @@
                         <TableColumn fx:id="discountColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0" text="Obniżka" />
                     </columns>
                 </TableView>
-                <Button layoutX="199.0" layoutY="302.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zapisz zmiany" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
                 <TextField fx:id="addCouponName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Kuponu" />
                 <TextField fx:id="addDiscount" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Rabat" />
                 <Button fx:id="btnAddGift" layoutX="505.0" layoutY="144.0" mnemonicParsing="false" onAction="#addCoupon" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj kupon" textFill="WHITE">
@@ -52,7 +47,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnDeleteCoupon" layoutX="397.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteCoupon" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
+                <Button fx:id="btnDeleteCoupon" layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteCoupon" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

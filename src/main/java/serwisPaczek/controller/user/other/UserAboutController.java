@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 import javafx.scene.control.Label;
@@ -22,8 +23,12 @@ public class UserAboutController {
     @Autowired
     AboutRepository aboutRepository;
 
+    @Autowired
+    private MainService mainService;
+
     @FXML
     public void initialize(){
+        if (aboutRepository.findAll().isEmpty()) mainService.addAbout();
         List<About> listAbout = aboutRepository.findAll();
         label.setText(listAbout.get(0).getContent());
     }
