@@ -103,7 +103,7 @@ public class MainService {
 
             Date date = new Date(System.currentTimeMillis());
 
-            GiftOrder giftOrder = new GiftOrder(date, gift, user, recipientAdress);
+            GiftOrder giftOrder = new GiftOrder(date, gift, user, Status.WYSLANO_ZGLOSZENIE, recipientAdress);
             giftOrderList.add(giftOrder);
 
             Parcel parcel = new Parcel(100 + i, 20 + i, 30 + i, "paczka", i);

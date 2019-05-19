@@ -15,6 +15,7 @@ public class GiftOrder {
     @ManyToOne
     @JoinColumn(name = "gift_id")
     private Gift gift;
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -25,10 +26,11 @@ public class GiftOrder {
     public GiftOrder() {
     }
 
-    public GiftOrder(Date date, Gift gift, User user, RecipientAdress recipientAdress) {
+    public GiftOrder(Date date, Gift gift, User user, Status status, RecipientAdress recipientAdress) {
         this.date = date;
         this.gift = gift;
         this.user = user;
+        this.status = status;
         this.recipientAdress = recipientAdress;
     }
 }
