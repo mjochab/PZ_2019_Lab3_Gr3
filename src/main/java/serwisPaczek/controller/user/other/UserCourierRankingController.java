@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
 @Controller
 public class UserCourierRankingController {
     @Autowired
@@ -39,8 +41,11 @@ public class UserCourierRankingController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO[ALAN]: MAIN OR USER_MAIN
-        sceneManager.show(SceneType.MAIN);
+        if (getLoggedUser() == null) {
+            sceneManager.show(SceneType.MAIN);
+        } else {
+            sceneManager.show(SceneType.USER_MAIN);
+        }
     }
 
     @Autowired

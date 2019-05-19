@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.service.UserService;
@@ -21,13 +22,21 @@ public class LoginController {
     private TextField TFUsername;
     @FXML
     private PasswordField PFPassword;
+    @FXML
+    private Text usernameWarning, passwordWarning;
+
+    @FXML
+    public void initialize() {
+        usernameWarning.setVisible(false);
+        passwordWarning.setVisible(false);
+    }
 
     /**
      * This method is used to log in the user.
      */
     @FXML
     public void login(ActionEvent event) throws IOException {
-        userService.login(TFUsername.getText(), PFPassword.getText());
+        userService.login(TFUsername.getText(), PFPassword.getText(), usernameWarning, passwordWarning);
     }
 
     @FXML

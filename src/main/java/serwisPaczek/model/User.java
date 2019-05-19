@@ -3,6 +3,7 @@ package serwisPaczek.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class User {
     private String username;
     private String password;
 
+    @Column(name = "active")
+    @ColumnDefault("true")
+    private Boolean active = true;
 
     @Column(name = "account_balance")
     private double accountBalance;
@@ -35,6 +39,14 @@ public class User {
     private Adress adress;
 
     public User() {
+    }
+
+    public User(String username, String password, Role role, Adress adress, Boolean active) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.adress = adress;
+        this.active = active;
     }
 
     public User(String username, String password, Role role, Adress adress) {

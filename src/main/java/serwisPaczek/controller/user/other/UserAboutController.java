@@ -13,6 +13,8 @@ import serwisPaczek.model.About;
 import java.util.List;
 import serwisPaczek.repository.AboutRepository;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
 @Controller
 public class UserAboutController {
     private SceneManager sceneManager;
@@ -35,8 +37,11 @@ public class UserAboutController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO[ALAN]: MAIN or USER_MAIN
-        sceneManager.show(SceneType.MAIN);
+        if (getLoggedUser() == null) {
+            sceneManager.show(SceneType.MAIN);
+        } else {
+            sceneManager.show(SceneType.USER_MAIN);
+        }
     }
 
     @Autowired

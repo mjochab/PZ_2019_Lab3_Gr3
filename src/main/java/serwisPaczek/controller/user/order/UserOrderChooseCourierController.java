@@ -182,8 +182,11 @@ public class UserOrderChooseCourierController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO[ALAN]: USER_MAIN OR MAIN
-        sceneManager.show(SceneType.MAIN);
+        if (getLoggedUser() == null) {
+            sceneManager.show(SceneType.MAIN);
+        } else {
+            sceneManager.show(SceneType.USER_MAIN);
+        }
     }
 
     @Autowired

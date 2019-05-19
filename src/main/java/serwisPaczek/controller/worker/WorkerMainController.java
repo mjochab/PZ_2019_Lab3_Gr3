@@ -9,6 +9,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.model.dto.UserLoginDto.setLoggedUser;
 
 @Controller
 public class WorkerMainController {
@@ -43,6 +44,7 @@ public class WorkerMainController {
 
     @FXML
     void logout(ActionEvent event) {
+        setLoggedUser(null);
         sceneManager.show(SceneType.MAIN);
     }
 

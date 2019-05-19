@@ -13,6 +13,7 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.model.dto.UserLoginDto.setLoggedUser;
 
 @Controller
 public class AdminMainController {
@@ -50,7 +51,7 @@ public class AdminMainController {
 
     @FXML
     void openManageWorkerPanel(ActionEvent event) {
-        //TODO[ALAN]: ManageWorkerPanel
+        sceneManager.show(SceneType.ADMIN_MANAGE_WORKERS);
     }
 
     @FXML
@@ -75,6 +76,7 @@ public class AdminMainController {
 
     @FXML
     void logout(ActionEvent event) {
+        setLoggedUser(null);
         sceneManager.show(SceneType.MAIN);
     }
 

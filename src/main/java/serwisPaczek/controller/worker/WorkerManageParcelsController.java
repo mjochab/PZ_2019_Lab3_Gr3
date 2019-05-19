@@ -13,6 +13,10 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
 @Controller
 public class WorkerManageParcelsController {
@@ -64,7 +68,17 @@ public class WorkerManageParcelsController {
     @FXML
     public void orderChangeStatus(ActionEvent event) {
         try {
-            UserOrder order = orderRepository.getOne(ordersSearchField.getValue().longValue());
+            // Getting id from selected item in the list
+            String selectedItem = workerOrdersList.getSelectionModel().getSelectedItem();
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(selectedItem);
+            Long id = null;
+            if (m.find()) {
+               id = Long.valueOf(m.group(0));
+            }
+
+            // Changing order status
+            UserOrder order = orderRepository.getOne(id);
             order.setStatus(statusComboBox.getValue());
             orderRepository.save(order);
             workerOrdersList.getItems().clear();
@@ -77,16 +91,19 @@ public class WorkerManageParcelsController {
     private void alertError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 message, ButtonType.OK);
-        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.setTitle("Error");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.setHeaderText(null);
         alert.show();
     }
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        //TODO[ALAN]: WORKER_MAIN OR ADMIN_MAIN
-        sceneManager.show(SceneType.WORKER_MAIN);
+        if (getLoggedUser().getRole().getId()==1) {
+            sceneManager.show(SceneType.ADMIN_MAIN);
+        } else {
+            sceneManager.show(SceneType.WORKER_MAIN);
+        }
     }
 
     @Autowired
