@@ -4,11 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.controller.user.order.UserOrderAddOpinionController;
 import serwisPaczek.model.UserOrder;
 import serwisPaczek.model.dto.UserOrderDto;
 import serwisPaczek.repository.OrderRepository;
@@ -16,11 +21,14 @@ import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.utils.SceneManager.stage;
 
+@SuppressWarnings("Duplicates")
 @Controller
 public class UserProfileOrderListController {
     private SceneManager sceneManager;
@@ -59,6 +67,8 @@ public class UserProfileOrderListController {
     @FXML
     private TableColumn<UserOrderDto, String> emailColumn;
 
+    private ApplicationContext context;
+    private Long orderID;
     @FXML
     public void initialize() {
         List<UserOrder> listOrders = orderRepository.findAll();
@@ -107,11 +117,29 @@ public class UserProfileOrderListController {
     }
 
     @FXML
-    public void addOpinion(ActionEvent event) { sceneManager.show(SceneType.USER_ORDER_ADD_OPINION); }
+    public void addOpinion(ActionEvent event) {
+        this.orderID = tableView.getSelectionModel().getSelectedItem().getId();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderAddOpinion.fxml"));
+            loader.setControllerFactory(context::getBean);
+            Parent root = loader.load();
+            UserOrderAddOpinionController userOrderAddOpinionController = loader.getController();
+            userOrderAddOpinionController.initialize(orderID);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void openUserMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_MAIN);
+    }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
     }
 
     @Autowired

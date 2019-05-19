@@ -2,6 +2,9 @@ package serwisPaczek.controller.user.order;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.utils.SceneManager;
@@ -11,6 +14,20 @@ import serwisPaczek.utils.SceneType;
 public class UserOrderAddOpinionController {
     private SceneManager sceneManager;
 
+    @FXML
+    private Label orderLabel;
+    @FXML
+    private ComboBox<Integer> opinionComboBox;
+    @FXML
+    private TextField opinionTextField;
+
+    @FXML
+    public void initialize(Long orderID) {
+        opinionComboBox.getItems().setAll(1,2,3,4,5);
+        opinionComboBox.getSelectionModel().selectLast();
+        orderLabel.setText("Wystaw opinię dla zamówienia nr" + orderID);
+        opinionTextField.setText("Super kurier, polecam! ");
+    }
     @FXML
     public void addOpinion(ActionEvent event) {
         sceneManager.show(SceneType.USER_PROFILE_MY_OPINIONS);
