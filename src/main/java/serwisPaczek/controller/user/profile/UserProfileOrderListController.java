@@ -7,9 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -118,8 +121,8 @@ public class UserProfileOrderListController {
 
     @FXML
     public void addOpinion(ActionEvent event) {
-        this.orderID = tableView.getSelectionModel().getSelectedItem().getId();
         try {
+            this.orderID = tableView.getSelectionModel().getSelectedItem().getId();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderAddOpinion.fxml"));
             loader.setControllerFactory(context::getBean);
             Parent root = loader.load();
@@ -127,11 +130,19 @@ public class UserProfileOrderListController {
             userOrderAddOpinionController.initialize(orderID);
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            alertError("Zaznacz zamówienie dla którego chcesz wystawić opinię!");
         }
     }
 
+    private void alertError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                message, ButtonType.OK);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.show();
+    }
     @FXML
     public void openUserMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_MAIN);

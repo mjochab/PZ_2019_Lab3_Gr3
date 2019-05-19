@@ -89,8 +89,8 @@ public class WorkerManageParcelsController {
     private void alertError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 message, ButtonType.OK);
-        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.setTitle("Error");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.setHeaderText(null);
         alert.show();
     }
