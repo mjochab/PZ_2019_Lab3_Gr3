@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -25,11 +26,25 @@ public class WorkerEditCouponsController {
     @Autowired
     CouponRepository couponRepository;
 
+
     @FXML
     private TextField addCouponName;
     @FXML
     private TextField addDiscount;
+    @FXML
+    private TableView<Coupon> tableView;
+    @FXML
+    private TableColumn<Coupon, String> idColumn;
+    @FXML
+    private TableColumn<Coupon, String> nameColumn;
+    @FXML
+    private TableColumn<Coupon, Integer> discountColumn;
 
+
+    @FXML
+    public void initialize(){
+        fillTableView();
+    }
 
     @FXML
     public void openMainWorkerPanel(ActionEvent event) {
@@ -46,14 +61,25 @@ public class WorkerEditCouponsController {
     }
 
     @FXML
-    public void deleteGift(ActionEvent event){
+    public void deleteCoupon(ActionEvent event){
+        Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+        couponRepository.delete(coupon);
+        fillTableView();
     }
 
     @FXML
     public void changeNameEvent(TableColumn.CellEditEvent event){
+        Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+        coupon.setName(event.getNewValue().toString());
+        couponRepository.save(coupon);
+        fillTableView();
     }
     @FXML
     public void changeDiscountEvent(TableColumn.CellEditEvent event){
+        Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+        coupon.setDiscount(Integer.valueOf(event.getNewValue().toString()));
+        couponRepository.save(coupon);
+        fillTableView();
     }
 
     @Autowired
@@ -61,5 +87,14 @@ public class WorkerEditCouponsController {
         this.sceneManager = sceneManager;
     }
     void fillTableView(){
+        List<Coupon> couponList = couponRepository.findAll();
+        idColumn.setCellValueFactory(new PropertyValueFactory<Coupon, String>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Coupon, String>("name"));
+        discountColumn.setCellValueFactory(new PropertyValueFactory<Coupon, Integer>("discount"));
+        ObservableList<Coupon> observableListCoupons = FXCollections.observableArrayList(couponList);
+        tableView.setItems(observableListCoupons);
+        tableView.setEditable(true);
+        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        discountColumn.setCellFactory(TextFieldTableCell.<Coupon, Integer>forTableColumn(new IntegerStringConverter()));
     }
 }

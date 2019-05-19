@@ -32,7 +32,7 @@
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id" />
                         <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="223.0" text="Nazwa" />
-                        <TableColumn fx:id="premiumPointsColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0" text="Obniżka" />
+                        <TableColumn fx:id="discountColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0" text="Obniżka" />
                     </columns>
                 </TableView>
                 <Button layoutX="199.0" layoutY="302.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: green;" text="Zapisz zmiany" textFill="WHITE">
@@ -52,7 +52,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnDeleteCoupon" layoutX="397.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteGift" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
+                <Button fx:id="btnDeleteCoupon" layoutX="397.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteCoupon" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
