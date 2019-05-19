@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 import javafx.scene.control.Label;
-
 import java.awt.*;
-
 import serwisPaczek.model.About;
 import java.util.List;
 import serwisPaczek.repository.AboutRepository;
