@@ -13,6 +13,8 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class WorkerManageParcelsController {
@@ -64,7 +66,17 @@ public class WorkerManageParcelsController {
     @FXML
     public void orderChangeStatus(ActionEvent event) {
         try {
-            UserOrder order = orderRepository.getOne(ordersSearchField.getValue().longValue());
+            // Getting id from selected item in the list
+            String selectedItem = workerOrdersList.getSelectionModel().getSelectedItem();
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(selectedItem);
+            Long id = null;
+            if (m.find()) {
+               id = Long.valueOf(m.group(0));
+            }
+
+            // Changing order status
+            UserOrder order = orderRepository.getOne(id);
             order.setStatus(statusComboBox.getValue());
             orderRepository.save(order);
             workerOrdersList.getItems().clear();

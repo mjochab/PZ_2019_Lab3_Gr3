@@ -10,7 +10,10 @@ import serwisPaczek.model.User;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class AdminManageWorkersController {
@@ -62,14 +65,22 @@ public class AdminManageWorkersController {
     @FXML
     public void workerChangeStatus(ActionEvent event) {
         try {
+            // Getting id from selected item in the list
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(workerList.getSelectionModel().getSelectedItem());
+            Long id = null;
+            if (m.find()) {
+                id = Long.valueOf(m.group(0));
+            }
+
             User worker = userRepository.findByIdAndRole_RoleName(
-                    workerSearchField.getValue().longValue(), "WORKER_ROLE");
+                    id, "WORKER_ROLE");
             worker.setActive((workerStatusComboBox.getValue().equals("Activate")));
             userRepository.save(worker);
             workerList.getItems().clear();
             fillListWithWorkers(worker);
         } catch (Exception e) {
-            alertError("Niepoprawne id, wyszukaj najpierw pracownika by go edytować.");
+            alertError("Zaznacz pracownika!");
         }
     }
 
@@ -81,10 +92,6 @@ public class AdminManageWorkersController {
         alert.setTitle("Error");
         alert.show();
     }
-
-//    @FXML public void handleMouseClick(MouseEvent arg0) {
-//        String selectedItem = workerList.getSelectionModel().getSelectedItem();
-//    }
 
     @FXML
     public void openMainPanel(ActionEvent event) {
