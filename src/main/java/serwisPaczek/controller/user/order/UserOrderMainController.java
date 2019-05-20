@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,21 @@ public class UserOrderMainController {
     private RadioButton RBpaczka;
     @FXML
     private TextField TFwaga;
-
+    @FXML
+    private Label Lwaga;
+    @FXML
+    private Label Lszerokosc;
+    @FXML
+    private Label Ldlugosc;
+    @FXML
+    private Label Lwysokosc;
+    @FXML
+    public void initialize() {
+        Lwaga.setVisible(false);
+        Lszerokosc.setVisible(false);
+        Lwysokosc.setVisible(false);
+        Ldlugosc.setVisible(false);
+    }
     @FXML
     public void openOrderChooseCourierPanel(ActionEvent event) {
         if (!(RBpaczka.isSelected() || RBkoperta.isSelected() || RBpaleta.isSelected())) {
@@ -59,6 +74,37 @@ public class UserOrderMainController {
             } else if (RBpaczka.isSelected()) {
                 typ = "paczka";
             } else typ = "paleta";
+
+            if((!TFwaga.getText().matches("\\d+")) ){
+                Lwaga.setText("Waga musi być liczbą!");
+                Lwaga.setVisible(true);
+            }
+            else {
+                Lwaga.setVisible(false);
+            }
+            if((!TFdlugosc.getText().matches("\\d+")) ){
+                Ldlugosc.setText("Długość musi być liczbą!");
+                Ldlugosc.setVisible(true);
+            }
+            else {
+                Ldlugosc.setVisible(false);
+            }
+            if((!TFszerokosc.getText().matches("\\d+")) ){
+                Lszerokosc.setText("Szerokość musi być liczbą!");
+                Lszerokosc.setVisible(true);
+            }
+            else {
+                Lszerokosc.setVisible(false);
+            }
+            if((!TFwysokosc.getText().matches("\\d+")) ){
+                Lwysokosc.setText("Wysokość musi być liczbą!");
+                Lwysokosc.setVisible(true);
+            }
+            else {
+                Lwysokosc.setVisible(false);
+            }
+    if((TFwysokosc.getText().matches("\\d+") && (TFszerokosc.getText().matches("\\d+")) &&
+            (TFdlugosc.getText().matches("\\d+")) && (TFwaga.getText().matches("\\d+")) ) ){
 
             if (typ == "koperta" && (Integer.parseInt(TFwaga.getText()) > 1 || Integer.parseInt(TFdlugosc.getText()) > 35
                     || Integer.parseInt(TFszerokosc.getText()) > 25 || Integer.parseInt(TFwysokosc.getText()) > 25)) {
@@ -90,7 +136,10 @@ public class UserOrderMainController {
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }}
+    else {
+        return;
+    }
         } else {
             showDialog("Uzupełnij wszystkie pola wymiarów paczki!");
             return;

@@ -40,12 +40,12 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-            <Text fx:id="usernameWarning" fill="RED" layoutX="433.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pole obowiązkowe!" textAlignment="RIGHT">
+            <Text fx:id="usernameWarning" fill="RED" layoutX="266.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pole obowiązkowe!" textAlignment="RIGHT">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="passwordWarning" fill="RED" layoutX="433.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pole obowiązkowe!" textAlignment="RIGHT">
+            <Text fx:id="passwordWarning" fill="RED" layoutX="266.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pole obowiązkowe!" textAlignment="RIGHT">
                <font>
                   <Font size="14.0" />
                </font>

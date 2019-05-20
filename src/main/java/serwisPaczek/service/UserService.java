@@ -38,13 +38,20 @@ public class UserService {
      * @param all Data needed to log in.
      */
     public void login(String username, String password, Text usernameWarning, Text passwordWarning) {
-        if (!isCorrect(password)) passwordWarning.setVisible(true);
-        else passwordWarning.setVisible(false);
 
-        if (!isCorrect(username)) usernameWarning.setVisible(true);
+        if (username.length() <= 3 || !isCorrect(username)) {
+            usernameWarning.setText("Username musi posiadać conajmniej 4 znaki!");
+            usernameWarning.setVisible(true);
+        }
         else usernameWarning.setVisible(false);
 
-        if (isCorrect(username) && isCorrect(password)) {
+        if (password.length() <= 5 || !isCorrect(password)) {
+            passwordWarning.setText("Password musi posiadać conajmniej 6 znaków!");
+            passwordWarning.setVisible(true);
+        }
+        else passwordWarning.setVisible(false);
+
+        if (isCorrect(username) && isCorrect(password) && password.length() >= 6 && username.length() >= 4) {
             User user = userRepository.findByUsername(username);
             if (user != null && passwordEncoder.matches(password, user.getPassword())) {
 

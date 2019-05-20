@@ -95,53 +95,144 @@ public class UserOrderFillAddressesFormController {
 
     @FXML
     public void openFinalizePanel(ActionEvent event) throws IOException {
-        if (isCorrectAndNoDigit(TFname.getText()) && isCorrectAndNoDigit(TFsurname.getText())
-                && isCorrectAndNoDigit(TFspot.getText()) &&
-                isCorrectAndNoDigit(TFstreet.getText()) &&
-                isCorrectAndOnlyDigit(TFhouseNumber.getText()) && isCorrect(TFzipCode.getText()) &&
-                isCorrectAndOnlyDigit(TFnr.getText()) &&
-                isCorrect(TFemail.getText()) &&
-                isCorrectAndNoDigit(TFsenderName.getText()) && isCorrectAndNoDigit(TFsenderSurname.getText())
-                && isCorrectAndNoDigit(TFsenderCity.getText()) &&
-                isCorrectAndNoDigit(TFsenderStreet.getText()) &&
-                isCorrectAndOnlyDigit(TFsenderHouseNumber.getText()) && isCorrect(TFsenderZipCode.getText()) &&
-                isCorrectAndOnlyDigit(TFsenderNr.getText()) &&
-                isCorrect(TFsenderEmail.getText())) {
 
-            Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
-                    Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
-                    TFemail.getText());
-            Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
-                    TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
-                    Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
-            adressRepository.save(received);
-            adressRepository.save(sender);
-
-            RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
-            SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
-            // example add order
-            UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
-                    courierRepository.getOne(5L),
-                    Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
-
-
-            userService.withdrawFunds(getLoggedUser(), (double) price);
-
+        StringBuilder message = new StringBuilder();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
-                loader.setControllerFactory(context::getBean);
-                Parent root = loader.load();
-                UserOrderFinalizeController finalizeController = loader.getController();
-                finalizeController.initialize(order, sender, received, courier, parcel);
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-        } else {
-            showDialog("Pola nie zostały poprawnie wypełnione!");
-            return;
+                if (TFname.getText().isEmpty() || TFsurname.getText().isEmpty()
+                        || TFspot.getText().isEmpty() ||
+                        TFstreet.getText().isEmpty() ||
+                        TFhouseNumber.getText().isEmpty() || TFzipCode.getText().isEmpty() ||
+                        TFnr.getText().isEmpty() ||
+                        TFemail.getText().isEmpty() ||
+                        TFsenderName.getText().isEmpty() || TFsenderSurname.getText().isEmpty()
+                        || TFsenderCity.getText().isEmpty()
+                        || TFsenderStreet.getText().isEmpty() ||
+                        TFsenderHouseNumber.getText().isEmpty() || TFsenderZipCode.getText().isEmpty() ||
+                        TFsenderNr.getText().isEmpty() ||
+                        TFsenderEmail.getText().isEmpty()) {
+                    showDialog("Pozostawiłeś puste pola!");
+                    return;
+                }
+
+           if (TFname.getText().length() <= 2) {
+               message.append("Imię odbiorcy musi zawierać więcej niż dwa znaki! \n");
+           }
+           if (!(TFname.getText().matches("[a-zA-Z]+"))) {
+               message.append("Imię odbiorcy musi zawierać wyłącznie małe oraz duże litery! \n");
+           }
+           if (TFsurname.getText().length() <= 2) {
+               message.append("Nazwisko odbiorcy musi zawierać więcej niż dwa znaki! \n");
+           }
+           if (!(TFsurname.getText().matches("[a-zA-Z]+"))) {
+               message.append("Nazwisko odbiorcy musi zawierać wyłącznie małe oraz duże litery!\n");
+           }
+           if (TFspot.getText().length() <= 2) {
+               message.append("Nazwa miasta odbiorcy musi zawierać więcej niż dwa znaki!\n");
+           }
+           if (!TFspot.getText().matches("[a-zA-Z]+")) {
+               message.append("Nazwa miasta odbiorcy musi posiadać wyłącznie małe oraz duże litery!\n");
+           }
+           if (!TFemail.getText().matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")) {
+               message.append("Email odbiorcy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+           }
+           if (!TFzipCode.getText().matches("[0-9]{2}+-[0-9]{3}")) {
+               message.append("Kod pocztowy odbiorcy musi byc w formule XX-XXX, gdzie X jest cyfrą!\n");
+           }
+           if (TFhouseNumber.getText().length() <= 0 ) {
+               message.append("Numer domu odbiorcy nie może być ujemny\n");
+           }
+           if (!TFhouseNumber.getText().matches("\\d+")) {
+               message.append("Numer domu odbiorcy musi być liczbą!\n");
+           }
+           if (TFnr.getText().length() != 9) {
+               message.append("Numer telefonu odbiorcy musi posiadać 9 cyfr!\n");
+           }
+           if (!TFnr.getText().matches("\\d+")) {
+               message.append("Numer telefonu odbiorcy musi być składać się wyłącznie z cyfr!\n");
+           }
+           if (!TFstreet.getText().matches("[A-Z0-9a-z._%+-]{2,64}")) {
+               message.append("Ulica odbiorcy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+           }
+           if (TFsenderName.getText().length() <= 2) {
+               message.append("Imię nadawcy musi zawierać więcej niż dwa znaki! \n");
+           }
+           if (!(TFsenderName.getText().matches("[a-zA-Z]+"))) {
+               message.append("Imię nadawcy musi zawierać wyłącznie małe oraz duże litery! \n");
+           }
+           if (TFsenderSurname.getText().length() <= 2) {
+               message.append("Nazwisko nadawcy musi zawierać więcej niż dwa znaki! \n");
+           }
+           if (!(TFsenderSurname.getText().matches("[a-zA-Z]+"))) {
+               message.append("Nazwisko nadawcy musi zawierać wyłącznie małe oraz duże litery!\n");
+           }
+           if (TFsenderCity.getText().length() <= 2) {
+               message.append("Nazwa miasta nadawcy musi zawierać więcej niż dwa znaki!\n");
+           }
+           if (!TFsenderCity.getText().matches("[a-zA-Z]+")) {
+               message.append("Nazwa miasta nadawcy musi posiadać wyłącznie małe oraz duże litery!\n");
+           }
+           if (!TFsenderEmail.getText().matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")) {
+               message.append("Email nadawcy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+           }
+           if (!TFsenderZipCode.getText().matches("[0-9]{2}+-[0-9]{3}")) {
+               message.append("Kod pocztowy nadawcy musi byc w formule XX-XXX, gdzie X jest cyfrą!\n");
+           }
+           if (TFsenderHouseNumber.getText().length() <= 0 ) {
+               message.append("Numer domu nadawcy nie może być ujemny\n");
+           }
+           if (!TFsenderHouseNumber.getText().matches("\\d+")) {
+               message.append("Numer domu nadawcy musi być liczbą!\n");
+           }
+           if (TFsenderNr.getText().length() != 9) {
+               message.append("Numer telefonu nadawcy musi posiadać 9 cyfr!\n");
+           }
+           if (!TFsenderNr.getText().matches("\\d+")) {
+               message.append("Numer telefonu nadawcy musi być składać się wyłącznie z cyfr!\n");
+           }
+           if (!TFsenderStreet.getText().matches("[A-Z0-9a-z._%+-]{2,64}")) {
+               message.append("Ulica nadawcy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+           }
+           if (message.length()==0) {
+
+               Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
+                       Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
+                       TFemail.getText());
+               Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
+                       TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
+                       Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
+               adressRepository.save(received);
+               adressRepository.save(sender);
+
+               RecipientAdress recipientAdress = recipientAdressRepository.save(new RecipientAdress(received));
+               SenderAdress senderAdress = senderAdressRepository.save(new SenderAdress(sender));
+
+               UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
+                       courier,
+                       Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
+
+
+               userService.withdrawFunds(getLoggedUser(), (double) price);
+
+               try {
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
+                   loader.setControllerFactory(context::getBean);
+                   Parent root = loader.load();
+                   UserOrderFinalizeController finalizeController = loader.getController();
+                   finalizeController.initialize(order, sender, received, courier, parcel);
+                   stage.setScene(new Scene(root));
+                   stage.show();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+
+           }
+           else {
+            throw new NumberFormatException();
+           }
+       }
+       catch(NumberFormatException e){
+           showDialog(message.toString());
         }
     }
 
