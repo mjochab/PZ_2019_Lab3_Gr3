@@ -19,6 +19,9 @@ public class User {
     private String username;
     private String password;
 
+    @Column (name = "premium_points_balance")
+    private int premiumPointsBalance;
+
     @Column(name = "active")
     @ColumnDefault("true")
     private Boolean active = true;
