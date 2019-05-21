@@ -134,7 +134,7 @@ public class UserOrderFillAddressesFormController {
                message.append("Nazwa miasta odbiorcy musi posiadać wyłącznie małe oraz duże litery!\n");
            }
            if (!TFemail.getText().matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")) {
-               message.append("Email odbiorcy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+               message.append("Email musi byc w formacie x@x.pl o długosci pomiędzy 2 a 30 znaków\n");
            }
            if (!TFzipCode.getText().matches("[0-9]{2}+-[0-9]{3}")) {
                message.append("Kod pocztowy odbiorcy musi byc w formule XX-XXX, gdzie X jest cyfrą!\n");
@@ -173,7 +173,7 @@ public class UserOrderFillAddressesFormController {
                message.append("Nazwa miasta nadawcy musi posiadać wyłącznie małe oraz duże litery!\n");
            }
            if (!TFsenderEmail.getText().matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")) {
-               message.append("Email nadawcy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+               message.append("Email musi byc w formacie x@x.pl o długosci pomiędzy 2 a 30 znaków\n");
            }
            if (!TFsenderZipCode.getText().matches("[0-9]{2}+-[0-9]{3}")) {
                message.append("Kod pocztowy nadawcy musi byc w formule XX-XXX, gdzie X jest cyfrą!\n");

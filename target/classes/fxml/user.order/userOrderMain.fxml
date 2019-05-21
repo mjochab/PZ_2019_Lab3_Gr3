@@ -106,10 +106,10 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="157.0" layoutX="6.0" layoutY="6.0" stroke="BLUE" strokeType="INSIDE" width="285.0" />
                     </children>
                 </Pane>
-            <Label fx:id="Lwaga" layoutX="279.0" layoutY="177.0" text="Label" />
-            <Label fx:id="Ldlugosc" layoutX="279.0" layoutY="217.0" text="Label" />
-            <Label fx:id="Lszerokosc" layoutX="279.0" layoutY="256.0" text="Label" />
-            <Label fx:id="Lwysokosc" layoutX="279.0" layoutY="296.0" text="Label" />
+            <Label fx:id="Lwaga" layoutX="279.0" layoutY="177.0" text="Label" textFill="RED" />
+            <Label fx:id="Ldlugosc" layoutX="279.0" layoutY="219.0" text="Label" textFill="RED" />
+            <Label fx:id="Lszerokosc" layoutX="279.0" layoutY="256.0" text="Label" textFill="RED" />
+            <Label fx:id="Lwysokosc" layoutX="279.0" layoutY="296.0" text="Label" textFill="RED" />
             </children>
         </AnchorPane>
     </center>

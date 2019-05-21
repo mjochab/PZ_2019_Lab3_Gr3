@@ -37,7 +37,7 @@ public class AdminEditAboutController {
 
     @FXML
     public void acceptChanges (ActionEvent event){
-        if (aboutRepository.findAll().isEmpty()) mainService.addAbout();
+//        if (aboutRepository.findAll().isEmpty()) mainService.addAbout();
         List<About> listAbout = aboutRepository.findAll();
         listAbout.get(0).setContent(textArea.getText());
         aboutRepository.saveAll(listAbout);
