@@ -25,36 +25,32 @@ public class AdminManageWorkersController {
     @FXML
     private ComboBox<String> workerStatusComboBox;
     @FXML
-    private Spinner<Integer> workerSearchField;
+    private TextField searchTextField;
 
-    //    @SuppressWarnings("Duplicates")
     public void initialize() {
-        List<User> workers = userRepository.findAllByRole_RoleName("WORKER_ROLE");
-
-        for (User worker : workers) {
-            fillListWithWorkers(worker);
-        }
-
-
+        fillListWithAllWorkers();
         workerStatusComboBox.getItems().setAll("Activate", "Deactivate");
         workerStatusComboBox.getSelectionModel().selectFirst();
-
-        // Value factory for worker spinner
-        SpinnerValueFactory<Integer> valueFactory = //
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
-        workerSearchField.setValueFactory(valueFactory);
     }
+
 
     private void fillListWithWorkers(User worker) {
         workerList.getItems().add("ID: " + worker.getId().toString() + "  |  " + worker.getUsername() + "  |  Konto " +
                 (worker.getActive() ? "aktywne" : "zablokowane"));
     }
 
+    private void fillListWithAllWorkers() {
+        List<User> workers = userRepository.findAllByRole_RoleName("WORKER_ROLE");
+        for (User worker : workers) {
+            fillListWithWorkers(worker);
+        }
+    }
+
     @FXML
     public void orderSearch(ActionEvent event) {
         try {
             User worker = userRepository.findByIdAndRole_RoleName(
-                    workerSearchField.getValue().longValue(), "WORKER_ROLE");
+                    Long.valueOf(searchTextField.getText()), "WORKER_ROLE");
             workerList.getItems().clear();
             fillListWithWorkers(worker);
         } catch (Exception e) {
@@ -91,6 +87,12 @@ public class AdminManageWorkersController {
         alert.setHeaderText(null);
         alert.setTitle("Error");
         alert.show();
+    }
+
+    @FXML
+    public void resetSearch(ActionEvent event) {
+        workerList.getItems().clear();
+        fillListWithAllWorkers();
     }
 
     @FXML

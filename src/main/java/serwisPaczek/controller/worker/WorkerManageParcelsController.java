@@ -28,24 +28,17 @@ public class WorkerManageParcelsController {
     @FXML
     private ComboBox<Status> statusComboBox;
     @FXML
-    private Spinner<Integer> ordersSearchField;
+    private TextField orderSearchText;
 
     public void initialize() {
-        List<UserOrder> orders = orderRepository.findAll();
-
-        for (UserOrder order : orders) {
-            fillListWithOrders(order);
-        }
+        fillListViewWithAllOrders();
         statusComboBox.getItems().setAll(Status.values());
         statusComboBox.getSelectionModel().selectFirst();
 
-        // Value factory for spinner
-        SpinnerValueFactory<Integer> valueFactory = //
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
-        ordersSearchField.setValueFactory(valueFactory);
+
     }
 
-    private void fillListWithOrders(UserOrder order) {
+    private void fillListWithOrder(UserOrder order) {
         workerOrdersList.getItems().add(order.getId().toString() + "  |  " +
                 order.getUser().getUsername() + "  " +
                 order.getCourier().getName() + "  " +
@@ -54,14 +47,28 @@ public class WorkerManageParcelsController {
                 order.getDate().toString());
     }
 
+
+    private void fillListViewWithAllOrders(){
+        workerOrdersList.getItems().clear();
+        List<UserOrder> orders = orderRepository.findAll();
+
+        for (UserOrder order : orders) {
+            fillListWithOrder(order);
+        }
+    }
     @FXML
     public void orderSearch(ActionEvent event) {
-        try {
-            UserOrder order = orderRepository.getOne(ordersSearchField.getValue().longValue());
-            workerOrdersList.getItems().clear();
-            fillListWithOrders(order);
-        } catch (Exception e) {
-            alertError("Nie znaleziono zamówienia o takim id");
+        if (
+                orderSearchText.getText().matches("\\d+")) {
+            try {
+                UserOrder order = orderRepository.findById(Long.valueOf(orderSearchText.getText())).orElse(null);
+                workerOrdersList.getItems().clear();
+                fillListWithOrder(order);
+            } catch (Exception e) {
+                alertError("Nie znaleziono zamówienia o takim id");
+            }
+        } else {
+            alertError("Niepoprawne id");
         }
     }
 
@@ -74,7 +81,7 @@ public class WorkerManageParcelsController {
             Matcher m = p.matcher(selectedItem);
             Long id = null;
             if (m.find()) {
-               id = Long.valueOf(m.group(0));
+                id = Long.valueOf(m.group(0));
             }
 
             // Changing order status
@@ -82,10 +89,16 @@ public class WorkerManageParcelsController {
             order.setStatus(statusComboBox.getValue());
             orderRepository.save(order);
             workerOrdersList.getItems().clear();
-            fillListWithOrders(order);
+            fillListWithOrder(order);
         } catch (Exception e) {
             alertError("Niepoprawne id");
         }
+    }
+
+
+    @FXML
+    public void resetSearch(ActionEvent event) {
+        fillListViewWithAllOrders();
     }
 
     private void alertError(String message) {
@@ -99,7 +112,7 @@ public class WorkerManageParcelsController {
 
     @FXML
     public void openMainPanel(ActionEvent event) {
-        if (getLoggedUser().getRole().getId()==1) {
+        if (getLoggedUser().getRole().getId() == 1) {
             sceneManager.show(SceneType.ADMIN_MAIN);
         } else {
             sceneManager.show(SceneType.WORKER_MAIN);
