@@ -23,7 +23,7 @@
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <TableView fx:id="tableView" layoutX="19.0" layoutY="69.0" prefHeight="467.0" prefWidth="765.0">
+                <TableView fx:id="tableView" onMouseClicked="#handleMouseClick" layoutX="19.0" layoutY="69.0" prefHeight="467.0" prefWidth="765.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="30.0" text="Id paczki"/>
                         <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Data nadania"/>

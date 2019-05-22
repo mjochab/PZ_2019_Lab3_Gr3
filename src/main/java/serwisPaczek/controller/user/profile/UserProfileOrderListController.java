@@ -9,9 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,10 +21,12 @@ import org.springframework.stereotype.Controller;
 import serwisPaczek.controller.user.order.UserOrderAddOpinionController;
 import serwisPaczek.model.UserOrder;
 import serwisPaczek.model.dto.UserOrderDto;
+import serwisPaczek.repository.OpinionRepository;
 import serwisPaczek.repository.OrderRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,6 +43,8 @@ public class UserProfileOrderListController {
     OrderRepository orderRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    OpinionRepository opinionRepository;
     @FXML
     private TableView<UserOrderDto> tableView;
     @FXML
@@ -69,16 +75,19 @@ public class UserProfileOrderListController {
     private TableColumn<UserOrderDto, String> telephoneNumberColumn;
     @FXML
     private TableColumn<UserOrderDto, String> emailColumn;
+    @FXML
+    private Button btnAddOpinion;
 
     private ApplicationContext context;
     private Long orderID;
+
     @FXML
     public void initialize() {
         List<UserOrder> listOrders = orderRepository.findAll();
         List<UserOrderDto> userOrderDtos = new ArrayList<>();
 
         for (UserOrder order : listOrders) {
-            if(order.getUser().getId() == getLoggedUser().getId()) {
+            if (order.getUser().getId() == getLoggedUser().getId()) {
                 userOrderDtos.add(new UserOrderDto(order.getId(),
                         order.getRecipientAdress().getAdress().getName(),
                         order.getRecipientAdress().getAdress().getSurname(),
@@ -143,6 +152,13 @@ public class UserProfileOrderListController {
         alert.setHeaderText(null);
         alert.show();
     }
+
+    @FXML
+    public void handleMouseClick(MouseEvent arg0) {
+        Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+        btnAddOpinion.setVisible(opinionRepository.findByUserOrder_Id(selectedId) == null);
+    }
+
     @FXML
     public void openUserMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_MAIN);
