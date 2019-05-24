@@ -61,4 +61,14 @@ public class User {
         this.password = password;
         this.role = role;
     }
+
+    public User(Long id, String username, String password, boolean active,
+                double accountBalance, Role role) {
+    this.id=id;
+    this.username=username;
+    this.password=password;
+    this.active=active;
+    this.accountBalance=accountBalance;
+    this.role=role;
+    }
 }

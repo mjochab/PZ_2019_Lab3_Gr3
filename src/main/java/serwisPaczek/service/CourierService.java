@@ -34,15 +34,14 @@ public class CourierService {
     public void createCourierCompany(CourierPricingDto courierPricing) {
         Courier courier = new Courier(
                 courierPricing.getCourier_name());
+
         EnvelopePricing envelopePricing = new EnvelopePricing(
                 courierPricing.getEnvelope_up_to_1(), courier);
-        PackPricing packPricing = new PackPricing(
-                courierPricing.getPack_up_to_1(), courierPricing.getPack_up_to_2(), courierPricing.getPack_up_to_5(),
-                courierPricing.getPack_up_to_10(), courierPricing.getPack_up_to_15(), courierPricing.getPack_up_to_20(),
-                courierPricing.getPack_up_to_30(), courier);
-        PalletPricing palletPricing = new PalletPricing(
-                courierPricing.getPallet_up_to_300(), courierPricing.getPallet_up_to_500(),
-                courierPricing.getPallet_up_to_800(), courierPricing.getPallet_up_to_1000(), courier);
+
+        PackPricing packPricing = getPackPricing(courierPricing, courier);
+
+        PalletPricing palletPricing = getPalletPricing(courierPricing, courier);
+
         courierRepository.save(courier);
         envelopePricingRepository.save(envelopePricing);
         packPricingRepository.save(packPricing);
@@ -55,7 +54,26 @@ public class CourierService {
      * @param courierPricing The object that stores necessary information needed to edit an existing courier.
      */
     public void editCourierCompany(CourierPricingDto courierPricing) {
-        Courier courier = courierPricing.getCourier();
+        Courier courier = getCourierByCourierPricingDto(courierPricing, new Courier());
+        courierRepository.save(courier);
+    }
+    //to test
+     public PackPricing getPackPricing(CourierPricingDto courierPricing, Courier courier){
+        return new PackPricing(
+                courierPricing.getPack_up_to_1(), courierPricing.getPack_up_to_2(), courierPricing.getPack_up_to_5(),
+                courierPricing.getPack_up_to_10(), courierPricing.getPack_up_to_15(), courierPricing.getPack_up_to_20(),
+                courierPricing.getPack_up_to_30(), courier);
+    }
+    //to test
+     public PalletPricing getPalletPricing(CourierPricingDto courierPricing, Courier courier){
+        return new PalletPricing(
+                courierPricing.getPallet_up_to_300(), courierPricing.getPallet_up_to_500(),
+                courierPricing.getPallet_up_to_800(), courierPricing.getPallet_up_to_1000(), courier);
+    }
+//to test
+     public Courier getCourierByCourierPricingDto(CourierPricingDto courierPricing, Courier courier){
+
+        courierPricing.getCourier();
         courier.setName(courierPricing.getCourier_name());
         courier.set_blocked(courierPricing.isBlocked());
         courier.getEnvelopePricing().setUp_to_1(courierPricing.getEnvelope_up_to_1());
@@ -70,6 +88,7 @@ public class CourierService {
         courier.getPalletPricing().setUp_to_500(courierPricing.getPallet_up_to_500());
         courier.getPalletPricing().setUp_to_800(courierPricing.getPallet_up_to_800());
         courier.getPalletPricing().setUp_to_1000(courierPricing.getPallet_up_to_1000());
-        courierRepository.save(courier);
+
+        return courier;
     }
 }

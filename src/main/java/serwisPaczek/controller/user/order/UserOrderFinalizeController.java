@@ -67,6 +67,7 @@ public class UserOrderFinalizeController {
         this.received = received;
         this.courier = courier;
         this.parcel = parcel;
+
         TFnr.setText(userOrder.getId().toString());
         TFcourier.setText(courier.getName());
         TFmoney.setText(String.valueOf(userOrder.getPrice()));

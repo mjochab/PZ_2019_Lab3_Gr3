@@ -25,6 +25,28 @@ public class CourierPricingDto {
     private String txtPallet_up_to_1000;
     private float envelope_up_to_1;
     private float pack_up_to_1;
+
+    public CourierPricingDto(float envelope_up_to_1, float pack_up_to_1, float pack_up_to_2, float pack_up_to_5,
+                             float pack_up_to_10, float pack_up_to_15, float pack_up_to_20, float pack_up_to_30,
+                             float pallet_up_to_300, float pallet_up_to_500, float pallet_up_to_800,
+                             float pallet_up_to_1000, Courier courier, boolean isBlocked, String courier_name) {
+        this.envelope_up_to_1 = envelope_up_to_1;
+        this.pack_up_to_1 = pack_up_to_1;
+        this.pack_up_to_2 = pack_up_to_2;
+        this.pack_up_to_5 = pack_up_to_5;
+        this.pack_up_to_10 = pack_up_to_10;
+        this.pack_up_to_15 = pack_up_to_15;
+        this.pack_up_to_20 = pack_up_to_20;
+        this.pack_up_to_30 = pack_up_to_30;
+        this.pallet_up_to_300 = pallet_up_to_300;
+        this.pallet_up_to_500 = pallet_up_to_500;
+        this.pallet_up_to_800 = pallet_up_to_800;
+        this.pallet_up_to_1000 = pallet_up_to_1000;
+        this.courier=courier;
+        this.isBlocked = isBlocked();
+        this.courier_name = getCourier_name();
+    }
+
     private float pack_up_to_2;
     private float pack_up_to_5;
     private float pack_up_to_10;

@@ -125,8 +125,6 @@ public class MainService {
 
         }
 
-
-
         adressRepository.saveAll(adressList);
         userRepository.saveAll(userList);
         courierRepository.saveAll(courierList);

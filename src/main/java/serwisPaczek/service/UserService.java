@@ -4,6 +4,7 @@ import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import serwisPaczek.model.Adress;
 import serwisPaczek.model.User;
 import serwisPaczek.model.dto.UserLoginDto;
 import serwisPaczek.repository.RoleRepository;
@@ -29,7 +30,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
+
     private SceneManager sceneManager;
 
     /**
@@ -71,6 +72,7 @@ public class UserService {
             }
         }
     }
+
 
     /**
      * This method is used to create a new user and check correctness of the given data by user.
@@ -121,12 +123,11 @@ public class UserService {
      * @param user  The user who wants withdraw funds from his wallet.
      * @param funds The value of withdrawn funds.
      */
-    public void withdrawFunds(User user, double funds) {
-        double accountBalance = user.getAccountBalance();
-        accountBalance -= funds;
+    public User withdrawFunds(User user, double funds) {
+        double accountBalance = user.getAccountBalance() - funds;
         accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
         user.setAccountBalance(accountBalance);
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     /**
@@ -135,13 +136,19 @@ public class UserService {
      * @param user  The user who wants deposit funds to his wallet.
      * @param funds The value of deposited funds.
      */
-    public void depositFunds(User user, double funds) {
-        double accountBalance = user.getAccountBalance();
-        accountBalance += funds;
+    public User depositFunds(User user, double funds) {
+        double accountBalance = user.getAccountBalance() + funds;
         accountBalance = new BigDecimal(accountBalance).setScale(2, RoundingMode.HALF_UP).doubleValue();
         user.setAccountBalance(accountBalance);
-        userRepository.save(user);
+        return userRepository.save(user);
     }
+
+    public User saveAddressToLoggedUser(User user, Adress adress){
+        user.setAdress(adress);
+        return userRepository.save(user);
+    }
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) { this.sceneManager = sceneManager; }
 }
 
 

@@ -17,6 +17,15 @@ public class Courier {
     private EnvelopePricing envelopePricing;
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
     private PalletPricing palletPricing;
+
+    public Courier(String name, boolean is_blocked, EnvelopePricing envelopePricing, PalletPricing palletPricing, PackPricing packPricing) {
+        this.name = name;
+        this.is_blocked = is_blocked;
+        this.envelopePricing = envelopePricing;
+        this.palletPricing = palletPricing;
+        this.packPricing = packPricing;
+    }
+
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
     private PackPricing packPricing;
 

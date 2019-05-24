@@ -99,21 +99,10 @@ public class UserOrderFillAddressesFormController {
         StringBuilder message = new StringBuilder();
             try {
 
-                if (TFname.getText().isEmpty() || TFsurname.getText().isEmpty()
-                        || TFspot.getText().isEmpty() ||
-                        TFstreet.getText().isEmpty() ||
-                        TFhouseNumber.getText().isEmpty() || TFzipCode.getText().isEmpty() ||
-                        TFnr.getText().isEmpty() ||
-                        TFemail.getText().isEmpty() ||
-                        TFsenderName.getText().isEmpty() || TFsenderSurname.getText().isEmpty()
-                        || TFsenderCity.getText().isEmpty()
-                        || TFsenderStreet.getText().isEmpty() ||
-                        TFsenderHouseNumber.getText().isEmpty() || TFsenderZipCode.getText().isEmpty() ||
-                        TFsenderNr.getText().isEmpty() ||
-                        TFsenderEmail.getText().isEmpty()) {
-                    showDialog("Pozostawiłeś puste pola!");
-                    return;
-                }
+              if(checkEmptyFields()){
+                  showDialog("Pozostawiłeś puste pola!");
+                  return;
+              }
 
            if (TFname.getText().length() <= 2) {
                message.append("Imię odbiorcy musi zawierać więcej niż dwa znaki! \n");
@@ -198,9 +187,11 @@ public class UserOrderFillAddressesFormController {
                Adress sender = new Adress(TFname.getText(), TFsurname.getText(), TFspot.getText(), TFstreet.getText(),
                        Integer.parseInt(TFhouseNumber.getText()), TFzipCode.getText(), Long.parseLong(TFnr.getText()),
                        TFemail.getText());
+
                Adress received = new Adress(TFsenderName.getText(), TFsenderSurname.getText(), TFsenderCity.getText(),
                        TFsenderStreet.getText(), Integer.parseInt(TFsenderHouseNumber.getText()), TFsenderZipCode.getText(),
                        Long.parseLong(TFsenderNr.getText()), TFsenderEmail.getText());
+
                adressRepository.save(received);
                adressRepository.save(sender);
 
@@ -210,7 +201,6 @@ public class UserOrderFillAddressesFormController {
                UserOrder order = orderRepository.save(new UserOrder(price, new Date(), getLoggedUser(),
                        courier,
                        Status.WYSLANO_ZGLOSZENIE, senderAdress, recipientAdress));
-
 
                userService.withdrawFunds(getLoggedUser(), (double) price);
 
@@ -257,6 +247,22 @@ public class UserOrderFillAddressesFormController {
             TFspot.setText("");
             TFzipCode.setText("");
         }
+    }
+
+    //to test
+    public boolean checkEmptyFields(){
+        return TFname.getText().isEmpty() || TFsurname.getText().isEmpty()
+                || TFspot.getText().isEmpty() ||
+                TFstreet.getText().isEmpty() ||
+                TFhouseNumber.getText().isEmpty() || TFzipCode.getText().isEmpty() ||
+                TFnr.getText().isEmpty() ||
+                TFemail.getText().isEmpty() ||
+                TFsenderName.getText().isEmpty() || TFsenderSurname.getText().isEmpty()
+                || TFsenderCity.getText().isEmpty()
+                || TFsenderStreet.getText().isEmpty() ||
+                TFsenderHouseNumber.getText().isEmpty() || TFsenderZipCode.getText().isEmpty() ||
+                TFsenderNr.getText().isEmpty() ||
+                TFsenderEmail.getText().isEmpty();
     }
 
     @FXML

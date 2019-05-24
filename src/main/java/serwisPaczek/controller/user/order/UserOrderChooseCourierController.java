@@ -32,7 +32,7 @@ public class UserOrderChooseCourierController {
 
     private SceneManager sceneManager;
     private int ratio = 1;
-
+    float price =0;
     private ApplicationContext context;
 
     @Autowired
@@ -49,16 +49,9 @@ public class UserOrderChooseCourierController {
     /**
      * This method is used to display all existing, non blocked courier companies and their prices for chosen parcel.
      */
+
     @FXML
     public void initialize(Parcel parcel) {
-        if (parcel.getType().equals("paczka")) {
-            if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
-                ratio = 1;
-            else if (parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
-                ratio = 2;
-            else if (parcel.getLength() <= 100 && parcel.getWidth() <= 90 && parcel.getHeight() <= 70)
-                ratio = 3;
-        }
         List<Courier> listCouriers = courierRepository.findAll();
         int index = 0;
         int gridRow = 0;
@@ -68,45 +61,25 @@ public class UserOrderChooseCourierController {
         Button[] button;
         button = new Button[numberOfButtons];
 
+        if (parcel.getType().equals("paczka")) {
+            ratio = getRatioByParcelParameters(parcel.getLength(),parcel.getWeight(),parcel.getHeight());
+        }
+
         for (Courier courier : listCouriers) {
             if (courier.is_blocked()) {
                 continue;
             }
-            float price = 0;
+
             if (parcel.getType().equals("koperta")) {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
-            } else if (parcel.getType().equals("paczka")) {
-                if (parcel.getWeight() <= 1) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
-                }
-                if (parcel.getWeight() <= 2) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_2() * ratio;
-                }
-                if (parcel.getWeight() <= 5) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_5() * ratio;
-                }
-                if (parcel.getWeight() <= 10) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_10() * ratio;
-                }
-                if (parcel.getWeight() <= 15) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_15() * ratio;
-                }
-                if (parcel.getWeight() <= 20) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_20() * ratio;
-                }
-                if (parcel.getWeight() <= 30) {
-                    price = packPricingRepository.findByCourier(courier).getUp_to_30() * ratio;
-                }
-            } else if (parcel.getType().equals("paleta")) {
-                if (parcel.getWeight() <= 300) {
-                    price = palletPricingRepository.findByCourier(courier).getUp_to_300();
-                } else if (parcel.getWeight() <= 500) {
-                    price = palletPricingRepository.findByCourier(courier).getUp_to_500();
-                } else if (parcel.getWeight() <= 800) {
-                    price = palletPricingRepository.findByCourier(courier).getUp_to_800();
-                } else if (parcel.getWeight() <= 1000) {
-                    price = palletPricingRepository.findByCourier(courier).getUp_to_1000();
-                }
+            }
+            else if (parcel.getType().equals("paczka")) {
+               price = getPackagePriceByWeightAndCourier(courier, parcel.getWeight(),
+                               getRatioByParcelParameters(parcel.getLength(),parcel.getWeight(),parcel.getHeight()));
+            }
+
+            else if (parcel.getType().equals("paleta")) {
+                price = getPalettePriceByWeightAndCourier(courier, parcel.getWeight());
             }
 
             if (index % 4 == 0) {
@@ -132,6 +105,7 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
+
             button[index] = new Button(courier.getName() + "\n" + price + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
@@ -178,6 +152,61 @@ public class UserOrderChooseCourierController {
             gridCol++;
             index++;
         }
+    }
+
+    //to test
+    private int getRatioByParcelParameters(int length, int weight, int height){
+        if (length <= 60 && weight <= 50 && height <= 30)
+            ratio = 1;
+        else if (length <= 80 && weight <= 70 && height <= 50)
+            ratio = 2;
+        else if (length <= 100 && weight <= 90 && height <= 70)
+            ratio = 3;
+        return ratio;
+    }
+
+    //to test
+    private float getPackagePriceByWeightAndCourier(Courier courier, int weight, int ratio){
+
+        if (weight <= 1) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
+        }
+        if (weight <= 2) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_2() * ratio;
+        }
+        if (weight <= 5) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_5() * ratio;
+        }
+        if (weight <= 10) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_10() * ratio;
+        }
+        if (weight <= 15) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_15() * ratio;
+        }
+        if (weight <= 20) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_20() * ratio;
+        }
+        if (weight <= 30) {
+            price = packPricingRepository.findByCourier(courier).getUp_to_30() * ratio;
+        }
+
+        return price;
+    }
+
+    //to test
+    private float getPalettePriceByWeightAndCourier(Courier courier, int weight) {
+
+        if (weight <= 300) {
+            price = palletPricingRepository.findByCourier(courier).getUp_to_300();
+        } else if (weight <= 500) {
+            price = palletPricingRepository.findByCourier(courier).getUp_to_500();
+        } else if (weight <= 800) {
+            price = palletPricingRepository.findByCourier(courier).getUp_to_800();
+        } else if (weight <= 1000) {
+            price = palletPricingRepository.findByCourier(courier).getUp_to_1000();
+        }
+
+        return price;
     }
 
     @FXML
