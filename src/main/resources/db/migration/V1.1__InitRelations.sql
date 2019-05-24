@@ -30,4 +30,3 @@ add foreign key(adress_id) references adress(id);
 
 alter table opinion
 add foreign key(user_order_id) references user_order(id);
-
