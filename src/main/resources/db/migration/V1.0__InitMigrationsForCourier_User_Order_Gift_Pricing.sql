@@ -9,6 +9,7 @@ username varchar(30),
 password varchar(250),
 account_balance double not null DEFAULT 0,
 role_id bigint,
+premium_points_balance int DEFAULT 500,
 adress_id bigint,
 Primary Key(id));
 
