@@ -19,26 +19,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.controller.user.order.UserOrderAddOpinionController;
-import serwisPaczek.model.Status;
-import serwisPaczek.model.User;
-import serwisPaczek.model.UserOrder;
+import serwisPaczek.controller.user.order.UserOrderFinalizeController;
+import serwisPaczek.model.*;
 import serwisPaczek.model.dto.UserOrderDto;
-import serwisPaczek.repository.OpinionRepository;
-import serwisPaczek.repository.OrderRepository;
-import serwisPaczek.repository.UserRepository;
+import serwisPaczek.repository.*;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Long.parseLong;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
-import static serwisPaczek.utils.SceneManager.stage;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
+import static serwisPaczek.utils.SceneManager.stage;
 import static serwisPaczek.model.Status.ANULOWANO;
+
 
 @SuppressWarnings("Duplicates")
 @Controller
@@ -50,6 +49,12 @@ public class UserProfileOrderListController {
     UserRepository userRepository;
     @Autowired
     OpinionRepository opinionRepository;
+    @Autowired
+    AdressRepository adressRepository;
+    @Autowired
+    RecipientAdressRepository recipientAdressRepository;
+    @Autowired
+    SenderAdressRepository senderAdressRepository;
     @FXML
     private TableView<UserOrderDto> tableView;
     @FXML
@@ -130,6 +135,32 @@ public class UserProfileOrderListController {
 
     @FXML
     public void openDetails(ActionEvent event) {
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+            UserOrder order = orderRepository.getOne(selectedId);
+            Adress sender = new Adress(order.getSenderAdress().getAdress().getName(), order.getSenderAdress().getAdress().getSurname(),
+                    order.getSenderAdress().getAdress().getCity(), order.getSenderAdress().getAdress().getStreet(),
+                    order.getSenderAdress().getAdress().getHouseNumber(), order.getSenderAdress().getAdress().getZipCode(),
+                    order.getSenderAdress().getAdress().getTelephoneNumber(),order.getSenderAdress().getAdress().getEmail());
+            Adress received = new Adress(order.getRecipientAdress().getAdress().getName(), order.getRecipientAdress().getAdress().getSurname(),
+                    order.getRecipientAdress().getAdress().getCity(), order.getRecipientAdress().getAdress().getStreet(),
+                    order.getRecipientAdress().getAdress().getHouseNumber(), order.getRecipientAdress().getAdress().getZipCode(),
+                    order.getRecipientAdress().getAdress().getTelephoneNumber(), order.getRecipientAdress().getAdress().getEmail());
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
+                loader.setControllerFactory(context::getBean);
+                Parent root = loader.load();
+                UserOrderFinalizeController finalizeController = loader.getController();
+                finalizeController.initialize(order, sender, received, order.getCourier(), order.getParcel());
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch(NumberFormatException e){
+            e.printStackTrace();
+        }
         sceneManager.show(SceneType.USER_ORDER_FINALIZE);
     }
 
