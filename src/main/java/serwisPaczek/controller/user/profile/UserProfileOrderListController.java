@@ -138,6 +138,7 @@ public class UserProfileOrderListController {
         try {
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
             UserOrder order = orderRepository.getOne(selectedId);
+            System.out.println(order.getCourier().getName());
             Adress sender = new Adress(order.getSenderAdress().getAdress().getName(), order.getSenderAdress().getAdress().getSurname(),
                     order.getSenderAdress().getAdress().getCity(), order.getSenderAdress().getAdress().getStreet(),
                     order.getSenderAdress().getAdress().getHouseNumber(), order.getSenderAdress().getAdress().getZipCode(),
@@ -161,7 +162,7 @@ public class UserProfileOrderListController {
         catch(NumberFormatException e){
             e.printStackTrace();
         }
-        sceneManager.show(SceneType.USER_ORDER_FINALIZE);
+
     }
 
     @FXML
