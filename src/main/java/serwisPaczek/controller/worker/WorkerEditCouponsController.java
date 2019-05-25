@@ -65,6 +65,15 @@ public class WorkerEditCouponsController {
                 return;
             }
         }
+        if (coupon.getDiscount()<1 || coupon.getDiscount() > 99){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Niepoprawna wartość zniżki", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         couponList.add(coupon);
         couponRepository.saveAll(couponList);
         fillTableView();
@@ -80,10 +89,9 @@ public class WorkerEditCouponsController {
     @FXML
     public void changeNameEvent(TableColumn.CellEditEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
-        coupon.setName(event.getNewValue().toString());
         List<Coupon> couponList = couponRepository.findAll();
         for (Coupon couponFindByName : couponList){
-            if (couponFindByName.getName().equals(coupon.getName())) {
+            if (couponFindByName.getName().equals(event.getNewValue().toString())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION,
                         "Kupon o danej nazwie już istnieje", ButtonType.OK);
                 alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -93,12 +101,22 @@ public class WorkerEditCouponsController {
                 return;
             }
         }
+        coupon.setName(event.getNewValue().toString());
         couponRepository.save(coupon);
         fillTableView();
     }
     @FXML
     public void changeDiscountEvent(TableColumn.CellEditEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+        if (Integer.valueOf(event.getNewValue().toString())<1 || Integer.valueOf(event.getNewValue().toString()) > 99){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Niepoprawna wartość zniżki", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         coupon.setDiscount(Integer.valueOf(event.getNewValue().toString()));
         couponRepository.save(coupon);
         fillTableView();
