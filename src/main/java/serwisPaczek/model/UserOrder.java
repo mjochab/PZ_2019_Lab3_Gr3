@@ -16,6 +16,7 @@ public class UserOrder {
     private Long id;
     private float price;
     private Date date;
+    private int premiumPoints;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -41,6 +42,18 @@ public class UserOrder {
     public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
         this.price = price;
         this.date = date;
+        this.user = user;
+        this.courier = courier;
+        this.status = status;
+        this.senderAdress = senderAdress;
+        this.recipientAdress = recipientAdress;
+        this.parcel = parcel;
+    }
+
+    public UserOrder(float price, Date date, int premiumPoints, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
+        this.price = price;
+        this.date = date;
+        this.premiumPoints = premiumPoints;
         this.user = user;
         this.courier = courier;
         this.status = status;

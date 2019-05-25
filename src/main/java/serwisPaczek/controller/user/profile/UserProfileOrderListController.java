@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.controller.user.order.UserOrderAddOpinionController;
+import serwisPaczek.model.Status;
+import serwisPaczek.model.User;
 import serwisPaczek.model.UserOrder;
 import serwisPaczek.model.dto.UserOrderDto;
 import serwisPaczek.repository.OpinionRepository;
@@ -27,13 +29,16 @@ import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Long.parseLong;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.SceneManager.stage;
+import static serwisPaczek.utils.DialogsUtils.showDialog;
+import static serwisPaczek.model.Status.ANULOWANO;
 
 @SuppressWarnings("Duplicates")
 @Controller
@@ -157,6 +162,28 @@ public class UserProfileOrderListController {
     public void handleMouseClick(MouseEvent arg0) {
         Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
         btnAddOpinion.setVisible(opinionRepository.findByUserOrder_Id(selectedId) == null);
+    }
+
+    @FXML
+    public void cancelOrder(ActionEvent event) {
+        Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+        UserOrder order = orderRepository.getOne(selectedId);
+        if(order.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
+            if(getLoggedUser().getPremiumPointsBalance() >= order.getPremiumPoints()){
+                order.setStatus(ANULOWANO);
+                orderRepository.save(order);
+                User user = getLoggedUser();
+                Double account = user.getAccountBalance() + order.getPremiumPoints();
+                user.setAccountBalance(account);
+                user.setPremiumPointsBalance(user.getPremiumPointsBalance() - order.getPremiumPoints());
+                userRepository.save(user);
+                showDialog("Anulowano zamówienie");
+            }else{
+                showDialog("Za mało punktów prenium aby anulowć zamówienie");
+            }
+        }else{
+            showDialog("Nie można anulować zamówienia!");
+        }
     }
 
     @FXML
