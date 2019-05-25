@@ -1,4 +1,5 @@
 package serwisPaczek.controller.admin;
+package serwisPaczek.controller.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Adress;
@@ -109,20 +111,27 @@ public class AdminManageUsersController {
     }
 
     @FXML
+    public void handleMouseClick(MouseEvent arg0) {
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+        }
+        catch(Exception e){
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        }
+    }
+
+    @FXML
     public void editStatus(ActionEvent event) {
-        String username = TFusername.getText();
-        if(TFusername.getText() == "") {
-            showDialog("Wpisz nazwę użytkownika.");
-        }else {
-            try {
-                User user = userRepository.findByUsername(username);
-                Role role = roleRepository.findByRoleName("WORKER_ROLE");
-                user.setRole(role);
-                userRepository.save(user);
-                showDialog("Dodano pracownika");
-            } catch (Exception e) {
-                showDialog("Użytkownik o podanej nazwie nie istnieje.");
-            }
+        try{
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+            User user = userRepository.getOne(selectedId);
+            Role role = roleRepository.findByRoleName("WORKER_ROLE");
+            user.setRole(role);
+            userRepository.save(user);
+            showDialog("Dodano pracownika");
+        }
+        catch (Exeption e){
+            howDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
         }
     }
 

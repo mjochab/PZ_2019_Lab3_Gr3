@@ -161,7 +161,6 @@ public class UserProfileOrderListController {
         catch(NumberFormatException e){
             e.printStackTrace();
         }
-        sceneManager.show(SceneType.USER_ORDER_FINALIZE);
     }
 
     @FXML
