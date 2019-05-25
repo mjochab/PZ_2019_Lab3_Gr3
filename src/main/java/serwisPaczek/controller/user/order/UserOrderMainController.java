@@ -59,8 +59,13 @@ public class UserOrderMainController {
         Lwysokosc.setVisible(false);
         Ldlugosc.setVisible(false);
     }
+
+    /**
+     * Part of OrderCourierModule,
+     * method used for to complete the shipment data and validate them
+     */
     @FXML
-    public void openOrderChooseCourierPanel(ActionEvent event) {
+    public void openOrderChooseCourierPanel() {
         if (!(RBpaczka.isSelected() || RBkoperta.isSelected() || RBpaleta.isSelected())) {
             showDialog("Wybierz typ paczki");
             return;

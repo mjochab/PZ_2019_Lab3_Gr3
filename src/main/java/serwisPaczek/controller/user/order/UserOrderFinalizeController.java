@@ -90,6 +90,9 @@ public class UserOrderFinalizeController {
 
     }
 
+    /**
+     * Method generating pdf with order data
+     */
     @FXML
     public void generatePDF() {
         GeneratePdf generatePdf = new GeneratePdf(userOrder.getId(), courier.getName(),

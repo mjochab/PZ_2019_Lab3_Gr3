@@ -93,8 +93,13 @@ public class UserOrderFillAddressesFormController {
         }
     }
 
+
+    /**
+     * Method responsible for filling in given addresses
+     * @throws IOException
+     */
     @FXML
-    public void openFinalizePanel(ActionEvent event) throws IOException {
+    public void openFinalizePanel() throws IOException {
 
         StringBuilder message = new StringBuilder();
             try {
@@ -226,8 +231,11 @@ public class UserOrderFillAddressesFormController {
         }
     }
 
+    /**
+     * Method is autocompleting senderAddress if its not null
+     */
     @FXML
-    public void fillAddress(ActionEvent event) {
+    public void fillAddress() {
         if (fillAddressCheckbox.isSelected()) {
             TFname.setText(getLoggedUser().getAdress().getName());
             TFsurname.setText(getLoggedUser().getAdress().getSurname());

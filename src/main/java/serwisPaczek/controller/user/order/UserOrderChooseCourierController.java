@@ -154,7 +154,13 @@ public class UserOrderChooseCourierController {
         }
     }
 
-    //to test
+    /**
+     * The method calculating the parcel multiplier
+     * @param length
+     * @param weight
+     * @param height
+     * @return multiplier
+     */
     private int getRatioByParcelParameters(int length, int weight, int height){
         if (length <= 60 && weight <= 50 && height <= 30)
             ratio = 1;
@@ -165,7 +171,13 @@ public class UserOrderChooseCourierController {
         return ratio;
     }
 
-    //to test
+
+    /** The method calculating the parcel price
+     * @param courier
+     * @param weight
+     * @param ratio
+     * @return price of parcel
+     */
     private float getPackagePriceByWeightAndCourier(Courier courier, int weight, int ratio){
 
         if (weight <= 1) {
@@ -193,7 +205,11 @@ public class UserOrderChooseCourierController {
         return price;
     }
 
-    //to test
+    /** The method calculating the palette price
+     * @param courier
+     * @param weight
+     * @return price of palette
+     */
     private float getPalettePriceByWeightAndCourier(Courier courier, int weight) {
 
         if (weight <= 300) {
