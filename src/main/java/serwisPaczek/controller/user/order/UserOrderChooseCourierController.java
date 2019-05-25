@@ -19,7 +19,6 @@ import serwisPaczek.repository.PackPricingRepository;
 import serwisPaczek.repository.PalletPricingRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -32,6 +31,7 @@ public class UserOrderChooseCourierController {
 
     private SceneManager sceneManager;
     private int ratio = 1;
+    private float discountRatio;
 
     private ApplicationContext context;
 
@@ -50,7 +50,7 @@ public class UserOrderChooseCourierController {
      * This method is used to display all existing, non blocked courier companies and their prices for chosen parcel.
      */
     @FXML
-    public void initialize(Parcel parcel) {
+    public void initialize(Parcel parcel, float discountRatio) {
         if (parcel.getType().equals("paczka")) {
             if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
                 ratio = 1;
@@ -59,6 +59,7 @@ public class UserOrderChooseCourierController {
             else if (parcel.getLength() <= 100 && parcel.getWidth() <= 90 && parcel.getHeight() <= 70)
                 ratio = 3;
         }
+        this.discountRatio = discountRatio;
         List<Courier> listCouriers = courierRepository.findAll();
         int index = 0;
         int gridRow = 0;
@@ -132,7 +133,7 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
-            button[index] = new Button(courier.getName() + "\n" + price + "zł");
+            button[index] = new Button(courier.getName() + "\n" + price * discountRatio + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
             button[index].setStyle("-fx-background-radius: 3px; " +
@@ -141,7 +142,10 @@ public class UserOrderChooseCourierController {
                     "-fx-background-color: " + color + ";"
             );
 
-            float finalPrice = price;
+            float finalPrice = price * discountRatio;
+            System.out.print(finalPrice);
+            System.out.print(price);
+            System.out.print(discountRatio);
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 /**
                  * This method is used to handle btn click.

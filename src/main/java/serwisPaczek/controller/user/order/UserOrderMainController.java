@@ -3,20 +3,29 @@ package serwisPaczek.controller.user.order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Paint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.model.Coupon;
 import serwisPaczek.model.Parcel;
+import serwisPaczek.repository.CouponRepository;
 import serwisPaczek.repository.ParcelRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.io.IOException;
+import java.util.List;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
@@ -25,13 +34,17 @@ import static serwisPaczek.utils.TextFieldUtils.isCorrect;
 
 @Controller
 public class UserOrderMainController {
-    public String couponName;
+    public float discountRatio = 1;
 
     private SceneManager sceneManager;
     private ApplicationContext context;
     @Autowired
     private ParcelRepository parcelRepository;
+    @Autowired
+    private CouponRepository couponRepository;
 
+    @FXML
+    private TextField enterCouponName;
     @FXML
     private TextField TFdlugosc;
     @FXML
@@ -44,6 +57,8 @@ public class UserOrderMainController {
     private TextField TFwysokosc;
     @FXML
     private RadioButton RBpaczka;
+    @FXML
+    private Button addCouponButton;
     @FXML
     private TextField TFwaga;
     @FXML
@@ -132,7 +147,8 @@ public class UserOrderMainController {
                 chooseCourierController.initialize(new Parcel(Integer.parseInt(TFdlugosc.getText()),
                         Integer.parseInt(TFszerokosc.getText()),
                         Integer.parseInt(TFwysokosc.getText()),
-                        typ, Integer.parseInt(TFwaga.getText())));
+                        typ, Integer.parseInt(TFwaga.getText())), discountRatio);
+
 
                 stage.setScene(new Scene(root));
                 stage.show();
@@ -155,6 +171,25 @@ public class UserOrderMainController {
             sceneManager.show(SceneType.MAIN);
         } else {
             sceneManager.show(SceneType.USER_MAIN);
+        }
+    }
+
+    @FXML
+    public void addCoupon(){
+        String couponName = enterCouponName.getText();
+        List<Coupon> couponList = couponRepository.findAll();
+        for (Coupon coupon : couponList){
+            if (coupon.getName().equals(couponName)){
+                discountRatio=(1-(float)coupon.getDiscount()/100);
+                Paint colour = Paint.valueOf("00FF00");
+                enterCouponName.setBackground(new Background(new BackgroundFill(colour, CornerRadii.EMPTY, Insets.EMPTY)));
+                System.out.print(discountRatio);
+                System.out.print(coupon.getDiscount());
+                break;
+            } else {
+                Paint colour = Paint.valueOf("FF0000");
+                enterCouponName.setBackground(new Background(new BackgroundFill(colour, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
         }
     }
 
