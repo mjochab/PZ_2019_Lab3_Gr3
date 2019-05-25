@@ -191,12 +191,18 @@ public class UserProfileOrderListController {
 
     @FXML
     public void handleMouseClick(MouseEvent arg0) {
-        Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
-        btnAddOpinion.setVisible(opinionRepository.findByUserOrder_Id(selectedId) == null);
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+            btnAddOpinion.setVisible(opinionRepository.findByUserOrder_Id(selectedId) == null);
+        }
+        catch(Exception e){
+            showDialog("Wybierz zamówienie, dla którego chcesz wykonać akcję");
+        }
     }
 
     @FXML
     public void cancelOrder(ActionEvent event) {
+        try {
         Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
         UserOrder order = orderRepository.getOne(selectedId);
         if(order.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
@@ -214,6 +220,8 @@ public class UserProfileOrderListController {
             }
         }else{
             showDialog("Nie można anulować zamówienia!");
+        } } catch (Exception e) {
+            alertError("Zaznacz zamówienie, które chcesz anulować!");
         }
     }
 
