@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.*;
+import serwisPaczek.model.dto.UserOrderDto;
 import serwisPaczek.repository.GiftOrderRepository;
 import serwisPaczek.repository.GiftRepository;
 import serwisPaczek.repository.RecipientAdressRepository;
@@ -20,9 +21,13 @@ import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Long.parseLong;
+import static serwisPaczek.model.Status.ANULOWANO;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class UserGiftOrderController {
@@ -41,6 +46,8 @@ public class UserGiftOrderController {
 
     @FXML
     private Label premiumPoints;
+    @FXML
+    private ComboBox giftComboBox;
     @FXML
     private CheckBox adressBox;
     @FXML
@@ -74,6 +81,15 @@ public class UserGiftOrderController {
         ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
         tableView.setItems(observableListGifts);
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
+        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+        List<GiftOrder> giftOrdersList = new ArrayList<>();
+        for(GiftOrder giftOrder : giftOrderList){
+            if(giftOrder.getUser() == getLoggedUser() && giftOrder.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
+                giftOrdersList.add(giftOrder);
+                ObservableList<GiftOrder> observableListGiftOrders = FXCollections.observableArrayList(giftOrdersList);
+                giftComboBox.setItems(observableListGiftOrders);
+            }
+        }
     }
 
     @FXML
@@ -112,6 +128,23 @@ public class UserGiftOrderController {
         alert.setTitle("Komunikat");
         alert.setHeaderText(null);
         alert.show();
+    }
+
+    @FXML
+    public void cancelGift(ActionEvent event) {
+        if (giftComboBox.getSelectionModel().isEmpty()) {
+            showDialog("Nie dokonano wyboru prezentu.");
+        } else{
+            List<GiftOrder> giftOrders = giftComboBox.getItems();
+            for(GiftOrder giftOrder : giftOrders){
+                giftOrder.setStatus(ANULOWANO);
+                giftOrderRepository.save(giftOrder);
+                User user = getLoggedUser();
+                user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
+                userRepository.save(user);
+                showDialog("Anulowano zamówienie prezentu.");
+            }
+        }
     }
 
     @FXML
