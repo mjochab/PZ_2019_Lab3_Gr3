@@ -123,7 +123,7 @@ PRIMARY KEY(id)
 
 create table coupon(
 id bigint NOT NULL AUTO_INCREMENT,
-name varchar(150),
+name varchar(150) UNIQUE,
 discount int,
 PRIMARY KEY(id)
 );

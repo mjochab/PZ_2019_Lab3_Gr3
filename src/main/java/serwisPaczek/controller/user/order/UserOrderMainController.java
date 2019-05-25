@@ -25,6 +25,8 @@ import static serwisPaczek.utils.TextFieldUtils.isCorrect;
 
 @Controller
 public class UserOrderMainController {
+    public String couponName;
+
     private SceneManager sceneManager;
     private ApplicationContext context;
     @Autowired
