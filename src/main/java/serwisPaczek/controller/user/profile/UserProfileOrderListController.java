@@ -162,7 +162,6 @@ public class UserProfileOrderListController {
         catch(NumberFormatException e){
             e.printStackTrace();
         }
-
     }
 
     @FXML
