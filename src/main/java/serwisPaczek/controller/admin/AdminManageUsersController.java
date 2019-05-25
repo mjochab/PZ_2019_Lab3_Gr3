@@ -1,5 +1,4 @@
 package serwisPaczek.controller.admin;
-package serwisPaczek.controller.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
