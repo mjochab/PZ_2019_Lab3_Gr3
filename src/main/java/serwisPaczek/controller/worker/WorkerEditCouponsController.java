@@ -50,6 +50,9 @@ public class WorkerEditCouponsController {
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 
+    /**
+     * This method is used to add coupon to the database with name and discount rate taken from textFields.
+     */
     @FXML
     public void addCoupon(ActionEvent event){
         Coupon coupon = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
@@ -65,11 +68,23 @@ public class WorkerEditCouponsController {
                 return;
             }
         }
+        if (coupon.getDiscount()<1 || coupon.getDiscount() > 99){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Niepoprawna wartość zniżki", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         couponList.add(coupon);
         couponRepository.saveAll(couponList);
         fillTableView();
     }
 
+    /**
+     * This method deletes coupon from the database.
+     */
     @FXML
     public void deleteCoupon(ActionEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
@@ -77,13 +92,16 @@ public class WorkerEditCouponsController {
         fillTableView();
     }
 
+    /**
+     * This method changes name of the coupon.
+     * It checks if there is already coupon named like the one which name is being changed.
+     */
     @FXML
     public void changeNameEvent(TableColumn.CellEditEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
-        coupon.setName(event.getNewValue().toString());
         List<Coupon> couponList = couponRepository.findAll();
         for (Coupon couponFindByName : couponList){
-            if (couponFindByName.getName().equals(coupon.getName())) {
+            if (couponFindByName.getName().equals(event.getNewValue().toString())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION,
                         "Kupon o danej nazwie już istnieje", ButtonType.OK);
                 alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -93,12 +111,26 @@ public class WorkerEditCouponsController {
                 return;
             }
         }
+        coupon.setName(event.getNewValue().toString());
         couponRepository.save(coupon);
         fillTableView();
     }
+
+    /**
+     * This method changes discount value of the coupon.
+     */
     @FXML
     public void changeDiscountEvent(TableColumn.CellEditEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+        if (Integer.valueOf(event.getNewValue().toString())<1 || Integer.valueOf(event.getNewValue().toString()) > 99){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Niepoprawna wartość zniżki", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         coupon.setDiscount(Integer.valueOf(event.getNewValue().toString()));
         couponRepository.save(coupon);
         fillTableView();
@@ -108,6 +140,10 @@ public class WorkerEditCouponsController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
+
+    /**
+     * This method fills tableView with data from the database.
+     */
     void fillTableView(){
         List<Coupon> couponList = couponRepository.findAll();
         idColumn.setCellValueFactory(new PropertyValueFactory<Coupon, String>("id"));

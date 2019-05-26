@@ -49,8 +49,6 @@ public class UserGiftOrderController {
     @FXML
     private ComboBox giftComboBox;
     @FXML
-    private CheckBox adressBox;
-    @FXML
     private TextField nameField;
     @FXML
     private TextField surnameField;
@@ -75,11 +73,7 @@ public class UserGiftOrderController {
 
     @FXML
     public void initialize() {
-        List<Gift> giftList = giftRepository.findAll();
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
-        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
-        ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
-        tableView.setItems(observableListGifts);
+        fillTableView();
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
         List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
         List<GiftOrder> giftOrdersList = new ArrayList<>();
@@ -92,6 +86,10 @@ public class UserGiftOrderController {
         }
     }
 
+    /**
+     * This method is used to send new GiftOrder to database.
+     * It creates new Adress and RecipientAdress based on information from the textfields and then sends data to database.
+     */
     @FXML
     public void orderGift(ActionEvent event){
         User user = getLoggedUser();
@@ -103,17 +101,14 @@ public class UserGiftOrderController {
         List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
         Date date = new Date(System.currentTimeMillis());
         Adress adress;
-        if (adressBox.isSelected()){
-            List<Adress> adressList = adressRepository.findAll();
-            adress = new Adress(nameField.getText(), surnameField.getText(),
-                    cityField.getText(), streetField.getText(), Integer.valueOf(houseNumberField.getText()),
-                    zipCodeField.getText(), Long.valueOf(telephoneField.getText()),
-                    emailField.getText()
-            );
-            adressList.add(adress);
-            adressRepository.saveAll(adressList);
-        }
-        else adress = getLoggedUser().getAdress();
+        List<Adress> adressList = adressRepository.findAll();
+        adress = new Adress(nameField.getText(), surnameField.getText(),
+                cityField.getText(), streetField.getText(), Integer.valueOf(houseNumberField.getText()),
+                zipCodeField.getText(), Long.valueOf(telephoneField.getText()),
+                emailField.getText()
+        );
+        adressList.add(adress);
+        adressRepository.saveAll(adressList);
         List<RecipientAdress> recipientAdressList = recipientAdressRepository.findAll();
         RecipientAdress recipientAdress = new RecipientAdress(adress);
         recipientAdressList.add(recipientAdress);
@@ -129,6 +124,8 @@ public class UserGiftOrderController {
         alert.setHeaderText(null);
         alert.show();
     }
+
+
 
     @FXML
     public void cancelGift(ActionEvent event) {
@@ -147,6 +144,22 @@ public class UserGiftOrderController {
         }
     }
 
+    /**
+     * This method fills forms on page.
+     */
+    @FXML
+    public void fillAdressForm(ActionEvent event){
+        Adress adress = getLoggedUser().getAdress();
+        nameField.setText(adress.getName());
+        surnameField.setText(adress.getSurname());
+        cityField.setText(adress.getCity());
+        streetField.setText(adress.getStreet());
+        houseNumberField.setText(String.valueOf(adress.getHouseNumber()));
+        zipCodeField.setText(adress.getZipCode());
+        telephoneField.setText(String.valueOf(adress.getTelephoneNumber()));
+        emailField.setText(adress.getEmail());
+    }
+
     @FXML
     public void openMainUserPanel(ActionEvent event) {
         sceneManager.show(SceneType.USER_MAIN);
@@ -155,5 +168,21 @@ public class UserGiftOrderController {
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
+    }
+
+    /**
+     * This method fills TableView on page.
+     * It checks if the gift is available or not by checking its "status" variable.
+     */
+    void fillTableView(){
+        List<Gift> giftListDefault = giftRepository.findAll();
+        List<Gift> giftList = new ArrayList<>();
+        for (Gift gift : giftListDefault){
+            if (gift.getStatus().equals("AKTYWNY")) giftList.add(gift);
+        }
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
+        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
+        ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
+        tableView.setItems(observableListGifts);
     }
 }

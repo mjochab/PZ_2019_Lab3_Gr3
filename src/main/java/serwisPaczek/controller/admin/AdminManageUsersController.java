@@ -1,5 +1,4 @@
 package serwisPaczek.controller.admin;
-package serwisPaczek.controller.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -125,13 +124,17 @@ public class AdminManageUsersController {
         try{
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
             User user = userRepository.getOne(selectedId);
-            Role role = roleRepository.findByRoleName("WORKER_ROLE");
-            user.setRole(role);
-            userRepository.save(user);
-            showDialog("Dodano pracownika");
+            if(user.getRole().getRoleName().toString() == "USER_ROLE"){
+                Role role = roleRepository.findByRoleName("WORKER_ROLE");
+                user.setRole(role);
+                userRepository.save(user);
+                showDialog("Dodano pracownika");
+            } else {
+                showDialog("Wybrany użytkownik nie może być adminem ani pracownikiem");
+            }
         }
-        catch (Exeption e){
-            howDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        catch (Exception e){
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
         }
     }
 

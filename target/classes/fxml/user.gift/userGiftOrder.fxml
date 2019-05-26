@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<<<<<<< HEAD
 <?import javafx.scene.control.CheckBox?>
+=======
+>>>>>>> b05b65bfd619c210ce540cc1f3413ddcdc6e53cb
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -38,6 +41,7 @@
                 </Button>
                 <Label layoutX="260.0" layoutY="554.0" prefHeight="29.0" prefWidth="166.0" text="Twoje punkty premium:" />
                 <Label fx:id="premiumPoints" layoutX="426.0" layoutY="556.0" prefHeight="26.0" prefWidth="25.0" text="--" />
+<<<<<<< HEAD
                 <CheckBox fx:id="adressBox" layoutX="484.0" layoutY="76.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="264.0" text="Użyj adresu innego niż w profilu" />
                 <TextField fx:id="nameField" layoutX="484.0" layoutY="120.0" promptText="Imię" />
                 <TextField fx:id="surnameField" layoutX="484.0" layoutY="174.0" promptText="Nazwisko" />
@@ -48,11 +52,26 @@
                 <TextField fx:id="emailField" layoutX="484.0" layoutY="445.0" promptText="Adres e-mail" />
                 <TextField fx:id="telephoneField" layoutX="484.0" layoutY="500.0" promptText="Nr telefonu" />
                 <Button fx:id="cancel" layoutX="649.0" layoutY="552.0" mnemonicParsing="false" onAction="#cancelGift" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: blue;" text="Anuluj prezent" textFill="WHITE">
+=======
+                <TextField fx:id="nameField" layoutX="484.0" layoutY="106.0" promptText="Imię" />
+                <TextField fx:id="surnameField" layoutX="484.0" layoutY="144.0" promptText="Nazwisko" />
+                <TextField fx:id="cityField" layoutX="484.0" layoutY="183.0" promptText="Miasto" />
+                <TextField fx:id="streetField" layoutX="484.0" layoutY="221.0" promptText="Ulica" />
+                <TextField fx:id="houseNumberField" layoutX="484.0" layoutY="260.0" promptText="Nr domu" />
+                <TextField fx:id="zipCodeField" layoutX="484.0" layoutY="300.0" promptText="Kod pocztowy" />
+                <TextField fx:id="emailField" layoutX="484.0" layoutY="339.0" promptText="Adres e-mail" />
+                <TextField fx:id="telephoneField" layoutX="484.0" layoutY="377.0" promptText="Nr telefonu" />
+                <Button layoutX="649.0" layoutY="552.0" mnemonicParsing="false" onAction="#cancelGift" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: blue;" text="Anuluj prezent" textFill="WHITE">
+>>>>>>> b05b65bfd619c210ce540cc1f3413ddcdc6e53cb
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
                 <ComboBox fx:id="giftComboBox" layoutX="653.0" layoutY="500.0" prefHeight="25.0" prefWidth="128.0" />
+<<<<<<< HEAD
+=======
+            <Button onAction="#fillAdressForm" layoutX="484.0" layoutY="69.0" mnemonicParsing="false" text="Wypełnij danymi z profilu" />
+>>>>>>> b05b65bfd619c210ce540cc1f3413ddcdc6e53cb
             </children>
         </AnchorPane>
     </center>
