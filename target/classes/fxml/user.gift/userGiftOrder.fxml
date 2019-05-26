@@ -45,7 +45,7 @@
                 <TextField fx:id="zipCodeField" layoutX="484.0" layoutY="300.0" promptText="Kod pocztowy" />
                 <TextField fx:id="emailField" layoutX="484.0" layoutY="339.0" promptText="Adres e-mail" />
                 <TextField fx:id="telephoneField" layoutX="484.0" layoutY="377.0" promptText="Nr telefonu" />
-                <Button layoutX="649.0" layoutY="552.0" mnemonicParsing="false" onAction="#cancelGift" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: blue;" text="Anuluj prezent" textFill="WHITE">
+                <Button fx:id="cancel" layoutX="649.0" layoutY="552.0" mnemonicParsing="false" onAction="#cancelGift" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: blue;" text="Anuluj prezent" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
