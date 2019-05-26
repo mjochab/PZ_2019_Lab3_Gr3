@@ -32,7 +32,8 @@
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id" />
                         <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="171.0" text="Nazwa" />
-                        <TableColumn fx:id="premiumPointsColumn" onEditCommit="#changePremiumPointsEvent" prefWidth="254.0" text="Ilość punktów" />
+                        <TableColumn fx:id="premiumPointsColumn" onEditCommit="#changePremiumPointsEvent" prefWidth="142.0" text="Ilość punktów" />
+                        <TableColumn fx:id="statusColumn" prefWidth="111.0" text="Status" />
                     </columns>
                 </TableView>
                 <TextField fx:id="addGiftName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Prezentu" />
@@ -48,6 +49,11 @@
                     </font>
                 </Button>
             <Button fx:id="btnDeleteGift" layoutX="399.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteGift" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: red;" text="Usuń" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="changeStatusButton" layoutX="281.0" layoutY="302.0" mnemonicParsing="false" onAction="#changeStatus" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: orange;" text="Zmień status" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

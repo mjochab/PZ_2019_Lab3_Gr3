@@ -14,6 +14,7 @@ import serwisPaczek.model.Parcel;
 import serwisPaczek.model.UserOrder;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+import serwisPaczek.repository.UserRepository;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
@@ -26,6 +27,9 @@ public class UserOrderFinalizeController {
     private Adress sender;
     private Parcel parcel;
     private Courier courier;
+
+    @Autowired
+    UserRepository userRepository;
     @FXML
     private Label TFnr;
     @FXML
@@ -87,6 +91,8 @@ public class UserOrderFinalizeController {
         TFfromZipCode.setText(sender.getZipCode());
         // show acc balance
         TFaccountBalace.setText(String.valueOf(getLoggedUser().getAccountBalance()));
+        getLoggedUser().setPremiumPointsBalance(getLoggedUser().getPremiumPointsBalance()+(int)userOrder.getPrice());
+        userRepository.save(getLoggedUser());
 
     }
 
@@ -96,7 +102,7 @@ public class UserOrderFinalizeController {
     @FXML
     public void generatePDF() {
         GeneratePdf generatePdf = new GeneratePdf(userOrder.getId(), courier.getName(),
-                userOrder.getPrice(), received.getCity(), received.getZipCode(),
+                (float) userOrder.getPrice(), received.getCity(), received.getZipCode(),
                 received.getStreet(), sender.getName(), received.getName(),
                 userOrder.getDate(), sender.getSurname(), received.getSurname(),
                 sender.getCity(), sender.getStreet(), sender.getEmail(), received.getEmail(),

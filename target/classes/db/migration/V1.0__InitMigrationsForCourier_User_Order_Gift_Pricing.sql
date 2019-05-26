@@ -9,6 +9,7 @@ username varchar(30),
 password varchar(250),
 account_balance double not null DEFAULT 0,
 role_id bigint,
+premium_points_balance int DEFAULT 500,
 adress_id bigint,
 Primary Key(id));
 
@@ -28,12 +29,14 @@ create table gift (
 id bigint NOT NULl AUTO_INCREMENT,
 name varchar(255),
 premium_points int,
+status varchar(20),
 Primary Key(id));
 
 create table gift_order (
 id bigint NOT NULl AUTO_INCREMENT,
 user_id bigint,
 gift_id bigint,
+status varchar(40),
 date DATETIME,
 Primary Key(id));
 
@@ -122,7 +125,7 @@ PRIMARY KEY(id)
 
 create table coupon(
 id bigint NOT NULL AUTO_INCREMENT,
-name varchar(150),
+name varchar(150) UNIQUE,
 discount int,
 PRIMARY KEY(id)
 );

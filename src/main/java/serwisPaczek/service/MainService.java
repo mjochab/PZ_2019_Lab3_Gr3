@@ -48,13 +48,6 @@ public class MainService {
     @Autowired
     private CouponRepository couponRepository;
 
-    public void addAbout(){
-        List<About> aboutList = new ArrayList<>();
-        About about = new About("Serwis nadawania paczek to nowoczesna platforma wysyłkowa umożliwiająca wysyłkę paczek zarówno na terenie całego kraju jak i za granicę. Wyróżnia nas szeroki wachlarz usług oraz dbałość o ich najwyższą jakość i niską cenę. Poprzez współpracę z najlepszymi firmami kurierskimi takimi jak UPS, DPD, Geis, InPost, FedEx, Paczkomaty, DHL zawsze zapewniamy naszym klientom najkorzystniejsze warunki. Odpowiadając na nieustannie rozwijający się handel międzynarodowy, ciągle poszerzamy naszą ofertę o możliwość wysyłki paczek nawet w najbardziej odległe zakątki świata. Nasi kurierzy codziennie przemierzają tysiące kilometrów aby na czas dostarczyć nawet najbardziej niestandardowe przesyłki. Oprócz platformy wysyłkowej serwis paczek to również ponad 150 stacjonarnych placówek w całej Polsce, które każdego dnia obsługują tysiące zadowolonych klientów.");
-        aboutList.add(about);
-        aboutRepository.saveAll(aboutList);
-    }
-
     public void fillDatabase() {
         List<User> userList = new ArrayList<>();
         List<Adress> adressList = new ArrayList<>();
@@ -97,7 +90,7 @@ public class MainService {
             PalletPricing palletPricing = new PalletPricing(100 + i, 200 + i, 300 + i, 400 + i, courier);
             palletPricingList.add(palletPricing);
 
-            Gift gift = new Gift("Prezent nr " + i, 100 + i);
+            Gift gift = new Gift("Prezent nr " + i, 100 + i,"AKTYWNY");
             giftList.add(gift);
 
             RecipientAdress recipientAdress = new RecipientAdress(adress);

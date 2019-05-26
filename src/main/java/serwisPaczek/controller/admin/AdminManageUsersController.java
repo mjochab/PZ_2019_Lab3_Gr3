@@ -6,19 +6,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Adress;
+import serwisPaczek.model.Role;
 import serwisPaczek.model.User;
 import serwisPaczek.model.dto.UserAdressDto;
 import serwisPaczek.repository.AdressRepository;
+import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class AdminManageUsersController {
@@ -27,6 +33,8 @@ public class AdminManageUsersController {
     private SceneManager sceneManager;
     @Autowired
     private AdressRepository adressRepository;
+    @Autowired
+    private RoleRepository roleRepository;
     @FXML
     private TableView<UserAdressDto> tableView;
     @FXML
@@ -49,6 +57,8 @@ public class AdminManageUsersController {
     private TableColumn<UserAdressDto, String> telephoneNumberColumn;
     @FXML
     private TableColumn<UserAdressDto, String> emailColumn;
+    @FXML
+    private TextField TFusername;
 
     /**
      * This method is used to show all existing users and their information in the list.
@@ -100,6 +110,30 @@ public class AdminManageUsersController {
     }
 
     @FXML
+    public void handleMouseClick(MouseEvent arg0) {
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+        }
+        catch(Exception e){
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        }
+    }
+
+    @FXML
+    public void editStatus(ActionEvent event) {
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+            User user = userRepository.getOne(selectedId);
+            Role role = roleRepository.findByRoleName("WORKER_ROLE");
+            user.setRole(role);
+            userRepository.save(user);
+            showDialog("Dodano pracownika");
+        } catch (Exception e) {
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        }
+    }
+
+    @FXML
     public void openAdminMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.ADMIN_MAIN);
     }
@@ -109,4 +143,3 @@ public class AdminManageUsersController {
         this.sceneManager = sceneManager;
     }
 }
-

@@ -30,9 +30,10 @@ public class UserProfileMyOpinionsController {
 
         for (Opinion op : opinions) {
             opinionListView.getItems().add(op.getDate().toString()
-                    + "  Zamówienie nr:" + op.getUserOrder().getId().toString()
-                    + "  "  + op.getUserOrder().getCourier()
-                    + "  Ocena: " + op.getRating() + "/5");
+                    + "  |  Zamówienie nr " + op.getUserOrder().getId().toString()
+                    + "  |  " + op.getUserOrder().getCourier()
+                    + "  |  Ocena: " + op.getRating()
+                    + "/5  |  " + op.getContent());
 
         }
     }

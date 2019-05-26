@@ -19,8 +19,9 @@ import serwisPaczek.repository.PackPricingRepository;
 import serwisPaczek.repository.PalletPricingRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
@@ -33,6 +34,7 @@ public class UserOrderChooseCourierController {
     private SceneManager sceneManager;
     private int ratio = 1;
     float price =0;
+    private float discountRatio;
     private ApplicationContext context;
 
     @Autowired
@@ -51,7 +53,17 @@ public class UserOrderChooseCourierController {
      */
 
     @FXML
-    public void initialize(Parcel parcel) {
+    public void initialize(Parcel parcel, float discountRatio) {
+        if (parcel.getType().equals("paczka")) {
+            if (parcel.getLength() <= 60 && parcel.getWidth() <= 50 && parcel.getHeight() <= 30)
+                ratio = 1;
+            else if (parcel.getLength() <= 80 && parcel.getWidth() <= 70 && parcel.getHeight() <= 50)
+                ratio = 2;
+            else if (parcel.getLength() <= 100 && parcel.getWidth() <= 90 && parcel.getHeight() <= 70)
+                ratio = 3;
+        }
+        this.discountRatio = discountRatio;
+
         List<Courier> listCouriers = courierRepository.findAll();
         int index = 0;
         int gridRow = 0;
@@ -106,7 +118,10 @@ public class UserOrderChooseCourierController {
                     break;
             }
 
-            button[index] = new Button(courier.getName() + "\n" + price + "zł");
+            price = price * discountRatio;
+            double finalPrice = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            button[index] = new Button(courier.getName() + "\n" + finalPrice + "zł");
+
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
             button[index].setStyle("-fx-background-radius: 3px; " +
@@ -115,7 +130,7 @@ public class UserOrderChooseCourierController {
                     "-fx-background-color: " + color + ";"
             );
 
-            float finalPrice = price;
+
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 /**
                  * This method is used to handle btn click.

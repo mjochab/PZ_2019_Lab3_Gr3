@@ -14,8 +14,9 @@ public class UserOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private float price;
+    private double price;
     private Date date;
+    private int premiumPoints;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -38,7 +39,7 @@ public class UserOrder {
     public UserOrder() {
     }
 
-    public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
+    public UserOrder(double price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
         this.price = price;
         this.date = date;
         this.user = user;
@@ -49,7 +50,21 @@ public class UserOrder {
         this.parcel = parcel;
     }
 
-    public UserOrder(float price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress) {
+    public UserOrder(double price, Date date, int premiumPoints, User user, Courier courier, Status status,
+                     SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
+        this.price = price;
+        this.date = date;
+        this.premiumPoints = premiumPoints;
+        this.user = user;
+        this.courier = courier;
+        this.status = status;
+        this.senderAdress = senderAdress;
+        this.recipientAdress = recipientAdress;
+        this.parcel = parcel;
+    }
+
+    public UserOrder(double price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress,
+                     RecipientAdress recipientAdress) {
         this.price = price;
         this.date = date;
         this.user = user;
