@@ -25,12 +25,8 @@ public class UserAboutController {
     @Autowired
     AboutRepository aboutRepository;
 
-    @Autowired
-    private MainService mainService;
-
     @FXML
     public void initialize(){
-//        if (aboutRepository.findAll().isEmpty()) mainService.addAbout();
         List<About> listAbout = aboutRepository.findAll();
         label.setText(listAbout.get(0).getContent());
     }
