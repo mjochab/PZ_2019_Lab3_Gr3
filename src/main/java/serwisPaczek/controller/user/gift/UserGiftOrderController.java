@@ -94,6 +94,15 @@ public class UserGiftOrderController {
     public void orderGift(ActionEvent event){
         User user = getLoggedUser();
         Gift gift = tableView.getSelectionModel().getSelectedItem();
+        if (getLoggedUser().getPremiumPointsBalance()-gift.getPremiumPoints()<0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Za mało punktów premium na koncie!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         getLoggedUser().setPremiumPointsBalance(getLoggedUser().getPremiumPointsBalance()-gift.getPremiumPoints());
         userRepository.save(user);
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
