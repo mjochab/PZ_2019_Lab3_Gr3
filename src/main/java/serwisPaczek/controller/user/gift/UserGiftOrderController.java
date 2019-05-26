@@ -76,18 +76,19 @@ public class UserGiftOrderController {
         fillTableView();
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
         List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        List<GiftOrder> giftOrdersList = new ArrayList<>();
+        List<String> giftOrdersList = new ArrayList<>();
         for(GiftOrder giftOrder : giftOrderList){
             if(giftOrder.getUser() == getLoggedUser() && giftOrder.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
-                giftOrdersList.add(giftOrder);
+                String orderId = giftOrder.getId().toString();
+                giftOrdersList.add(orderId);
             }
         }
-        ObservableList<GiftOrder> observableListGiftOrders = FXCollections.observableArrayList(giftOrdersList);
+        ObservableList<String> observableListGiftOrders = FXCollections.observableArrayList(giftOrdersList);
         giftComboBox.setItems(observableListGiftOrders);
     }
 
     public void showGiftOrders(ActionEvent event) {
-        GiftOrder giftOrder = (GiftOrder)giftComboBox.getSelectionModel().getSelectedItem();
+        Long orderId = (Long)giftComboBox.getSelectionModel().getSelectedItem();
     }
 
     /**
@@ -138,21 +139,22 @@ public class UserGiftOrderController {
         alert.show();
     }
 
-
-
     @FXML
     public void cancelGift(ActionEvent event) {
         if (giftComboBox.getSelectionModel().isEmpty()) {
             showDialog("Nie dokonano wyboru prezentu.");
-        } else{
-            GiftOrder giftOrder = (GiftOrder)giftComboBox.getSelectionModel().getSelectedItem();
-            giftOrder.setStatus(ANULOWANO);
-            giftOrderRepository.save(giftOrder);
-            User user = getLoggedUser();
-            user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
-            userRepository.save(user);
-            showDialog("Anulowano zamówienie prezentu.");
+        } Long orderId = (Long)giftComboBox.getSelectionModel().getSelectedItem();
+        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+        for(GiftOrder giftOrder : giftOrderList){
+            if(giftOrder.getId() == orderId){
+                giftOrder.setStatus(ANULOWANO);
+                giftOrderRepository.save(giftOrder);
+                User user = getLoggedUser();
+                user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
+                userRepository.save(user);
+            }
         }
+        showDialog("Anulowano zamówienie prezentu.");
     }
 
     /**
