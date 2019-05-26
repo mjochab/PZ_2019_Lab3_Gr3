@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,8 @@ import serwisPaczek.model.dto.GiftOrderDto;
 import serwisPaczek.repository.*;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +33,8 @@ public class WorkerManageGiftOrdersController {
     @Autowired
     AdressRepository adressRepository;
 
+    @FXML
+    private TextField idTextField;
     @FXML
     private ComboBox<Status> statusComboBox;
     @FXML
@@ -67,7 +68,7 @@ public class WorkerManageGiftOrdersController {
 
     @FXML
     public void initialize(){
-        fillTableView();
+        fillTableView(0);
         statusComboBox.getItems().setAll(Status.values());
         statusComboBox.getSelectionModel().selectFirst();
     }
@@ -81,65 +82,79 @@ public class WorkerManageGiftOrdersController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-    void fillTableView() {
-        List<GiftOrderDto> giftOrderDtoList = new ArrayList<>();
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        List<Gift> giftList = giftRepository.findAll();
-        List<User> userList = userRepository.findAll();
-        List<RecipientAdress> recipientAdressList = recipientAdressRepository.findAll();
-        List<Adress> adressList = adressRepository.findAll();
-        for (GiftOrder giftOrder : giftOrderList) {
-            String giftName = "";
-            String senderName = "";
-            String name = "";
-            String surname = "";
-            String city = "";
-            String street = "";
-            String houseNumber = "";
-            String zipCode = "";
-            String telephoneNumber = "";
-            String email = "";
-            for (Gift gift : giftList) {
-                if (giftOrder.getGift().getId() == gift.getId()) {
-                    giftName = gift.getName();
-                }
-            }
-            for (User user : userList) {
-                if (giftOrder.getUser().getId() == user.getId()) {
-                    senderName = user.getUsername();
-                }
-            }
-            for (RecipientAdress recipientAdress : recipientAdressList){
-                if (giftOrder.getRecipientAdress().getId() == recipientAdress.getId()){
-                    name = recipientAdress.getAdress().getName();
-                    surname = recipientAdress.getAdress().getSurname();
-                    city = recipientAdress.getAdress().getCity();
-                    street = recipientAdress.getAdress().getStreet();
-                    houseNumber = String.valueOf(recipientAdress.getAdress().getHouseNumber());
-                    zipCode = String.valueOf(recipientAdress.getAdress().getZipCode());
-                    telephoneNumber = String.valueOf(recipientAdress.getAdress().getTelephoneNumber());
-                    email = recipientAdress.getAdress().getEmail();
-                }
-            }
-            GiftOrderDto giftOrderDto = new GiftOrderDto(giftOrder.getId(), giftName, name, surname, city, street, Integer.valueOf(houseNumber), zipCode, Long.valueOf(telephoneNumber), email, String.valueOf(giftOrder.getDate()),senderName,giftOrder.getStatus().name());
-            giftOrderDtoList.add(giftOrderDto);
-        }
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("id"));
-        giftNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("giftName"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("surname"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("city"));
-        streetColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("street"));
-        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("houseNumber"));
-        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("zipCode"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("telephoneNumber"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("email"));
-        telephoneColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("date"));
-        senderNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("senderName"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("status"));
-        ObservableList<GiftOrderDto> observableListGiftOrderDtos = FXCollections.observableArrayList(giftOrderDtoList);
-        tableView.setItems(observableListGiftOrderDtos);
+    void fillTableView(int id) {
+            List<GiftOrderDto> giftOrderDtoList = new ArrayList<>();
+            List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+            List<Gift> giftList = giftRepository.findAll();
+            List<User> userList = userRepository.findAll();
+            List<RecipientAdress> recipientAdressList = recipientAdressRepository.findAll();
+            List<Adress> adressList = adressRepository.findAll();
+            for (GiftOrder giftOrder : giftOrderList) {
+                String giftName = "";
+                String senderName = "";
+                String name = "";
+                String surname = "";
+                String city = "";
+                String street = "";
+                String houseNumber = "";
+                String zipCode = "";
+                String telephoneNumber = "";
+                String email = "";
+                for (Gift gift : giftList) {
+                    if (giftOrder.getGift().getId() == gift.getId()) {
+                        giftName = gift.getName();
+                    }
+                }
+                for (User user : userList) {
+                    if (giftOrder.getUser().getId() == user.getId()) {
+                        senderName = user.getUsername();
+                    }
+                }
+                for (RecipientAdress recipientAdress : recipientAdressList) {
+                    if (giftOrder.getRecipientAdress().getId() == recipientAdress.getId()) {
+                        name = recipientAdress.getAdress().getName();
+                        surname = recipientAdress.getAdress().getSurname();
+                        city = recipientAdress.getAdress().getCity();
+                        street = recipientAdress.getAdress().getStreet();
+                        houseNumber = String.valueOf(recipientAdress.getAdress().getHouseNumber());
+                        zipCode = String.valueOf(recipientAdress.getAdress().getZipCode());
+                        telephoneNumber = String.valueOf(recipientAdress.getAdress().getTelephoneNumber());
+                        email = recipientAdress.getAdress().getEmail();
+                    }
+                }
+                GiftOrderDto giftOrderDto = new GiftOrderDto(giftOrder.getId(), giftName, name, surname, city, street, Integer.valueOf(houseNumber), zipCode, Long.valueOf(telephoneNumber), email, String.valueOf(giftOrder.getDate()), senderName, giftOrder.getStatus().name());
+                giftOrderDtoList.add(giftOrderDto);
+            }
+
+            idColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("id"));
+            giftNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("giftName"));
+            nameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("name"));
+            surnameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("surname"));
+            cityColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("city"));
+            streetColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("street"));
+            houseNumberColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("houseNumber"));
+            zipCodeColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("zipCode"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("telephoneNumber"));
+            emailColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("email"));
+            telephoneColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("date"));
+            senderNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("senderName"));
+            statusColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("status"));
+
+        if (id != 0){
+            for (GiftOrderDto giftOrderDto : giftOrderDtoList){
+                if (giftOrderDto.getId() == id ) {
+                    List<GiftOrderDto> giftOrderDtoItem = new ArrayList<>();
+                    giftOrderDtoItem.add(giftOrderDto);
+                    ObservableList<GiftOrderDto> observableListGiftOrderDtos = FXCollections.observableArrayList(giftOrderDtoItem);
+                    tableView.setItems(observableListGiftOrderDtos);
+                    break;
+                }
+            }
+        } else {
+            ObservableList<GiftOrderDto> observableListGiftOrderDtos = FXCollections.observableArrayList(giftOrderDtoList);
+            tableView.setItems(observableListGiftOrderDtos);
+        }
     }
 
     @FXML
@@ -153,6 +168,16 @@ public class WorkerManageGiftOrdersController {
                 break;
             }
         }
-        fillTableView();
+        fillTableView(0);
+    }
+
+    @FXML
+    public void searchGiftOrder(ActionEvent event){
+        if (idTextField.getText().equals("")) {
+            fillTableView(0);
+        }
+        else {
+            fillTableView(Integer.valueOf(idTextField.getText()));
+        }
     }
 }

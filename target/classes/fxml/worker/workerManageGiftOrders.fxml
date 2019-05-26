@@ -23,7 +23,7 @@
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="606.0" layoutY="25.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: Blue;" text="Szukaj" textFill="WHITE" wrapText="true">
+                <Button onAction="#searchGiftOrder" layoutX="606.0" layoutY="25.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: Blue;" text="Szukaj" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -55,7 +55,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <TextField layoutX="175.0" layoutY="26.0" prefHeight="35.0" prefWidth="420.0">
+                <TextField fx:id="idTextField" layoutX="175.0" layoutY="26.0" prefHeight="35.0" prefWidth="420.0">
                     <font>
                         <Font size="16.0" />
                     </font>
