@@ -13,6 +13,7 @@ public class Gift {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String status;
     @JoinColumn(name = "premium_points")
     private int premiumPoints;
     @OneToMany(mappedBy = "gift", cascade = CascadeType.ALL)
@@ -21,7 +22,8 @@ public class Gift {
     public Gift() {
     }
 
-    public Gift(String name, int premiumPoints) {
+    public Gift(String name, int premiumPoints, String status) {
+        this.status = status;
         this.name = name;
         this.premiumPoints = premiumPoints;
     }

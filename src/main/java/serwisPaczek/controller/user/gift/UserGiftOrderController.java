@@ -75,11 +75,7 @@ public class UserGiftOrderController {
 
     @FXML
     public void initialize() {
-        List<Gift> giftList = giftRepository.findAll();
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
-        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
-        ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
-        tableView.setItems(observableListGifts);
+        fillTableView();
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
         List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
         List<GiftOrder> giftOrdersList = new ArrayList<>();
@@ -155,5 +151,17 @@ public class UserGiftOrderController {
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
+    }
+
+    void fillTableView(){
+        List<Gift> giftListDefault = giftRepository.findAll();
+        List<Gift> giftList = new ArrayList<>();
+        for (Gift gift : giftListDefault){
+            if (gift.getStatus().equals("AKTYWNY")) giftList.add(gift);
+        }
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
+        premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
+        ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
+        tableView.setItems(observableListGifts);
     }
 }

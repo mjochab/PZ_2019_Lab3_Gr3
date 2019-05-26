@@ -143,9 +143,6 @@ public class UserOrderChooseCourierController {
             );
 
             float finalPrice = price * discountRatio;
-            System.out.print(finalPrice);
-            System.out.print(price);
-            System.out.print(discountRatio);
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 /**
                  * This method is used to handle btn click.

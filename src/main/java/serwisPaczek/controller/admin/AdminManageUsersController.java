@@ -133,8 +133,8 @@ public class AdminManageUsersController {
                 showDialog("Wybrany użytkownik nie może być adminem ani pracownikiem");
             }
         }
-        catch (Exeption e){
-            howDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        catch (Exception e){
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
         }
     }
 

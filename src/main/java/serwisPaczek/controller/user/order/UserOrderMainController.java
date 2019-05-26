@@ -183,8 +183,6 @@ public class UserOrderMainController {
                 discountRatio=(1-(float)coupon.getDiscount()/100);
                 Paint colour = Paint.valueOf("00FF00");
                 enterCouponName.setBackground(new Background(new BackgroundFill(colour, CornerRadii.EMPTY, Insets.EMPTY)));
-                System.out.print(discountRatio);
-                System.out.print(coupon.getDiscount());
                 break;
             } else {
                 Paint colour = Paint.valueOf("FF0000");

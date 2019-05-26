@@ -29,6 +29,7 @@ create table gift (
 id bigint NOT NULl AUTO_INCREMENT,
 name varchar(255),
 premium_points int,
+status varchar(20),
 Primary Key(id));
 
 create table gift_order (
