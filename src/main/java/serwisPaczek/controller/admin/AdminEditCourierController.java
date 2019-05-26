@@ -61,8 +61,8 @@ public class AdminEditCourierController {
 
     public void initialize() {
         List<Courier> courierList = courierRepository.findAll();
-        ObservableList<Courier> observableListUsers = FXCollections.observableArrayList(courierList);
-        courierComboBox.setItems(observableListUsers);
+        ObservableList<Courier> observableListCouriers = FXCollections.observableArrayList(courierList);
+        courierComboBox.setItems(observableListCouriers);
     }
 
     /**

@@ -39,7 +39,7 @@ public class UserProfileWalletController {
         try {
             if (depositTextField.getText().matches("\\d+(\\.\\d{1,2})?")) {
                 double depositValue = Double.valueOf(depositTextField.getText());
-                if (depositValue > 0) {
+                if (depositValue > 0 && user.getAccountBalance() + depositValue <= 1000000) {
                     userService.depositFunds(user, depositValue);
                     showDialog("Pomyślnie wpłacono środki.");
                     sceneManager.show(SceneType.USER_PROFILE_WALLET);
@@ -52,7 +52,8 @@ public class UserProfileWalletController {
         } catch (NumberFormatException e) {
             showDialog("Kwota wpłaty musi być większa od zera." +
                     "\nMaksymalnie dwie cyfry po przecinku." +
-                    "\nPrzecinek zapisuj jako kropkę.");
+                    "\nPrzecinek zapisuj jako kropkę." +
+                    "\nMaksymalny stan konta: 1 mln PLN.");
         }
     }
 
