@@ -32,7 +32,7 @@ public class UserOrderFillAddressesFormController {
     private ApplicationContext context;
     private Parcel parcel;
     private Courier courier;
-    private float price;
+    private double price;
 
     @Autowired
     private UserService userService;
@@ -83,7 +83,7 @@ public class UserOrderFillAddressesFormController {
     private TextField TFsenderZipCode;
 
     @FXML
-    public void initialize(Parcel parcel, Courier courier, float price) {
+    public void initialize(Parcel parcel, Courier courier, double price) {
         this.parcel = parcel;
         this.courier = courier;
         this.price = price;

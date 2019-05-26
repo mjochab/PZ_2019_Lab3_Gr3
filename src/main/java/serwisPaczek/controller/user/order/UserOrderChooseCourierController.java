@@ -20,6 +20,8 @@ import serwisPaczek.repository.PalletPricingRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
@@ -133,7 +135,9 @@ public class UserOrderChooseCourierController {
                     color = "hotpink";
                     break;
             }
-            button[index] = new Button(courier.getName() + "\n" + price * discountRatio + "zł");
+            price = price * discountRatio;
+            double finalPrice = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            button[index] = new Button(courier.getName() + "\n" + finalPrice + "zł");
             button[index].setMinHeight(120);
             button[index].setMinWidth(135);
             button[index].setStyle("-fx-background-radius: 3px; " +
@@ -142,7 +146,7 @@ public class UserOrderChooseCourierController {
                     "-fx-background-color: " + color + ";"
             );
 
-            float finalPrice = price * discountRatio;
+
             button[index].setOnAction(new EventHandler<ActionEvent>() {
                 /**
                  * This method is used to handle btn click.

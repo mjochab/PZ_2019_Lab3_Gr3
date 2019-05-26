@@ -98,7 +98,7 @@ public class UserOrderFinalizeController {
     @FXML
     public void generatePDF() {
         GeneratePdf generatePdf = new GeneratePdf(userOrder.getId(), courier.getName(),
-                userOrder.getPrice(), received.getCity(), received.getZipCode(),
+                (float) userOrder.getPrice(), received.getCity(), received.getZipCode(),
                 received.getStreet(), sender.getName(), received.getName(),
                 userOrder.getDate(), sender.getSurname(), received.getSurname(),
                 sender.getCity(), sender.getStreet(), sender.getEmail(), received.getEmail(),

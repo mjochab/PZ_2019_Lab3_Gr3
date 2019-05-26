@@ -121,19 +121,14 @@ public class AdminManageUsersController {
 
     @FXML
     public void editStatus(ActionEvent event) {
-        try{
+        try {
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
             User user = userRepository.getOne(selectedId);
-            if(user.getRole().getRoleName().toString() == "USER_ROLE"){
-                Role role = roleRepository.findByRoleName("WORKER_ROLE");
-                user.setRole(role);
-                userRepository.save(user);
-                showDialog("Dodano pracownika");
-            } else {
-                showDialog("Wybrany użytkownik nie może być adminem ani pracownikiem");
-            }
-        }
-        catch (Exception e){
+            Role role = roleRepository.findByRoleName("WORKER_ROLE");
+            user.setRole(role);
+            userRepository.save(user);
+            showDialog("Dodano pracownika");
+        } catch (Exception e) {
             showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
         }
     }
@@ -148,4 +143,3 @@ public class AdminManageUsersController {
         this.sceneManager = sceneManager;
     }
 }
-
