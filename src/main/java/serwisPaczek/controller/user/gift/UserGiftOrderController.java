@@ -80,10 +80,10 @@ public class UserGiftOrderController {
         for(GiftOrder giftOrder : giftOrderList){
             if(giftOrder.getUser() == getLoggedUser() && giftOrder.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
                 giftOrdersList.add(giftOrder);
-                ObservableList<GiftOrder> observableListGiftOrders = FXCollections.observableArrayList(giftOrdersList);
-                giftComboBox.setItems(observableListGiftOrders);
             }
         }
+        ObservableList<GiftOrder> observableListGiftOrders = FXCollections.observableArrayList(giftOrdersList);
+        giftComboBox.setItems(observableListGiftOrders);
     }
 
     /**
@@ -132,15 +132,13 @@ public class UserGiftOrderController {
         if (giftComboBox.getSelectionModel().isEmpty()) {
             showDialog("Nie dokonano wyboru prezentu.");
         } else{
-            List<GiftOrder> giftOrders = giftComboBox.getItems();
-            for(GiftOrder giftOrder : giftOrders){
-                giftOrder.setStatus(ANULOWANO);
-                giftOrderRepository.save(giftOrder);
-                User user = getLoggedUser();
-                user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
-                userRepository.save(user);
-                showDialog("Anulowano zamówienie prezentu.");
-            }
+            GiftOrder giftOrder = (GiftOrder)giftComboBox.getSelectionModel().getSelectedItem();
+            giftOrder.setStatus(ANULOWANO);
+            giftOrderRepository.save(giftOrder);
+            User user = getLoggedUser();
+            user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
+            userRepository.save(user);
+            showDialog("Anulowano zamówienie prezentu.");
         }
     }
 
