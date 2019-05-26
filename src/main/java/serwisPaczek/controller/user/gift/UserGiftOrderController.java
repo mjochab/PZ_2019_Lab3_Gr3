@@ -86,6 +86,10 @@ public class UserGiftOrderController {
         giftComboBox.setItems(observableListGiftOrders);
     }
 
+    public void showGiftOrders(ActionEvent event) {
+        GiftOrder giftOrder = (GiftOrder)giftComboBox.getSelectionModel().getSelectedItem();
+    }
+
     /**
      * This method is used to send new GiftOrder to database.
      * It creates new Adress and RecipientAdress based on information from the textfields and then sends data to database.
