@@ -174,6 +174,11 @@ public class UserOrderMainController {
         }
     }
 
+    /**
+     * This method checks if coupon named like text user entered really exists.
+     * It paints textField on green or red depending on the result.
+     * Also, it changes value of discountRatio that is later being sent to the next page.
+     */
     @FXML
     public void addCoupon(){
         String couponName = enterCouponName.getText();

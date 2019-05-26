@@ -54,6 +54,9 @@ public class WorkerEditGiftController {
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 
+    /**
+     * This method is used to add gift to the database with name and discount rate taken from textFields.
+     */
     @FXML
     public void addGift(ActionEvent event){
         Gift gift = new Gift(addGiftName.getText(),Integer.valueOf(addGiftPoints.getText()),"AKTYWNY");
@@ -63,6 +66,9 @@ public class WorkerEditGiftController {
         fillTableView();
     }
 
+    /**
+     * This method deletes gift from the database.
+     */
     @FXML
     public void deleteGift(ActionEvent event){
         Gift gift = tableView.getSelectionModel().getSelectedItem();
@@ -82,6 +88,9 @@ public class WorkerEditGiftController {
         fillTableView();
     }
 
+    /**
+     * This method changes name of the gift.
+     */
     @FXML
     public void changeNameEvent(TableColumn.CellEditEvent event){
         Gift gift = tableView.getSelectionModel().getSelectedItem();
@@ -90,6 +99,9 @@ public class WorkerEditGiftController {
         fillTableView();
     }
 
+    /**
+     * This method changes status of the gift (active/unactive).
+     */
     @FXML
     public  void changeStatus(ActionEvent event){
         Gift gift = tableView.getSelectionModel().getSelectedItem();
@@ -99,6 +111,9 @@ public class WorkerEditGiftController {
         fillTableView();
     }
 
+    /**
+     * This method changes premiumPoints value of the gift.
+     */
     @FXML
     public void changePremiumPointsEvent(TableColumn.CellEditEvent event){
         Gift gift = tableView.getSelectionModel().getSelectedItem();
@@ -112,6 +127,9 @@ public class WorkerEditGiftController {
         this.sceneManager = sceneManager;
     }
 
+    /**
+     * This method fills tableView with data from the database.
+     */
     void fillTableView(){
         List<Gift> giftList = giftRepository.findAll();
         idColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("id"));

@@ -50,6 +50,9 @@ public class WorkerEditCouponsController {
         sceneManager.show(SceneType.WORKER_MAIN);
     }
 
+    /**
+     * This method is used to add coupon to the database with name and discount rate taken from textFields.
+     */
     @FXML
     public void addCoupon(ActionEvent event){
         Coupon coupon = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
@@ -79,6 +82,9 @@ public class WorkerEditCouponsController {
         fillTableView();
     }
 
+    /**
+     * This method deletes coupon from the database.
+     */
     @FXML
     public void deleteCoupon(ActionEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
@@ -86,6 +92,10 @@ public class WorkerEditCouponsController {
         fillTableView();
     }
 
+    /**
+     * This method changes name of the coupon.
+     * It checks if there is already coupon named like the one which name is being changed.
+     */
     @FXML
     public void changeNameEvent(TableColumn.CellEditEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
@@ -105,6 +115,10 @@ public class WorkerEditCouponsController {
         couponRepository.save(coupon);
         fillTableView();
     }
+
+    /**
+     * This method changes discount value of the coupon.
+     */
     @FXML
     public void changeDiscountEvent(TableColumn.CellEditEvent event){
         Coupon coupon = tableView.getSelectionModel().getSelectedItem();
@@ -126,6 +140,10 @@ public class WorkerEditCouponsController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
+
+    /**
+     * This method fills tableView with data from the database.
+     */
     void fillTableView(){
         List<Coupon> couponList = couponRepository.findAll();
         idColumn.setCellValueFactory(new PropertyValueFactory<Coupon, String>("id"));

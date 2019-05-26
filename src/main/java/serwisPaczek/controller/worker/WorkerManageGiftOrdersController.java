@@ -83,6 +83,10 @@ public class WorkerManageGiftOrdersController {
         this.sceneManager = sceneManager;
     }
 
+    /**
+     * This method fills tableView with data fro database
+     * It creates objects Adress, RecipientAdress and UserOrder and combines data from them into new class GiftOrderDto.
+     */
     void fillTableView(int id) {
             List<GiftOrderDto> giftOrderDtoList = new ArrayList<>();
             List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
@@ -157,6 +161,9 @@ public class WorkerManageGiftOrdersController {
         }
     }
 
+    /**
+     * This method changes status of the gift order.
+     */
     @FXML
     public void changeStatus(ActionEvent event){
         GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
@@ -171,6 +178,9 @@ public class WorkerManageGiftOrdersController {
         fillTableView(0);
     }
 
+    /**
+     * This method parses parameter from textField to the fillTableView method.
+     */
     @FXML
     public void searchGiftOrder(ActionEvent event){
         if (idTextField.getText().equals("")) {

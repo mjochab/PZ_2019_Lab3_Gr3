@@ -16,6 +16,7 @@ import serwisPaczek.model.About;
 import java.util.List;
 import serwisPaczek.repository.AboutRepository;
 
+
 @Controller
 public class AdminEditAboutController {
     private SceneManager sceneManager;
@@ -35,9 +36,11 @@ public class AdminEditAboutController {
         textArea.setText(listAbout.get(0).getContent());
     }
 
+    /**
+     * This method takes text from the textArea and sends it to the database.
+     */
     @FXML
     public void acceptChanges (ActionEvent event){
-//        if (aboutRepository.findAll().isEmpty()) mainService.addAbout();
         List<About> listAbout = aboutRepository.findAll();
         listAbout.get(0).setContent(textArea.getText());
         aboutRepository.saveAll(listAbout);
