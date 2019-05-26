@@ -32,11 +32,11 @@
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id" />
                         <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="223.0" text="Nazwa" />
-                        <TableColumn fx:id="discountColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0" text="Obniżka" />
+                        <TableColumn fx:id="discountColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0" text="Obniżka [%]" />
                     </columns>
                 </TableView>
                 <TextField fx:id="addCouponName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0" promptText="Nazwa Kuponu" />
-                <TextField fx:id="addDiscount" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Rabat" />
+                <TextField fx:id="addDiscount" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0" promptText="Rabat [%]" />
                 <Button fx:id="btnAddGift" layoutX="505.0" layoutY="144.0" mnemonicParsing="false" onAction="#addCoupon" prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj kupon" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
