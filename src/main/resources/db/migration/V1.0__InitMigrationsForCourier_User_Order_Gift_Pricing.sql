@@ -36,6 +36,7 @@ create table gift_order (
 id bigint NOT NULl AUTO_INCREMENT,
 user_id bigint,
 gift_id bigint,
+status varchar(40),
 date DATETIME,
 Primary Key(id));
 

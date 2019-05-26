@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class WorkerManageGiftOrdersController {
     AdressRepository adressRepository;
 
     @FXML
+    private ComboBox<Status> statusComboBox;
+    @FXML
     private TableView<GiftOrderDto> tableView;
     @FXML
     private TableColumn<GiftOrderDto, String> idColumn;
@@ -59,10 +62,14 @@ public class WorkerManageGiftOrdersController {
     private TableColumn<GiftOrderDto, String> telephoneColumn;
     @FXML
     private TableColumn<GiftOrderDto, String> senderNameColumn;
+    @FXML
+    private TableColumn<GiftOrderDto, String> statusColumn;
 
     @FXML
     public void initialize(){
-    fillTableView();
+        fillTableView();
+        statusComboBox.getItems().setAll(Status.values());
+        statusComboBox.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -82,9 +89,6 @@ public class WorkerManageGiftOrdersController {
         List<RecipientAdress> recipientAdressList = recipientAdressRepository.findAll();
         List<Adress> adressList = adressRepository.findAll();
         for (GiftOrder giftOrder : giftOrderList) {
-//            Gift gift = giftRepository.findById(giftOrder.getGift().getId());
-//            User user = userRepository.findById();
-//            new GiftOrderDto(giftOrder.getId(),,giftOrder.getUser().getId())
             String giftName = "";
             String senderName = "";
             String name = "";
@@ -117,7 +121,7 @@ public class WorkerManageGiftOrdersController {
                     email = recipientAdress.getAdress().getEmail();
                 }
             }
-            GiftOrderDto giftOrderDto = new GiftOrderDto(giftOrder.getId(), giftName, name, surname, city, street, Integer.valueOf(houseNumber), zipCode, Long.valueOf(telephoneNumber), email, String.valueOf(giftOrder.getDate()),senderName);
+            GiftOrderDto giftOrderDto = new GiftOrderDto(giftOrder.getId(), giftName, name, surname, city, street, Integer.valueOf(houseNumber), zipCode, Long.valueOf(telephoneNumber), email, String.valueOf(giftOrder.getDate()),senderName,giftOrder.getStatus().name());
             giftOrderDtoList.add(giftOrderDto);
         }
 
@@ -133,7 +137,22 @@ public class WorkerManageGiftOrdersController {
         emailColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("email"));
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("date"));
         senderNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("senderName"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("status"));
         ObservableList<GiftOrderDto> observableListGiftOrderDtos = FXCollections.observableArrayList(giftOrderDtoList);
         tableView.setItems(observableListGiftOrderDtos);
+    }
+
+    @FXML
+    public void changeStatus(ActionEvent event){
+        GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
+        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+        for (GiftOrder giftOrder : giftOrderList){
+            if (giftOrder.getId() == giftOrderDto.getId()) {
+                giftOrder.setStatus(statusComboBox.getValue());
+                giftOrderRepository.save(giftOrder);
+                break;
+            }
+        }
+        fillTableView();
     }
 }

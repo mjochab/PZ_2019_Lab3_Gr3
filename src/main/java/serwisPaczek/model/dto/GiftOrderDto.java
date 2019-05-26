@@ -20,4 +20,5 @@ public class GiftOrderDto {
     private String email;
     private String date;
     private String senderName;
+    private String status;
 }
