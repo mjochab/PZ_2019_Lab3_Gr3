@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.utils.DialogsUtils.showDialog;
+
 
 @Controller
 public class UserGiftOrderController {
@@ -88,46 +90,49 @@ public class UserGiftOrderController {
      */
     @FXML
     public void orderGift(ActionEvent event){
-        User user = getLoggedUser();
-        Gift gift = tableView.getSelectionModel().getSelectedItem();
-        if (getLoggedUser().getPremiumPointsBalance()-gift.getPremiumPoints()<0){
+        if (validateData()==false) return;
+        else {
+            User user = getLoggedUser();
+            Gift gift = tableView.getSelectionModel().getSelectedItem();
+            if (getLoggedUser().getPremiumPointsBalance() - gift.getPremiumPoints() < 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                        "Za mało punktów premium na koncie!", ButtonType.OK);
+                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+                alert.setTitle("Komunikat");
+                alert.setHeaderText(null);
+                alert.show();
+                return;
+            }
+            getLoggedUser().setPremiumPointsBalance(getLoggedUser().getPremiumPointsBalance() - gift.getPremiumPoints());
+            userRepository.save(user);
+            premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
+
+            List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+            Date date = new Date(System.currentTimeMillis());
+            Adress adress;
+            List<Adress> adressList = adressRepository.findAll();
+            adress = new Adress(nameField.getText(), surnameField.getText(),
+                    cityField.getText(), streetField.getText(), Integer.valueOf(houseNumberField.getText()),
+                    zipCodeField.getText(), Long.valueOf(telephoneField.getText()),
+                    emailField.getText()
+            );
+            adressList.add(adress);
+            adressRepository.saveAll(adressList);
+            List<RecipientAdress> recipientAdressList = recipientAdressRepository.findAll();
+            RecipientAdress recipientAdress = new RecipientAdress(adress);
+            recipientAdressList.add(recipientAdress);
+            recipientAdressRepository.saveAll(recipientAdressList);
+            GiftOrder giftOrder = new GiftOrder(date, gift, user, Status.WYSLANO_ZGLOSZENIE, recipientAdress);
+            giftOrderList.add(giftOrder);
+            giftOrderRepository.saveAll(giftOrderList);
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                    "Za mało punktów premium na koncie!", ButtonType.OK);
+                    "Zamówienie zostało złożone", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             alert.setTitle("Komunikat");
             alert.setHeaderText(null);
             alert.show();
-            return;
         }
-        getLoggedUser().setPremiumPointsBalance(getLoggedUser().getPremiumPointsBalance()-gift.getPremiumPoints());
-        userRepository.save(user);
-        premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
-
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        Date date = new Date(System.currentTimeMillis());
-        Adress adress;
-        List<Adress> adressList = adressRepository.findAll();
-        adress = new Adress(nameField.getText(), surnameField.getText(),
-                cityField.getText(), streetField.getText(), Integer.valueOf(houseNumberField.getText()),
-                zipCodeField.getText(), Long.valueOf(telephoneField.getText()),
-                emailField.getText()
-        );
-        adressList.add(adress);
-        adressRepository.saveAll(adressList);
-        List<RecipientAdress> recipientAdressList = recipientAdressRepository.findAll();
-        RecipientAdress recipientAdress = new RecipientAdress(adress);
-        recipientAdressList.add(recipientAdress);
-        recipientAdressRepository.saveAll(recipientAdressList);
-        GiftOrder giftOrder = new GiftOrder(date, gift, user, Status.WYSLANO_ZGLOSZENIE, recipientAdress);
-        giftOrderList.add(giftOrder);
-        giftOrderRepository.saveAll(giftOrderList);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                "Zamówienie zostało złożone", ButtonType.OK);
-        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-        alert.setTitle("Komunikat");
-        alert.setHeaderText(null);
-        alert.show();
     }
 
     /**
@@ -179,5 +184,57 @@ public class UserGiftOrderController {
         premiumPointsColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("premiumPoints"));
         ObservableList<Gift> observableListGifts = FXCollections.observableArrayList(giftList);
         tableView.setItems(observableListGifts);
+    }
+
+    /**
+     * This method is used to validate data entered into the adress form
+     */
+    boolean validateData(){
+        StringBuilder message = new StringBuilder();
+
+        if (nameField.getText().length() <= 2) {
+            message.append("Imię musi zawierać więcej niż dwa znaki! \n");
+        }
+        if (!(nameField.getText().matches("[a-zA-Z]+"))) {
+            message.append("Imię odbiorcy musi zawierać wyłącznie małe oraz duże litery! \n");
+        }
+        if (surnameField.getText().length() <= 2) {
+            message.append("Nazwisko musi zawierać więcej niż dwa znaki! \n");
+        }
+        if (!(surnameField.getText().matches("[a-zA-Z]+"))) {
+            message.append("Nazwisko musi zawierać wyłącznie małe oraz duże litery!\n");
+        }
+        if (cityField.getText().length() <= 2) {
+            message.append("Nazwa miasta musi zawierać więcej niż dwa znaki!\n");
+        }
+        if (!cityField.getText().matches("[a-zA-Z]+")) {
+            message.append("Nazwa miasta musi posiadać wyłącznie małe oraz duże litery!\n");
+        }
+        if (!emailField.getText().matches("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")) {
+            message.append("Email musi byc w formacie x@x.pl o długosci pomiędzy 2 a 30 znaków\n");
+        }
+        if (!zipCodeField.getText().matches("[0-9]{2}+-[0-9]{3}")) {
+            message.append("Kod pocztowy musi byc w formule XX-XXX, gdzie X jest cyfrą!\n");
+        }
+        if (houseNumberField.getText().length() <= 0 ) {
+            message.append("Numer domu nie może być ujemny\n");
+        }
+        if (!houseNumberField.getText().matches("\\d+")) {
+            message.append("Numer domu musi być liczbą!\n");
+        }
+        if (telephoneField.getText().length() != 9) {
+            message.append("Numer telefonu musi posiadać 9 cyfr!\n");
+        }
+        if (!telephoneField.getText().matches("\\d+")) {
+            message.append("Numer telefonu musi być składać się wyłącznie z cyfr!\n");
+        }
+        if (!streetField.getText().matches("[A-Z0-9a-z._%+-]{2,64}")) {
+            message.append("Nazwa ulicy musi zawierać się pomiędzy 2 a 64 znakami!\n");
+        }
+        if (message.length()==0) return true;
+        else {
+            showDialog(message.toString());
+            return false;
+        }
     }
 }
