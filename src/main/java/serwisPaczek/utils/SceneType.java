@@ -39,6 +39,7 @@ public enum SceneType {
 
     // USER - GIFT
     USER_GIFT_ORDER("user.gift/userGiftOrder"),
+    USER_CANCEL_GIFT_ORDER("user.gift/userCancelGiftOrder"),
 
     // USER - OTHER
     USER_COURIER_COMPANIES_LIST("user.other/userCourierCompaniesList"),

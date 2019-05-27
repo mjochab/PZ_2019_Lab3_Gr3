@@ -160,7 +160,7 @@ public class UserProfileOrderListController {
             }
         }
         catch(NumberFormatException e){
-            e.printStackTrace();
+            alertError("Zaznacz zamówienie dla którego chcesz wyświetlić szczegóły!");
         }
     }
 

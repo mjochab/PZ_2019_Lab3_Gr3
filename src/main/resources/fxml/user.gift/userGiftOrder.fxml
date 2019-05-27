@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -25,7 +24,7 @@
                         <TableColumn fx:id="premiumPointsColumn" minWidth="0.0" prefWidth="115.0" text="Ilość punktów" />
                     </columns>
                 </TableView>
-                <Button fx:id="order" layoutX="471.0" layoutY="552.0" mnemonicParsing="false" onAction="#orderGift" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE">
+                <Button fx:id="order" layoutX="483.0" layoutY="550.0" mnemonicParsing="false" onAction="#orderGift" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -45,12 +44,6 @@
                 <TextField fx:id="zipCodeField" layoutX="484.0" layoutY="300.0" promptText="Kod pocztowy" />
                 <TextField fx:id="emailField" layoutX="484.0" layoutY="339.0" promptText="Adres e-mail" />
                 <TextField fx:id="telephoneField" layoutX="484.0" layoutY="377.0" promptText="Nr telefonu" />
-                <Button fx:id="cancel" layoutX="649.0" layoutY="552.0" mnemonicParsing="false" onAction="#cancelGift" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: blue;" text="Anuluj prezent" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-                <ComboBox fx:id="giftComboBox" layoutX="653.0" layoutY="500.0" onAction="#showGiftOrders" prefHeight="25.0" prefWidth="128.0" />
             <Button layoutX="484.0" layoutY="69.0" mnemonicParsing="false" onAction="#fillAdressForm" text="Wypełnij danymi z profilu" />
             </children>
         </AnchorPane>
