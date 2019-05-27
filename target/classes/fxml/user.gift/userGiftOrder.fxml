@@ -50,8 +50,8 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <ComboBox fx:id="giftComboBox" layoutX="653.0" layoutY="500.0" prefHeight="25.0" prefWidth="128.0" />
-            <Button onAction="#fillAdressForm" layoutX="484.0" layoutY="69.0" mnemonicParsing="false" text="Wypełnij danymi z profilu" />
+                <ComboBox fx:id="giftComboBox" layoutX="653.0" layoutY="500.0" onAction="#showGiftOrders" prefHeight="25.0" prefWidth="128.0" />
+            <Button layoutX="484.0" layoutY="69.0" mnemonicParsing="false" onAction="#fillAdressForm" text="Wypełnij danymi z profilu" />
             </children>
         </AnchorPane>
     </center>
