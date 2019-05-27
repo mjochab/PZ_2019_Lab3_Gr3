@@ -59,6 +59,9 @@ public class UserCancelGiftOrderController {
     @FXML
     private TableColumn<GiftOrderDto, String> emailColumn;
 
+    /**
+     * This method fills TableView on page with data.
+     */
     @FXML
     public void initialize() {
         List<GiftOrder> listGiftOrders = giftOrderRepository.findAll();
@@ -103,6 +106,9 @@ public class UserCancelGiftOrderController {
         Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
     }
 
+    /**
+     * This method is used to cancel GiftOrder.
+     */
     @FXML
     public void cancelGiftOrder(ActionEvent event) {
         try {
