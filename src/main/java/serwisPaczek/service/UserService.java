@@ -4,7 +4,7 @@ import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import serwisPaczek.model.Adress;
+import serwisPaczek.model.Address;
 import serwisPaczek.model.User;
 import serwisPaczek.model.dto.UserLoginDto;
 import serwisPaczek.repository.RoleRepository;
@@ -40,17 +40,7 @@ public class UserService {
      */
     public void login(String username, String password, Text usernameWarning, Text passwordWarning) {
 
-        if (username.length() <= 3 || !isCorrect(username)) {
-            usernameWarning.setText("Username musi posiadać conajmniej 4 znaki!");
-            usernameWarning.setVisible(true);
-        }
-        else usernameWarning.setVisible(false);
 
-        if (password.length() <= 5 || !isCorrect(password)) {
-            passwordWarning.setText("Password musi posiadać conajmniej 6 znaków!");
-            passwordWarning.setVisible(true);
-        }
-        else passwordWarning.setVisible(false);
 
         if (isCorrect(username) && isCorrect(password) && password.length() >= 6 && username.length() >= 4) {
             User user = userRepository.findByUsername(username);
@@ -68,6 +58,10 @@ public class UserService {
                     showDialog("Twoje konto jest zablokowane!");
                 }
             } else {
+                usernameWarning.setText("Niepoprawna nazwa użytkownika!");
+                usernameWarning.setVisible(true);
+                passwordWarning.setText("Niepoprawne hasło!");
+                passwordWarning.setVisible(true);
                 showDialog("Podałeś złą nazwę użytkownika lub hasło!");
             }
         }
@@ -143,12 +137,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User saveAddressToLoggedUser(User user, Adress adress){
-        user.setAdress(adress);
+    public User saveAddressToLoggedUser(User user, Address address) {
+        user.setAddress(address);
         return userRepository.save(user);
     }
+
     @Autowired
-    public void setSceneManager(SceneManager sceneManager) { this.sceneManager = sceneManager; }
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 }
 
 

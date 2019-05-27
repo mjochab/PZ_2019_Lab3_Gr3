@@ -8,28 +8,29 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.model.Adress;
+import serwisPaczek.model.Address;
 import serwisPaczek.model.Courier;
 import serwisPaczek.model.Parcel;
 import serwisPaczek.model.UserOrder;
+import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-import serwisPaczek.repository.UserRepository;
+
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class UserOrderFinalizeController {
 
-    private SceneManager sceneManager;
-    private UserOrder userOrder;
-    private Adress received;
-    private Adress sender;
-    private Parcel parcel;
-    private Courier courier;
-
     @Autowired
     UserRepository userRepository;
+    private SceneManager sceneManager;
+    private UserOrder userOrder;
+    private Address received;
+    private Address sender;
+    private Parcel parcel;
+    private Courier courier;
     @FXML
     private Label TFnr;
     @FXML
@@ -64,8 +65,8 @@ public class UserOrderFinalizeController {
     private TextField TFaccountBalace;
 
     @FXML
-    public void initialize(UserOrder userOrder, Adress sender,
-                           Adress received, Courier courier, Parcel parcel) {
+    public void initialize(UserOrder userOrder, Address sender,
+                           Address received, Courier courier, Parcel parcel) {
         this.userOrder = userOrder;
         this.sender = sender;
         this.received = received;
@@ -91,7 +92,7 @@ public class UserOrderFinalizeController {
         TFfromZipCode.setText(sender.getZipCode());
         // show acc balance
         TFaccountBalace.setText(String.valueOf(getLoggedUser().getAccountBalance()));
-        getLoggedUser().setPremiumPointsBalance(getLoggedUser().getPremiumPointsBalance()+(int)userOrder.getPrice());
+        getLoggedUser().setPremiumPointsBalance(getLoggedUser().getPremiumPointsBalance() + (int) userOrder.getPrice());
         userRepository.save(getLoggedUser());
 
     }
@@ -110,6 +111,7 @@ public class UserOrderFinalizeController {
                 sender.getHouseNumber(), received.getHouseNumber(),
                 parcel.getWeight(), parcel.getLength(), parcel.getWidth(),
                 parcel.getHeight(), parcel.getType());
+        showDialog("Pomyślnie wygenerowano PDF");
     }
 
     @FXML

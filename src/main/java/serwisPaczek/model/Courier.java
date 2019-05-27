@@ -17,6 +17,8 @@ public class Courier {
     private EnvelopePricing envelopePricing;
     @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
     private PalletPricing palletPricing;
+    @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
+    private PackPricing packPricing;
 
     public Courier(String name, boolean is_blocked, EnvelopePricing envelopePricing, PalletPricing palletPricing, PackPricing packPricing) {
         this.name = name;
@@ -25,9 +27,6 @@ public class Courier {
         this.palletPricing = palletPricing;
         this.packPricing = packPricing;
     }
-
-    @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
-    private PackPricing packPricing;
 
     public Courier() {
     }

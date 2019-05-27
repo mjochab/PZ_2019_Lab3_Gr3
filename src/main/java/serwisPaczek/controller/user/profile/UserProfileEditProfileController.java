@@ -5,10 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-import serwisPaczek.model.Adress;
-import serwisPaczek.model.User;
-import serwisPaczek.repository.AdressRepository;
+import serwisPaczek.model.Address;
+import serwisPaczek.repository.AddressRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.service.UserService;
 import serwisPaczek.utils.SceneManager;
@@ -19,9 +17,17 @@ import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class UserProfileEditProfileController {
+    String name;
+    String surname;
+    String city;
+    String email;
+    String zip;
+    String street;
+    int home;
+    long phone;
     private SceneManager sceneManager;
     @Autowired
-    private AdressRepository adressRepository;
+    private AddressRepository addressRepository;
     @Autowired
     private UserService userService;
     @Autowired
@@ -42,25 +48,18 @@ public class UserProfileEditProfileController {
     private TextField TFzip;
     @FXML
     private TextField TFsurname;
-    String name;
-    String surname;
-    String city;
-    String email;
-    String zip;
-    String street;
-    int home;
-    long phone;
+
     @FXML
     public void initialize() {
-        if (getLoggedUser().getAdress() != null) {
-            TFname.setText(getLoggedUser().getAdress().getName());
-            TFsurname.setText(getLoggedUser().getAdress().getSurname());
-            TFstreet.setText(getLoggedUser().getAdress().getStreet());
-            TFphone.setText(getLoggedUser().getAdress().getTelephoneNumber().toString());
-            TFemail.setText(getLoggedUser().getAdress().getEmail());
-            TFhome.setText(getLoggedUser().getAdress().getHouseNumber().toString());
-            TFcity.setText(getLoggedUser().getAdress().getCity());
-            TFzip.setText(getLoggedUser().getAdress().getZipCode());
+        if (getLoggedUser().getAddress() != null) {
+            TFname.setText(getLoggedUser().getAddress().getName());
+            TFsurname.setText(getLoggedUser().getAddress().getSurname());
+            TFstreet.setText(getLoggedUser().getAddress().getStreet());
+            TFphone.setText(getLoggedUser().getAddress().getTelephoneNumber().toString());
+            TFemail.setText(getLoggedUser().getAddress().getEmail());
+            TFhome.setText(getLoggedUser().getAddress().getHouseNumber().toString());
+            TFcity.setText(getLoggedUser().getAddress().getCity());
+            TFzip.setText(getLoggedUser().getAddress().getZipCode());
         } else {
             TFname.setText("");
             TFsurname.setText("");
@@ -94,18 +93,18 @@ public class UserProfileEditProfileController {
                     && TFphone.getText().length() == 9 && TFphone.getText().matches("\\d+")) {
 
 
-                if (getLoggedUser().getAdress() != null) {
+                if (getLoggedUser().getAddress() != null) {
 
-                    Adress adress = editUserAddress(getLoggedUser().getAdress());
-                    userService.saveAddressToLoggedUser(getLoggedUser(),adress);
+                    Address address = editUserAddress(getLoggedUser().getAddress());
+                    userService.saveAddressToLoggedUser(getLoggedUser(), address);
 
                     showDialog("Poprawna edycja profilu.");
                     sceneManager.show(SceneType.USER_MAIN);
                 } else {
-                    Adress adress = new Adress(name, surname, city, street, home, zip, phone, email);
-                    adressRepository.save(adress);
+                    Address address = new Address(name, surname, city, street, home, zip, phone, email);
+                    addressRepository.save(address);
 
-                    userService.saveAddressToLoggedUser(getLoggedUser(),adress);
+                    userService.saveAddressToLoggedUser(getLoggedUser(), address);
                     showDialog("Poprawna edycja profilu.");
                     sceneManager.show(SceneType.USER_MAIN);
                 }
@@ -117,22 +116,26 @@ public class UserProfileEditProfileController {
         }
     }
 
-    public Adress editUserAddress(Adress adress){
-        adress.setName(name);
-        adress.setSurname(surname);
-        adress.setStreet(street);
-        adress.setCity(city);
-        adress.setEmail(email);
-        adress.setZipCode(zip);
-        adress.setHouseNumber(home);
-        adress.setTelephoneNumber(phone);
-        return adressRepository.save(adress);
+    public Address editUserAddress(Address address) {
+        address.setName(name);
+        address.setSurname(surname);
+        address.setStreet(street);
+        address.setCity(city);
+        address.setEmail(email);
+        address.setZipCode(zip);
+        address.setHouseNumber(home);
+        address.setTelephoneNumber(phone);
+        return addressRepository.save(address);
     }
 
 
     @FXML
-    public void openMainUserPanel(ActionEvent event) { sceneManager.show(SceneType.USER_MAIN); }
+    public void openMainUserPanel(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
+    }
 
     @Autowired
-    public void setSceneManager(SceneManager sceneManager) { this.sceneManager = sceneManager; }
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 }

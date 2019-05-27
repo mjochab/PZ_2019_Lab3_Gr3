@@ -69,10 +69,12 @@ public class UserCourierOpinionsController {
             e.printStackTrace();
         }
     }
+
     @Autowired
     public void setContext(ApplicationContext context) {
         this.context = context;
     }
+
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;

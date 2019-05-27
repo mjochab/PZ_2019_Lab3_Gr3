@@ -25,52 +25,53 @@ public class UserOrder {
     private Courier courier;
     private Status status;
     @ManyToOne
-    @JoinColumn(name = "sender_adress_id")
-    private SenderAdress senderAdress;
+    @JoinColumn(name = "sender_address_id")
+    private SenderAddress senderAddress;
     @OneToOne
     @JoinColumn(name = "parcel_id")
     private Parcel parcel;
     @ManyToOne
-    @JoinColumn(name = "recipient_adress_id")
-    private RecipientAdress recipientAdress;
+    @JoinColumn(name = "recipient_address_id")
+    private RecipientAddress recipientAddress;
     @OneToOne(mappedBy = "userOrder", cascade = CascadeType.ALL)
     private Opinion opinion;
 
     public UserOrder() {
     }
 
-    public UserOrder(double price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
+    public UserOrder(double price, Date date, User user, Courier courier, Status status, SenderAddress senderAddress,
+                     RecipientAddress recipientAddress, Parcel parcel) {
         this.price = price;
         this.date = date;
         this.user = user;
         this.courier = courier;
         this.status = status;
-        this.senderAdress = senderAdress;
-        this.recipientAdress = recipientAdress;
+        this.senderAddress = senderAddress;
+        this.recipientAddress = recipientAddress;
         this.parcel = parcel;
     }
 
     public UserOrder(double price, Date date, int premiumPoints, User user, Courier courier, Status status,
-                     SenderAdress senderAdress, RecipientAdress recipientAdress, Parcel parcel) {
+                     SenderAddress senderAddress, RecipientAddress recipientAddress, Parcel parcel) {
         this.price = price;
         this.date = date;
         this.premiumPoints = premiumPoints;
         this.user = user;
         this.courier = courier;
         this.status = status;
-        this.senderAdress = senderAdress;
-        this.recipientAdress = recipientAdress;
+        this.senderAddress = senderAddress;
+        this.recipientAddress = recipientAddress;
         this.parcel = parcel;
     }
 
-    public UserOrder(double price, Date date, User user, Courier courier, Status status, SenderAdress senderAdress,
-                     RecipientAdress recipientAdress) {
+    public UserOrder(double price, Date date, User user, Courier courier, Status status, SenderAddress senderAddress,
+                     RecipientAddress recipientAddress) {
         this.price = price;
         this.date = date;
         this.user = user;
         this.courier = courier;
         this.status = status;
-        this.senderAdress = senderAdress;
-        this.recipientAdress = recipientAdress;
+        this.senderAddress = senderAddress;
+        this.recipientAddress = recipientAddress;
     }
 }

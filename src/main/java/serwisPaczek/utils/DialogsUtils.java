@@ -7,7 +7,9 @@ import javafx.scene.layout.Region;
 public class DialogsUtils {
 
 
-    /** Method to generate dialog
+    /**
+     * Method to generate dialog
+     *
      * @param text - text what we need to show outside
      */
     public static void showDialog(String text) {

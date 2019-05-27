@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.repository.UserRepository;
 import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
@@ -21,13 +22,19 @@ public class AdminMainController {
 
     @FXML
     private Button btnWelcomeAdmin;
-
+    @FXML
+    private Button btnFillDataBaseWithExampleData;
     @Autowired
     private MainService mainService;
+    @Autowired
+    private UserRepository userRepository;
 
     @FXML
     public void initialize() {
         btnWelcomeAdmin.setText("Witaj " + getLoggedUser().getUsername() + "!");
+        if(userRepository.findByUsername("Uzytkownik1")!=null){
+            btnFillDataBaseWithExampleData.setVisible(false);
+        }
     }
 
     /**

@@ -16,11 +16,9 @@ import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
 @Controller
 public class UserProfileMyOpinionsController {
-    private SceneManager sceneManager;
-
     @Autowired
     OpinionRepository opinionRepository;
-
+    private SceneManager sceneManager;
     @FXML
     private ListView<String> opinionListView;
 

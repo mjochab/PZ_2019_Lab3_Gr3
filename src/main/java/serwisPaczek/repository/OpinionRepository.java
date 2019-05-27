@@ -11,7 +11,10 @@ import java.util.List;
 @Repository
 public interface OpinionRepository extends JpaRepository<Opinion, Long> {
     Opinion findByUserOrder_Courier(Courier courier);
+
     Opinion findByUserOrder_Id(Long id);
+
     List<Opinion> findAllByUserOrder_User(User user);
+
     List<Opinion> findAllByUserOrder_Courier(Courier courier);
 }

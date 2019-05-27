@@ -48,7 +48,7 @@ public class WorkerManageParcelsController {
     }
 
 
-    private void fillListViewWithAllOrders(){
+    private void fillListViewWithAllOrders() {
         workerOrdersList.getItems().clear();
         List<UserOrder> orders = orderRepository.findAll();
 
@@ -56,6 +56,7 @@ public class WorkerManageParcelsController {
             fillListWithOrder(order);
         }
     }
+
     @FXML
     public void orderSearch(ActionEvent event) {
         if (
@@ -75,7 +76,6 @@ public class WorkerManageParcelsController {
     @FXML
     public void orderChangeStatus(ActionEvent event) {
         try {
-            // Getting id from selected item in the list
             String selectedItem = workerOrdersList.getSelectionModel().getSelectedItem();
             Pattern p = Pattern.compile("\\d+");
             Matcher m = p.matcher(selectedItem);

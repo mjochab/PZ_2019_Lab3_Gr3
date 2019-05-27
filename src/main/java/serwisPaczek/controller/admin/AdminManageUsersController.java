@@ -11,11 +11,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.model.Adress;
+import serwisPaczek.model.Address;
 import serwisPaczek.model.Role;
 import serwisPaczek.model.User;
-import serwisPaczek.model.dto.UserAdressDto;
-import serwisPaczek.repository.AdressRepository;
+import serwisPaczek.model.dto.UserAddressDto;
+import serwisPaczek.repository.AddressRepository;
 import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
@@ -32,31 +32,31 @@ public class AdminManageUsersController {
     UserRepository userRepository;
     private SceneManager sceneManager;
     @Autowired
-    private AdressRepository adressRepository;
+    private AddressRepository addressRepository;
     @Autowired
     private RoleRepository roleRepository;
     @FXML
-    private TableView<UserAdressDto> tableView;
+    private TableView<UserAddressDto> tableView;
     @FXML
-    private TableColumn<UserAdressDto, String> idColumn;
+    private TableColumn<UserAddressDto, String> idColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> userNameColumn;
+    private TableColumn<UserAddressDto, String> userNameColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> nameColumn;
+    private TableColumn<UserAddressDto, String> nameColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> surnameColumn;
+    private TableColumn<UserAddressDto, String> surnameColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> cityColumn;
+    private TableColumn<UserAddressDto, String> cityColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> streetColumn;
+    private TableColumn<UserAddressDto, String> streetColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> houseNumberColumn;
+    private TableColumn<UserAddressDto, String> houseNumberColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> zipCodeColumn;
+    private TableColumn<UserAddressDto, String> zipCodeColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> telephoneNumberColumn;
+    private TableColumn<UserAddressDto, String> telephoneNumberColumn;
     @FXML
-    private TableColumn<UserAdressDto, String> emailColumn;
+    private TableColumn<UserAddressDto, String> emailColumn;
     @FXML
     private TextField TFusername;
 
@@ -66,24 +66,24 @@ public class AdminManageUsersController {
     @FXML
     public void initialize() {
         List<User> listUsers = userRepository.findAll();
-        List<UserAdressDto> userAdressDtos = new ArrayList<>();
+        List<UserAddressDto> userAddressDtos = new ArrayList<>();
 
         for (User user : listUsers) {
-            Adress adress = adressRepository.findByUser(user);
-            if (adress != null) {
-                userAdressDtos.add(new UserAdressDto(user.getId(),
+            Address address = addressRepository.findByUser(user);
+            if (address != null) {
+                userAddressDtos.add(new UserAddressDto(user.getId(),
                         user.getUsername(),
-                        adress.getName(),
-                        adress.getSurname(),
-                        adress.getCity(),
-                        adress.getStreet(),
-                        adress.getHouseNumber(),
-                        adress.getZipCode(),
-                        adress.getTelephoneNumber(),
-                        adress.getEmail()
+                        address.getName(),
+                        address.getSurname(),
+                        address.getCity(),
+                        address.getStreet(),
+                        address.getHouseNumber(),
+                        address.getZipCode(),
+                        address.getTelephoneNumber(),
+                        address.getEmail()
                 ));
             } else
-                userAdressDtos.add(new UserAdressDto(user.getId(),
+                userAddressDtos.add(new UserAddressDto(user.getId(),
                         user.getUsername(),
                         "",
                         "",
@@ -95,17 +95,17 @@ public class AdminManageUsersController {
                         ""
                 ));
         }
-        idColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("id"));
-        userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("username"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("surname"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("city"));
-        streetColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("street"));
-        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("houseNumber"));
-        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("zipCode"));
-        telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("telephoneNumber"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("email"));
-        ObservableList<UserAdressDto> observableListUsers = FXCollections.observableArrayList(userAdressDtos);
+        idColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("id"));
+        userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("username"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("name"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("surname"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("city"));
+        streetColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("street"));
+        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("houseNumber"));
+        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("zipCode"));
+        telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("telephoneNumber"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("email"));
+        ObservableList<UserAddressDto> observableListUsers = FXCollections.observableArrayList(userAddressDtos);
         tableView.setItems(observableListUsers);
     }
 
@@ -113,8 +113,7 @@ public class AdminManageUsersController {
     public void handleMouseClick(MouseEvent arg0) {
         try {
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
         }
     }

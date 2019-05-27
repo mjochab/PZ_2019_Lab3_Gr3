@@ -78,7 +78,8 @@
                                         <Font size="14.0"/>
                                     </font>
                                 </Button>
-                                <Button fx:id="btnEditCouponsPanel" layoutX="80.0" layoutY="311.0" mnemonicParsing="false"
+                                <Button fx:id="btnEditCouponsPanel" layoutX="80.0" layoutY="311.0"
+                                        mnemonicParsing="false"
                                         onAction="#openEditCouponsPanel" prefHeight="120.0"
                                         prefWidth="135.0" style="-fx-background-color: red;" text="Zarządzaj rabatami"
                                         textAlignment="CENTER" textFill="WHITE" wrapText="true">

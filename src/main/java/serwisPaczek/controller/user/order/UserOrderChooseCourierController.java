@@ -19,6 +19,7 @@ import serwisPaczek.repository.PackPricingRepository;
 import serwisPaczek.repository.PalletPricingRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -31,14 +32,13 @@ import static serwisPaczek.utils.SceneManager.stage;
 @Controller
 public class UserOrderChooseCourierController {
 
-    private SceneManager sceneManager;
-    private int ratio = 1;
-    float price =0;
-    private float discountRatio;
-    private ApplicationContext context;
-
+    float price = 0;
     @Autowired
     CourierRepository courierRepository;
+    private SceneManager sceneManager;
+    private int ratio = 1;
+    private float discountRatio;
+    private ApplicationContext context;
     @Autowired
     private PackPricingRepository packPricingRepository;
     @Autowired
@@ -74,7 +74,7 @@ public class UserOrderChooseCourierController {
         button = new Button[numberOfButtons];
 
         if (parcel.getType().equals("paczka")) {
-            ratio = getRatioByParcelParameters(parcel.getLength(),parcel.getWeight(),parcel.getHeight());
+            ratio = getRatioByParcelParameters(parcel.getLength(), parcel.getWeight(), parcel.getHeight());
         }
 
         for (Courier courier : listCouriers) {
@@ -84,13 +84,10 @@ public class UserOrderChooseCourierController {
 
             if (parcel.getType().equals("koperta")) {
                 price = envelopePricingRepository.findByCourier(courier).getUp_to_1();
-            }
-            else if (parcel.getType().equals("paczka")) {
-               price = getPackagePriceByWeightAndCourier(courier, parcel.getWeight(),
-                               getRatioByParcelParameters(parcel.getLength(),parcel.getWeight(),parcel.getHeight()));
-            }
-
-            else if (parcel.getType().equals("paleta")) {
+            } else if (parcel.getType().equals("paczka")) {
+                price = getPackagePriceByWeightAndCourier(courier, parcel.getWeight(),
+                        getRatioByParcelParameters(parcel.getLength(), parcel.getWeight(), parcel.getHeight()));
+            } else if (parcel.getType().equals("paleta")) {
                 price = getPalettePriceByWeightAndCourier(courier, parcel.getWeight());
             }
 
@@ -141,20 +138,19 @@ public class UserOrderChooseCourierController {
                 public void handle(ActionEvent event) {
                     if (getLoggedUser() != null) {
                         try {
-                                if (getLoggedUser().getAccountBalance() < finalPrice) {
-                                    throw new ArithmeticException();
-                                }
-
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                                        "/fxml/user.order/userOrderFillAddressesForm.fxml"));
-                                loader.setControllerFactory(context::getBean);
-                                Parent root = loader.load();
-                                UserOrderFillAddressesFormController fillAdressessController = loader.getController();
-                                fillAdressessController.initialize(parcel, courier, finalPrice);
-                                stage.setScene(new Scene(root));
-                                stage.show();
+                            if (getLoggedUser().getAccountBalance() < finalPrice) {
+                                throw new ArithmeticException();
                             }
-                         catch (IOException e) {
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                                    "/fxml/user.order/userOrderFillAddressesForm.fxml"));
+                            loader.setControllerFactory(context::getBean);
+                            Parent root = loader.load();
+                            UserOrderFillAddressesFormController filladdressessController = loader.getController();
+                            filladdressessController.initialize(parcel, courier, finalPrice);
+                            stage.setScene(new Scene(root));
+                            stage.show();
+                        } catch (IOException e) {
                             showDialog("Musisz być zalogowany by dokonać zamówienia!");
                         } catch (ArithmeticException e) {
                             showDialog("Nie wystarczająca ilość środków na koncie!\n"
@@ -171,12 +167,13 @@ public class UserOrderChooseCourierController {
 
     /**
      * The method calculating the parcel multiplier
+     *
      * @param length
      * @param weight
      * @param height
      * @return multiplier
      */
-    private int getRatioByParcelParameters(int length, int weight, int height){
+    private int getRatioByParcelParameters(int length, int weight, int height) {
         if (length <= 60 && weight <= 50 && height <= 30)
             ratio = 1;
         else if (length <= 80 && weight <= 70 && height <= 50)
@@ -187,13 +184,15 @@ public class UserOrderChooseCourierController {
     }
 
 
-    /** The method calculating the parcel price
+    /**
+     * The method calculating the parcel price
+     *
      * @param courier
      * @param weight
      * @param ratio
      * @return price of parcel
      */
-    private float getPackagePriceByWeightAndCourier(Courier courier, int weight, int ratio){
+    private float getPackagePriceByWeightAndCourier(Courier courier, int weight, int ratio) {
 
         if (weight <= 1) {
             price = packPricingRepository.findByCourier(courier).getUp_to_1() * ratio;
@@ -220,7 +219,9 @@ public class UserOrderChooseCourierController {
         return price;
     }
 
-    /** The method calculating the palette price
+    /**
+     * The method calculating the palette price
+     *
      * @param courier
      * @param weight
      * @return price of palette

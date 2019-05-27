@@ -9,7 +9,9 @@ public class Encryption {
     @Autowired
     private PasswordEncoder encoder;
 
-    /** Method is encoding password
+    /**
+     * Method is encoding password
+     *
      * @param password
      * @return
      */

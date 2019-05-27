@@ -7,11 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -20,7 +16,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.controller.user.order.UserOrderAddOpinionController;
 import serwisPaczek.controller.user.order.UserOrderFinalizeController;
-import serwisPaczek.model.*;
+import serwisPaczek.model.Address;
+import serwisPaczek.model.User;
+import serwisPaczek.model.UserOrder;
 import serwisPaczek.model.dto.UserOrderDto;
 import serwisPaczek.repository.*;
 import serwisPaczek.utils.SceneManager;
@@ -28,21 +26,17 @@ import serwisPaczek.utils.SceneType;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Long.parseLong;
+import static serwisPaczek.model.Status.ANULOWANO;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 import static serwisPaczek.utils.SceneManager.stage;
-import static serwisPaczek.model.Status.ANULOWANO;
 
 
 @SuppressWarnings("Duplicates")
 @Controller
 public class UserProfileOrderListController {
-    private SceneManager sceneManager;
     @Autowired
     OrderRepository orderRepository;
     @Autowired
@@ -50,11 +44,12 @@ public class UserProfileOrderListController {
     @Autowired
     OpinionRepository opinionRepository;
     @Autowired
-    AdressRepository adressRepository;
+    AddressRepository addressRepository;
     @Autowired
-    RecipientAdressRepository recipientAdressRepository;
+    RecipientAddressRepository recipientAddressRepository;
     @Autowired
-    SenderAdressRepository senderAdressRepository;
+    SenderAddressRepository senderAddressRepository;
+    private SceneManager sceneManager;
     @FXML
     private TableView<UserOrderDto> tableView;
     @FXML
@@ -99,19 +94,19 @@ public class UserProfileOrderListController {
         for (UserOrder order : listOrders) {
             if (order.getUser().getId() == getLoggedUser().getId()) {
                 userOrderDtos.add(new UserOrderDto(order.getId(),
-                        order.getRecipientAdress().getAdress().getName(),
-                        order.getRecipientAdress().getAdress().getSurname(),
-                        order.getRecipientAdress().getAdress().getCity(),
-                        order.getRecipientAdress().getAdress().getStreet(),
-                        order.getRecipientAdress().getAdress().getHouseNumber(),
-                        order.getRecipientAdress().getAdress().getZipCode(),
-                        order.getRecipientAdress().getAdress().getTelephoneNumber(),
-                        order.getRecipientAdress().getAdress().getEmail(),
+                        order.getRecipientAddress().getAddress().getName(),
+                        order.getRecipientAddress().getAddress().getSurname(),
+                        order.getRecipientAddress().getAddress().getCity(),
+                        order.getRecipientAddress().getAddress().getStreet(),
+                        order.getRecipientAddress().getAddress().getHouseNumber(),
+                        order.getRecipientAddress().getAddress().getZipCode(),
+                        order.getRecipientAddress().getAddress().getTelephoneNumber(),
+                        order.getRecipientAddress().getAddress().getEmail(),
                         order.getDate().toString(),
                         order.getCourier().getName(),
                         order.getStatus(),
-                        order.getSenderAdress().getAdress().getName(),
-                        order.getSenderAdress().getAdress().getSurname()
+                        order.getSenderAddress().getAddress().getName(),
+                        order.getSenderAddress().getAddress().getSurname()
                 ));
             }
         }
@@ -138,15 +133,17 @@ public class UserProfileOrderListController {
         try {
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
             UserOrder order = orderRepository.getOne(selectedId);
-            System.out.println(order.getCourier().getName());
-            Adress sender = new Adress(order.getSenderAdress().getAdress().getName(), order.getSenderAdress().getAdress().getSurname(),
-                    order.getSenderAdress().getAdress().getCity(), order.getSenderAdress().getAdress().getStreet(),
-                    order.getSenderAdress().getAdress().getHouseNumber(), order.getSenderAdress().getAdress().getZipCode(),
-                    order.getSenderAdress().getAdress().getTelephoneNumber(),order.getSenderAdress().getAdress().getEmail());
-            Adress received = new Adress(order.getRecipientAdress().getAdress().getName(), order.getRecipientAdress().getAdress().getSurname(),
-                    order.getRecipientAdress().getAdress().getCity(), order.getRecipientAdress().getAdress().getStreet(),
-                    order.getRecipientAdress().getAdress().getHouseNumber(), order.getRecipientAdress().getAdress().getZipCode(),
-                    order.getRecipientAdress().getAdress().getTelephoneNumber(), order.getRecipientAdress().getAdress().getEmail());
+
+            Address sender = new Address(order.getSenderAddress().getAddress().getName(),
+                    order.getSenderAddress().getAddress().getSurname(),
+                    order.getSenderAddress().getAddress().getCity(), order.getSenderAddress().getAddress().getStreet(),
+                    order.getSenderAddress().getAddress().getHouseNumber(), order.getSenderAddress().getAddress().getZipCode(),
+                    order.getSenderAddress().getAddress().getTelephoneNumber(), order.getSenderAddress().getAddress().getEmail());
+            Address received = new Address(order.getRecipientAddress().getAddress().getName(),
+                    order.getRecipientAddress().getAddress().getSurname(),
+                    order.getRecipientAddress().getAddress().getCity(), order.getRecipientAddress().getAddress().getStreet(),
+                    order.getRecipientAddress().getAddress().getHouseNumber(), order.getRecipientAddress().getAddress().getZipCode(),
+                    order.getRecipientAddress().getAddress().getTelephoneNumber(), order.getRecipientAddress().getAddress().getEmail());
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));
                 loader.setControllerFactory(context::getBean);
@@ -158,8 +155,7 @@ public class UserProfileOrderListController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }
@@ -194,8 +190,7 @@ public class UserProfileOrderListController {
         try {
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
             btnAddOpinion.setVisible(opinionRepository.findByUserOrder_Id(selectedId) == null);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             showDialog("Wybierz zamówienie, dla którego chcesz wykonać akcję");
         }
     }
@@ -203,24 +198,25 @@ public class UserProfileOrderListController {
     @FXML
     public void cancelOrder(ActionEvent event) {
         try {
-        Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
-        UserOrder order = orderRepository.getOne(selectedId);
-        if(order.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
-            if(getLoggedUser().getPremiumPointsBalance() >= order.getPremiumPoints()){
-                order.setStatus(ANULOWANO);
-                orderRepository.save(order);
-                User user = getLoggedUser();
-                Double account = user.getAccountBalance() + order.getPremiumPoints();
-                user.setAccountBalance(account);
-                user.setPremiumPointsBalance(user.getPremiumPointsBalance() - order.getPremiumPoints());
-                userRepository.save(user);
-                showDialog("Anulowano zamówienie");
-            }else{
-                showDialog("Za mało punktów prenium aby anulowć zamówienie");
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+            UserOrder order = orderRepository.getOne(selectedId);
+            if (order.getStatus().toString() == "WYSLANO_ZGLOSZENIE") {
+                if (getLoggedUser().getPremiumPointsBalance() >= order.getPremiumPoints()) {
+                    order.setStatus(ANULOWANO);
+                    orderRepository.save(order);
+                    User user = getLoggedUser();
+                    Double account = user.getAccountBalance() + order.getPremiumPoints();
+                    user.setAccountBalance(account);
+                    user.setPremiumPointsBalance(user.getPremiumPointsBalance() - order.getPremiumPoints());
+                    userRepository.save(user);
+                    showDialog("Anulowano zamówienie");
+                } else {
+                    showDialog("Za mało punktów prenium aby anulowć zamówienie");
+                }
+            } else {
+                showDialog("Nie można anulować zamówienia!");
             }
-        }else{
-            showDialog("Nie można anulować zamówienia!");
-        } } catch (Exception e) {
+        } catch (Exception e) {
             alertError("Zaznacz zamówienie, które chcesz anulować!");
         }
     }

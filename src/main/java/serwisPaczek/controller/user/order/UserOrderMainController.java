@@ -69,6 +69,7 @@ public class UserOrderMainController {
     private Label Ldlugosc;
     @FXML
     private Label Lwysokosc;
+
     @FXML
     public void initialize() {
         Lwaga.setVisible(false);
@@ -97,72 +98,68 @@ public class UserOrderMainController {
                 typ = "paczka";
             } else typ = "paleta";
 
-            if((!TFwaga.getText().matches("\\d+")) ){
+            if ((!TFwaga.getText().matches("\\d+"))) {
                 Lwaga.setText("Waga musi być liczbą!");
                 Lwaga.setVisible(true);
-            }
-            else {
+            } else {
                 Lwaga.setVisible(false);
             }
-            if((!TFdlugosc.getText().matches("\\d+")) ){
+            if ((!TFdlugosc.getText().matches("\\d+"))) {
                 Ldlugosc.setText("Długość musi być liczbą!");
                 Ldlugosc.setVisible(true);
-            }
-            else {
+            } else {
                 Ldlugosc.setVisible(false);
             }
-            if((!TFszerokosc.getText().matches("\\d+")) ){
+            if ((!TFszerokosc.getText().matches("\\d+"))) {
                 Lszerokosc.setText("Szerokość musi być liczbą!");
                 Lszerokosc.setVisible(true);
-            }
-            else {
+            } else {
                 Lszerokosc.setVisible(false);
             }
-            if((!TFwysokosc.getText().matches("\\d+")) ){
+            if ((!TFwysokosc.getText().matches("\\d+"))) {
                 Lwysokosc.setText("Wysokość musi być liczbą!");
                 Lwysokosc.setVisible(true);
-            }
-            else {
+            } else {
                 Lwysokosc.setVisible(false);
             }
-    if((TFwysokosc.getText().matches("\\d+") && (TFszerokosc.getText().matches("\\d+")) &&
-            (TFdlugosc.getText().matches("\\d+")) && (TFwaga.getText().matches("\\d+")) ) ){
+            if ((TFwysokosc.getText().matches("\\d+") && (TFszerokosc.getText().matches("\\d+")) &&
+                    (TFdlugosc.getText().matches("\\d+")) && (TFwaga.getText().matches("\\d+")))) {
 
-            if (typ == "koperta" && (Integer.parseInt(TFwaga.getText()) > 1 || Integer.parseInt(TFdlugosc.getText()) > 35
-                    || Integer.parseInt(TFszerokosc.getText()) > 25 || Integer.parseInt(TFwysokosc.getText()) > 25)) {
-                showDialog("Złe wymiary dla koperty!");
-                return;
-            } else if (typ == "paczka" && (Integer.parseInt(TFwaga.getText()) > 30 || Integer.parseInt(TFdlugosc.getText()) > 100
-                    || Integer.parseInt(TFszerokosc.getText()) > 90 || Integer.parseInt(TFwysokosc.getText()) > 70)) {
-                showDialog("Złe wymiary dla paczki!");
-                return;
-            } else if (typ == "paleta" && (Integer.parseInt(TFwaga.getText()) > 100 || Integer.parseInt(TFdlugosc.getText()) > 200
-                    || Integer.parseInt(TFszerokosc.getText()) > 140 || Integer.parseInt(TFwysokosc.getText()) > 200)) {
-                showDialog("Złe wymiary dla palety!");
+                if (typ == "koperta" && (Integer.parseInt(TFwaga.getText()) > 1 || Integer.parseInt(TFdlugosc.getText()) > 35
+                        || Integer.parseInt(TFszerokosc.getText()) > 25 || Integer.parseInt(TFwysokosc.getText()) > 25)) {
+                    showDialog("Złe wymiary dla koperty!");
+                    return;
+                } else if (typ == "paczka" && (Integer.parseInt(TFwaga.getText()) > 30 || Integer.parseInt(TFdlugosc.getText()) > 100
+                        || Integer.parseInt(TFszerokosc.getText()) > 90 || Integer.parseInt(TFwysokosc.getText()) > 70)) {
+                    showDialog("Złe wymiary dla paczki!");
+                    return;
+                } else if (typ == "paleta" && (Integer.parseInt(TFwaga.getText()) > 100 || Integer.parseInt(TFdlugosc.getText()) > 200
+                        || Integer.parseInt(TFszerokosc.getText()) > 140 || Integer.parseInt(TFwysokosc.getText()) > 200)) {
+                    showDialog("Złe wymiary dla palety!");
+                    return;
+                }
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderChooseCourier.fxml"));
+                    loader.setControllerFactory(context::getBean);
+                    Parent root = loader.load();
+
+                    UserOrderChooseCourierController chooseCourierController = loader.getController();
+
+                    chooseCourierController.initialize(new Parcel(Integer.parseInt(TFdlugosc.getText()),
+                            Integer.parseInt(TFszerokosc.getText()),
+                            Integer.parseInt(TFwysokosc.getText()),
+                            typ, Integer.parseInt(TFwaga.getText())), discountRatio);
+
+
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
                 return;
             }
-
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderChooseCourier.fxml"));
-                loader.setControllerFactory(context::getBean);
-                Parent root = loader.load();
-
-                UserOrderChooseCourierController chooseCourierController = loader.getController();
-
-                chooseCourierController.initialize(new Parcel(Integer.parseInt(TFdlugosc.getText()),
-                        Integer.parseInt(TFszerokosc.getText()),
-                        Integer.parseInt(TFwysokosc.getText()),
-                        typ, Integer.parseInt(TFwaga.getText())), discountRatio);
-
-
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }}
-    else {
-        return;
-    }
         } else {
             showDialog("Uzupełnij wszystkie pola wymiarów paczki!");
             return;
@@ -185,12 +182,12 @@ public class UserOrderMainController {
      * Also, it changes value of discountRatio that is later being sent to the next page.
      */
     @FXML
-    public void addCoupon(){
+    public void addCoupon() {
         String couponName = enterCouponName.getText();
         List<Coupon> couponList = couponRepository.findAll();
-        for (Coupon coupon : couponList){
-            if (coupon.getName().equals(couponName)){
-                discountRatio=(1-(float)coupon.getDiscount()/100);
+        for (Coupon coupon : couponList) {
+            if (coupon.getName().equals(couponName)) {
+                discountRatio = (1 - (float) coupon.getDiscount() / 100);
                 Paint colour = Paint.valueOf("00FF00");
                 enterCouponName.setBackground(new Background(new BackgroundFill(colour, CornerRadii.EMPTY, Insets.EMPTY)));
                 break;

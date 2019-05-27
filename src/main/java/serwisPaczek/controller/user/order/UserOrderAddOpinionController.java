@@ -16,11 +16,11 @@ import java.util.Date;
 
 @Controller
 public class UserOrderAddOpinionController {
-    private SceneManager sceneManager;
     @Autowired
     OpinionRepository opinionRepository;
     @Autowired
     OrderRepository orderRepository;
+    private SceneManager sceneManager;
     @FXML
     private Label orderLabel;
     @FXML

@@ -21,16 +21,16 @@ public class GiftOrder {
     private User user;
     @ManyToOne
     @JoinColumn(name = "recipient_id")
-    private RecipientAdress recipientAdress;
+    private RecipientAddress recipientAddress;
 
     public GiftOrder() {
     }
 
-    public GiftOrder(Date date, Gift gift, User user, Status status, RecipientAdress recipientAdress) {
+    public GiftOrder(Date date, Gift gift, User user, Status status, RecipientAddress recipientAddress) {
         this.date = date;
         this.gift = gift;
         this.user = user;
         this.status = status;
-        this.recipientAdress = recipientAdress;
+        this.recipientAddress = recipientAddress;
     }
 }

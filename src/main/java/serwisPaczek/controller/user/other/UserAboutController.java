@@ -2,31 +2,28 @@ package serwisPaczek.controller.user.other;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.service.MainService;
+import serwisPaczek.model.About;
+import serwisPaczek.repository.AboutRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-import javafx.scene.control.Label;
-import java.awt.*;
-import serwisPaczek.model.About;
+
 import java.util.List;
-import serwisPaczek.repository.AboutRepository;
 
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
 @Controller
 public class UserAboutController {
+    @Autowired
+    AboutRepository aboutRepository;
     private SceneManager sceneManager;
-
     @FXML
     private Label label;
 
-    @Autowired
-    AboutRepository aboutRepository;
-
     @FXML
-    public void initialize(){
+    public void initialize() {
         List<About> listAbout = aboutRepository.findAll();
         label.setText(listAbout.get(0).getContent());
     }
