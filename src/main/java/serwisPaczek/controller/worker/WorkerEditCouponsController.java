@@ -159,6 +159,7 @@ public class WorkerEditCouponsController {
             alert.setTitle("Komunikat");
             alert.setHeaderText(null);
             alert.show();
+            fillTableView();
             return;
         }
         coupon.setDiscount(Integer.valueOf(event.getNewValue().toString()));
