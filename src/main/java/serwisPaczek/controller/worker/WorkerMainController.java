@@ -42,6 +42,9 @@ public class WorkerMainController {
         sceneManager.show(SceneType.WORKER_EDIT_COUPON);
     }
 
+    /**
+     * This method is used to logout user
+     */
     @FXML
     void logout(ActionEvent event) {
         setLoggedUser(null);

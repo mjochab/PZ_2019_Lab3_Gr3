@@ -24,6 +24,9 @@ public class UserProfileMyOpinionsController {
     @FXML
     private ListView<String> opinionListView;
 
+    /**
+     * This method is used to fill list view with opinions made by logged in user
+     */
     @FXML
     public void initialize() {
         List<Opinion> opinions = opinionRepository.findAllByUserOrder_User(getLoggedUser());

@@ -22,7 +22,7 @@
     <center>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="workerSearchButton" defaultButton="true" layoutX="416.0" layoutY="25.0" mnemonicParsing="false" onAction="#orderSearch" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: Blue;" text="Szukaj" textFill="WHITE" wrapText="true">
+                <Button fx:id="workerSearchButton" defaultButton="true" layoutX="416.0" layoutY="25.0" mnemonicParsing="false" onAction="#workerSearch" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: Blue;" text="Szukaj" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="16.0" />
                     </font>
