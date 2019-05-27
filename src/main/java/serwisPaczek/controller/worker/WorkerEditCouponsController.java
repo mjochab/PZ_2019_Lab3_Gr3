@@ -97,7 +97,7 @@ public class WorkerEditCouponsController {
             alert.show();
             return;
         }
-        
+
         couponList.add(coupon);
         couponRepository.saveAll(couponList);
         fillTableView();
