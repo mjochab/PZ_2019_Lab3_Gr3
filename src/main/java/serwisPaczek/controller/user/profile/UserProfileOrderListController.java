@@ -91,6 +91,9 @@ public class UserProfileOrderListController {
     private ApplicationContext context;
     private Long orderID;
 
+    /**
+     * This method fills TableView on page with data.
+     */
     @FXML
     public void initialize() {
         List<UserOrder> listOrders = orderRepository.findAll();
@@ -133,6 +136,9 @@ public class UserProfileOrderListController {
         tableView.setItems(observableListOrders);
     }
 
+    /**
+     * This method shows wiev with order's details.
+     */
     @FXML
     public void openDetails(ActionEvent event) {
         try {
@@ -200,6 +206,9 @@ public class UserProfileOrderListController {
         }
     }
 
+    /**
+     * This method allows to cancel order by changing its status to canceld.
+     */
     @FXML
     public void cancelOrder(ActionEvent event) {
         try {
