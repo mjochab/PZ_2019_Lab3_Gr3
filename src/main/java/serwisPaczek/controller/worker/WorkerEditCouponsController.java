@@ -55,6 +55,26 @@ public class WorkerEditCouponsController {
      */
     @FXML
     public void addCoupon(ActionEvent event){
+        if (addCouponName.getText().equals("") || addDiscount.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Wypełnij dane", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
+        try {
+            Coupon couponTEST = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Niepoprawne dane", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         Coupon coupon = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
         List<Coupon> couponList = couponRepository.findAll();
         for (Coupon couponFindByName : couponList){
@@ -77,6 +97,7 @@ public class WorkerEditCouponsController {
             alert.show();
             return;
         }
+        
         couponList.add(coupon);
         couponRepository.saveAll(couponList);
         fillTableView();
@@ -87,9 +108,18 @@ public class WorkerEditCouponsController {
      */
     @FXML
     public void deleteCoupon(ActionEvent event){
-        Coupon coupon = tableView.getSelectionModel().getSelectedItem();
-        couponRepository.delete(coupon);
-        fillTableView();
+        try {
+            Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+            couponRepository.delete(coupon);
+            fillTableView();
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Wybierz kupon do usunięcia", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+        }
     }
 
     /**
