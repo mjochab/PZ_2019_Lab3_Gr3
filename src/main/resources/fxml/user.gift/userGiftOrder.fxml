@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import javafx.scene.control.*?>
-=======
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -31,13 +27,9 @@
                         <TableColumn fx:id="premiumPointsColumn" minWidth="0.0" prefWidth="115.0" text="Ilość punktów"/>
                     </columns>
                 </TableView>
-<<<<<<< HEAD
-                <Button fx:id="order" layoutX="471.0" layoutY="552.0" mnemonicParsing="false" onAction="#orderGift"
-                        prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: green;" text="Zamów"
-                        textFill="WHITE">
-=======
+
                 <Button fx:id="order" layoutX="483.0" layoutY="550.0" mnemonicParsing="false" onAction="#orderGift" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: green;" text="Zamów" textFill="WHITE">
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
+
                     <font>
                         <Font size="15.0"/>
                     </font>
@@ -49,30 +41,7 @@
                         <Font size="17.0"/>
                     </font>
                 </Button>
-<<<<<<< HEAD
-                <Label layoutX="260.0" layoutY="554.0" prefHeight="29.0" prefWidth="166.0"
-                       text="Twoje punkty premium:"/>
-                <Label fx:id="premiumPoints" layoutX="426.0" layoutY="556.0" prefHeight="26.0" prefWidth="25.0"
-                       text="--"/>
-                <TextField fx:id="nameField" layoutX="484.0" layoutY="106.0" promptText="Imię"/>
-                <TextField fx:id="surnameField" layoutX="484.0" layoutY="144.0" promptText="Nazwisko"/>
-                <TextField fx:id="cityField" layoutX="484.0" layoutY="183.0" promptText="Miasto"/>
-                <TextField fx:id="streetField" layoutX="484.0" layoutY="221.0" promptText="Ulica"/>
-                <TextField fx:id="houseNumberField" layoutX="484.0" layoutY="260.0" promptText="Nr domu"/>
-                <TextField fx:id="zipCodeField" layoutX="484.0" layoutY="300.0" promptText="Kod pocztowy"/>
-                <TextField fx:id="emailField" layoutX="484.0" layoutY="339.0" promptText="Adres e-mail"/>
-                <TextField fx:id="telephoneField" layoutX="484.0" layoutY="377.0" promptText="Nr telefonu"/>
-                <Button fx:id="cancel" layoutX="649.0" layoutY="552.0" mnemonicParsing="false" onAction="#cancelGift"
-                        prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: blue;" text="Anuluj prezent"
-                        textFill="WHITE">
-                    <font>
-                        <Font size="15.0"/>
-                    </font>
-                </Button>
-                <ComboBox fx:id="giftComboBox" layoutX="653.0" layoutY="500.0" prefHeight="25.0" prefWidth="128.0"/>
-                <Button onAction="#fillAdressForm" layoutX="484.0" layoutY="69.0" mnemonicParsing="false"
-                        text="Wypełnij danymi z profilu"/>
-=======
+
                 <Label layoutX="260.0" layoutY="554.0" prefHeight="29.0" prefWidth="166.0" text="Twoje punkty premium:" />
                 <Label fx:id="premiumPoints" layoutX="426.0" layoutY="556.0" prefHeight="26.0" prefWidth="25.0" text="--" />
                 <TextField fx:id="nameField" layoutX="484.0" layoutY="106.0" promptText="Imię" />
@@ -84,7 +53,7 @@
                 <TextField fx:id="emailField" layoutX="484.0" layoutY="339.0" promptText="Adres e-mail" />
                 <TextField fx:id="telephoneField" layoutX="484.0" layoutY="377.0" promptText="Nr telefonu" />
             <Button layoutX="484.0" layoutY="69.0" mnemonicParsing="false" onAction="#fillAdressForm" text="Wypełnij danymi z profilu" />
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
+
             </children>
         </AnchorPane>
     </center>

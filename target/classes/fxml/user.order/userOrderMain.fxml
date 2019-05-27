@@ -13,44 +13,7 @@
     <center>
         <AnchorPane prefHeight="404.0" prefWidth="665.0" BorderPane.alignment="CENTER">
             <children>
-<<<<<<< HEAD
-                <Button fx:id="btnMainPanel" layoutX="31.0" layoutY="545.0" mnemonicParsing="false"
-                        onAction="#openMainPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;"
-                        text="Anuluj" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                    <font>
-                        <Font size="15.0"/>
-                    </font>
-                </Button>
-                <Label layoutX="33.0" layoutY="21.0" prefHeight="35.0" prefWidth="410.0"
-                       style="-fx-background-color: blue; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
-                       text="Wybierz rodzaj paczki" textFill="WHITE">
-                    <font>
-                        <Font size="17.0"/>
-                    </font>
-                </Label>
-                <TextField fx:id="TFdlugosc" layoutX="33.0" layoutY="212.0" prefHeight="30.0" prefWidth="410.0"
-                           promptText="Długość">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                </TextField>
-                <TextField fx:id="TFwaga" layoutX="33.0" layoutY="172.0" prefHeight="30.0" prefWidth="410.0"
-                           promptText="Waga">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                </TextField>
-                <TextField fx:id="TFwysokosc" layoutX="33.0" layoutY="291.0" prefHeight="30.0" prefWidth="410.0"
-                           promptText="Wysokość">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                </TextField>
-                <RadioButton fx:id="RBkoperta" layoutX="33.0" layoutY="69.0" mnemonicParsing="false" prefHeight="17.0"
-                             prefWidth="67.0">
-=======
                 <RadioButton fx:id="RBkoperta" layoutX="33.0" layoutY="69.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0">
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -80,17 +43,6 @@
                         </ImageView>
                     </graphic>
                 </RadioButton>
-<<<<<<< HEAD
-                <Label layoutX="33.0" layoutY="126.0" prefHeight="35.0" prefWidth="410.0"
-                       style="-fx-background-color: dimgray; -fx-alignment: center; -fx-border-radius: 3; -fx-background-radius: 3;"
-                       text="Podaj wymiary paczki" textFill="WHITE">
-                    <font>
-                        <Font size="17.0"/>
-                    </font>
-                </Label>
-                <TextField fx:id="TFszerokosc" layoutX="33.0" layoutY="251.0" prefHeight="30.0" prefWidth="410.0"
-                           promptText="Szerokość">
-=======
                 <TextField fx:id="TFwaga" layoutX="33.0" layoutY="172.0" prefHeight="30.0" prefWidth="410.0" promptText="Waga">
                     <font>
                         <Font size="13.0" />
@@ -102,16 +54,10 @@
                     </font>
                 </TextField>
                 <TextField fx:id="TFszerokosc" layoutX="33.0" layoutY="251.0" prefHeight="30.0" prefWidth="410.0" promptText="Szerokość">
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
                     <font>
                         <Font size="13.0"/>
                     </font>
                 </TextField>
-<<<<<<< HEAD
-                <Button fx:id="btnOpenOrderChooseCourierPanel" layoutX="242.0" layoutY="545.0" mnemonicParsing="false"
-                        onAction="#openOrderChooseCourierPanel" prefHeight="35.0" prefWidth="200.0"
-                        style="-fx-background-color: green;" text="Sprawdź ceny" textFill="WHITE" wrapText="true">
-=======
                 <TextField fx:id="TFwysokosc" layoutX="33.0" layoutY="291.0" prefHeight="30.0" prefWidth="410.0" promptText="Wysokość">
                     <font>
                         <Font size="13.0" />
@@ -120,15 +66,10 @@
             <TextField fx:id="enterCouponName" layoutX="162.0" layoutY="328.0" prefHeight="25.0" prefWidth="220.0" />
             <Button fx:id="addCouponButton" layoutX="394.0" layoutY="328.0" mnemonicParsing="false" onAction="#addCoupon" style="-fx-background-color: darkorange;" text="Dodaj" textFill="WHITE" />
                 <Button fx:id="btnOpenOrderChooseCourierPanel" layoutX="242.0" layoutY="545.0" mnemonicParsing="false" onAction="#openOrderChooseCourierPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Sprawdź ceny" textFill="WHITE" wrapText="true">
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
                     <font>
                         <Font size="15.0"/>
                     </font>
                 </Button>
-<<<<<<< HEAD
-                <ImageView fitHeight="372.0" fitWidth="268.0" layoutX="499.0" layoutY="212.0" pickOnBounds="true"
-                           preserveRatio="true">
-=======
                 <Button fx:id="btnMainPanel" layoutX="31.0" layoutY="545.0" mnemonicParsing="false" onAction="#openMainPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Anuluj" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font size="15.0" />
@@ -140,7 +81,6 @@
                     </font>
                 </Label>
                 <ImageView fitHeight="372.0" fitWidth="268.0" layoutX="499.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
                     <image>
                         <Image url="@../../images/kurier.png"/>
                     </image>
@@ -175,22 +115,11 @@
                                    layoutY="6.0" stroke="BLUE" strokeType="INSIDE" width="285.0"/>
                     </children>
                 </Pane>
-<<<<<<< HEAD
-                <Label fx:id="Lwaga" layoutX="279.0" layoutY="177.0" text="Label" textFill="RED"/>
-                <Label fx:id="Ldlugosc" layoutX="279.0" layoutY="219.0" text="Label" textFill="RED"/>
-                <Label fx:id="Lszerokosc" layoutX="279.0" layoutY="256.0" text="Label" textFill="RED"/>
-                <Label fx:id="Lwysokosc" layoutX="279.0" layoutY="296.0" text="Label" textFill="RED"/>
-                <Label layoutX="33.0" layoutY="333.0" prefHeight="21.0" prefWidth="143.0" text="Wpisz kod rabatowy:"/>
-                <TextField fx:id="enterCouponName" layoutX="186.0" layoutY="328.0"/>
-                <Button fx:id="addCouponButton" onAction="#addCoupon" layoutX="382.0" layoutY="328.0"
-                        mnemonicParsing="false" text="Dodaj"/>
-=======
             <Label fx:id="Lwaga" layoutX="279.0" layoutY="177.0" text="Label" textFill="RED" />
             <Label fx:id="Ldlugosc" layoutX="279.0" layoutY="219.0" text="Label" textFill="RED" />
             <Label fx:id="Lszerokosc" layoutX="279.0" layoutY="256.0" text="Label" textFill="RED" />
             <Label fx:id="Lwysokosc" layoutX="279.0" layoutY="296.0" text="Label" textFill="RED" />
             <Label layoutX="33.0" layoutY="333.0" prefHeight="21.0" prefWidth="143.0" text="Wpisz kod rabatowy:" />
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
             </children>
         </AnchorPane>
     </center>

@@ -12,7 +12,7 @@ import serwisPaczek.repository.UserRepository;
 import serwisPaczek.security.Encoder;
 import serwisPaczek.service.UserService;
 import serwisPaczek.utils.SceneType;
-import sun.security.util.Password;
+//import sun.security.util.Password;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

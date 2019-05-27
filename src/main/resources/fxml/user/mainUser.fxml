@@ -4,15 +4,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
-<<<<<<< HEAD
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="serwisPaczek.controller.user.UserMainController">
-=======
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.UserMainController">
->>>>>>> 76f8bef441379229f873a65514d36b18960926cd
     <left>
         <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
             <children>
