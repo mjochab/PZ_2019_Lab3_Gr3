@@ -44,8 +44,6 @@ public class UserGiftOrderController {
     @FXML
     private Label premiumPoints;
     @FXML
-    private ComboBox giftComboBox;
-    @FXML
     private TextField nameField;
     @FXML
     private TextField surnameField;
@@ -72,16 +70,6 @@ public class UserGiftOrderController {
     public void initialize() {
         fillTableView();
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        List<String> giftOrdersList = new ArrayList<>();
-        for(GiftOrder giftOrder : giftOrderList){
-            if(giftOrder.getUser() == getLoggedUser() && giftOrder.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
-                String orderId = giftOrder.getId().toString();
-                giftOrdersList.add(orderId);
-            }
-        }
-        ObservableList<String> observableListGiftOrders = FXCollections.observableArrayList(giftOrdersList);
-        giftComboBox.setItems(observableListGiftOrders);
     }
 
     /**
@@ -226,7 +214,7 @@ public class UserGiftOrderController {
             message.append("Numer telefonu musi posiadać 9 cyfr!\n");
         }
         if (!telephoneField.getText().matches("\\d+")) {
-            message.append("Numer telefonu musi być składać się wyłącznie z cyfr!\n");
+            message.append("Numer telefonu musi składać się wyłącznie z cyfr!\n");
         }
         if (!streetField.getText().matches("[A-Z0-9a-z._%+-]{2,64}")) {
             message.append("Nazwa ulicy musi zawierać się pomiędzy 2 a 64 znakami!\n");
