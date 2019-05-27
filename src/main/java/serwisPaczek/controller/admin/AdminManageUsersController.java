@@ -118,6 +118,9 @@ public class AdminManageUsersController {
         }
     }
 
+    /**
+     * This method is used to add worker by changing user's status.
+     */
     @FXML
     public void editStatus(ActionEvent event) {
         try {

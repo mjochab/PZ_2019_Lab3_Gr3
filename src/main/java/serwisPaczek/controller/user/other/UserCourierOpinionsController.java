@@ -36,6 +36,10 @@ public class UserCourierOpinionsController {
     private Button buttonCourier;
     private Long courierID;
 
+    /**
+     * This method load courier opinions and fills them into list view
+     * @param courierId - passed parameter from previous window
+     */
     @FXML
     public void initialize(Long courierId) {
         this.courierID = courierId;
@@ -54,7 +58,9 @@ public class UserCourierOpinionsController {
         sceneManager.show(SceneType.MAIN);
     }
 
-    @SuppressWarnings("Duplicates")
+    /**
+     * After user click this method redirect him to specific courier company pricing.
+     */
     @FXML
     public void openCourierCompanyPricingPanel(ActionEvent event) {
         try {

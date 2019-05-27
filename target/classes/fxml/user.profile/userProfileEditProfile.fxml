@@ -79,6 +79,7 @@
                         <Font size="15.0"/>
                     </font>
                 </Button>
+<<<<<<< HEAD
                 <TextField fx:id="TFname" layoutX="159.0" layoutY="84.0" prefHeight="30.0" prefWidth="245.0"/>
                 <TextField fx:id="TFsurname" layoutX="504.0" layoutY="87.0" prefHeight="30.0" prefWidth="240.0"/>
                 <TextField fx:id="TFphone" layoutX="504.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0"/>
@@ -87,6 +88,16 @@
                 <TextField fx:id="TFhome" layoutX="504.0" layoutY="171.0" prefHeight="30.0" prefWidth="240.0"/>
                 <TextField fx:id="TFcity" layoutX="504.0" layoutY="128.0" prefHeight="30.0" prefWidth="240.0"/>
                 <TextField fx:id="TFstreet" layoutX="159.0" layoutY="126.0" prefHeight="30.0" prefWidth="245.0"/>
+=======
+                <TextField fx:id="TFname" layoutX="159.0" layoutY="84.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField fx:id="TFsurname" layoutX="504.0" layoutY="87.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField fx:id="TFstreet" layoutX="159.0" layoutY="126.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField fx:id="TFcity" layoutX="504.0" layoutY="128.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField fx:id="TFzip" layoutX="159.0" layoutY="169.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField fx:id="TFhome" layoutX="504.0" layoutY="171.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField fx:id="TFemail" layoutX="159.0" layoutY="210.0" prefHeight="30.0" prefWidth="245.0" />
+                <TextField fx:id="TFphone" layoutX="504.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0" />
+>>>>>>> 76f8bef441379229f873a65514d36b18960926cd
             </children>
         </AnchorPane>
     </center>

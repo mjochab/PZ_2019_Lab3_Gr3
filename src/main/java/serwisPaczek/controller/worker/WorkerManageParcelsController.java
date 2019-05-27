@@ -34,10 +34,11 @@ public class WorkerManageParcelsController {
         fillListViewWithAllOrders();
         statusComboBox.getItems().setAll(Status.values());
         statusComboBox.getSelectionModel().selectFirst();
-
-
     }
 
+    /**
+     * This method is used to fill one item in list view with order
+     */
     private void fillListWithOrder(UserOrder order) {
         workerOrdersList.getItems().add(order.getId().toString() + "  |  " +
                 order.getUser().getUsername() + "  " +
@@ -48,7 +49,10 @@ public class WorkerManageParcelsController {
     }
 
 
-    private void fillListViewWithAllOrders() {
+    /**
+     * This method is used to fill list view with orders
+     */
+    private void fillListViewWithAllOrders(){
         workerOrdersList.getItems().clear();
         List<UserOrder> orders = orderRepository.findAll();
 
@@ -57,6 +61,9 @@ public class WorkerManageParcelsController {
         }
     }
 
+    /**
+     * This method is used to filter orders by passing ID from text field.
+     */
     @FXML
     public void orderSearch(ActionEvent event) {
         if (
@@ -73,9 +80,15 @@ public class WorkerManageParcelsController {
         }
     }
 
+    /**
+     * This method is used to handle order change status
+     * It takes selected item from list view
+     * and changes order status to value from ComboBox
+     */
     @FXML
     public void orderChangeStatus(ActionEvent event) {
         try {
+            // Getting id from selected item in the list
             String selectedItem = workerOrdersList.getSelectionModel().getSelectedItem();
             Pattern p = Pattern.compile("\\d+");
             Matcher m = p.matcher(selectedItem);
@@ -96,10 +109,12 @@ public class WorkerManageParcelsController {
     }
 
 
+    /**
+     * This method is used to reset search results
+     */
     @FXML
     public void resetSearch(ActionEvent event) {
-        fillListViewWithAllOrders();
-    }
+        fillListViewWithAllOrders(); }
 
     private void alertError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR,

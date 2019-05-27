@@ -4,11 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.*;
@@ -17,11 +16,13 @@ import serwisPaczek.repository.*;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class WorkerManageGiftOrdersController {
+    private SceneManager sceneManager;
     @Autowired
     GiftRepository giftRepository;
     @Autowired
@@ -32,7 +33,7 @@ public class WorkerManageGiftOrdersController {
     GiftOrderRepository giftOrderRepository;
     @Autowired
     AddressRepository addressRepository;
-    private SceneManager sceneManager;
+
     @FXML
     private TextField idTextField;
     @FXML
@@ -67,7 +68,7 @@ public class WorkerManageGiftOrdersController {
     private TableColumn<GiftOrderDto, String> statusColumn;
 
     @FXML
-    public void initialize() {
+    public void initialize(){
         fillTableView(0);
         statusComboBox.getItems().setAll(Status.values());
         statusComboBox.getSelectionModel().selectFirst();
@@ -85,15 +86,15 @@ public class WorkerManageGiftOrdersController {
 
     /**
      * This method fills tableView with data fro database
-     * It creates objects address, Recipientaddress and UserOrder and combines data from them into new class GiftOrderDto.
+     * It creates objects Adress, RecipientAdress and UserOrder and combines data from them into new class GiftOrderDto.
      */
     void fillTableView(int id) {
         List<GiftOrderDto> giftOrderDtoList = new ArrayList<>();
         List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
         List<Gift> giftList = giftRepository.findAll();
         List<User> userList = userRepository.findAll();
-        List<RecipientAddress> recipientaddressList = recipientAddressRepository.findAll();
-        List<Address> addressList = addressRepository.findAll();
+        List<RecipientAddress> recipientAdressList = recipientAddressRepository.findAll();
+        List<Address> adressList = addressRepository.findAll();
         for (GiftOrder giftOrder : giftOrderList) {
             String giftName = "";
             String senderName = "";
@@ -115,16 +116,16 @@ public class WorkerManageGiftOrdersController {
                     senderName = user.getUsername();
                 }
             }
-            for (RecipientAddress recipientAddress : recipientaddressList) {
-                if (giftOrder.getRecipientAddress().getId() == recipientAddress.getId()) {
-                    name = recipientAddress.getAddress().getName();
-                    surname = recipientAddress.getAddress().getSurname();
-                    city = recipientAddress.getAddress().getCity();
-                    street = recipientAddress.getAddress().getStreet();
-                    houseNumber = String.valueOf(recipientAddress.getAddress().getHouseNumber());
-                    zipCode = String.valueOf(recipientAddress.getAddress().getZipCode());
-                    telephoneNumber = String.valueOf(recipientAddress.getAddress().getTelephoneNumber());
-                    email = recipientAddress.getAddress().getEmail();
+            for (RecipientAddress recipientAdress : recipientAdressList) {
+                if (giftOrder.getRecipientAddress().getId() == recipientAdress.getId()) {
+                    name = recipientAdress.getAddress().getName();
+                    surname = recipientAdress.getAddress().getSurname();
+                    city = recipientAdress.getAddress().getCity();
+                    street = recipientAdress.getAddress().getStreet();
+                    houseNumber = String.valueOf(recipientAdress.getAddress().getHouseNumber());
+                    zipCode = String.valueOf(recipientAdress.getAddress().getZipCode());
+                    telephoneNumber = String.valueOf(recipientAdress.getAddress().getTelephoneNumber());
+                    email = recipientAdress.getAddress().getEmail();
                 }
             }
             GiftOrderDto giftOrderDto = new GiftOrderDto(giftOrder.getId(), giftName, name, surname, city, street, Integer.valueOf(houseNumber), zipCode, Long.valueOf(telephoneNumber), email, String.valueOf(giftOrder.getDate()), senderName, giftOrder.getStatus().name());
@@ -145,9 +146,9 @@ public class WorkerManageGiftOrdersController {
         senderNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("senderName"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("status"));
 
-        if (id != 0) {
-            for (GiftOrderDto giftOrderDto : giftOrderDtoList) {
-                if (giftOrderDto.getId() == id) {
+        if (id != 0){
+            for (GiftOrderDto giftOrderDto : giftOrderDtoList){
+                if (giftOrderDto.getId() == id ) {
                     List<GiftOrderDto> giftOrderDtoItem = new ArrayList<>();
                     giftOrderDtoItem.add(giftOrderDto);
                     ObservableList<GiftOrderDto> observableListGiftOrderDtos = FXCollections.observableArrayList(giftOrderDtoItem);
@@ -165,27 +166,37 @@ public class WorkerManageGiftOrdersController {
      * This method changes status of the gift order.
      */
     @FXML
-    public void changeStatus(ActionEvent event) {
-        GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        for (GiftOrder giftOrder : giftOrderList) {
-            if (giftOrder.getId() == giftOrderDto.getId()) {
-                giftOrder.setStatus(statusComboBox.getValue());
-                giftOrderRepository.save(giftOrder);
-                break;
+    public void changeStatus(ActionEvent event){
+        try {
+            GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
+            List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+            for (GiftOrder giftOrder : giftOrderList) {
+                if (giftOrder.getId() == giftOrderDto.getId()) {
+                    giftOrder.setStatus(statusComboBox.getValue());
+                    giftOrderRepository.save(giftOrder);
+                    break;
+                }
             }
+            fillTableView(0);
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Nie wybrano zamówienia do zmiany statusu!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
         }
-        fillTableView(0);
     }
 
     /**
      * This method parses parameter from textField to the fillTableView method.
      */
     @FXML
-    public void searchGiftOrder(ActionEvent event) {
+    public void searchGiftOrder(ActionEvent event){
         if (idTextField.getText().equals("")) {
             fillTableView(0);
-        } else {
+        }
+        else {
             fillTableView(Integer.valueOf(idTextField.getText()));
         }
     }

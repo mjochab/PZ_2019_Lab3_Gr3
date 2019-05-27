@@ -34,11 +34,19 @@ public class AdminManageWorkersController {
     }
 
 
+    /**
+     * This method is used to fill one item in list view with worker
+     * @param worker - user with worker role we wish to add to list view
+     *
+     */
     private void fillListWithWorkers(User worker) {
         workerList.getItems().add("ID: " + worker.getId().toString() + "  |  " + worker.getUsername() + "  |  Konto " +
                 (worker.getActive() ? "aktywne" : "zablokowane"));
     }
 
+    /**
+     * This method fills list view with all users with worker role
+     */
     private void fillListWithAllWorkers() {
         List<User> workers = userRepository.findAllByRole_RoleName("WORKER_ROLE");
         for (User worker : workers) {
@@ -46,8 +54,11 @@ public class AdminManageWorkersController {
         }
     }
 
+    /**
+     * This method filters workers by Id entered in searchTextField
+     */
     @FXML
-    public void orderSearch(ActionEvent event) {
+    public void workerSearch(ActionEvent event) {
         try {
             User worker = userRepository.findByIdAndRole_RoleName(
                     Long.valueOf(searchTextField.getText()), "WORKER_ROLE");
@@ -58,6 +69,9 @@ public class AdminManageWorkersController {
         }
     }
 
+    /**
+     * This method is used to change worker status(active or banned)
+     */
     @FXML
     public void workerChangeStatus(ActionEvent event) {
         try {
@@ -89,6 +103,9 @@ public class AdminManageWorkersController {
         alert.show();
     }
 
+    /**
+     * This method is used to reset search results
+     */
     @FXML
     public void resetSearch(ActionEvent event) {
         workerList.getItems().clear();

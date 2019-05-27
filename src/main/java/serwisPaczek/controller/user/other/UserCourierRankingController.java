@@ -24,6 +24,9 @@ public class UserCourierRankingController {
     @FXML
     private PieChart rankingPieChart;
 
+    /**
+     * This method is used for filling created pie chart with data
+     */
     @FXML
     public void initialize() {
         List<UserOrder> orders = orderRepository.findAll();

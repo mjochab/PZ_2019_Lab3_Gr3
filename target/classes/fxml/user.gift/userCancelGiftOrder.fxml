@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serwisPaczek.controller.user.gift.UserCancelGiftOrderController">
+    <center>
+        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="18.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="765.0" style="-fx-background-color: Blue;" text="Twoje prezenty" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnOpenUserMainPanel" layoutX="19.0" layoutY="551.0" mnemonicParsing="false" onAction="#openUserMainPanel" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TableView fx:id="tableView" layoutX="19.0" layoutY="69.0" onMouseClicked="#handleMouseClick" prefHeight="460.0" prefWidth="765.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="30.0" text="Id prezentu" />
+                        <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Data nadania" />
+                        <TableColumn fx:id="giftNameColumn" prefWidth="75.0" text="Nazwa prezentu" />
+                        <TableColumn fx:id="statusColumn" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Imię odbiorcy" />
+                        <TableColumn fx:id="surnameColumn" prefWidth="75.0" text="Nazwisko odbiorcy" />
+                        <TableColumn fx:id="cityColumn" prefWidth="75.0" text="Miasto" />
+                        <TableColumn fx:id="streetColumn" prefWidth="75.0" text="Ulica" />
+                        <TableColumn fx:id="houseNumberColumn" prefWidth="75.0" text="Numer domu" />
+                        <TableColumn fx:id="zipCodeColumn" prefWidth="75.0" text="Kod pocztowy" />
+                        <TableColumn fx:id="telephoneNumberColumn" prefWidth="75.0" text="Telefon" />
+                        <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
+                    </columns>
+                </TableView>
+                <Button fx:id="btnCancelOrder" layoutX="583.0" layoutY="551.0" mnemonicParsing="false" onAction="#cancelGiftOrder" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: green;" text="Anuluj prezent" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

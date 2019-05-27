@@ -51,8 +51,29 @@ public class WorkerEditCouponsController {
      * This method is used to add coupon to the database with name and discount rate taken from textFields.
      */
     @FXML
+
     public void addCoupon(ActionEvent event) {
-        Coupon coupon = new Coupon(addCouponName.getText(), Integer.valueOf(addDiscount.getText()));
+        if (addCouponName.getText().equals("") || addDiscount.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Wypełnij dane", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
+        try {
+            Coupon couponTEST = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Niepoprawne dane", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
+        Coupon coupon = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
         List<Coupon> couponList = couponRepository.findAll();
         for (Coupon couponFindByName : couponList) {
             if (couponFindByName.getName().equals(coupon.getName())) {
@@ -74,6 +95,7 @@ public class WorkerEditCouponsController {
             alert.show();
             return;
         }
+
         couponList.add(coupon);
         couponRepository.saveAll(couponList);
         fillTableView();
@@ -83,10 +105,20 @@ public class WorkerEditCouponsController {
      * This method deletes coupon from the database.
      */
     @FXML
-    public void deleteCoupon(ActionEvent event) {
-        Coupon coupon = tableView.getSelectionModel().getSelectedItem();
-        couponRepository.delete(coupon);
-        fillTableView();
+    public void deleteCoupon(ActionEvent event){
+        try {
+            Coupon coupon = tableView.getSelectionModel().getSelectedItem();
+            couponRepository.delete(coupon);
+            fillTableView();
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Wybierz kupon do usunięcia", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+        }
+
     }
 
     /**
@@ -126,6 +158,7 @@ public class WorkerEditCouponsController {
             alert.setTitle("Komunikat");
             alert.setHeaderText(null);
             alert.show();
+            fillTableView();
             return;
         }
         coupon.setDiscount(Integer.valueOf(event.getNewValue().toString()));

@@ -56,6 +56,11 @@ public class UserOrderAddOpinionController {
         alert.show();
     }
 
+    /**
+     * This method is used to handle adding opinion
+     * Takes data from opinionTextField and opinionComboBox
+     *
+     */
     @FXML
     public void addOpinion(ActionEvent event) {
 
