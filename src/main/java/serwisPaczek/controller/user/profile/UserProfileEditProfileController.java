@@ -39,6 +39,10 @@ public class UserProfileEditProfileController {
     @FXML
     private TextField TFsurname;
 
+    /**
+     * This method fills textfields on page with data.
+     * If user don't have assigned adress relevant textfields are left empty.
+     */
     @FXML
     public void initialize() {
         if (getLoggedUser().getAdress() != null) {
@@ -62,6 +66,9 @@ public class UserProfileEditProfileController {
         }
     }
 
+    /**
+     * This method is used to edit user data and handle incorrect input data.
+     */
     @FXML
     public void EditUser(ActionEvent event) {
         try {
