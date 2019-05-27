@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.*;
@@ -166,16 +167,25 @@ public class WorkerManageGiftOrdersController {
      */
     @FXML
     public void changeStatus(ActionEvent event){
-        GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        for (GiftOrder giftOrder : giftOrderList){
-            if (giftOrder.getId() == giftOrderDto.getId()) {
-                giftOrder.setStatus(statusComboBox.getValue());
-                giftOrderRepository.save(giftOrder);
-                break;
+        try {
+            GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
+            List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+            for (GiftOrder giftOrder : giftOrderList) {
+                if (giftOrder.getId() == giftOrderDto.getId()) {
+                    giftOrder.setStatus(statusComboBox.getValue());
+                    giftOrderRepository.save(giftOrder);
+                    break;
+                }
             }
+            fillTableView(0);
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Nie wybrano zamówienia do zmiany statusu!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
         }
-        fillTableView(0);
     }
 
     /**

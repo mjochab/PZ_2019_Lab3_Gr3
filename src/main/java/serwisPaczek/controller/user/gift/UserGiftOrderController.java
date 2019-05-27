@@ -135,6 +135,15 @@ public class UserGiftOrderController {
      */
     @FXML
     public void fillAdressForm(ActionEvent event){
+        if (getLoggedUser().getAdress() == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Brak wypełnionego adresu w profilu", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         Adress adress = getLoggedUser().getAdress();
         nameField.setText(adress.getName());
         surnameField.setText(adress.getSurname());

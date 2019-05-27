@@ -59,7 +59,36 @@ public class WorkerEditGiftController {
      */
     @FXML
     public void addGift(ActionEvent event){
+        if (addGiftName.getText().equals("") || addGiftPoints.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Wypełnij dane!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
+        try {
+            Gift giftTEST = new Gift(addGiftName.getText(),Integer.valueOf(addGiftPoints.getText()),"AKTYWNY");
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Niepoprawne dane!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         Gift gift = new Gift(addGiftName.getText(),Integer.valueOf(addGiftPoints.getText()),"AKTYWNY");
+        if (gift.getPremiumPoints()<1){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Niepoprawna wartość punktów premium!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+            return;
+        }
         List<Gift> giftList = giftRepository.findAll();
         giftList.add(gift);
         giftRepository.saveAll(giftList);
@@ -71,21 +100,31 @@ public class WorkerEditGiftController {
      */
     @FXML
     public void deleteGift(ActionEvent event){
-        Gift gift = tableView.getSelectionModel().getSelectedItem();
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        for (GiftOrder giftOrder : giftOrderList){
-            if (giftOrder.getGift().getId() == gift.getId()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                        "Ten prezent został już zamówiony i nie można usunąć go z bazy!", ButtonType.OK);
-                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-                alert.setTitle("Komunikat");
-                alert.setHeaderText(null);
-                alert.show();
-                return;
+        try {
+            Gift giftTEST = tableView.getSelectionModel().getSelectedItem();
+            Gift gift = tableView.getSelectionModel().getSelectedItem();
+            List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
+            for (GiftOrder giftOrder : giftOrderList) {
+                if (giftOrder.getGift().getId() == gift.getId()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                            "Ten prezent został już zamówiony i nie można usunąć go z bazy!", ButtonType.OK);
+                    alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+                    alert.setTitle("Komunikat");
+                    alert.setHeaderText(null);
+                    alert.show();
+                    return;
+                }
             }
+            giftRepository.delete(gift);
+            fillTableView();
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Wybierz prezent do usunięcia!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
         }
-        giftRepository.delete(gift);
-        fillTableView();
     }
 
     /**
@@ -104,11 +143,21 @@ public class WorkerEditGiftController {
      */
     @FXML
     public  void changeStatus(ActionEvent event){
-        Gift gift = tableView.getSelectionModel().getSelectedItem();
-        if (gift.getStatus().equals("AKTYWNY")) gift.setStatus("NIEAKTYWNY");
-        else gift.setStatus("AKTYWNY");
-        giftRepository.save(gift);
-        fillTableView();
+        try {
+            Gift gift = tableView.getSelectionModel().getSelectedItem();
+            if (gift.getStatus().equals("AKTYWNY")) gift.setStatus("NIEAKTYWNY");
+            else gift.setStatus("AKTYWNY");
+            giftRepository.save(gift);
+            fillTableView();
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Wybierz prezent z listy!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText(null);
+            alert.show();
+        }
+
     }
 
     /**
@@ -117,6 +166,10 @@ public class WorkerEditGiftController {
     @FXML
     public void changePremiumPointsEvent(TableColumn.CellEditEvent event){
         Gift gift = tableView.getSelectionModel().getSelectedItem();
+        if (Integer.valueOf(event.getNewValue().toString())<0) {
+            fillTableView();
+            return;
+        }
         gift.setPremiumPoints(Integer.valueOf(event.getNewValue().toString()));
         giftRepository.save(gift);
         fillTableView();
