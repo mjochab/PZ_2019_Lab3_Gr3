@@ -9,14 +9,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-
 import serwisPaczek.model.*;
-import serwisPaczek.repository.GiftOrderRepository;
-import serwisPaczek.repository.GiftRepository;
-import serwisPaczek.repository.RecipientAddressRepository;
-import serwisPaczek.repository.UserRepository;
-import serwisPaczek.repository.AddressRepository;
+import serwisPaczek.repository.*;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
@@ -24,7 +18,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import static serwisPaczek.model.Status.ANULOWANO;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 
@@ -72,7 +65,6 @@ public class UserGiftOrderController {
         fillTableView();
         premiumPoints.setText(String.valueOf(getLoggedUser().getPremiumPointsBalance()));
     }
-
 
 
     /**
@@ -132,8 +124,8 @@ public class UserGiftOrderController {
      * This method fills forms on page.
      */
     @FXML
-    public void fillAdressForm(ActionEvent event){
-        if (getLoggedUser().getAddress() == null){
+    public void fillAdressForm(ActionEvent event) {
+        if (getLoggedUser().getAddress() == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Brak wypełnionego adresu w profilu", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -182,7 +174,7 @@ public class UserGiftOrderController {
     /**
      * This method is used to validate data entered into the adress form
      */
-    boolean validateData(){
+    boolean validateData() {
         StringBuilder message = new StringBuilder();
 
         if (nameField.getText().length() <= 2) {
@@ -209,7 +201,7 @@ public class UserGiftOrderController {
         if (!zipCodeField.getText().matches("[0-9]{2}+-[0-9]{3}")) {
             message.append("Kod pocztowy musi byc w formule XX-XXX, gdzie X jest cyfrą!\n");
         }
-        if (houseNumberField.getText().length() <= 0 ) {
+        if (houseNumberField.getText().length() <= 0) {
             message.append("Numer domu nie może być ujemny\n");
         }
         if (!houseNumberField.getText().matches("\\d+")) {
@@ -224,7 +216,7 @@ public class UserGiftOrderController {
         if (!streetField.getText().matches("[A-Z0-9a-z._%+-]{2,64}")) {
             message.append("Nazwa ulicy musi zawierać się pomiędzy 2 a 64 znakami!\n");
         }
-        if (message.length()==0) return true;
+        if (message.length() == 0) return true;
         else {
             showDialog(message.toString());
             return false;

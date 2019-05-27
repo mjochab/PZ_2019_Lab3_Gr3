@@ -52,7 +52,7 @@ public class WorkerManageParcelsController {
     /**
      * This method is used to fill list view with orders
      */
-    private void fillListViewWithAllOrders(){
+    private void fillListViewWithAllOrders() {
         workerOrdersList.getItems().clear();
         List<UserOrder> orders = orderRepository.findAll();
 
@@ -114,7 +114,8 @@ public class WorkerManageParcelsController {
      */
     @FXML
     public void resetSearch(ActionEvent event) {
-        fillListViewWithAllOrders(); }
+        fillListViewWithAllOrders();
+    }
 
     private void alertError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR,

@@ -38,6 +38,7 @@ public class UserCourierOpinionsController {
 
     /**
      * This method load courier opinions and fills them into list view
+     *
      * @param courierId - passed parameter from previous window
      */
     @FXML

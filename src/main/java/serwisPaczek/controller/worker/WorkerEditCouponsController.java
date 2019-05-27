@@ -53,7 +53,7 @@ public class WorkerEditCouponsController {
     @FXML
 
     public void addCoupon(ActionEvent event) {
-        if (addCouponName.getText().equals("") || addDiscount.getText().equals("")){
+        if (addCouponName.getText().equals("") || addDiscount.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Wypełnij dane", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -63,17 +63,17 @@ public class WorkerEditCouponsController {
             return;
         }
         try {
-            Coupon couponTEST = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
-        } catch (Exception e){
+            Coupon couponTEST = new Coupon(addCouponName.getText(), Integer.valueOf(addDiscount.getText()));
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                "Niepoprawne dane", ButtonType.OK);
+                    "Niepoprawne dane", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             alert.setTitle("Komunikat");
             alert.setHeaderText(null);
             alert.show();
             return;
         }
-        Coupon coupon = new Coupon(addCouponName.getText(),Integer.valueOf(addDiscount.getText()));
+        Coupon coupon = new Coupon(addCouponName.getText(), Integer.valueOf(addDiscount.getText()));
         List<Coupon> couponList = couponRepository.findAll();
         for (Coupon couponFindByName : couponList) {
             if (couponFindByName.getName().equals(coupon.getName())) {
@@ -105,12 +105,12 @@ public class WorkerEditCouponsController {
      * This method deletes coupon from the database.
      */
     @FXML
-    public void deleteCoupon(ActionEvent event){
+    public void deleteCoupon(ActionEvent event) {
         try {
             Coupon coupon = tableView.getSelectionModel().getSelectedItem();
             couponRepository.delete(coupon);
             fillTableView();
-        } catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Wybierz kupon do usunięcia", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -183,6 +183,6 @@ public class WorkerEditCouponsController {
         tableView.setItems(observableListCoupons);
         tableView.setEditable(true);
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        discountColumn.setCellFactory(TextFieldTableCell.<Coupon, Integer>forTableColumn(new IntegerStringConverter()));
+        discountColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
     }
 }

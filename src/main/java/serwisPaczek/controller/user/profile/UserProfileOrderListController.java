@@ -162,8 +162,7 @@ public class UserProfileOrderListController {
                 e.printStackTrace();
             }
 
-        }
-        catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             alertError("Zaznacz zamówienie dla którego chcesz wyświetlić szczegóły!");
         }
     }

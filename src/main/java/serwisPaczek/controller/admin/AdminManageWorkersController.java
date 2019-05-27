@@ -36,8 +36,8 @@ public class AdminManageWorkersController {
 
     /**
      * This method is used to fill one item in list view with worker
-     * @param worker - user with worker role we wish to add to list view
      *
+     * @param worker - user with worker role we wish to add to list view
      */
     private void fillListWithWorkers(User worker) {
         workerList.getItems().add("ID: " + worker.getId().toString() + "  |  " + worker.getUsername() + "  |  Konto " +

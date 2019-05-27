@@ -5,16 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import serwisPaczek.model.User;
 import serwisPaczek.repository.RoleRepository;
-import serwisPaczek.repository.UserRepository;
 import serwisPaczek.security.Encoder;
-import serwisPaczek.service.UserService;
-import serwisPaczek.utils.SceneType;
-//import sun.security.util.Password;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+//import sun.security.util.Password;
 
 public class MainServiceTest {
 

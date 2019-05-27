@@ -16,7 +16,6 @@ import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 import static serwisPaczek.utils.DialogsUtils.showDialog;
 

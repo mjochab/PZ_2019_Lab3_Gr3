@@ -14,21 +14,19 @@ import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Gift;
 import serwisPaczek.model.GiftOrder;
 import serwisPaczek.repository.GiftOrderRepository;
+import serwisPaczek.repository.GiftRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-import serwisPaczek.repository.GiftRepository;
 
 import java.util.List;
 
 @Controller
 public class WorkerEditGiftController {
-    private SceneManager sceneManager;
-
     @Autowired
     GiftRepository giftRepository;
     @Autowired
     GiftOrderRepository giftOrderRepository;
-
+    private SceneManager sceneManager;
     @FXML
     private TextField addGiftName;
     @FXML
@@ -45,7 +43,7 @@ public class WorkerEditGiftController {
     private TableColumn<Gift, String> statusColumn;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         fillTableView();
     }
 
@@ -58,8 +56,8 @@ public class WorkerEditGiftController {
      * This method is used to add gift to the database with name and discount rate taken from textFields.
      */
     @FXML
-    public void addGift(ActionEvent event){
-        if (addGiftName.getText().equals("") || addGiftPoints.getText().equals("")){
+    public void addGift(ActionEvent event) {
+        if (addGiftName.getText().equals("") || addGiftPoints.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Wypełnij dane!", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -69,8 +67,8 @@ public class WorkerEditGiftController {
             return;
         }
         try {
-            Gift giftTEST = new Gift(addGiftName.getText(),Integer.valueOf(addGiftPoints.getText()),"AKTYWNY");
-        } catch (Exception e){
+            Gift giftTEST = new Gift(addGiftName.getText(), Integer.valueOf(addGiftPoints.getText()), "AKTYWNY");
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Niepoprawne dane!", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -79,8 +77,8 @@ public class WorkerEditGiftController {
             alert.show();
             return;
         }
-        Gift gift = new Gift(addGiftName.getText(),Integer.valueOf(addGiftPoints.getText()),"AKTYWNY");
-        if (gift.getPremiumPoints()<1){
+        Gift gift = new Gift(addGiftName.getText(), Integer.valueOf(addGiftPoints.getText()), "AKTYWNY");
+        if (gift.getPremiumPoints() < 1) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Niepoprawna wartość punktów premium!", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -99,7 +97,7 @@ public class WorkerEditGiftController {
      * This method deletes gift from the database.
      */
     @FXML
-    public void deleteGift(ActionEvent event){
+    public void deleteGift(ActionEvent event) {
         try {
             Gift giftTEST = tableView.getSelectionModel().getSelectedItem();
             Gift gift = tableView.getSelectionModel().getSelectedItem();
@@ -117,7 +115,7 @@ public class WorkerEditGiftController {
             }
             giftRepository.delete(gift);
             fillTableView();
-        } catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Wybierz prezent do usunięcia!", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -131,7 +129,7 @@ public class WorkerEditGiftController {
      * This method changes name of the gift.
      */
     @FXML
-    public void changeNameEvent(TableColumn.CellEditEvent event){
+    public void changeNameEvent(TableColumn.CellEditEvent event) {
         Gift gift = tableView.getSelectionModel().getSelectedItem();
         gift.setName(event.getNewValue().toString());
         giftRepository.save(gift);
@@ -142,14 +140,14 @@ public class WorkerEditGiftController {
      * This method changes status of the gift (active/unactive).
      */
     @FXML
-    public  void changeStatus(ActionEvent event){
+    public void changeStatus(ActionEvent event) {
         try {
             Gift gift = tableView.getSelectionModel().getSelectedItem();
             if (gift.getStatus().equals("AKTYWNY")) gift.setStatus("NIEAKTYWNY");
             else gift.setStatus("AKTYWNY");
             giftRepository.save(gift);
             fillTableView();
-        } catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Wybierz prezent z listy!", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -164,9 +162,9 @@ public class WorkerEditGiftController {
      * This method changes premiumPoints value of the gift.
      */
     @FXML
-    public void changePremiumPointsEvent(TableColumn.CellEditEvent event){
+    public void changePremiumPointsEvent(TableColumn.CellEditEvent event) {
         Gift gift = tableView.getSelectionModel().getSelectedItem();
-        if (Integer.valueOf(event.getNewValue().toString())<0) {
+        if (Integer.valueOf(event.getNewValue().toString()) < 0) {
             fillTableView();
             return;
         }
@@ -183,7 +181,7 @@ public class WorkerEditGiftController {
     /**
      * This method fills tableView with data from the database.
      */
-    void fillTableView(){
+    void fillTableView() {
         List<Gift> giftList = giftRepository.findAll();
         idColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Gift, String>("name"));
@@ -193,6 +191,6 @@ public class WorkerEditGiftController {
         tableView.setItems(observableListGifts);
         tableView.setEditable(true);
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        premiumPointsColumn.setCellFactory(TextFieldTableCell.<Gift, Integer>forTableColumn(new IntegerStringConverter()));
+        premiumPointsColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
     }
 }

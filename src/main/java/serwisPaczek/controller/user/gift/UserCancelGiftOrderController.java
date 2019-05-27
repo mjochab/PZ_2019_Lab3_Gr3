@@ -27,11 +27,11 @@ import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class UserCancelGiftOrderController {
-    private SceneManager sceneManager;
     @Autowired
     GiftOrderRepository giftOrderRepository;
     @Autowired
     UserRepository userRepository;
+    private SceneManager sceneManager;
     @FXML
     private TableView<GiftOrderDto> tableView;
     @FXML
@@ -114,17 +114,17 @@ public class UserCancelGiftOrderController {
         try {
             Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
             GiftOrder giftOrder = giftOrderRepository.getOne(selectedId);
-            if(giftOrder.getStatus().toString() == "WYSLANO_ZGLOSZENIE"){
+            if (giftOrder.getStatus().toString() == "WYSLANO_ZGLOSZENIE") {
                 giftOrder.setStatus(ANULOWANO);
                 giftOrderRepository.save(giftOrder);
                 User user = getLoggedUser();
                 user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
                 userRepository.save(user);
                 showDialog("Anulowano zamówienie prezentu");
-            }else{
+            } else {
                 showDialog("Nie można anulować zamówienia prezentu");
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             showDialog("Zaznacz zamówienie, które chcesz anulować!");
         }
     }

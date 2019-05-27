@@ -32,7 +32,7 @@ public class AdminMainController {
     @FXML
     public void initialize() {
         btnWelcomeAdmin.setText("Witaj " + getLoggedUser().getUsername() + "!");
-        if(userRepository.findByUsername("Uzytkownik1")!=null){
+        if (userRepository.findByUsername("Uzytkownik1") != null) {
             btnFillDataBaseWithExampleData.setVisible(false);
         }
     }

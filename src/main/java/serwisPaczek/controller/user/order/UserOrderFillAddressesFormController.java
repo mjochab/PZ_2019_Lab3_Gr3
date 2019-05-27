@@ -205,7 +205,7 @@ public class UserOrderFillAddressesFormController {
                         courier,
                         Status.WYSLANO_ZGLOSZENIE, senderaddress, recipientaddress));
 
-                userService.withdrawFunds(getLoggedUser(), (double) price);
+                userService.withdrawFunds(getLoggedUser(), price);
 
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.order/userOrderFinalize.fxml"));

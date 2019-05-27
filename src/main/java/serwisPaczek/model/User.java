@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

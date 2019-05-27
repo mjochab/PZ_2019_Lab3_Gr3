@@ -41,7 +41,6 @@ public class UserService {
     public void login(String username, String password, Text usernameWarning, Text passwordWarning) {
 
 
-
         if (isCorrect(username) && isCorrect(password) && password.length() >= 6 && username.length() >= 4) {
             User user = userRepository.findByUsername(username);
             if (user != null && passwordEncoder.matches(password, user.getPassword())) {

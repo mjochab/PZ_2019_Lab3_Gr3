@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +15,11 @@ import serwisPaczek.repository.*;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class WorkerManageGiftOrdersController {
-    private SceneManager sceneManager;
     @Autowired
     GiftRepository giftRepository;
     @Autowired
@@ -33,7 +30,7 @@ public class WorkerManageGiftOrdersController {
     GiftOrderRepository giftOrderRepository;
     @Autowired
     AddressRepository addressRepository;
-
+    private SceneManager sceneManager;
     @FXML
     private TextField idTextField;
     @FXML
@@ -68,7 +65,7 @@ public class WorkerManageGiftOrdersController {
     private TableColumn<GiftOrderDto, String> statusColumn;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         fillTableView(0);
         statusComboBox.getItems().setAll(Status.values());
         statusComboBox.getSelectionModel().selectFirst();
@@ -146,9 +143,9 @@ public class WorkerManageGiftOrdersController {
         senderNameColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("senderName"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<GiftOrderDto, String>("status"));
 
-        if (id != 0){
-            for (GiftOrderDto giftOrderDto : giftOrderDtoList){
-                if (giftOrderDto.getId() == id ) {
+        if (id != 0) {
+            for (GiftOrderDto giftOrderDto : giftOrderDtoList) {
+                if (giftOrderDto.getId() == id) {
                     List<GiftOrderDto> giftOrderDtoItem = new ArrayList<>();
                     giftOrderDtoItem.add(giftOrderDto);
                     ObservableList<GiftOrderDto> observableListGiftOrderDtos = FXCollections.observableArrayList(giftOrderDtoItem);
@@ -166,7 +163,7 @@ public class WorkerManageGiftOrdersController {
      * This method changes status of the gift order.
      */
     @FXML
-    public void changeStatus(ActionEvent event){
+    public void changeStatus(ActionEvent event) {
         try {
             GiftOrderDto giftOrderDto = tableView.getSelectionModel().getSelectedItem();
             List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
@@ -178,7 +175,7 @@ public class WorkerManageGiftOrdersController {
                 }
             }
             fillTableView(0);
-        } catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION,
                     "Nie wybrano zamówienia do zmiany statusu!", ButtonType.OK);
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -192,11 +189,10 @@ public class WorkerManageGiftOrdersController {
      * This method parses parameter from textField to the fillTableView method.
      */
     @FXML
-    public void searchGiftOrder(ActionEvent event){
+    public void searchGiftOrder(ActionEvent event) {
         if (idTextField.getText().equals("")) {
             fillTableView(0);
-        }
-        else {
+        } else {
             fillTableView(Integer.valueOf(idTextField.getText()));
         }
     }
