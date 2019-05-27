@@ -8,10 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.*;
-import serwisPaczek.model.dto.UserOrderDto;
 import serwisPaczek.repository.GiftOrderRepository;
 import serwisPaczek.repository.GiftRepository;
 import serwisPaczek.repository.RecipientAdressRepository;
@@ -24,10 +22,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Long.parseLong;
-import static serwisPaczek.model.Status.ANULOWANO;
 import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
-import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class UserGiftOrderController {
@@ -87,10 +82,6 @@ public class UserGiftOrderController {
         giftComboBox.setItems(observableListGiftOrders);
     }
 
-    public void showGiftOrders(ActionEvent event) {
-        Long orderId = (Long)giftComboBox.getSelectionModel().getSelectedItem();
-    }
-
     /**
      * This method is used to send new GiftOrder to database.
      * It creates new Adress and RecipientAdress based on information from the textfields and then sends data to database.
@@ -137,24 +128,6 @@ public class UserGiftOrderController {
         alert.setTitle("Komunikat");
         alert.setHeaderText(null);
         alert.show();
-    }
-
-    @FXML
-    public void cancelGift(ActionEvent event) {
-        if (giftComboBox.getSelectionModel().isEmpty()) {
-            showDialog("Nie dokonano wyboru prezentu.");
-        } Long orderId = (Long)giftComboBox.getSelectionModel().getSelectedItem();
-        List<GiftOrder> giftOrderList = giftOrderRepository.findAll();
-        for(GiftOrder giftOrder : giftOrderList){
-            if(giftOrder.getId() == orderId){
-                giftOrder.setStatus(ANULOWANO);
-                giftOrderRepository.save(giftOrder);
-                User user = getLoggedUser();
-                user.setPremiumPointsBalance(user.getPremiumPointsBalance() + giftOrder.getGift().getPremiumPoints());
-                userRepository.save(user);
-            }
-        }
-        showDialog("Anulowano zamówienie prezentu.");
     }
 
     /**

@@ -58,6 +58,11 @@ public class UserMainController {
     }
 
     @FXML
+    void openUserCancelGiftOrder(ActionEvent event) {
+        sceneManager.show(SceneType.USER_CANCEL_GIFT_ORDER);
+    }
+
+    @FXML
     void openUserWallet(ActionEvent event) {
         sceneManager.show(SceneType.USER_PROFILE_WALLET);
     }
