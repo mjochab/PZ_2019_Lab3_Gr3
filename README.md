@@ -59,7 +59,10 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 3. MySql
 
 ### Obsługa aplikacji
-
+#### Domyślne dane logowania:
+##### Administrator: admin123 admin123
+##### Pracownik: worker123 worker123
+##### Użytkownik: user123 user123
 Po uruchomieniu aplikacji wyświetlone zostanie menu główne aplikacji.
 <br />![1](diagrams/LOGGED.PNG) <br/>
 Poprzez wciśnięcie przycisków możemy zobaczyć ranking oraz cennik kurierów i informacje o firmie.
@@ -71,18 +74,19 @@ Gość następnie ma możliwosc zarejestrowania się oraz zalogowania, wszystkie
 Po zalogowaniu się, może przejść znowu do modułu zamówienia kuriera, jeżeli podczas wybrania kuriera nie posiada dostępnych środków na koncie, zostanie wyświetlona informacja informująca o tym. 
 
 User w celu dokonania zamówienia doładowuje prowizorycznie swój portfel.
-
+<br />![1](diagrams/portfel.PNG) <br/>
 Wybiera kuriera, jeżeli wszystko poprzednie zostało spełnione, przechodzi do okna w którym wypełnia swój adres oraz osoby, do której chce go wysłac. Jeżeli zalogowany użytkownik posiada wypełniony swój profil, może automatycznie wypełnic pola tekstowe. Jeżeli dane przejdą walidacje, pojawia się kończące okno. 
-
+<br />![1](diagrams/wybor_adresu.PNG) <br/>
 W ostatnim oknie modułu zamówienia mamy możliwość wygenerowania PDF'a z informacjami o zamówieniu oraz o stanie konta.
-
+<br />![1](diagrams/podsumowanie.PNG) <br/>
 Następnie pracownik może zalogować się (testowy pracownik - username - worker123 , password - worker123), wyświetlona zostanie menu pracownika. Może on zarządzać przesyłkami, zmieniać ich status oraz filtrować.
-
+<br />![1](diagrams/worker_panel.PNG) <br/>
+<br />![1](diagrams/worker_managment.PNG) <br/>
 Ma również możliwość dodawania zarządzania prezentami - wyświetlania, dodawania, edycji oraz usuwania. Następnie może wyświetlić liste zamówionych prezentów, zmienić ich status oraz filtrować - wszystkie dane podlegają walidacji
 
 Admin (domyślne dane logowania - username - admin123, password - admin123) 
 Admin może zarządzać w ten sam sposób zamówieniami. 
-
+<br />![1](diagrams/admin_panel.PNG) <br/>
 Ma możliwość dodawania oraz edytowania kuriera, filtrowania ich  - wszystkie dane podlegają walidacji.
 
 Następnie może ulepszać konto zwykłego użytkownika do roli pracownika poprzez zmienianie ich statusu.
