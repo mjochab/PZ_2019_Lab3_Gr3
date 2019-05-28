@@ -62,9 +62,11 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 
 Po uruchomieniu aplikacji wyświetlone zostanie menu główne aplikacji.
 <br />![1](diagrams/LOGGED.PNG) <br/>
+Poprzez wciśnięcie przycisków możemy zobaczyć ranking oraz cennik kurierów i informacje o firmie.
+
 Gość ma możliwość naciśnięcia guziku ,,zamów kuriera", wpisaniu danych przesyłki co doprowadzi do wyświetlenia listy dostępnych kurierów. Jeżeli będzie chciał wybrać kuriera by przejść dalej wyświetli się dialog informujący, że do przejścia dalej potrzebne jest zalogowanie.
 <br />![1](diagrams/niezalogowany.PNG) <br/>
-Gość następnie ma możliwosc zarejestrowania się oraz zalogowania, wszystkie dane są poddane walidacji.
+Gość następnie ma możliwosc zarejestrowania się oraz zalogowania, wszystkie dane są poddane walidacji (testowy użytkownik - username Uzytkownik1, password - Uzytkownik1.
 <br />![1](diagrams/logowanie.PNG) <br/>
 Po zalogowaniu się, może przejść znowu do modułu zamówienia kuriera, jeżeli podczas wybrania kuriera nie posiada dostępnych środków na koncie, zostanie wyświetlona informacja informująca o tym. 
 
@@ -74,6 +76,19 @@ Wybiera kuriera, jeżeli wszystko poprzednie zostało spełnione, przechodzi do 
 
 W ostatnim oknie modułu zamówienia mamy możliwość wygenerowania PDF'a z informacjami o zamówieniu oraz o stanie konta.
 
+Następnie pracownik może zalogować się (testowy pracownik - username - worker123 , password - worker123), wyświetlona zostanie menu pracownika. Może on zarządzać przesyłkami, zmieniać ich status oraz filtrować.
+
+Ma również możliwość dodawania zarządzania prezentami - wyświetlania, dodawania, edycji oraz usuwania. Następnie może wyświetlić liste zamówionych prezentów, zmienić ich status oraz filtrować - wszystkie dane podlegają walidacji
+
+Admin (domyślne dane logowania - username - admin123, password - admin123) 
+Admin może zarządzać w ten sam sposób zamówieniami. 
+
+Ma możliwość dodawania oraz edytowania kuriera, filtrowania ich  - wszystkie dane podlegają walidacji.
+
+Następnie może ulepszać konto zwykłego użytkownika do roli pracownika poprzez zmienianie ich statusu.
+
+Dodatkowo ma możliwość zmiany informacji o firmie 
+Dodatkowo ma możliwość zarządzania rabatami - wyświetlania, dodawania nowych, edycji oraz usuwania - wszystkie dane podlegają walidacji
 ### Autorzy
 - Paweł Fiołek
 - Patryk Brzuchacz
