@@ -61,11 +61,11 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 ### Obsługa aplikacji
 
 Po uruchomieniu aplikacji wyświetlone zostanie menu główne aplikacji.
-<br />![1](diagrams/LOGGED.png) <br/>
+<br />![1](diagrams/LOGGED.PNG) <br/>
 Gość ma możliwość naciśnięcia guziku ,,zamów kuriera", wpisaniu danych przesyłki co doprowadzi do wyświetlenia listy dostępnych kurierów. Jeżeli będzie chciał wybrać kuriera by przejść dalej wyświetli się dialog informujący, że do przejścia dalej potrzebne jest zalogowanie.
-<br />![1](diagrams/niezalogowany.png) <br/>
+<br />![1](diagrams/niezalogowany.PNG) <br/>
 Gość następnie ma możliwosc zarejestrowania się oraz zalogowania, wszystkie dane są poddane walidacji.
-<br />![1](diagrams/logowanie.png) <br/>
+<br />![1](diagrams/logowanie.PNG) <br/>
 Po zalogowaniu się, może przejść znowu do modułu zamówienia kuriera, jeżeli podczas wybrania kuriera nie posiada dostępnych środków na koncie, zostanie wyświetlona informacja informująca o tym. 
 
 User w celu dokonania zamówienia doładowuje prowizorycznie swój portfel.
