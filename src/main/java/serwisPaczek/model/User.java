@@ -24,7 +24,7 @@ public class User {
     @Column(name = "premium_points_balance")
     private int premiumPointsBalance;
 
-    @Column(name = "active")
+    @Column(name = "user_active")
     @ColumnDefault("true")
     private Boolean active = true;
 

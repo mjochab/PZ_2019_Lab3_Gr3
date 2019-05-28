@@ -16,6 +16,7 @@ public class UserOrder {
     private Long id;
     private double price;
     private Date date;
+    @Column(name = "premium_points")
     private int premiumPoints;
     @ManyToOne
     @JoinColumn(name = "user_id")

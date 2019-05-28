@@ -11,6 +11,8 @@ alter table gift_order
     add foreign key(user_id) references user(id);
 
 alter table gift_order
+    add foreign key(recipient_address_id) references recipient_address(id);
+alter table gift_order
     add foreign key(gift_id) references gift(id);
 
 alter table user

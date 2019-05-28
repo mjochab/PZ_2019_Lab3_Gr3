@@ -20,7 +20,7 @@ public class GiftOrder {
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
-    @JoinColumn(name = "recipient_id")
+    @JoinColumn(name = "recipient_address_id")
     private RecipientAddress recipientAddress;
 
     public GiftOrder() {

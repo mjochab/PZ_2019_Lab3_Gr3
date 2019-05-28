@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
             fx:controller="serwisPaczek.controller.user.profile.UserProfileEditProfileController">
     <top>
@@ -79,14 +80,14 @@
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <TextField fx:id="TFname" layoutX="159.0" layoutY="84.0" prefHeight="30.0" prefWidth="245.0" />
-                <TextField fx:id="TFsurname" layoutX="504.0" layoutY="87.0" prefHeight="30.0" prefWidth="240.0" />
-                <TextField fx:id="TFstreet" layoutX="159.0" layoutY="126.0" prefHeight="30.0" prefWidth="245.0" />
-                <TextField fx:id="TFcity" layoutX="504.0" layoutY="128.0" prefHeight="30.0" prefWidth="240.0" />
-                <TextField fx:id="TFzip" layoutX="159.0" layoutY="169.0" prefHeight="30.0" prefWidth="245.0" />
-                <TextField fx:id="TFhome" layoutX="504.0" layoutY="171.0" prefHeight="30.0" prefWidth="240.0" />
-                <TextField fx:id="TFemail" layoutX="159.0" layoutY="210.0" prefHeight="30.0" prefWidth="245.0" />
-                <TextField fx:id="TFphone" layoutX="504.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0" />
+                <TextField fx:id="TFname" layoutX="159.0" layoutY="84.0" prefHeight="30.0" prefWidth="245.0"/>
+                <TextField fx:id="TFsurname" layoutX="504.0" layoutY="87.0" prefHeight="30.0" prefWidth="240.0"/>
+                <TextField fx:id="TFstreet" layoutX="159.0" layoutY="126.0" prefHeight="30.0" prefWidth="245.0"/>
+                <TextField fx:id="TFcity" layoutX="504.0" layoutY="128.0" prefHeight="30.0" prefWidth="240.0"/>
+                <TextField fx:id="TFzip" layoutX="159.0" layoutY="169.0" prefHeight="30.0" prefWidth="245.0"/>
+                <TextField fx:id="TFhome" layoutX="504.0" layoutY="171.0" prefHeight="30.0" prefWidth="240.0"/>
+                <TextField fx:id="TFemail" layoutX="159.0" layoutY="210.0" prefHeight="30.0" prefWidth="245.0"/>
+                <TextField fx:id="TFphone" layoutX="504.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0"/>
             </children>
         </AnchorPane>
     </center>

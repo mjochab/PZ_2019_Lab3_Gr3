@@ -14,6 +14,7 @@ create table `user`
     role_id                bigint,
     premium_points_balance int             DEFAULT 500,
     address_id             bigint,
+    user_active            bit(1) default 1,
     Primary Key (id)
 );
 
@@ -49,6 +50,7 @@ create table gift_order
     gift_id bigint,
     status  varchar(40),
     date    DATETIME,
+    recipient_address_id bigint,
     Primary Key (id)
 );
 
@@ -88,6 +90,7 @@ create table user_order
     status               varchar(40),
     sender_address_id    bigint,
     recipient_address_id bigint,
+    premium_points       int,
     Primary Key (id)
 );
 
