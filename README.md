@@ -66,7 +66,8 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 Po uruchomieniu aplikacji wyświetlone zostanie menu główne aplikacji.
 <br />![1](diagrams/LOGGED.PNG) <br/>
 Poprzez wciśnięcie przycisków możemy zobaczyć ranking oraz cennik kurierów i informacje o firmie.
-
+<br />![1](diagrams/ranking.PNG) <br/>
+<br />![1](diagrams/cennik_kuriera.PNG) <br/>
 Gość ma możliwość naciśnięcia guziku ,,zamów kuriera", wpisaniu danych przesyłki co doprowadzi do wyświetlenia listy dostępnych kurierów. Jeżeli będzie chciał wybrać kuriera by przejść dalej wyświetli się dialog informujący, że do przejścia dalej potrzebne jest zalogowanie.
 <br />![1](diagrams/niezalogowany.PNG) <br/>
 Gość następnie ma możliwosc zarejestrowania się oraz zalogowania, wszystkie dane są poddane walidacji (testowy użytkownik - username Uzytkownik1, password - Uzytkownik1.
@@ -81,16 +82,16 @@ W ostatnim oknie modułu zamówienia mamy możliwość wygenerowania PDF'a z inf
 <br />![1](diagrams/podsumowanie.PNG) <br/>
 Następnie pracownik może zalogować się (testowy pracownik - username - worker123 , password - worker123), wyświetlona zostanie menu pracownika. Może on zarządzać przesyłkami, zmieniać ich status oraz filtrować.
 <br />![1](diagrams/worker_panel.PNG) <br/>
-<br />![1](diagrams/worker_managment.PNG) <br/>
+
 Ma również możliwość dodawania zarządzania prezentami - wyświetlania, dodawania, edycji oraz usuwania. Następnie może wyświetlić liste zamówionych prezentów, zmienić ich status oraz filtrować - wszystkie dane podlegają walidacji
 
 Admin (domyślne dane logowania - username - admin123, password - admin123) 
 Admin może zarządzać w ten sam sposób zamówieniami. 
 <br />![1](diagrams/admin_panel.PNG) <br/>
+<br />![1](diagrams/worker_managment.PNG) <br/>
 Ma możliwość dodawania oraz edytowania kuriera, filtrowania ich  - wszystkie dane podlegają walidacji.
 
 Następnie może ulepszać konto zwykłego użytkownika do roli pracownika poprzez zmienianie ich statusu.
-
 Dodatkowo ma możliwość zmiany informacji o firmie 
 Dodatkowo ma możliwość zarządzania rabatami - wyświetlania, dodawania nowych, edycji oraz usuwania - wszystkie dane podlegają walidacji
 ### Autorzy
