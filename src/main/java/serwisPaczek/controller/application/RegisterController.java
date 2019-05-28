@@ -1,4 +1,4 @@
-package serwisPaczek.controller;
+package serwisPaczek.controller.application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,38 +13,35 @@ import serwisPaczek.utils.SceneType;
 
 @Controller
 public class RegisterController {
-
     private SceneManager sceneManager;
-
     @Autowired
     private UserService userService;
-
     @FXML
     private Text usernameWarning, passwordWarning, repeatPasswordWarning;
-
     @FXML
     private PasswordField PFPassword;
-
     @FXML
     private PasswordField PFRepeatPassword;
-
     @FXML
     private TextField TFUsername;
 
     @FXML
     public void initialize() {
-   usernameWarning.setVisible(false);
-   passwordWarning.setVisible(false);
-   repeatPasswordWarning.setVisible(false);
+        usernameWarning.setVisible(false);
+        passwordWarning.setVisible(false);
+        repeatPasswordWarning.setVisible(false);
     }
 
+    /**
+     * This method is used to register a new user.
+     */
     @FXML
     public void register(ActionEvent event) {
-        userService.createUser(TFUsername.getText(),PFPassword.getText(),
+        userService.createUser(TFUsername.getText(), PFPassword.getText(),
                 PFRepeatPassword.getText(),
                 usernameWarning,
                 passwordWarning,
-                repeatPasswordWarning);;
+                repeatPasswordWarning);
     }
 
     @FXML
@@ -53,7 +50,7 @@ public class RegisterController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
+    public void openMainAppPanel(ActionEvent event) {
         sceneManager.show(SceneType.MAIN);
     }
 

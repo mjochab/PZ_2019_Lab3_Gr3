@@ -10,7 +10,6 @@ import serwisPaczek.utils.SceneManager;
 
 @SpringBootApplication
 public class Main extends Application {
-
     private ConfigurableApplicationContext springContext;
 
     @Autowired

@@ -1,5 +1,4 @@
-package serwisPaczek.controller.adminController;
-
+package serwisPaczek.controller.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,14 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-//import jdk.nashorn.internal.objects.annotations.Property;
+import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.model.Adress;
+import serwisPaczek.model.Address;
+import serwisPaczek.model.Role;
 import serwisPaczek.model.User;
-import serwisPaczek.model.dto.UserAdressDto;
-import serwisPaczek.repository.AdressRepository;
+import serwisPaczek.model.dto.UserAddressDto;
+import serwisPaczek.repository.AddressRepository;
 import serwisPaczek.repository.RoleRepository;
 import serwisPaczek.repository.UserRepository;
 import serwisPaczek.utils.SceneManager;
@@ -22,63 +23,67 @@ import serwisPaczek.utils.SceneType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
+
+import static serwisPaczek.utils.DialogsUtils.showDialog;
 
 @Controller
 public class AdminManageUsersController {
-    private SceneManager sceneManager;
-
     @Autowired
     UserRepository userRepository;
-
+    private SceneManager sceneManager;
     @Autowired
-    private AdressRepository adressRepository;
+    private AddressRepository addressRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @FXML
+    private TableView<UserAddressDto> tableView;
+    @FXML
+    private TableColumn<UserAddressDto, String> idColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> userNameColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> nameColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> surnameColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> cityColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> streetColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> houseNumberColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> zipCodeColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> telephoneNumberColumn;
+    @FXML
+    private TableColumn<UserAddressDto, String> emailColumn;
+    @FXML
+    private TextField TFusername;
 
-    //Configure the table
-    @FXML
-    private TableView<UserAdressDto> tableView;
-    @FXML
-    private TableColumn<UserAdressDto, String> idColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> userNameColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> nameColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> surnameColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> cityColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> streetColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> houseNumberColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> zipCodeColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> telephoneNumberColumn;
-    @FXML
-    private TableColumn<UserAdressDto, String> emailColumn;
-
+    /**
+     * This method is used to show all existing users and their information in the list.
+     */
     @FXML
     public void initialize() {
         List<User> listUsers = userRepository.findAll();
-        List<UserAdressDto> userAdressDtos = new ArrayList<>();
+        List<UserAddressDto> userAddressDtos = new ArrayList<>();
 
         for (User user : listUsers) {
-            Adress adress = adressRepository.findByUser(user);
-            if (adress != null) {
-                userAdressDtos.add(new UserAdressDto(user.getId(),
+            Address address = addressRepository.findByUser(user);
+            if (address != null) {
+                userAddressDtos.add(new UserAddressDto(user.getId(),
                         user.getUsername(),
-                        adress.getName(),
-                        adress.getSurname(),
-                        adress.getCity(),
-                        adress.getStreet(),
-                        adress.getHouseNumber(),
-                        adress.getZipCode(),
-                        adress.getTelephoneNumber(),
-                        adress.getEmail()
+                        address.getName(),
+                        address.getSurname(),
+                        address.getCity(),
+                        address.getStreet(),
+                        address.getHouseNumber(),
+                        address.getZipCode(),
+                        address.getTelephoneNumber(),
+                        address.getEmail()
                 ));
             } else
-                userAdressDtos.add(new UserAdressDto(user.getId(),
+                userAddressDtos.add(new UserAddressDto(user.getId(),
                         user.getUsername(),
                         "",
                         "",
@@ -90,22 +95,48 @@ public class AdminManageUsersController {
                         ""
                 ));
         }
-        idColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("id"));
-        userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("username"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("surname"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("city"));
-        streetColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("street"));
-        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("houseNumber"));
-        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("zipCode"));
-        telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("telephoneNumber"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<UserAdressDto, String>("email"));
-        ObservableList<UserAdressDto> observableListUsers = FXCollections.observableArrayList(userAdressDtos);
+        idColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("id"));
+        userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("username"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("name"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("surname"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("city"));
+        streetColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("street"));
+        houseNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("houseNumber"));
+        zipCodeColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("zipCode"));
+        telephoneNumberColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("telephoneNumber"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<UserAddressDto, String>("email"));
+        ObservableList<UserAddressDto> observableListUsers = FXCollections.observableArrayList(userAddressDtos);
         tableView.setItems(observableListUsers);
     }
 
     @FXML
-    public void openAdminMain(ActionEvent event) {
+    public void handleMouseClick(MouseEvent arg0) {
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+        } catch (Exception e) {
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        }
+    }
+
+    /**
+     * This method is used to add worker by changing user's status.
+     */
+    @FXML
+    public void editStatus(ActionEvent event) {
+        try {
+            Long selectedId = tableView.getSelectionModel().getSelectedItem().getId();
+            User user = userRepository.getOne(selectedId);
+            Role role = roleRepository.findByRoleName("WORKER_ROLE");
+            user.setRole(role);
+            userRepository.save(user);
+            showDialog("Dodano pracownika");
+        } catch (Exception e) {
+            showDialog("Wybierz użytkownika, dla którego chcesz wykonać akcję");
+        }
+    }
+
+    @FXML
+    public void openAdminMainPanel(ActionEvent event) {
         sceneManager.show(SceneType.ADMIN_MAIN);
     }
 
@@ -113,6 +144,4 @@ public class AdminManageUsersController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
-
 }
-

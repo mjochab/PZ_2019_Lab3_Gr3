@@ -11,6 +11,6 @@ public class UserLoginDto {
     }
 
     public static void setLoggedUser(User user) {
-       loggedUser = user;
+        loggedUser = user;
     }
 }

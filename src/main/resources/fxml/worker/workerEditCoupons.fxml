@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="serwisPaczek.controller.worker.WorkerEditCouponsController">
+    <top>
+        <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+            <image>
+                <Image url="@../../images/BigBanner_Delivery.png"/>
+            </image>
+        </ImageView>
+    </top>
+    <center>
+        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="173.0" layoutX="496.0"
+                           layoutY="14.0" stroke="BLUE" strokeType="INSIDE" width="298.0"/>
+                <Button fx:id="btnOpenWorkerPanel" layoutX="14.0" layoutY="302.0" mnemonicParsing="false"
+                        onAction="#openMainWorkerPanel" prefHeight="35.0" prefWidth="175.0"
+                        style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <TableView fx:id="tableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="280.0"
+                           prefWidth="470.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="44.0" text="Id"/>
+                        <TableColumn fx:id="nameColumn" onEditCommit="#changeNameEvent" prefWidth="223.0" text="Nazwa"/>
+                        <TableColumn fx:id="discountColumn" onEditCommit="#changeDiscountEvent" prefWidth="202.0"
+                                     text="Obniżka [%]"/>
+                    </columns>
+                </TableView>
+                <TextField fx:id="addCouponName" layoutX="505.0" layoutY="68.0" prefHeight="25.0" prefWidth="280.0"
+                           promptText="Nazwa Kuponu"/>
+                <TextField fx:id="addDiscount" layoutX="505.0" layoutY="103.0" prefHeight="25.0" prefWidth="280.0"
+                           promptText="Rabat [%]"/>
+                <Button fx:id="btnAddGift" layoutX="505.0" layoutY="144.0" mnemonicParsing="false" onAction="#addCoupon"
+                        prefHeight="35.0" prefWidth="280.0" style="-fx-background-color: green;" text="Dodaj kupon"
+                        textFill="WHITE">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Button layoutX="505.0" layoutY="22.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="279.0"
+                        style="-fx-background-color: blue;" text="Dodawanie kuponu" textFill="WHITE">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnDeleteCoupon" layoutX="400.0" layoutY="302.0" mnemonicParsing="false"
+                        onAction="#deleteCoupon" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: red;"
+                        text="Usuń" textFill="WHITE">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

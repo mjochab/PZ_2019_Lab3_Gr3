@@ -1,24 +1,47 @@
-package serwisPaczek.controller.adminController;
+package serwisPaczek.controller.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.repository.UserRepository;
 import serwisPaczek.service.MainService;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
+
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.model.dto.UserLoginDto.setLoggedUser;
 
 @Controller
 public class AdminMainController {
     private SceneManager sceneManager;
 
+    @FXML
+    private Button btnWelcomeAdmin;
+    @FXML
+    private Button btnFillDataBaseWithExampleData;
     @Autowired
     private MainService mainService;
+    @Autowired
+    private UserRepository userRepository;
 
-    public void FillTheBaseWithExampleData() {
+    @FXML
+    public void initialize() {
+        btnWelcomeAdmin.setText("Witaj " + getLoggedUser().getUsername() + "!");
+        if (userRepository.findByUsername("Uzytkownik1") != null) {
+            btnFillDataBaseWithExampleData.setVisible(false);
+        }
+    }
+
+    /**
+     * This method is used to fill the database with example data.
+     */
+    @FXML
+    public void fillDataBaseWithExampleData() {
         mainService.fillDatabase();
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "Dane zostały poprawnie dodane do bazy", ButtonType.OK);
@@ -35,7 +58,7 @@ public class AdminMainController {
 
     @FXML
     void openManageWorkerPanel(ActionEvent event) {
-        //TODO FXML
+        sceneManager.show(SceneType.ADMIN_MANAGE_WORKERS);
     }
 
     @FXML
@@ -45,7 +68,7 @@ public class AdminMainController {
 
     @FXML
     public void openManageParcelPanel(ActionEvent event) {
-        sceneManager.show(SceneType.ADMIN_MANAGE_PARCELS);
+        sceneManager.show(SceneType.WORKER_MANAGE_PARCELS);
     }
 
     @FXML
@@ -60,6 +83,7 @@ public class AdminMainController {
 
     @FXML
     void logout(ActionEvent event) {
+        setLoggedUser(null);
         sceneManager.show(SceneType.MAIN);
     }
 

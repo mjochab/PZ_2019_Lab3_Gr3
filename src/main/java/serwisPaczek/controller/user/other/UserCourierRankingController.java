@@ -1,43 +1,35 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.user.other;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import serwisPaczek.model.*;
+import serwisPaczek.model.UserOrder;
 import serwisPaczek.repository.OrderRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
 
 @Controller
 public class UserCourierRankingController {
-    private SceneManager sceneManager;
-
     @Autowired
     OrderRepository orderRepository;
-
-
-
+    private SceneManager sceneManager;
     @FXML
     private PieChart rankingPieChart;
 
-    @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
-    }
-
-    @Autowired
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
-
+    /**
+     * This method is used for filling created pie chart with data
+     */
     @FXML
     public void initialize() {
         List<UserOrder> orders = orderRepository.findAll();
-//        System.out.println(orderRepository.count());
 
         Map<String, Integer> courierCount = new HashMap<>();
         for (UserOrder order : orders) {
@@ -45,10 +37,22 @@ public class UserCourierRankingController {
             courierCount.put(order.getCourier().getName(), (count == null) ? 1 : count + 1);
         }
 
-        for(Map.Entry<String,Integer> entry : courierCount.entrySet()){
-            rankingPieChart.getData().add(new PieChart.Data(entry.getKey(),entry.getValue()));
-//            System.out.println(entry.getKey() + " = " + entry.getValue());
+        for (Map.Entry<String, Integer> entry : courierCount.entrySet()) {
+            rankingPieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
         }
+    }
 
+    @FXML
+    public void openMainPanel(ActionEvent event) {
+        if (getLoggedUser() == null) {
+            sceneManager.show(SceneType.MAIN);
+        } else {
+            sceneManager.show(SceneType.USER_MAIN);
+        }
+    }
+
+    @Autowired
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
     }
 }

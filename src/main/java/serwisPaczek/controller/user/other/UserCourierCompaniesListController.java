@@ -1,45 +1,39 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.user.other;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Courier;
+import serwisPaczek.repository.CourierRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
-import serwisPaczek.repository.CourierRepository;
 
+import java.io.IOException;
 import java.util.List;
+
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+import static serwisPaczek.utils.SceneManager.stage;
 
 @Controller
 public class UserCourierCompaniesListController {
-    private SceneManager sceneManager;
-    private static long courierID;
-    private static String courierName;
-    @FXML
-    private GridPane gridPane;
     @Autowired
     CourierRepository courierRepository;
+    private SceneManager sceneManager;
+    private ApplicationContext context;
+    @FXML
+    private GridPane gridPane;
 
-    public static long getCourierID() {
-        return courierID;
-    }
-
-    private static void setCourierID(long courierID) {
-        UserCourierCompaniesListController.courierID = courierID;
-    }
-
-    public static String getCourierName() {
-        return courierName;
-    }
-
-    private static void setCourierName(String courierName) {
-        UserCourierCompaniesListController.courierName = courierName;
-    }
-
+    /**
+     * This method is used to display all existing, non blocked courier companies.
+     */
     public void initialize() {
         List<Courier> listCouriers = courierRepository.findAll();
         int index = 0;
@@ -47,28 +41,34 @@ public class UserCourierCompaniesListController {
         int gridCol = 0;
         String color = "";
         int numberOfButtons = (int) courierRepository.count();
-        Button button[];
+        Button[] button;
         button = new Button[numberOfButtons];
 
         for (Courier courier : listCouriers) {
+            if (courier.is_blocked()) {
+                continue;
+            }
             if (index % 4 == 0) {
                 gridRow++;
                 gridCol = 0;
                 gridPane.addRow(gridRow);
             }
-            // Btn color switcher
-            switch (index % 4) {
+            // btn color switcher
+            switch (index % 5) {
                 case (0):
                     color = "red";
                     break;
                 case (1):
-                    color = "orange";
+                    color = "darkslategray";
                     break;
                 case (2):
-                    color = "olive";
+                    color = "orange";
                     break;
                 case (3):
                     color = "indigo";
+                    break;
+                case (4):
+                    color = "hotpink";
                     break;
             }
             button[index] = new Button(courier.getName());
@@ -80,11 +80,23 @@ public class UserCourierCompaniesListController {
             );
 
             button[index].setOnAction(new EventHandler<ActionEvent>() {
+                /**
+                 * This method is used to handle btn click.
+                 * After user click btn this method redirect him to specific courier company pricing.
+                 */
                 @Override
                 public void handle(ActionEvent event) {
-                    setCourierID(courier.getId());
-                    setCourierName(courier.getName());
-                    sceneManager.show(SceneType.PRICE_LIST);
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierCompanyPricing.fxml"));
+                        loader.setControllerFactory(context::getBean);
+                        Parent root = loader.load();
+                        UserCourierCompanyPricingController userCourierCompanyPricingController = loader.getController();
+                        userCourierCompanyPricingController.initialize(courier.getId());
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             gridPane.add(button[index], gridCol, gridRow);
@@ -94,8 +106,17 @@ public class UserCourierCompaniesListController {
     }
 
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void openMainPanel(ActionEvent event) {
+        if (getLoggedUser() == null) {
+            sceneManager.show(SceneType.MAIN);
+        } else {
+            sceneManager.show(SceneType.USER_MAIN);
+        }
+    }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
     }
 
     @Autowired

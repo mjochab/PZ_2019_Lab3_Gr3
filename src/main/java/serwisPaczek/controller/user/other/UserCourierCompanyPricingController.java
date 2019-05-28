@@ -1,9 +1,14 @@
-package serwisPaczek.controller.user;
+package serwisPaczek.controller.user.other;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import serwisPaczek.model.Courier;
 import serwisPaczek.model.EnvelopePricing;
@@ -16,17 +21,12 @@ import serwisPaczek.repository.PalletPricingRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
+import java.io.IOException;
+
+import static serwisPaczek.utils.SceneManager.stage;
+
 @Controller
 public class UserCourierCompanyPricingController {
-    private SceneManager sceneManager;
-    @FXML
-    private ListView<String> envelopeList;
-    @FXML
-    private ListView<String> packList;
-    @FXML
-    private ListView<String> palletList;
-    @FXML
-    private Button courierNameButton;
     @Autowired
     CourierRepository courierRepository;
     @Autowired
@@ -35,17 +35,30 @@ public class UserCourierCompanyPricingController {
     PackPricingRepository packPricingRepository;
     @Autowired
     PalletPricingRepository palletPricingRepository;
+    private SceneManager sceneManager;
+    private ApplicationContext context;
+    private Long courierID;
+    @FXML
+    private ListView<String> envelopeList;
+    @FXML
+    private ListView<String> packList;
+    @FXML
+    private ListView<String> palletList;
+    @FXML
+    private Button courierNameButton;
 
-    public void initialize() {
-        Long courierID = UserCourierCompaniesListController.getCourierID();
+    /**
+     * This method is used to display the prices of the selected courier company.
+     */
+    public void initialize(Long courierID) {
+        // get courier and pricing
+        this.courierID = courierID;
         Courier courier = courierRepository.getOne(courierID);
-
-        // Get price lists
         EnvelopePricing envelopePricing = envelopePricingRepository.findByCourier(courier);
         PackPricing packPricing = packPricingRepository.findByCourier(courier);
         PalletPricing palletPricing = palletPricingRepository.findByCourier(courier);
-
-        courierNameButton.setText(UserCourierCompaniesListController.getCourierName());
+        // fill courier information
+        courierNameButton.setText(courier.getName());
         envelopeList.getItems().addAll("do 1 kg: " + envelopePricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 1 kg: " + packPricing.getUp_to_1() + " zł");
         packList.getItems().addAll("do 2 kg: " + packPricing.getUp_to_2() + " zł");
@@ -60,14 +73,28 @@ public class UserCourierCompanyPricingController {
         palletList.getItems().addAll("do 1000 kg: " + palletPricing.getUp_to_1000() + " zł");
     }
 
-    @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    public void openCourierOpinionPanel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user.other/userCourierOpinions.fxml"));
+            loader.setControllerFactory(context::getBean);
+            Parent root = loader.load();
+            UserCourierOpinionsController userCourierOpinionsController = loader.getController();
+            userCourierOpinionsController.initialize(courierID);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    public void CourierOpinion(ActionEvent event) {
-        sceneManager.show(SceneType.COURIER_OPINIONS);
+    public void openCompanyListPanel(ActionEvent event) {
+        sceneManager.show(SceneType.USER_COURIER_COMPANIES_LIST);
+    }
+
+    @Autowired
+    public void setContext(ApplicationContext context) {
+        this.context = context;
     }
 
     @Autowired

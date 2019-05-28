@@ -2,20 +2,47 @@ package serwisPaczek.controller.user.profile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import serwisPaczek.model.Opinion;
+import serwisPaczek.repository.OpinionRepository;
 import serwisPaczek.utils.SceneManager;
 import serwisPaczek.utils.SceneType;
 
-@Controller
-public class MyOpinionsController {
-    private SceneManager sceneManager;
+import java.util.List;
 
+import static serwisPaczek.model.dto.UserLoginDto.getLoggedUser;
+
+@Controller
+public class UserProfileMyOpinionsController {
+    @Autowired
+    OpinionRepository opinionRepository;
+    private SceneManager sceneManager;
     @FXML
-    public void BackToMenu(ActionEvent event) {
-        sceneManager.show(SceneType.MAIN);
+    private ListView<String> opinionListView;
+
+    /**
+     * This method is used to fill list view with opinions made by logged in user
+     */
+    @FXML
+    public void initialize() {
+        List<Opinion> opinions = opinionRepository.findAllByUserOrder_User(getLoggedUser());
+
+        for (Opinion op : opinions) {
+            opinionListView.getItems().add(op.getDate().toString()
+                    + "  |  Zamówienie nr " + op.getUserOrder().getId().toString()
+                    + "  |  " + op.getUserOrder().getCourier()
+                    + "  |  Ocena: " + op.getRating()
+                    + "/5  |  " + op.getContent());
+
+        }
     }
 
+    @FXML
+    public void openUserMainPanel(ActionEvent event) {
+        sceneManager.show(SceneType.USER_MAIN);
+    }
 
     @Autowired
     public void setSceneManager(SceneManager sceneManager) {

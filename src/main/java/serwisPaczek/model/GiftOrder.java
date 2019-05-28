@@ -11,28 +11,26 @@ public class GiftOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Date date;
-
     @ManyToOne
     @JoinColumn(name = "gift_id")
     private Gift gift;
-
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
     @ManyToOne
-    @JoinColumn(name = "recipient_id")
-    private RecipientAdress recipientAdress;
+    @JoinColumn(name = "recipient_address_id")
+    private RecipientAddress recipientAddress;
 
-    public GiftOrder(Date date, Gift gift, User user, RecipientAdress recipientAdress) {
+    public GiftOrder() {
+    }
+
+    public GiftOrder(Date date, Gift gift, User user, Status status, RecipientAddress recipientAddress) {
         this.date = date;
         this.gift = gift;
         this.user = user;
-        this.recipientAdress = recipientAdress;
-    }
-
-    public GiftOrder() {
+        this.status = status;
+        this.recipientAddress = recipientAddress;
     }
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="serwisPaczek.controller.admin.AdminManageWorkersController">
+    <top>
+        <ImageView fitHeight="242.0" fitWidth="820.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+            <image>
+                <Image url="@../../images/BigBanner_Delivery.png"/>
+            </image>
+        </ImageView>
+    </top>
+    <center>
+        <AnchorPane prefHeight="348.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="workerSearchButton" defaultButton="true" layoutX="416.0" layoutY="25.0"
+                        mnemonicParsing="false" onAction="#workerSearch" prefHeight="37.0" prefWidth="182.0"
+                        style="-fx-background-color: Blue;" text="Szukaj" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnOpenMainPanel" cancelButton="true" layoutX="61.0" layoutY="302.0"
+                        mnemonicParsing="false" onAction="#openMainPanel" prefHeight="35.0" prefWidth="175.0"
+                        style="-fx-background-color: red;" text="Powrót" textFill="WHITE">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <ListView fx:id="workerList" layoutX="61.0" layoutY="74.0" prefHeight="209.0" prefWidth="710.0"/>
+                <Button fx:id="workerChangeStatus" layoutX="641.0" layoutY="292.0" mnemonicParsing="false"
+                        onAction="#workerChangeStatus" prefHeight="45.0" prefWidth="130.0"
+                        style="-fx-background-color: green;" text="Zmień status" textFill="WHITE">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="61.0" layoutY="26.0" prefHeight="35.0" prefWidth="169.0" text="ID Pracownika:">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="workerStatusComboBox" layoutX="428.0" layoutY="292.0" prefHeight="45.0"
+                          prefWidth="202.0"/>
+                <TextField fx:id="searchTextField" layoutX="194.0" layoutY="27.0" prefHeight="36.0" prefWidth="215.0"/>
+                <Button fx:id="resetSearchButton" layoutX="605.0" layoutY="25.0" mnemonicParsing="false"
+                        onAction="#resetSearch" prefHeight="37.0" prefWidth="165.0" style="-fx-background-color: Gray;"
+                        text="Pokaż wszystkich" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
