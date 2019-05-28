@@ -58,6 +58,22 @@ Aplikacja umożliwia zamówienie kuriera w celu wysłania przesyłki. Każdy go�
 2. Gradle
 3. MySql
 
+### Obsługa aplikacji
+
+Po uruchomieniu aplikacji wyświetlone zostanie menu główne aplikacji.
+<br />![1](diagrams/LOGGED.png) <br/>
+Gość ma możliwość naciśnięcia guziku ,,zamów kuriera", wpisaniu danych przesyłki co doprowadzi do wyświetlenia listy dostępnych kurierów. Jeżeli będzie chciał wybrać kuriera by przejść dalej wyświetli się dialog informujący, że do przejścia dalej potrzebne jest zalogowanie.
+<br />![1](diagrams/niezalogowany.png) <br/>
+Gość następnie ma możliwosc zarejestrowania się oraz zalogowania, wszystkie dane są poddane walidacji.
+<br />![1](diagrams/logowanie.png) <br/>
+Po zalogowaniu się, może przejść znowu do modułu zamówienia kuriera, jeżeli podczas wybrania kuriera nie posiada dostępnych środków na koncie, zostanie wyświetlona informacja informująca o tym. 
+
+User w celu dokonania zamówienia doładowuje prowizorycznie swój portfel.
+
+Wybiera kuriera, jeżeli wszystko poprzednie zostało spełnione, przechodzi do okna w którym wypełnia swój adres oraz osoby, do której chce go wysłac. Jeżeli zalogowany użytkownik posiada wypełniony swój profil, może automatycznie wypełnic pola tekstowe. Jeżeli dane przejdą walidacje, pojawia się kończące okno. 
+
+W ostatnim oknie modułu zamówienia mamy możliwość wygenerowania PDF'a z informacjami o zamówieniu oraz o stanie konta.
+
 ### Autorzy
 - Paweł Fiołek
 - Patryk Brzuchacz
